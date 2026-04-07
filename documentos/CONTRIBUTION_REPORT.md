@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 07/04/2026 00:18
+**Última atualização:** 07/04/2026 21:25
 
 ---
 
@@ -8,14 +8,14 @@
 
 | Aluno                 |   Commits |   Linhas+ |   Linhas- |   Arquivos |   Docs Commits |   Docs Arquivos |
 |-----------------------|-----------|-----------|-----------|------------|----------------|-----------------|
-| Gustavo Lima          |         5 |       125 |        52 |          4 |              5 |               1 |
-| github-actions[bot]   |         3 |        54 |         7 |          3 |              3 |               1 |
+| Gustavo Lima          |         6 |       128 |        59 |          4 |              6 |               1 |
+| github-actions[bot]   |         4 |        61 |        12 |          3 |              4 |               1 |
 | github-classroom[bot] |         1 |       774 |         0 |         19 |              1 |               3 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-03-31**: Gustavo Lima: 1
+**2026-03-31**: Gustavo Lima: 2, github-actions[bot]: 1
 
 **2026-03-24**: Gustavo Lima: 4, github-actions[bot]: 3
 
