@@ -78,7 +78,7 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 |  RF- 07   |  O aplicativo deve permitir ao usuário ter acesso a uma barra de filtragem onde o usuário pode escolher os temas de livros e assuntos que melhor se enquadre aos seus objetivos e gostos.                     | Alta    |
 |  RF- 08   |  A aplicação deve permitir que o usuário receba recomendações de livros personalizadas com base nos livros que ele leu e/ou está lendo.                     | Alta    |
 |  RF- 09   |  A aplicação deve permitir ao usuário criar um perfil local.                     | Alta    |
-|  RF- 10   |  O sistema deve permitir que o usuário avalie livros por meio reações.                     | Alta    |
+|  RF- 10   |  O sistema deve permitir que o usuário avalie livros por meio de reações.                     | Alta    |
 |  RF- 11   |  O sistema deve permitir cadastro e login (e-mail/senha ou redes sociais).                     | Alta    |
 |  RF- 12   |  O sistema deve permitir que usuários denunciem conteúdos inadequados.                     | Alta    |
 |  RF- 13   |  O sistema deve permitir que o usuário siga outros leitores para acompanhar suas atividades.                     | Média    |
