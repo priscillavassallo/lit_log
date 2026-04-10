@@ -71,7 +71,7 @@ Permite a autenticação por meio de nome do usuário e senha para acesso à pla
 
 **Home Page**
 
-Exibe a Top Bar com os principais atalhos de navegação (livros, leitores e perfil). A área principal apresenta seções como New from Friends e Popular with Friends, além de um banner com parcerias, lançamentos e eventos editoriais.
+Exibe a Top Bar com os principais atalhos de navegação: livros, leitores e perfil; com dropdown para Diary e Watchlist. A área principal apresenta seções como New from Friends e Popular with Friends, além de um banner com parcerias, lançamentos e eventos editoriais.
 
 <img width="1440" height="1945" alt="Home Page" src="https://github.com/user-attachments/assets/d43ac21e-eb2e-460a-a5bb-cd47ef3fdd92" />
 
@@ -81,7 +81,7 @@ Exibe a Top Bar com os principais atalhos de navegação (livros, leitores e per
 
 **+LOG Modal**
 
-Atalho estratégico na Top Bar para registrar uma leitura. O usuário digita o nome do livro e recebe sugestões em tempo real em formato de dropdown.
+Atalho estratégico na Top Bar para registrar uma leitura, que abre um modal onde o usuário digita o nome do livro e recebe sugestões em tempo real em formato de dropdown.
 
 <img width="1440" height="1945" alt="+LOG Modal" src="https://github.com/user-attachments/assets/ae01a7bc-1f9a-4ab9-8edf-25de820a20a8" />
 
@@ -141,7 +141,7 @@ Exibe livros com capa, título, descrição, reviews recentes, avaliação médi
 
 **Lists Page**
 
-Reúne coleções de livros organizadas por temas ou categorias, criadas por membros para membros. Com o intuito de incitar a descoberta de novas leituras, inclusive por formas criativas como listas por mood, por exemplo.
+Reúne coleções de livros organizadas por temas ou categorias, criadas por membros para membros. Com o intuito de incitar a descoberta de novas leituras, inclusive por formas criativas como listas por *mood*, por exemplo.
 
 <img width="1440" height="2919" alt="Lists Page" src="https://github.com/user-attachments/assets/1ad3b7db-8264-43ba-928b-3cbac28cfe1f" />
 
@@ -196,5 +196,3 @@ Apresenta resultados com base na busca do usuário, exibindo livros, autores e l
 <img width="1440" height="1024" alt="Search Results Page" src="https://github.com/user-attachments/assets/182ff136-3289-4291-af6e-bcb192b84554" />
 
 *Figura 22 - Search Results Page*
-
----------------------------------------------------------------------------
