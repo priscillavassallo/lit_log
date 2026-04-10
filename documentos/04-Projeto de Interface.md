@@ -93,7 +93,8 @@ Atalho estratégico na Top Bar para registrar uma leitura, que abre um modal ond
 
 Mostra avatar/foto, bio opcional, botão de seguir, livros favoritos, reviews recentes, listas personalizadas, diário de leitura (estante) e lista de desejos.
 
-<img width="1440" height="1024" alt="Profile Page" src="https://github.com/user-attachments/assets/df12829a-b5be-483c-9cd6-802bb99092d9" />
+<img width="1440" height="1024" alt="Profile Page" src="https://github.com/user-attachments/assets/964bcc36-4ca9-46aa-a723-333b3210c787" />
+
 
 *Figura 12 - Profile Page*
 
