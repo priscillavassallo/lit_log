@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 10/04/2026 01:55
+**Última atualização:** 10/04/2026 02:27
 
 ---
 
@@ -10,14 +10,14 @@
 |--------------------------|-----------|-----------|-----------|------------|----------------|-----------------|
 | Gabriel Clemente Ribeiro |         4 |        13 |         7 |          2 |              4 |               1 |
 | Gustavo Lima             |         6 |       128 |        59 |          4 |              6 |               1 |
-| Priscilla Vassallo       |         1 |        19 |         6 |          1 |              1 |               1 |
-| github-actions[bot]      |         9 |        89 |        38 |          3 |              9 |               1 |
+| Priscilla Vassallo       |         2 |       102 |        22 |          1 |              2 |               1 |
+| github-actions[bot]      |        10 |        93 |        42 |          3 |             10 |               1 |
 | github-classroom[bot]    |         1 |       774 |         0 |         19 |              1 |               3 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-04-03**: Gabriel Clemente Ribeiro: 4, Gustavo Lima: 2, Priscilla Vassallo: 1, github-actions[bot]: 6
+**2026-04-03**: Gabriel Clemente Ribeiro: 4, Gustavo Lima: 2, Priscilla Vassallo: 2, github-actions[bot]: 7
 
 **2026-03-27**: Gustavo Lima: 4, github-actions[bot]: 3
 
