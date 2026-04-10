@@ -132,7 +132,7 @@ Apresenta informações sobre o autor, incluindo breve biografia, obras publicad
 
 **Books Page**
 
-Exibe livros com capa, título, descrição, reviews recentes, avaliação média de acordo com os membros da plataforma, onde encontrar para adquirir, dentre outras informações relevantes.
+Exibe livros com capa, título, descrição, reviews recentes, avaliação média de acordo com os membros da plataforma, onde adquirir, dentre outras informações relevantes.
 
 <img width="1440" height="2919" alt="Books Page" src="https://github.com/user-attachments/assets/0ab22701-159d-493e-8262-61c37ed83080" />
 
