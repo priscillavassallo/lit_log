@@ -119,3 +119,82 @@ Lista os livros marcados como desejados para futuras leituras.
 
 ---------------------------------------------------------------------------
 
+**Author Page**
+
+Apresenta informações sobre o autor, incluindo breve biografia, obras publicadas e conteúdos adicionais caso ele também seja membro da plataforma.
+
+<img width="1440" height="1024" alt="Author Page" src="https://github.com/user-attachments/assets/d45f8bc2-2ac7-4dcd-80c3-aa9fcc43e179" />
+
+*Figura 15 - Author Page*
+
+---------------------------------------------------------------------------
+
+**Books Page**
+
+Exibe livros com capa, título, descrição, reviews recentes, avaliação média de acordo com os membros da plataforma, onde encontrar para adquirir, dentre outras informações relevantes.
+
+<img width="1440" height="2919" alt="Books Page" src="https://github.com/user-attachments/assets/0ab22701-159d-493e-8262-61c37ed83080" />
+
+*Figura 16 - Books Page*
+
+---------------------------------------------------------------------------
+
+**Lists Page**
+
+Reúne coleções de livros organizadas por temas ou categorias, criadas por membros para membros. Com o intuito de incitar a descoberta de novas leituras, inclusive por formas criativas como listas por mood, por exemplo.
+
+<img width="1440" height="2919" alt="Lists Page" src="https://github.com/user-attachments/assets/1ad3b7db-8264-43ba-928b-3cbac28cfe1f" />
+
+*Figura 17 - Lists Page*
+
+---------------------------------------------------------------------------
+
+**Single List Page**
+
+Mostra os detalhes de uma lista específica, exibindo os livros que a compõem, com capas e títulos clicáveis que direcionam para a página individual do livro.
+
+<img width="1440" height="1024" alt="Single List Page" src="https://github.com/user-attachments/assets/48292ead-8f25-42b0-8325-24c9e0de1a6c" />
+
+*Figura 18 - Single List Page*
+
+---------------------------------------------------------------------------
+
+**Single Book Page**
+
+Apresenta as informações completas de um livro, incluindo capa, título, descrição, autor, reviews recentes, avaliações de amigos e quais amigos já leram a obra.
+
+<img width="1440" height="1024" alt="Single Book Page" src="https://github.com/user-attachments/assets/cc0298e7-0d5b-4a25-a485-f107d1ebb76b" />
+
+*Figura 19 - Single Book Page*
+
+---------------------------------------------------------------------------
+
+**Following Page**
+
+Lista autores e usuários seguidos, permitindo acompanhar suas atividades e conteúdos recentes.
+
+<img width="1440" height="1479" alt="Following Page" src="https://github.com/user-attachments/assets/1f161ec7-b909-4ecf-88c1-3eeeb2acef29" />
+
+*Figura 20 - Following Page*
+
+---------------------------------------------------------------------------
+
+**Followers Page**
+
+Exibe os usuários que seguem o perfil, com acesso direto aos seus perfis.
+
+<img width="1440" height="1479" alt="Followers Page" src="https://github.com/user-attachments/assets/20a71df1-a2e1-4115-8644-b2b6d5bcd1cc" />
+
+*Figura 21 - Followers Page*
+
+---------------------------------------------------------------------------
+
+**Search Results Page**
+
+Apresenta resultados com base na busca do usuário, exibindo livros, autores e listas relacionados ao termo pesquisado.
+
+<img width="1440" height="1024" alt="Search Results Page" src="https://github.com/user-attachments/assets/182ff136-3289-4291-af6e-bcb192b84554" />
+
+*Figura 22 - Search Results Page*
+
+---------------------------------------------------------------------------
