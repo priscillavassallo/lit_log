@@ -28,10 +28,12 @@ Figura 5 - Telas do usuário
 ## Protótipo
 As telas do sistema, de modo geral, seguem uma estrutura padrão apresentada na Figura 6, composta por três blocos principais:
 
-Top Bar – funciona como um menu global, contendo a logo, o nome da aplicação e os principais atalhos de navegação.
-Conteúdo – área central onde é exibido o conteúdo específico de cada tela.
-Rodapé – reúne informações institucionais, como direitos autorais, política de privacidade e termos de uso.
+- Top Bar – funciona como um menu global, contendo a logo, o nome da aplicação e os principais atalhos de navegação.
+- Conteúdo – área central onde é exibido o conteúdo específico de cada tela.
+- Rodapé – reúne informações institucionais, como direitos autorais, política de privacidade e termos de uso.
+
 <img width="1440" height="1024" alt="PROTOTIPO" src="https://github.com/user-attachments/assets/38ef5168-bcba-44a6-9f0a-9b91f0128dd8" />
+
 Figura 6 - Estrutura padrão do site
 ### Protótipo de baixa fidelidade
 
