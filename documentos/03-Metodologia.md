@@ -13,6 +13,7 @@ Equipe de Desenvolvimento: Carlos e  Gustavo
 Equipe de Design: iago e Gabriel
 
 ### Divisão de Papéis
+
 Para organização e distribuição das tarefas do projeto, a equipe está utilizando o GitHub , teams (por meio de lives ) e WhatsApp  
 estruturado com as seguintes responsabilidade 
  - readme (Gustavo )
@@ -30,8 +31,13 @@ estruturado com as seguintes responsabilidade
 . prioridades do projeto : baixa
 
 ### Etiquetas
-
-
+Rosa  → prioridade: alta
+Laranja → prioridade: baixa
+Roxo claro → prioridade: média
+Verde → protótipo
+Lilás → question
+Azul → referências
+Roxo escuro → user-flow
 
 ### Ferramentas
 
@@ -52,7 +58,7 @@ Os artefatos do projeto são desenvolvidos a partir da plataforma github
 |-------------------------------------|------------------------------------|----------------------------------------|
 | Repositório de código fonte         | GitHub                             | http://....                            |
 | Documentos do projeto               | GitHub                             | http://....                            |
-| Projeto de Interface                | Figma                              | http://....                            |
+| Projeto de Interface                | Figma                              | https://www.figma.com/design/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=0-1&t=ZYAc5B2Bz2T8sRrt-1 
 | Gerenciamento do Projeto            | GitHub Projects                    | http://....                            |
 | Hospedagem                          | GitHub Pages                       | http://....                            |
 
