@@ -38,7 +38,6 @@ As telas do sistema, de modo geral, seguem uma estrutura padrão apresentada na 
 
 ### Protótipo de baixa fidelidade
 
-
 **Landing Page**
 
 Apresenta as opções de cadastro e login, além de destacar os principais atrativos da plataforma para incentivar o usuário a explorar e se tornar membro da comunidade.
@@ -71,9 +70,9 @@ Permite a autenticação por meio de nome do usuário e senha para acesso à pla
 
 **Home Page**
 
-Exibe a Top Bar com os principais atalhos de navegação: livros, leitores e perfil; com dropdown para Diary e Watchlist. A área principal apresenta seções como New from Friends e Popular with Friends, além de um banner com parcerias, lançamentos e eventos editoriais.
+Exibe a Top Bar com os principais atalhos de navegação: livros, leitores e perfil; com dropdown para Diary e The Pile. A área principal apresenta seções como New from Friends e Popular with Friends, além de um banner com parcerias, lançamentos e eventos editoriais.
 
-<img width="1440" height="1945" alt="Home Page" src="https://github.com/user-attachments/assets/d43ac21e-eb2e-460a-a5bb-cd47ef3fdd92" />
+<img width="1440" height="1945" alt="Home Page" src="https://github.com/user-attachments/assets/23ace352-78a2-40f2-9f8b-3b0c749ab1bd" />
 
 *Figura 10 - Home Page*
 
@@ -93,8 +92,7 @@ Atalho estratégico na Top Bar para registrar uma leitura, que abre um modal ond
 
 Mostra avatar/foto, bio opcional, botão de seguir, livros favoritos, reviews recentes, listas personalizadas, diário de leitura (estante) e lista de desejos.
 
-<img width="1440" height="1024" alt="Profile Page" src="https://github.com/user-attachments/assets/964bcc36-4ca9-46aa-a723-333b3210c787" />
-
+<img width="1440" height="1024" alt="Profile Page" src="https://github.com/user-attachments/assets/a6b26438-fd1d-47fe-8f9b-9f675f8ae83b" />
 
 *Figura 12 - Profile Page*
 
@@ -110,13 +108,13 @@ Exibe todos os livros registrados como lidos ou em leitura pelo usuário.
 
 ---------------------------------------------------------------------------
 
-**Watchlist Page**
+**The Pile Page**
 
 Lista os livros marcados como desejados para futuras leituras.
 
-<img width="1440" height="1024" alt="Watchlist Page" src="https://github.com/user-attachments/assets/486af983-47c9-49fe-a51d-a0dc4f539b18" />
+<img width="1440" height="1024" alt="The Pile Page" src="https://github.com/user-attachments/assets/95b44d6f-9b7a-4f7e-93a5-e3ec42b0d2dd" />
 
-*Figura 14 - Watchlist Page*
+*Figura 14 - The Pile Page*
 
 ---------------------------------------------------------------------------
 
@@ -144,7 +142,7 @@ Exibe livros com capa, título, descrição, reviews recentes, avaliação médi
 
 Reúne coleções de livros organizadas por temas ou categorias, criadas por membros para membros. Com o intuito de incitar a descoberta de novas leituras, inclusive por formas criativas como listas por *mood*, por exemplo.
 
-<img width="1440" height="2919" alt="Lists Page" src="https://github.com/user-attachments/assets/1ad3b7db-8264-43ba-928b-3cbac28cfe1f" />
+<img width="1440" height="4132" alt="Lists Page 2" src="https://github.com/user-attachments/assets/38fbc0b9-beba-4dcc-becc-826e4afe5058" />
 
 *Figura 17 - Lists Page*
 
@@ -170,30 +168,10 @@ Apresenta as informações completas de um livro, incluindo capa, título, descr
 
 ---------------------------------------------------------------------------
 
-**Following Page**
-
-Lista autores e usuários seguidos, permitindo acompanhar suas atividades e conteúdos recentes.
-
-<img width="1440" height="1479" alt="Following Page" src="https://github.com/user-attachments/assets/1f161ec7-b909-4ecf-88c1-3eeeb2acef29" />
-
-*Figura 20 - Following Page*
-
----------------------------------------------------------------------------
-
-**Followers Page**
-
-Exibe os usuários que seguem o perfil, com acesso direto aos seus perfis.
-
-<img width="1440" height="1479" alt="Followers Page" src="https://github.com/user-attachments/assets/20a71df1-a2e1-4115-8644-b2b6d5bcd1cc" />
-
-*Figura 21 - Followers Page*
-
----------------------------------------------------------------------------
-
 **Search Results Page**
 
 Apresenta resultados com base na busca do usuário, exibindo livros, autores e listas relacionados ao termo pesquisado.
 
 <img width="1440" height="1024" alt="Search Results Page" src="https://github.com/user-attachments/assets/182ff136-3289-4291-af6e-bcb192b84554" />
 
-*Figura 22 - Search Results Page*
+*Figura 20 - Search Results Page*
