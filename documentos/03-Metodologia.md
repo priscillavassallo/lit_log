@@ -37,7 +37,6 @@ Estruturado com as seguintes responsabilidades.
 - Laranja → prioridade: baixa
 - Roxo claro → prioridade: média
 - Verde → protótipo
-- Lilás → question
 - Azul → referências
 - Roxo escuro → user-flow
 
