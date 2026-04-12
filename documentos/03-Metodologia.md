@@ -57,9 +57,9 @@ Os artefatos do projeto são desenvolvidos a partir da plataforma github
 | AMBIENTE                            | PLATAFORMA                         | LINK DE ACESSO                         |
 |-------------------------------------|------------------------------------|----------------------------------------|
 | Repositório de código fonte         | GitHub                             | http://....                            |
-| Documentos do projeto               | GitHub                             | http://....                            |
+| Documentos do projeto               | GitHub                             | https://www.figma.com/design/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=0-1&t=ZYAc5B2Bz2T8sRrt-1                           |
 | Projeto de Interface                | Figma                              | https://www.figma.com/design/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=0-1&t=ZYAc5B2Bz2T8sRrt-1 
-| Gerenciamento do Projeto            | GitHub Projects                    | http://kkkkkkkkkkkkkk                          |
+| Gerenciamento do Projeto            | GitHub Projects                    |https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/tree/main/codigo-fonte                         |
 | Hospedagem                          | GitHub Pages                       | http://....                            |
 
 
