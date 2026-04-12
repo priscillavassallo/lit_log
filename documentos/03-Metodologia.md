@@ -30,6 +30,11 @@ estruturado com as seguintes responsabilidade
 . prioridades do projeto : media
 . prioridades do projeto : baixa
 
+<figure> 
+  <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/blob/main/documentos/img/Kanban.png"
+    <figcaption>Figura 1 - Tela do kanban no GitHub utilizada pelo grupo</figcaption>
+</figure> 
+
 ### Etiquetas
 Rosa  → prioridade: alta
 Laranja → prioridade: baixa
