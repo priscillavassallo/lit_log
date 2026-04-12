@@ -1,9 +1,7 @@
 
 # Metodologia
 
-A metodologia escolhida para fazermos o desenvolvimento do nosso projeto ( litlog ) foi o
-SCRUM, pois é um framework ágil de gerenciamento de projetos que ajuda equipes a
-trabalharem colaborativamente para entregar produtos complexos em ciclos curtos e iterativos
+A metodologia escolhida para o desenvolvimento do projeto Litlog foi o Scrum, pois se trata de um framework ágil de gerenciamento de projetos que auxilia equipes a trabalharem de forma colaborativa na entrega de produtos complexos em ciclos curtos e iterativos.
 
 ## Gerenciamento de Projeto
 Para o gerenciamento do projeto, optamos por dividir a equipe em grupos de 1 a 2 pessoas. Dessa forma, a organização ficou estruturada da seguinte maneira:
@@ -46,14 +44,16 @@ Estruturado com as seguintes responsabilidades.
 ### Ferramentas
 
 As ferramentas empregadas no projeto são:
-Editor de código.
-- Ferramentas de comunicação: Whatsapp e Teams
-- Ferramentas de desenho de tela (Figma e Canvas)
-Escolhemos estas plataformas porque elas possuem uma integração de faço acesso e as ferramentas de comunicação utilizadas possuem integração semelhante e de conhecimento geral e por isso foram selecionadas por todos.
-Para criarmos o diagrama/fluxograma utilizamos essa ferramenta por melhor captar as necessidades da nossa solução. 
-Os artefatos do projeto são desenvolvidos a partir da plataforma github.
 
+- **Editor de código**
+- **Ferramentas de comunicação:** WhatsApp e Microsoft Teams
+- **Ferramentas de desenho de telas:** Figma e Canva
 
+Essas plataformas foram escolhidas por possuírem fácil integração e por serem amplamente conhecidas pela equipe, o que facilita a comunicação e o desenvolvimento do projeto.
+
+Para a criação de diagramas e fluxogramas, utilizamos ferramentas que permitem representar de forma clara as necessidades da solução proposta.
+
+Os artefatos do projeto são desenvolvidos e versionados na plataforma **GitHub**.
 
 | AMBIENTE                            | PLATAFORMA                         | LINK DE ACESSO                                                                                                              |
 |-------------------------------------|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
