@@ -54,18 +54,18 @@ Escolhemos estas plataformas porque elas possuem uma integração de faço acess
 ferramentas de comunicação utilizadas possuem integração semelhante e de conhecimento
 geral e por isso foram selecionadas por todos.
 para criarmos o diagrama/fluxograma utilizamos essa ferramenta por melhor captar as
-necessidades da nossa solução.
+necessidades da nossa solução. 
 Os artefatos do projeto são desenvolvidos a partir da plataforma github
 
 
 
-| AMBIENTE                            | PLATAFORMA                         | LINK DE ACESSO                         |
-|-------------------------------------|------------------------------------|----------------------------------------|
-| Repositório de código fonte         | GitHub                             | http://....                            |
-| Documentos do projeto               | GitHub                             | https://www.figma.com/design/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=0-1&t=ZYAc5B2Bz2T8sRrt-1                           |
-| Projeto de Interface                | Figma                              | [https://www.figma.com/design/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=0-1&t=ZYAc5B2Bz2T8sRrt-1](https://www.figma.com/proto/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=4001-1299&p=f&t=NEctk7NVib42Ziup-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=4001%3A1299) 
-| Gerenciamento do Projeto            | GitHub Projects                    |https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/tree/main/codigo-fonte                         |
-| Hospedagem                          | GitHub Pages                       | http://....                            |
+| AMBIENTE                            | PLATAFORMA                         | LINK DE ACESSO                                                                                                              |
+|-------------------------------------|------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Repositório de código fonte         | GitHub                             | https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/tree/main/codigo-fonte |
+| Documentos do projeto               | GitHub                             | https://www.figma.com/design/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=0-1&t=ZYAc5B2Bz2T8sRrt-1                    |
+| Projeto de Interface                | Figma                              | https://www.figma.com/proto/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=4001-1579&p=f&t=ZMARbGIYLkcYufuK-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=4001%3A1299             
+| Gerenciamento do Projeto            | GitHub Projects                    | https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/2873                                                                
+| Hospedagem                          | GitHub Pages                       | http://....                                                                                                                 | 
 
 
 ### Estratégia de Organização de Codificação 
