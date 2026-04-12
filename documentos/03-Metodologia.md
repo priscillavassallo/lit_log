@@ -6,29 +6,28 @@ SCRUM, pois é um framework ágil de gerenciamento de projetos que ajuda equipes
 trabalharem colaborativamente para entregar produtos complexos em ciclos curtos e iterativos
 
 ## Gerenciamento de Projeto
-para o gerenciamento do projeto opitamos por nos dividimos em grupos de 1 a 2 pessoas, desta forma  a equipe está organizada da seguinte maneira:
+Para o gerenciamento do projeto, optamos por dividir a equipe em grupos de 1 a 2 pessoas. Dessa forma, a organização ficou estruturada da seguinte maneira:
 - Scrum Master: Priscila
 - Product Owner: Marcus Cruz
 - Equipe de Desenvolvimento: Carlos e  Gustavo
 - Equipe de Design: Iago e Gabriel
 
 ### Divisão de Papéis
-
-Para organização e distribuição das tarefas do projeto, a equipe está utilizando o GitHub , teams (por meio de lives ) e WhatsApp  
-estruturado com as seguintes responsabilidade 
- - readme (Gustavo )
- - metodologia (Iago)
- - kanban (Marcus, Carlos)
- - wireframe (Pricilla , Gabriel)
+Para organização e distribuição das tarefas do projeto, a equipe está utilizando o GitHub , teams (por meio de lives ) e WhatsApp.  
+Estruturado com as seguintes responsabilidades.
+ - Readme (Gustavo )
+ - Metodologia (Iago)
+ - Kanban (Marcus, Carlos)
+ - Wireframe (Pricilla , Gabriel)
 
 ### Processo
-- documentacao 
+- Documentação 
 - User-flow
-- prototipo 
-- referencias 
-- prioridades do projeto : alta
-- prioridades do projeto : media
-- prioridades do projeto : baixa
+- Protótipo 
+- Referências 
+- Prioridades do projeto : Alta
+- Prioridades do projeto : Média
+- Prioridades do projeto : Baixa
 
 <figure> 
   <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/blob/main/documentos/img/Kanban.png"
@@ -36,26 +35,24 @@ estruturado com as seguintes responsabilidade
 </figure> 
 
 ### Etiquetas
-Rosa  → prioridade: alta
-Laranja → prioridade: baixa
-Roxo claro → prioridade: média
-Verde → protótipo
-Lilás → question
-Azul → referências
-Roxo escuro → user-flow
+- Rosa  → prioridade: alta
+- Laranja → prioridade: baixa
+- Roxo claro → prioridade: média
+- Verde → protótipo
+- Lilás → question
+- Azul → referências
+- Roxo escuro → user-flow
 
 ### Ferramentas
 
 As ferramentas empregadas no projeto são:
 Editor de código.
--Ferramentas de comunicação whatsapp e Teams
--Ferramentas de desenho de tela (figma e canvas )
+- Ferramentas de comunicação whatsapp e Teams
+- Ferramentas de desenho de tela (figma e canvas )
 Escolhemos estas plataformas porque elas possuem uma integração de faço acesso e as
-ferramentas de comunicação utilizadas possuem integração semelhante e de conhecimento
-geral e por isso foram selecionadas por todos.
-para criarmos o diagrama/fluxograma utilizamos essa ferramenta por melhor captar as
-necessidades da nossa solução. 
-Os artefatos do projeto são desenvolvidos a partir da plataforma github
+ferramentas de comunicação utilizadas possuem integração semelhante e de conhecimento geral e por isso foram selecionadas por todos.
+para criarmos o diagrama/fluxograma utilizamos essa ferramenta por melhor captar as necessidades da nossa solução. 
+Os artefatos do projeto são desenvolvidos a partir da plataforma github.
 
 
 
