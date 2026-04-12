@@ -11,7 +11,7 @@ Para o gerenciamento do projeto, optamos por dividir a equipe em grupos de 1 a 2
 - Equipe de Design: Iago e Gabriel
 
 ### Divisão de Papéis
-Para organização e distribuição das tarefas do projeto, a equipe está utilizando o GitHub , teams (por meio de lives ) e WhatsApp.  
+Para organização e distribuição das tarefas do projeto, a equipe está utilizando o GitHub , Teams e WhatsApp.  
 Estruturado com as seguintes responsabilidades.
  - Readme (Gustavo )
  - Metodologia (Iago)
