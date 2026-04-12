@@ -22,13 +22,13 @@ estruturado com as seguintes responsabilidade
  - wireframe (Pricilla , Gabriel)
 
 ### Processo
-. documentacao 
-. User-flow
-. prototipo 
-. referencias 
-. prioridades do projeto : alta
-. prioridades do projeto : media
-. prioridades do projeto : baixa
+- documentacao 
+- User-flow
+- prototipo 
+- referencias 
+- prioridades do projeto : alta
+- prioridades do projeto : media
+- prioridades do projeto : baixa
 
 <figure> 
   <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/blob/main/documentos/img/Kanban.png"
