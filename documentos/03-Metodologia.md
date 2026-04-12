@@ -59,7 +59,7 @@ Os artefatos do projeto são desenvolvidos a partir da plataforma github
 | Repositório de código fonte         | GitHub                             | http://....                            |
 | Documentos do projeto               | GitHub                             | http://....                            |
 | Projeto de Interface                | Figma                              | https://www.figma.com/design/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=0-1&t=ZYAc5B2Bz2T8sRrt-1 
-| Gerenciamento do Projeto            | GitHub Projects                    | http://....                            |
+| Gerenciamento do Projeto            | GitHub Projects                    | http://kkkkkkkkkkkkkk                          |
 | Hospedagem                          | GitHub Pages                       | http://....                            |
 
 
