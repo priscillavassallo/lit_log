@@ -12,14 +12,15 @@
 | Gabriel Clemente Ribeiro |         6 |        94 |         8 |          2 |              6 |               1 |
 | Gustavo Lima             |         7 |       129 |        60 |          5 |              7 |               2 |
 | Priscilla Vassallo       |         5 |       114 |        58 |          1 |              5 |               1 |
-| github-actions[bot]      |        21 |       139 |        86 |          3 |             21 |               1 |
+| github-actions[bot]      |        22 |       143 |        90 |          3 |             22 |               1 |
 | github-classroom[bot]    |         1 |       774 |         0 |         19 |              1 |               3 |
 | iagofalquer              |         5 |        53 |        62 |          1 |              5 |               1 |
+| marcusfcruz              |         1 |         0 |         0 |          1 |              1 |               0 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-04-05**: Carlos: 1, Gabriel Clemente Ribeiro: 6, Gustavo Lima: 3, Priscilla Vassallo: 5, github-actions[bot]: 18, iagofalquer: 5
+**2026-04-05**: Carlos: 1, Gabriel Clemente Ribeiro: 6, Gustavo Lima: 3, Priscilla Vassallo: 5, github-actions[bot]: 19, iagofalquer: 5, marcusfcruz: 1
 
 **2026-03-29**: Gustavo Lima: 4, github-actions[bot]: 3
 
