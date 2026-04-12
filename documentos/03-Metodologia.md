@@ -8,18 +8,18 @@ trabalharem colaborativamente para entregar produtos complexos em ciclos curtos 
 ## Gerenciamento de Projeto
 para o gerenciamento do projeto opitamos por nos dividimos em grupos de 1 a 2 pessoas, desta forma  a equipe está organizada da seguinte maneira:
 Scrum Master: Priscila
-Product Owner: Marcus cruz,
+Product Owner: Marcus Cruz
 Equipe de Desenvolvimento: Carlos e  Gustavo
-Equipe de Design: iago e Gabriel
+Equipe de Design: Iago e Gabriel
 
 ### Divisão de Papéis
 
 Para organização e distribuição das tarefas do projeto, a equipe está utilizando o GitHub , teams (por meio de lives ) e WhatsApp  
 estruturado com as seguintes responsabilidade 
  - readme (Gustavo )
- - metodologia (iago)
- - kanban (marcus, carlos)
- - wireframe (pricilla , gabriel)
+ - metodologia (Iago)
+ - kanban (Marcus, Carlos)
+ - wireframe (Pricilla , Gabriel)
 
 ### Processo
 . documentacao 
