@@ -3,7 +3,7 @@
 
 ## User Flow
 
-O fluxograma apresentado na Figura 1 ilustra o fluxo de interação do usuário pelas telas do sistema. Nas Figuras 2, 3, 4 e 5, é possível visualizar uma visão geral das telas em miniatura. O detalhamento de cada tela desse fluxo é apresentado na seção de Protótipo de Baixa Fidelidade a seguir.
+O fluxograma apresentado na Figura 1 ilustra o fluxo de interação do usuário pelas telas do sistema. Nas Figuras 2, 3, 4 e 5, é possível visualizar uma visão geral das telas em miniatura. O detalhamento de cada tela desse fluxo é apresentado na seção de Protótipo de Baixa Fidelidade a seguir. A versão interativa pode ser acessada no seguinte link: https://www.figma.com/design/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=0-1&t=JJHCTPZWKNYsrnKz-1.
 
 <img width="981" height="1601" alt="User Flow" src="https://github.com/user-attachments/assets/3eb271d0-7e32-4029-a419-f09ecdd9d6c2" />
 
