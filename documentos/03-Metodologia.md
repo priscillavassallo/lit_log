@@ -7,10 +7,10 @@ trabalharem colaborativamente para entregar produtos complexos em ciclos curtos 
 
 ## Gerenciamento de Projeto
 para o gerenciamento do projeto opitamos por nos dividimos em grupos de 1 a 2 pessoas, desta forma  a equipe está organizada da seguinte maneira:
-Scrum Master: Priscila
-Product Owner: Marcus Cruz
-Equipe de Desenvolvimento: Carlos e  Gustavo
-Equipe de Design: Iago e Gabriel
+- Scrum Master: Priscila
+- Product Owner: Marcus Cruz
+- Equipe de Desenvolvimento: Carlos e  Gustavo
+- Equipe de Design: Iago e Gabriel
 
 ### Divisão de Papéis
 
