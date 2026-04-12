@@ -30,20 +30,6 @@
 <table>
 <tbody>
 <tr align=center>
-<th colspan="2">Administrador</th>
-</tr>
-<tr>
-<td width="150px"><b>Descrição</b></td>
-<td width="600px">Usuário com acesso especial aos recursos internos do site, com função de moderador e promoter.</td>
-</tr>
-<tr>
-<td><b>Necessidades</b></td>
-<td>
-  
-1. Moderar avaliações e resenhas de usuários, removendo conteúdos inadequados ou ofensivos. 
-2. Publicar conteúdos promovidos em parceria com editoras. 
-3. Destacar livros, listas ou conteúdos relevantes na página principal da plataforma. </td>
-</tr>
 </tbody>
 </table>
 
@@ -58,9 +44,6 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 | Leitor               | Visualizar opiniões e resenhas sobre livros                        | Ter acesso a novas interpretações e pontos de vista diferentes sobre a obra.                               |
 | Leitor               | Avaliar os livros de forma simples e rápida.                        | Que assim eu possa criar uma linha do tempo sobre o que eu li com o tempo.                                |
 | Leitor               | Que o site me recomende livros com base no que eu li/estou lendo.                        | Descobrir novas leituras com mais facilidade.                               |
-| Administrador               | Moderar avaliações e resenhas de usuários, removendo conteúdos inadequados ou ofensivos.                        | Manter o aplicativo sem toxicidade e acessível conforme a classificação etária de 12+.                               |
-| Administrador               | Publicar conteúdos promovidos em parceria com editoras.                        | Promover parceiros e aproximar relações entre o projeto e outras editoras.                               |
-| Administrador               | Destacar livros, listas ou conteúdos relevantes na página principal da plataforma.                        | Apresentar como atrativo das funcionalidades do aplicativo.                               |
 
 ## Requisitos do Projeto
 
@@ -80,7 +63,7 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 |  RF- 09   |  A aplicação deve permitir ao usuário criar um perfil local.                     | Alta    |
 |  RF- 10   |  O sistema deve permitir que o usuário avalie livros por meio de reações.                     | Alta    |
 |  RF- 11   |  O sistema deve permitir cadastro e login (e-mail/senha ou redes sociais).                     | Alta    |
-|  RF- 12   |  O sistema deve permitir que usuários denunciem conteúdos inadequados.                     | Alta    |
+|  RF- 12   |  O sistema deve permitir que usuários denunciem conteúdos inadequados.                     | Média    |
 |  RF- 13   |  O sistema deve permitir que o usuário siga outros leitores para acompanhar suas atividades.                     | Média    |
 |  RF- 14   |  Sistema deve permitir registrar e exibir listas customizadas pelos usuários.                     | Média    |
 |  RF- 15   |  Sistema deve registrar e exibir lista de desejos.                     | Média    |
