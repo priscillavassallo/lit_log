@@ -47,11 +47,10 @@ Estruturado com as seguintes responsabilidades.
 
 As ferramentas empregadas no projeto são:
 Editor de código.
-- Ferramentas de comunicação whatsapp e Teams
-- Ferramentas de desenho de tela (figma e canvas )
-Escolhemos estas plataformas porque elas possuem uma integração de faço acesso e as
-ferramentas de comunicação utilizadas possuem integração semelhante e de conhecimento geral e por isso foram selecionadas por todos.
-para criarmos o diagrama/fluxograma utilizamos essa ferramenta por melhor captar as necessidades da nossa solução. 
+- Ferramentas de comunicação: Whatsapp e Teams
+- Ferramentas de desenho de tela (Figma e Canvas)
+Escolhemos estas plataformas porque elas possuem uma integração de faço acesso e as ferramentas de comunicação utilizadas possuem integração semelhante e de conhecimento geral e por isso foram selecionadas por todos.
+Para criarmos o diagrama/fluxograma utilizamos essa ferramenta por melhor captar as necessidades da nossa solução. 
 Os artefatos do projeto são desenvolvidos a partir da plataforma github.
 
 
