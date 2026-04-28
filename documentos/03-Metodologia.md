@@ -7,7 +7,7 @@ A metodologia escolhida para o desenvolvimento do projeto Litlog foi o Scrum, po
 Para o gerenciamento do projeto, optamos por dividir a equipe em grupos de 1 a 2 pessoas. Dessa forma, a organização ficou estruturada da seguinte maneira:
 - Scrum Master: Priscila
 - Product Owner: Marcus Cruz
-- Equipe de Desenvolvimento: Carlos e  Gustavo
+- Equipe de Desenvolvimento: Carlos, Gustavo, Priscilla, Marcus, Iago e Gabriel
 - Equipe de Design: Iago e Gabriel
 
 ### Divisão de Papéis
