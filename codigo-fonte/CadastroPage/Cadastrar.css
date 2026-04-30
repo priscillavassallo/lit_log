@@ -1,10 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
 .logo-container {
+   background:linear-gradient(to top, #DBDACD, #d7d3ba);
    max-height: 80px;
    display: flex;
-   width: 1oo%;
-   background-color: aqua;
    align-items: center;
-
 }
 
 .logo-container img {
@@ -18,4 +23,106 @@
    font-weight: bold;
    color: #333;
    margin-left: 0.5rem;
+}
+
+
+.section{
+    display: flex;
+    min-height: 100vh;
+    background:linear-gradient(to bottom, #DBDACD, #c0ad42);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3rem;
+}
+
+
+.container{
+
+    background-color: #fff;
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.6);
+  
+
+}
+
+.form-container{
+    flex: 1;
+    padding: 3rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+.title-form{
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.form-container input{  
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-bottom: 2px solid #000000;
+}
+
+.image-container {
+  flex: 1;
+
+}
+
+
+.image-container img {
+    opacity: 0.8;
+    max-width: 100%;
+    height: 100%;
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+.submit{
+    background-color: #000000;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 100px;
+    transition: 0.8s;
+ 
+}
+.submit:hover {
+    background-color: #DBDACD;
+    color: #000;
+}
+
+
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        min-width: 100%;
+    }
+    
+    .image-container{
+        height: 300px;
+        flex: none;
+    }
+
+    .image-container img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        
+    }
+
+
 }
