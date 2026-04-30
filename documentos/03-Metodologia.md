@@ -21,12 +21,11 @@ Desta forma, a equipe está organizada da seguinte maneira:
 ## Processo  
 Para organização e distribuição das tarefas do projeto, a equipe está utilizando o GitHub, estruturado com as seguintes listas:
 
-- **Backlog:** esta coluna representa o Product Backlog e recebe as tarefas do projeto a serem trabalhadas.  
-- **To Do:** esta coluna representa o Sprint Backlog que está sendo trabalhado.  
-- **In Progress:** lista das tarefas iniciadas.  
-- **Ready to Test:** tarefas prontas para testes.  
-- **Testing:** tarefas em revisão e/ou teste.  
-- **Done:** tarefas concluídas.  
+
+- **A Fazer:** esta coluna representa o Product Backlog e recebe as tarefas do projeto a serem trabalhadas.  
+- **Em Andamento:** esta coluna representa as tarefas que estão sendo desenvolvidas no momento.  
+- **Em Revisão:** tarefas que já foram finalizadas e estão aguardando testes ou validação.  
+- **Concluído:** tarefas finalizadas e aprovadas pela equipe.  
 
 O quadro Kanban do grupo no GitHub está disponível na aba Projects e é apresentado no estado atual na figura abaixo:
 
