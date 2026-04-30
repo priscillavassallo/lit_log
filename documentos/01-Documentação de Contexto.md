@@ -22,15 +22,9 @@ Além da funcionalidade, existe também uma lacuna na forma como essas plataform
 
 ## Objetivos
 
-A Litlog é uma plataforma web criada para conectar leitores e incentivar o hobby da leitura, reunindo indicações de livros, resenhas e tendências literárias inspiradas em comunidades digitais como BookTok e Bookstagram. A proposta é tornar a descoberta de novos títulos mais acessível e atrativa, aproximando diferentes perfis de usuários do universo literário por meio de uma experiência dinâmica e social. 
+A leitura desempenha um papel importante no desenvolvimento cultural, educacional e pessoal dos indivíduos , e seu incentivo tem se tornado cada vez mais relevante em ambientes digitais. Nesse contexto, o objetivo deste projeto é desenvolver uma plataforma web voltada ao ambiente literário, com foco em facilitar a descoberta, organização e compartilhamento de experiências entre leitores.
 
-  
-
-A plataforma permite que os usuários registrem, organizem e acompanhem suas leituras (sejam livros já lidos, em andamento ou desejados) criando um histórico pessoal que estimula a constância no hábito de ler. Além disso, oferece um sistema de avaliações e resenhas, no qual é possível compartilhar opiniões, atribuir notas e interagir com as percepções de outros leitores. 
-
-  
-
-Para fortalecer o engajamento, a Litlog também incorpora recursos de recomendação personalizada com base no perfil e nas preferências de cada usuário, além de funcionalidades sociais, como seguir outros leitores, visualizar atividades recentes e reagir a conteúdos publicados. Com filtros por gênero, popularidade, avaliações e tendências, a plataforma facilita a descoberta de novas leituras e promove a construção de uma comunidade literária ativa, acessível e engajada.
+O projeto busca incentivar o hábito da leitura por meio de um ambiente digital que favoreça a interação e o engajamento em torno de livros e autores.
 
 ## Justificativa
 
