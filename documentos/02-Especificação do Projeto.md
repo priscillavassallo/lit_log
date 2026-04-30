@@ -40,10 +40,19 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 |EU COMO... `QUEM`   | QUERO/PRECISO ... `O QUE` |PARA ... `PORQUE`                 |
 |--------------------|---------------------------|----------------------------------|
-| Leitor               | Registrar meus livros favoritos e menos favoritos de forma rápida e simples.                        | Registrar minha opinião e organizar minhas preferências de leitura.                               |
-| Leitor               | Visualizar opiniões e resenhas sobre livros                        | Ter acesso a novas interpretações e pontos de vista diferentes sobre a obra.                               |
-| Leitor               | Avaliar os livros de forma simples e rápida.                        | Que assim eu possa criar uma linha do tempo sobre o que eu li com o tempo.                                |
-| Leitor               | Que o site me recomende livros com base no que eu li/estou lendo.                        | Descobrir novas leituras com mais facilidade.                               |
+| Leitor | Criar uma conta e acessar o sistema. | Utilizar suas funcionalidades. |
+| Leitor | Fazer login no sistema. | Acessar minha conta de forma segura. |
+| Leitor | Buscar livros, autores e listas. | Encontrar conteúdos de interesse. |
+| Leitor | Visualizar informações detalhadas de um livro. | Decidir se quero lê-lo. |
+| Leitor | Visualizar informações sobre autores. | Conhecer melhor os escritores e suas obras. |
+| Leitor | Avaliar livros e escrever opiniões. | Compartilhar minha experiência de leitura. |
+| Leitor | Criar e organizar listas de livros. | Organizar minhas leituras e interesses. |
+| Leitor | Registrar livros como lidos ou em leitura. | Controlar meu progresso de leitura. |
+| Leitor | Visualizar meu histórico de leitura. | Revisar o que já li ao longo do tempo. |
+| Leitor | Manter uma lista de livros desejados. | Planejar futuras leituras. |
+| Leitor | Visualizar perfis de outros usuários. | Conhecer outros leitores. |
+| Leitor | Seguir outros usuários. | Acompanhar suas atividades de leitura. |
+| Leitor | Visualizar conteúdos populares e recentes. | Descobrir novas leituras e tendências. |
 
 ## Requisitos do Projeto
 
