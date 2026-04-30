@@ -1,31 +1,34 @@
-
 # Metodologia
 
-A metodologia escolhida para o desenvolvimento do projeto Litlog foi o Scrum, pois se trata de um framework ágil de gerenciamento de projetos que auxilia equipes a trabalharem de forma colaborativa na entrega de produtos complexos em ciclos curtos e iterativos.
+## Gerenciamento de Projeto  
+A metodologia ágil escolhida para o desenvolvimento deste projeto foi o SCRUM, pois como citam Amaral, Fleury e Isoni (2019, p. 68), seus benefícios são:
 
-## Gerenciamento de Projeto
-Para o gerenciamento do projeto, optamos por dividir a equipe em grupos de 1 a 2 pessoas. Dessa forma, a organização ficou estruturada da seguinte maneira:
-- Scrum Master: Priscila
-- Product Owner: Marcus Cruz
-- Equipe de Desenvolvimento: Carlos, Gustavo, Priscilla, Marcus, Iago e Gabriel
-- Equipe de Design: Iago e Gabriel
+“visão clara dos resultados a entregar; ritmo e disciplina necessários à execução; definição de papéis e responsabilidades dos integrantes do projeto (Scrum Owner, Scrum Master e Team); empoderamento dos membros da equipe de projetos para atingir o desafio; conhecimento distribuído e compartilhado de forma colaborativa; ambiência favorável para crítica às ideias e não às pessoas.”
 
-### Divisão de Papéis
-Para organização e distribuição das tarefas do projeto, a equipe está utilizando o GitHub , Teams e WhatsApp.  
-Estruturado com as seguintes responsabilidades.
- - Readme (Gustavo )
- - Metodologia (Iago)
- - Kanban (Marcus, Carlos)
- - Wireframe (Pricilla , Gabriel)
+Dessa forma, o Scrum foi adotado para organização do desenvolvimento do projeto Litlog, permitindo maior controle das atividades e colaboração entre os integrantes.
 
-### Processo
-- Documentação 
-- User-flow
-- Protótipo 
-- Referências 
-- Prioridades do projeto : Alta
-- Prioridades do projeto : Média
-- Prioridades do projeto : Baixa
+
+## Divisão de Papéis  
+Desta forma, a equipe está organizada da seguinte maneira:
+
+- **Scrum Master:** Priscilla Goulart Vassallo  
+- **Product Owner:** Marcus Felipe Fernandes Cruz  
+- **Equipe de Desenvolvimento:** Carlos Eduardo Ribeiro da Silva, Gustavo Lima Soares, Iago Oliveira Garcia, Marcus Felipe Fernandes Cruz, Gabriel Clemente Ribeiro e Priscilla Goulart Vassallo  
+- **Equipe de Design:** Iago Oliveira Garcia e Gabriel Clemente Ribeiro  
+
+
+
+## Processo  
+Para organização e distribuição das tarefas do projeto, a equipe está utilizando o GitHub, estruturado com as seguintes listas:
+
+- **Backlog:** esta coluna representa o Product Backlog e recebe as tarefas do projeto a serem trabalhadas.  
+- **To Do:** esta coluna representa o Sprint Backlog que está sendo trabalhado.  
+- **In Progress:** lista das tarefas iniciadas.  
+- **Ready to Test:** tarefas prontas para testes.  
+- **Testing:** tarefas em revisão e/ou teste.  
+- **Done:** tarefas concluídas.  
+
+O quadro Kanban do grupo no GitHub está disponível na aba Projects e é apresentado no estado atual na figura abaixo:
 
 <figure> 
   <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/blob/main/documentos/img/Kanban.png"
@@ -42,15 +45,15 @@ Estruturado com as seguintes responsabilidades.
 
 ### Ferramentas
 
-As ferramentas empregadas no projeto são:
+As ferramentas utilizadas no desenvolvimento do projeto foram:
 
-- **Editor de código**
-- **Ferramentas de comunicação:** WhatsApp e Microsoft Teams
-- **Ferramentas de desenho de telas:** Figma e Canva
+- Editor de código, utilizado para a implementação do sistema;
+- Ferramentas de comunicação, como WhatsApp e Microsoft Teams, usadas para organização e troca de informações entre a equipe;
+- Ferramenta de prototipação, Figma, utilizada na criação das interfaces do sistema.
 
-Essas plataformas foram escolhidas por possuírem fácil integração e por serem amplamente conhecidas pela equipe, o que facilita a comunicação e o desenvolvimento do projeto.
+Essas ferramentas foram escolhidas por já fazerem parte da rotina da equipe e por facilitarem o trabalho colaborativo.
 
-Para a criação de diagramas e fluxogramas, utilizamos ferramentas que permitem representar de forma clara as necessidades da solução proposta.
+Para a criação de diagramas e fluxogramas, foram utilizadas ferramentas voltadas para representação visual das necessidades do sistema.
 
 Os artefatos do projeto são desenvolvidos e versionados na plataforma **GitHub**.
 
