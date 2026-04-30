@@ -81,12 +81,11 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 |ID      | Descrição               |Prioridade |
 |--------|-------------------------|----|
-| RNF-01 |  O sistema deve estar disponível 24 horas por dia.                     | Alta    | 
-| RNF-02    |  A aplicação deve ser publicada em ambiente acessível ao público na Internet.                     | Alta    | 
-| RNF-03 |  Usabilidade intuitiva e moderna.                     | Alta    | 
-| RNF-04    |  Acessibilidade (compatível com leitor de tela e design com contraste alto).                     | Alta    | 
-| RNF-05 |  Responsividade (3 break-points).                     | Média    | 
-| RNF-06    |  Compatibilidade nos principais navegadores (Chrome, Firefox, Edge).                     | Média    | 
+| RNF-01 | O sistema deve estar disponível 24 horas por dia                         | Alta       |
+| RNF-02 | O sistema deve ser acessível pela Internet                                | Alta       |
+| RNF-03 | O sistema deve ser responsivo para diferentes tamanhos de tela           | Média      |
+| RNF-04 | O sistema deve ser acessível, garantindo suporte a tecnologias assistivas e boa legibilidade | Alta       |
+| RNF-05 | O sistema deve ser compatível com os principais navegadores (Chrome, Firefox e Edge) | Média      |
 
 **Prioridade: Alta / Média / Baixa. 
 
