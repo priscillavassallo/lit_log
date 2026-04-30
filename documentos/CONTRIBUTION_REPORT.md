@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 30/04/2026 18:56
+**Última atualização:** 30/04/2026 19:47
 
 ---
 
@@ -9,10 +9,10 @@
 | Aluno                    |   Commits |   Linhas+ |   Linhas- |   Arquivos |   Docs Commits |   Docs Arquivos |
 |--------------------------|-----------|-----------|-----------|------------|----------------|-----------------|
 | Carlos                   |         2 |         6 |         6 |          1 |              2 |               1 |
-| Gabriel Clemente Ribeiro |         9 |       124 |        41 |          2 |              9 |               1 |
+| Gabriel Clemente Ribeiro |        10 |       159 |        73 |          3 |             10 |               2 |
 | Gustavo Lima             |         7 |       129 |        60 |          5 |              7 |               2 |
 | Priscilla Vassallo       |         8 |       117 |        78 |          2 |              8 |               1 |
-| github-actions[bot]      |        39 |       222 |       163 |          3 |             39 |               1 |
+| github-actions[bot]      |        40 |       226 |       167 |          3 |             40 |               1 |
 | github-classroom[bot]    |         1 |       774 |         0 |         19 |              1 |               3 |
 | iagofalquer              |         5 |        53 |        62 |          1 |              5 |               1 |
 | lima280                  |         1 |       578 |         0 |         20 |              0 |               0 |
@@ -21,7 +21,7 @@
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-04-23**: Carlos: 1, Gabriel Clemente Ribeiro: 3, github-actions[bot]: 4, lima280: 1
+**2026-04-23**: Carlos: 1, Gabriel Clemente Ribeiro: 4, github-actions[bot]: 5, lima280: 1
 
 **2026-04-09**: Carlos: 1, Gabriel Clemente Ribeiro: 4, Gustavo Lima: 1, Priscilla Vassallo: 8, github-actions[bot]: 28, iagofalquer: 5, marcusfcruz: 11
 
