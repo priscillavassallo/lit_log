@@ -1,53 +1,21 @@
-body{
-    margin: 0;
-    background-color: #DBDACD;
-    font-family: 'Regular', poppins, sans-serif;
-    background-image: url('../Img/Livros.png');
-    background-position-x: 100%;
-    background-repeat: no-repeat;
+.logo-container {
+   max-height: 80px;
+   display: flex;
+   width: 1oo%;
+   background-color: aqua;
+   align-items: center;
+
 }
 
-header{
-    height: 10%;
-    font-size: 30px;
-    margin-top: 10px;
+.logo-container img {
+   max-width: 80px;
+   padding: 0.5rem;
+   width: 100%;
+   height: auto;
 }
-
-a{
-    text-decoration: none;
-    color: black;
-    display: flex;
-    align-items: center;
-}
-
-#Login{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 40pc;
-    width: 60%;
-}
-
-label{
-    font-size: 20px;
-}
-
-input{
-    width: 300px;
-    height: 30px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    font-size: 20px;
-}
-
-button{
-    width: 100px;
-    height: 40px;
-    background-color: white;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.logo-container span {
+   font-size: 1.5rem;
+   font-weight: bold;
+   color: #333;
+   margin-left: 0.5rem;
 }
