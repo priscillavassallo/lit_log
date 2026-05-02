@@ -1,6 +1,5 @@
 body{
     margin: 0;
-    background-color: #DBDACD;
     font-family: 'Regular', poppins, sans-serif;
 }
 
@@ -26,3 +25,46 @@ a{
     text-decoration: none;
     color: black;
 }
+
+.show-books{
+    background-color: black;
+    min-height: 100vh;
+    padding: 3rem;
+}
+
+#results-container{
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.book-card{
+    background-color: aqua;
+    min-height: 300px;
+    display: flex;
+    gap: 2rem;
+}
+
+.book-cover{
+    display: flex;
+    justify-content: center;
+    background-color: red;
+    flex: 1;
+
+}
+
+.book-cover img{
+    max-width: 300px;
+    width: 100%;
+}
+.title-author{
+    flex-direction: column;
+    flex:4;
+}
+
+.description{
+    background-color: aqua;
+    
+}
+
