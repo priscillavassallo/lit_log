@@ -27,20 +27,45 @@ a{
 }
 
 .show-books{
-    background-color: black;
+    background-color: #dcd4cd6b;
     min-height: 100vh;
-    padding: 3rem;
+    padding: 1rem;
+}
+
+.input-container{
+    display: flex;
+    justify-content: center;
+}
+
+.input-container input{
+    max-width: 50%;
+    flex:1;
+    padding: 0.8rem;
+}
+.category{
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+}
+
+.category{
+
+}
+
+.showing{
+    color: aliceblue;
 }
 
 #results-container{
-    padding: 3rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 3rem;
 }
 
 .book-card{
-    background-color: aqua;
+    background: linear-gradient(to right, #b7a8ffcd,  #ff5a60cc);
+    border-radius: 20px;
     min-height: 300px;
     display: flex;
     gap: 2rem;
@@ -57,6 +82,9 @@ a{
 .book-cover img{
     max-width: 300px;
     width: 100%;
+    background-image: url(../Img/sem-capa.png);
+    background-position: center;
+    background-size: cover;
 }
 .title-author{
     flex-direction: column;
@@ -64,7 +92,6 @@ a{
 }
 
 .description{
-    background-color: aqua;
     
 }
 

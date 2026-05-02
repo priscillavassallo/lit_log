@@ -40,7 +40,7 @@ a{
 .section{
     display: flex;
     min-height: 100vh;
-    background-color: rgba(220, 212, 205, 0.421);
+    background-color: #dcd4cd6b;
     justify-content: center;
     align-items: center;
     flex-direction: column;

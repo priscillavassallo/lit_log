@@ -6,7 +6,7 @@ async function searchBooks() {
    const resp=await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(searchInput.value)}`);
    const data=await resp.json();
    const books=data.docs
-   resultsContainer.innerHTML = `<h2>Showing results for "${searchInput.value}"</h2>
+   resultsContainer.innerHTML = `<h2 class="showing">Showing results for "${searchInput.value}"</h2>
    
       ${books.map((book)=>{return `
       <div class="book-card">
