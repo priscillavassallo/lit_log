@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 03/05/2026 16:01
+**Última atualização:** 03/05/2026 20:50
 
 ---
 
@@ -12,20 +12,20 @@
 | Gabriel Clemente Ribeiro |        13 |       167 |        88 |          4 |             13 |               2 |
 | Gustavo Lima             |         7 |       129 |        60 |          5 |              7 |               2 |
 | Priscilla Vassallo       |        10 |       119 |        80 |          2 |             10 |               1 |
-| github-actions[bot]      |        45 |       250 |       191 |          3 |             45 |               1 |
+| github-actions[bot]      |        46 |       254 |       195 |          3 |             46 |               1 |
 | github-classroom[bot]    |         1 |       774 |         0 |         19 |              1 |               3 |
 | iagofalquer              |         5 |        53 |        62 |          1 |              5 |               1 |
-| lima280                  |         1 |       578 |         0 |         20 |              0 |               0 |
+| lima280                  |         2 |       782 |         4 |         21 |              0 |               0 |
 | marcusfcruz              |        11 |        64 |        64 |          2 |             11 |               1 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-04-26**: Carlos: 1, Gabriel Clemente Ribeiro: 7, Priscilla Vassallo: 2, github-actions[bot]: 10, lima280: 1
+**2026-04-26**: Carlos: 1, Gabriel Clemente Ribeiro: 7, Priscilla Vassallo: 2, github-actions[bot]: 11, lima280: 2
 
-**2026-04-12**: Carlos: 1, Gustavo Lima: 1, Priscilla Vassallo: 4, github-actions[bot]: 20, iagofalquer: 5, marcusfcruz: 11
+**2026-04-12**: Gustavo Lima: 1, Priscilla Vassallo: 4, github-actions[bot]: 15, marcusfcruz: 11
 
-**2026-04-05**: Gabriel Clemente Ribeiro: 6, Gustavo Lima: 2, Priscilla Vassallo: 4, github-actions[bot]: 12
+**2026-04-05**: Carlos: 1, Gabriel Clemente Ribeiro: 6, Gustavo Lima: 2, Priscilla Vassallo: 4, github-actions[bot]: 17, iagofalquer: 5
 
 **2026-03-29**: Gustavo Lima: 4, github-actions[bot]: 3
 
