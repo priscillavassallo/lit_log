@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,48 +10,55 @@
     <link rel="stylesheet" href="Pesquisa.css">
     <title>LitLog</title>
 </head>
+
 <body>
+    
     <header>
+        
         <div class="margem" id="LogoLandinPage">
+            
             <a href="../HomePage/Home.html"><img src="../Img/Logo.png" alt="" height="70px" style="margin-left: 5pc; margin-right: 5px; margin-top: 10px;" ></a>
+        
         </div>
+        
         <div>
             <a href="../HomePage/Home.html">Litlog</a>
         </div>
+        
         <div></div>
+        
         <div><a href="../PerfilPage/Perfil.html">Perfil</a></div>
+        
         <div><a href="../LivrosPage/Livros.html">Livros</a></div>
+        
         <div><a href="../MembrosPage/Membros.html">Membros</a></div>
-        <div>
-            <a href="../PesquisaPage/Pesquisa.html"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
-                <path d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"></path>
-            </svg></a>
+        
+        <div class="lupa-container">
+            
+            <a href="../PesquisaPage/Pesquisa.html">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
+                   
+                    <path d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"></path>
+               
+                </svg>
+            </a>
+            
+            <input type="text" id="search-input" placeholder="Search your books...">
+            
+            <button id="search-button">Search</button>
         </div>
+        
         <div>+ Log</div>
+    
     </header>
 
    <section class="show-books">
-    <div class="input-container"> 
-        <input type="text" id="search-input" placeholder="search your books...">
-        <button id="search-button">Search</button>
-    </div>
-    <div class="category">
-        <label for="categoria">Selecione a categoria: </label>
-            
-            <div class="radio">
-                <input type="radio" value="author" name="categoria">
-                <label for="author">Author</label>
-                <input type="radio" value="title" name="categoria">
-                <label for="title">Title</label>
-            </div>
-            
-        
-    </div>
-       
         
         <div id="results-container">
-
+            <H1>Nenhuma pesquisa realizada...</H1>
         </div>
+   
     </section>
 
     

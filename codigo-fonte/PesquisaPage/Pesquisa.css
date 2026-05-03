@@ -1,21 +1,21 @@
 body{
     margin: 0;
-    font-family: 'Regular', poppins, sans-serif;
+    font-family: poppins, sans-serif;
+    background:linear-gradient(to bottom, #DCD4CD, #8EBBFF);
+    min-height: 100vh;
 }
 
 header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 10%;
     display: grid;
-    grid-template-columns: 1fr 1fr 7fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 7fr 1fr 1fr 1fr 3fr 1fr;
+    align-items: center;
     font-size: 20px;
-    background-color: rgba(219, 213, 205, 0.42);
+    background-color: #fff;
 }
 
 svg{
+    display: flex;
+    justify-content: center;
     width: 30px;
     height: 30px;
     margin-left: 1pc;
@@ -26,72 +26,53 @@ a{
     color: black;
 }
 
-.show-books{
-    background-color: #dcd4cd6b;
-    min-height: 100vh;
-    padding: 1rem;
+.lupa-container{
+    display: flex;
+    justify-content: space-between;
 }
 
-.input-container{
+.show-boooks{
     display: flex;
     justify-content: center;
-}
-
-.input-container input{
-    max-width: 50%;
-    flex:1;
-    padding: 0.8rem;
-}
-.category{
-    color: aliceblue;
-    display: flex;
-    justify-content: center;
-}
-
-.category{
-
-}
-
-.showing{
-    color: aliceblue;
 }
 
 #results-container{
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    padding: 3rem;
+    gap: 1rem;
+
 }
 
 .book-card{
-    background: linear-gradient(to right, #b7a8ffcd,  #ff5a60cc);
-    border-radius: 20px;
-    min-height: 300px;
+
+    background:linear-gradient(to top, #ff7b2fcc, #b7a8ffcd);  
     display: flex;
-    gap: 2rem;
-}
-
-.book-cover{
-    display: flex;
-    justify-content: center;
-    background-color: red;
-    flex: 1;
-
-}
-
-.book-cover img{
+    flex-direction: column;
     max-width: 300px;
+    max-height: 500px;
+    height: 100%;
     width: 100%;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.cover-container{
     background-image: url(../Img/sem-capa.png);
     background-position: center;
     background-size: cover;
-}
-.title-author{
-    flex-direction: column;
-    flex:4;
-}
-
-.description{
-    
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
+.cover-container img{
+    max-height: 300px;
+
+    width: 100%;
+}
