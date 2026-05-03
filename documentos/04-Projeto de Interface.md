@@ -5,7 +5,7 @@
 
 O fluxograma apresentado na Figura 1 ilustra o fluxo de interação do usuário pelas telas do sistema. Nas Figuras 2, 3, 4 e 5, é possível visualizar uma visão geral das telas em miniatura. O detalhamento de cada tela desse fluxo é apresentado na seção de Protótipo de Baixa Fidelidade a seguir. A versão interativa pode ser acessada no seguinte link: https://www.figma.com/proto/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=4001-1299&p=f&t=zmzQsvcQD1ibKGqO-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=4001%3A1299&show-proto-sidebar=1.
 
-<img width="1045" height="1601" alt="Page Flow Diagram - Updated" src="https://github.com/user-attachments/assets/fa50057c-3516-4355-93d5-e138ade79c44" />
+<img width="1045" height="1601" alt="Page Flow Diagram - Updated" src="https://github.com/user-attachments/assets/4207b4f2-b3f8-44a9-bc5a-a00970d6ea66" />
 
 *Figura 1 - Fluxo de telas do usuário*
 
