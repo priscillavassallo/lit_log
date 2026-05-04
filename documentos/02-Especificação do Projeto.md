@@ -40,10 +40,19 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 |EU COMO... `QUEM`   | QUERO/PRECISO ... `O QUE` |PARA ... `PORQUE`                 |
 |--------------------|---------------------------|----------------------------------|
-| Leitor               | Registrar meus livros favoritos e menos favoritos de forma rápida e simples.                        | Registrar minha opinião e organizar minhas preferências de leitura.                               |
-| Leitor               | Visualizar opiniões e resenhas sobre livros                        | Ter acesso a novas interpretações e pontos de vista diferentes sobre a obra.                               |
-| Leitor               | Avaliar os livros de forma simples e rápida.                        | Que assim eu possa criar uma linha do tempo sobre o que eu li com o tempo.                                |
-| Leitor               | Que o site me recomende livros com base no que eu li/estou lendo.                        | Descobrir novas leituras com mais facilidade.                               |
+| Leitor | Criar uma conta e acessar o sistema. | Utilizar suas funcionalidades. |
+| Leitor | Fazer login no sistema. | Acessar minha conta de forma segura. |
+| Leitor | Buscar livros, autores e listas. | Encontrar conteúdos de interesse. |
+| Leitor | Visualizar informações detalhadas de um livro. | Decidir se quero lê-lo. |
+| Leitor | Visualizar informações sobre autores. | Conhecer melhor os escritores e suas obras. |
+| Leitor | Avaliar livros e escrever opiniões. | Compartilhar minha experiência de leitura. |
+| Leitor | Criar e organizar listas de livros. | Organizar minhas leituras e interesses. |
+| Leitor | Registrar livros como lidos ou em leitura. | Controlar meu progresso de leitura. |
+| Leitor | Visualizar meu histórico de leitura. | Revisar o que já li ao longo do tempo. |
+| Leitor | Manter uma lista de livros desejados. | Planejar futuras leituras. |
+| Leitor | Visualizar perfis de outros usuários. | Conhecer outros leitores. |
+| Leitor | Seguir outros usuários. | Acompanhar suas atividades de leitura. |
+| Leitor | Visualizar conteúdos populares e recentes. | Descobrir novas leituras e tendências. |
 
 ## Requisitos do Projeto
 
@@ -52,29 +61,18 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 |ID    | Descrição do requisito               | Prioridade |
 |-------|---------------------------------|----|
-| RF-01 |  O sistema deve permitir que usuários registrem livros que estão lendo, já leram ou desejam ler.                     | Alta    | 
-|  RF- 02   |  Sistema deve ter uma busca global.                     | Alta    |
-|  RF- 03   |  Sistema deve exibir histórico de leituras.                     | Alta    |
-|  RF- 04   |  O sistema deve exibir os livros mais populares da semana, com base no número de registros de leitura (lendo ou concluído).                     | Alta    |
-|  RF- 05   |  O sistema deve exibir um feed com os livros recentemente registrados como “lendo” ou “lidos” por usuários seguidos.                     | Alta    |
-|  RF- 06   |  O sistema deve permitir que o usuário registre rapidamente um livro como “lendo”, “lido” ou “lido anteriormente”.                     | Alta    |
-|  RF- 07   |  O aplicativo deve permitir ao usuário ter acesso a uma barra de filtragem onde o usuário pode escolher os temas de livros e assuntos que melhor se enquadre aos seus objetivos e gostos.                     | Alta    |
-|  RF- 08   |  A aplicação deve permitir que o usuário receba recomendações de livros personalizadas com base nos livros que ele leu e/ou está lendo.                     | Alta    |
-|  RF- 09   |  A aplicação deve permitir ao usuário criar um perfil local.                     | Alta    |
-|  RF- 10   |  O sistema deve permitir que o usuário avalie livros por meio de reações.                     | Alta    |
-|  RF- 11   |  O sistema deve permitir cadastro e login (e-mail/senha ou redes sociais).                     | Alta    |
-|  RF- 12   |  O sistema deve permitir que usuários denunciem conteúdos inadequados.                     | Média    |
-|  RF- 13   |  O sistema deve permitir que o usuário siga outros leitores para acompanhar suas atividades.                     | Média    |
-|  RF- 14   |  Sistema deve permitir registrar e exibir listas customizadas pelos usuários.                     | Média    |
-|  RF- 15   |  Sistema deve registrar e exibir lista de desejos.                     | Média    |
-|  RF- 16   |  O sistema deve permitir marcar livros como “lendo”, “lido” ou “quero ler”.                     | Média    |
-|  RF- 17   |  O sistema deve permitir reagir a avaliações e listas de outros usuários.                     | Média    |
-|  RF- 18   |  O sistema deve permitir que usuários criem listas (ex: “favoritos”, “terror psicológico”).                     | Média    |
-|  RF- 19   |  O sistema deve notificar o usuário sobre interações (curtidas, comentários, seguidores).                     | Média    |
-|  RF- 20   |  O sistema deve permitir busca por título, autor, gênero e palavras-chave.                     | Média    |
-|  RF- 21   |  O sistema pode sugerir livros com base em usuários semelhantes.                     | Baixa    |
-|  RF- 22   |  O sistema pode permitir compartilhamento em redes sociais.                     | Baixa    |
-|  RF- 23   |  O site deve ter uma aba com o nome “Comunidade”, para que os usuários possam criar tópicos sobre os livros.                     | Baixa    |
+| RF-01 | O sistema deve permitir cadastro e autenticação de usuários | Alta |
+| RF-02 | O sistema deve permitir busca de livros, autores e listas | Alta |
+| RF-03 | O sistema deve exibir informações detalhadas de livros, incluindo descrição, capa, avaliações e reviews | Alta |
+| RF-04 | O sistema deve exibir informações sobre autores, incluindo biografia e obras publicadas | Alta |
+| RF-05 | O sistema deve permitir criação, visualização e organização de listas personalizadas de livros pelos usuários, como favoritos e listas temáticas | Alta |
+| RF-06 | O sistema deve permitir que o usuário registre livros como lidos ou em leitura | Alta |
+| RF-07 | O sistema deve permitir que o usuário visualize e gerencie seu histórico de leitura | Alta |
+| RF-08 | O sistema deve permitir que o usuário adicione livros à lista de desejos para leitura futura | Alta |
+| RF-09 | O sistema deve permitir que usuários avaliem livros por meio de reações | Média |
+| RF-10 | O sistema deve permitir que usuários escrevam reviews sobre livros | Média |
+| RF-11 | O sistema deve permitir que usuários sigam outros usuários | Média |
+| RF-12 | O sistema deve exibir conteúdos recentes e populares com base nas atividades dos usuários | Média |
 
 **Prioridade: Alta / Média / Baixa. 
 
@@ -83,12 +81,11 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 |ID      | Descrição               |Prioridade |
 |--------|-------------------------|----|
-| RNF-01 |  O sistema deve estar disponível 24 horas por dia.                     | Alta    | 
-| RNF-02    |  A aplicação deve ser publicada em ambiente acessível ao público na Internet.                     | Alta    | 
-| RNF-03 |  Usabilidade intuitiva e moderna.                     | Alta    | 
-| RNF-04    |  Acessibilidade (compatível com leitor de tela e design com contraste alto).                     | Alta    | 
-| RNF-05 |  Responsividade (3 break-points).                     | Média    | 
-| RNF-06    |  Compatibilidade nos principais navegadores (Chrome, Firefox, Edge).                     | Média    | 
+| RNF-01 | O sistema deve estar disponível 24 horas por dia                         | Alta       |
+| RNF-02 | O sistema deve ser acessível pela Internet                                | Alta       |
+| RNF-03 | O sistema deve ser responsivo para diferentes tamanhos de tela           | Média      |
+| RNF-04 | O sistema deve ser acessível, garantindo suporte a tecnologias assistivas e boa legibilidade | Alta       |
+| RNF-05 | O sistema deve ser compatível com os principais navegadores (Chrome, Firefox e Edge) | Média      |
 
 **Prioridade: Alta / Média / Baixa. 
 

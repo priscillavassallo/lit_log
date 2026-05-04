@@ -38,7 +38,7 @@ a{
     text-align: center;
     height: 40pc;
     font-size: 2pc;
-    color: #8F6200;
+    color: #ffffff;
     font-family: 'Regular', Cormorant Garamond, serif;
 }
 
@@ -48,6 +48,77 @@ a{
     align-items: center;
     text-align: center;
     font-size: 5pc;
-    color: #8F6200;
+    color: #ffffff;
     font-family: 'Regular', Cormorant Garamond, serif;
+}
+
+
+#CaixaCarrossel{
+    width: 100%;
+    margin: 0 auto;
+    padding: 35px;
+    background-color: #DBDACD;
+}
+
+.subtituloCarrossel{
+    margin: 0 0 40px 0;
+    color: #1f1f1f;
+    font-size: 38px;
+    font-family: 'Regular', Cormorant Garamond, serif;
+}
+
+.linhaCarrossel{
+    margin: 0 0 45px 0;
+}
+
+.tituloLinha{
+    margin: 0 0 20px 0;
+    color: #111111;
+    font-size: 18px;
+}
+
+.controleCarrossel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.livrosCarrossel{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    overflow: hidden;
+}
+
+.livro{
+    width: 180px;
+    min-width: 180px;
+    margin: 0 18px 0 18px;
+}
+
+.capaLivro{
+    width: 100%;
+    height: 230px;
+    background-color: #d4d4d4;
+    border-radius: 5px;
+}
+
+.botaoCarrossel{
+    width: 45px;
+    height: 45px;
+    margin: 0 10px 0 10px;
+    background-color: #ffffff;
+    color: #1f1f1f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.nomeLivro{
+    margin: 12px 0 0 0;
+    color: #28251f;
+    text-align: center;
+    font-size: 15px;
 }

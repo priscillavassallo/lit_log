@@ -35,5 +35,132 @@
             <br>É a rede social para os amantes de livros.<br>Descubra, compartilhe e conecte-se com outros leitores apaixonados.
         </div>
     </section>
+    <section>
+        <div id="CaixaCarrossel">
+            <div class="subtituloCarrossel">Descobertas entre leitores</div>
+
+            <div class="linhaCarrossel">
+                <div class="tituloLinha">NOVO DOS AMIGOS</div>
+                <div class="controleCarrossel">
+                    <button class="botaoCarrossel" onclick="moverCarrossel('carrosselAmigos', -1)">&#10094;</button>
+                    <div class="livrosCarrossel" id="carrosselAmigos">
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Clube da meia-noite</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Notas de margem</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Ultima pagina</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Leitura em comum</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Capitulo aberto</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Proxima leitura</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Biblioteca secreta</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Noite de resenha</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Paginas soltas</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Marca-texto</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Leitor viajante</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">A lista final</div>
+                        </div>
+                    </div>
+                    <button class="botaoCarrossel" onclick="moverCarrossel('carrosselAmigos', 1)">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="linhaCarrossel">
+                <div class="tituloLinha">POPULAR COM AMIGOS</div>
+                <div class="controleCarrossel">
+                    <button class="botaoCarrossel" onclick="moverCarrossel('carrosselPopular', -1)">&#10094;</button>
+                    <div class="livrosCarrossel" id="carrosselPopular">
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Entre capitulos</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Mapa das historias</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Depois do epilogo</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Vozes da estante</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Livro da semana</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Estante favorita</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Favoritos do mes</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Historias cruzadas</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Cafe e leitura</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Ritmo de paginas</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Livro marcado</div>
+                        </div>
+                        <div class="livro">
+                            <div class="capaLivro"></div>
+                            <div class="nomeLivro">Ultimo capitulo</div>
+                        </div>
+                    </div>
+                    <button class="botaoCarrossel" onclick="moverCarrossel('carrosselPopular', 1)">&#10095;</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function moverCarrossel(idCarrossel, direcao){
+            var carrossel = document.getElementById(idCarrossel);
+            carrossel.scrollLeft = carrossel.scrollLeft + (direcao * 216);
+        }
+    </script>
 </body>
 </html>
