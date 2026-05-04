@@ -13,7 +13,8 @@ header{
     display: grid;
     grid-template-columns: 1fr 1fr 7fr 1fr 1fr 1fr 1fr 1fr;
     font-size: 20px;
-    background-color: rgba(219, 218, 205, 0.42);
+    background-color: #DBDACD;
+
 }
 
 svg{
@@ -31,14 +32,15 @@ a{
     background-color: red;
     height: 100vh;
     padding: 15px;
-
+    
 }
 
 .perfil-container{
     height: 90%;   
-    background-color: aqua;
+   background: linear-gradient(to right,aqua, white);
     display: flex;
     padding: 20px;
+    box-shadow: 4px 4px;
 }
 
 .profname{
@@ -50,19 +52,64 @@ a{
 }
 
 .profabas{
-    background-color: gold;
-    flex: 1;
 
+    flex: 1;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    padding: 50px;
+    
 }
 
 .imgcontainer{
     background-color: rgb(255, 255, 255);
-    flex: 1;
+    flex: 3;
     display: flex;
     justify-content: center;
 
 }
 
-.nome{
+.imgcontainer img{
+    max-width: 400px;
+    max-height: 400px;
+}
 
+.nome{
+    background-color: rgb(255, 0, 179);
+    flex: 1;
+    text-align: center;
+    font-size: 25px;
+
+}
+.descricao{
+    background-color: darkred;
+    flex: 2;
+    font-size: 20px;
+}
+
+.abas{
+    background-color: darkgreen;
+    flex: 0,5;
+    
+}
+
+.social-container{
+    display: flex;
+    gap: 20px;
+}
+
+.social-container span{
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.abascontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 10px;
+    height: 80%;
+    padding: 20px;
 }
