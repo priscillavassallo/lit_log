@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 04/05/2026 04:01
+**Última atualização:** 04/05/2026 16:44
 
 ---
 
@@ -8,11 +8,11 @@
 
 | Aluno                    |   Commits |   Linhas+ |   Linhas- |   Arquivos |   Docs Commits |   Docs Arquivos |
 |--------------------------|-----------|-----------|-----------|------------|----------------|-----------------|
-| Carlos                   |         2 |         6 |         6 |          1 |              2 |               1 |
+| Carlos                   |         3 |        13 |         7 |          2 |              3 |               1 |
 | Gabriel Clemente Ribeiro |        13 |       167 |        88 |          4 |             13 |               2 |
 | Gustavo Lima             |         7 |       129 |        60 |          5 |              7 |               2 |
 | Priscilla Vassallo       |        10 |       119 |        80 |          2 |             10 |               1 |
-| github-actions[bot]      |        47 |       260 |       201 |          3 |             47 |               1 |
+| github-actions[bot]      |        48 |       268 |       209 |          3 |             48 |               1 |
 | github-classroom[bot]    |         1 |       774 |         0 |         19 |              1 |               3 |
 | iagofalquer              |         5 |        53 |        62 |          1 |              5 |               1 |
 | lima280                  |         2 |       782 |         4 |         21 |              0 |               0 |
@@ -21,7 +21,7 @@
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-04-27**: Carlos: 1, Gabriel Clemente Ribeiro: 7, Priscilla Vassallo: 2, github-actions[bot]: 11, lima280: 1, marcusfcruz: 2
+**2026-04-27**: Carlos: 2, Gabriel Clemente Ribeiro: 7, Priscilla Vassallo: 2, github-actions[bot]: 12, lima280: 1, marcusfcruz: 2
 
 **2026-04-20**: github-actions[bot]: 1, lima280: 1
 
