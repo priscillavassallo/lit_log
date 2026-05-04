@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../Img/Logo.png" type="image/png">
+    <link rel="stylesheet" href="Diary.css">
+    <title>Diary - LitLog</title>
+</head>
+<body>
+    <header>
+        <div class="margem" id="LogoLandinPage">
+            <img src="../Img/Logo.png" alt="Logo LitLog" height="70px" style="margin-left: 5pc; margin-right: 5px; margin-top: 10px;">
+        </div>
+        <div>
+            <a href="../HomePage/Home.html">Litlog</a>
+        </div>
+        <div></div>
+        <div><a href="../PerfilPage/Perfil.html">Perfil</a></div>
+        <div><a href="../LivrosPage/Livros.html">Livros</a></div>
+        <div><a href="../MembrosPage/Membros.html">Membros</a></div>
+        <div><a href="../ThePilePage/ThePile.html">The Pile</a></div>
+        <div><a href="../PesquisaPage/Pesquisa.html">Buscar</a></div>
+    </header>
+
+    <main class="conteudo">
+        <section class="tituloPagina">
+            <h1>Diary</h1>
+            <p>Registre suas leituras, pensamentos e progresso literário.</p>
+        </section>
+
+        <section class="novoRegistro">
+            <h2>Novo registro</h2>
+
+            <form>
+                <label for="livro">Livro</label>
+                <input type="text" id="livro" placeholder="Digite o nome do livro">
+
+                <label for="pagina">Página atual</label>
+                <input type="number" id="pagina" placeholder="Ex: 120">
+
+                <label for="anotacao">Anotação</label>
+                <textarea id="anotacao" placeholder="Escreva suas impressões sobre a leitura"></textarea>
+
+                <button type="button">Salvar registro</button>
+            </form>
+        </section>
+
+        <section class="registros">
+            <h2>Últimos registros</h2>
+
+            <div class="cardRegistro">
+                <h3>Clube da meia-noite</h3>
+                <p class="data">Página 45 • Hoje</p>
+                <p>A leitura está ficando mais envolvente e os personagens começaram a se conectar melhor.</p>
+            </div>
+
+            <div class="cardRegistro">
+                <h3>Notas de margem</h3>
+                <p class="data">Página 82 • Ontem</p>
+                <p>Algumas passagens chamaram atenção pela forma como tratam memória e rotina.</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
