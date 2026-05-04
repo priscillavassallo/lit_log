@@ -1,6 +1,6 @@
 body{
-    margin: 0;
-    font-family: poppins, sans-serif;
+    
+    font-family:  sans-serif;
     background:linear-gradient(to bottom, #DCD4CD, #8EBBFF);
     min-height: 100vh;
 }
@@ -23,7 +23,7 @@ svg{
 
 a{
     text-decoration: none;
-    color: black;
+    color: #000;
 }
 
 .lupa-container{
@@ -31,17 +31,41 @@ a{
     justify-content: space-between;
 }
 
-.show-boooks{
+#show-title{
+   font-size: 2rem;
+   color: #000;
+}
+
+#search-button{
+    background-color: #000000;
+    color: #fff;
+    padding: 0.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 50px;
+    transition: 0.5s;
+}
+
+#search-button:hover{
+    background-color:#DCD4CD ;
+    color: #000;
+}
+.show-books{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end; 
 }
 
 #results-container{
+    flex: 1;
+    max-width: 1200px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     padding: 3rem;
-    gap: 1rem;
+    gap: 3rem;
 
 }
 
@@ -73,6 +97,5 @@ a{
 
 .cover-container img{
     max-height: 300px;
-
     width: 100%;
 }

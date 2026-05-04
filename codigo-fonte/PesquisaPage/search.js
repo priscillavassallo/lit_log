@@ -1,15 +1,18 @@
 const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
 const resultsContainer = document.getElementById('results-container');
+const sectionTitle = document.getElementById('show-title')
 
 async function searchBooks() {
    
    const resp = await fetch(`https://openlibrary.org/search.json?q=${searchInput.value}`)
    const data = await resp.json()
    resultsContainer.innerHTML=''
+   sectionTitle.innerHTML= `Showing matches for "${searchInput.value}"`
    data.docs.slice(0,9).map((book) =>{
-      return resultsContainer.innerHTML += `<div class="book-card">
-         
+      return resultsContainer.innerHTML += ` 
+      <div class="book-card">
+        
          <h2>${book.title}</h2>
          <P>by <strong>${book.author_name}</strong></p>
          
