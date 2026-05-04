@@ -26,3 +26,43 @@ a{
     text-decoration: none;
     color: black;
 }
+
+.section-container{
+    background-color: red;
+    height: 100vh;
+    padding: 15px;
+
+}
+
+.perfil-container{
+    height: 90%;   
+    background-color: aqua;
+    display: flex;
+    padding: 20px;
+}
+
+.profname{
+    background-color: chartreuse;
+    flex: 1;  
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+}
+
+.profabas{
+    background-color: gold;
+    flex: 1;
+
+}
+
+.imgcontainer{
+    background-color: rgb(255, 255, 255);
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+}
+
+.nome{
+
+}
