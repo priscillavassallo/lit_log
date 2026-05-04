@@ -44,5 +44,11 @@ Com o crescimento de comunidades virtuais voltadas a diferentes nichos e interes
 
 De acordo com o Instituto Pró-Livro (2024), na pesquisa Retratos da Leitura no Brasil, considera-se leitor aquele que leu, total ou parcialmente, ao menos um livro nos últimos três meses, independentemente do formato. Esse público é majoritariamente feminino, distribuído entre diferentes classes sociais, com escolaridade entre nível médio e superior, sendo que cerca de 93% já utilizam e estão familiarizados com o ambiente digital. 
 
-Para aprofundar a definição do público-alvo, foi realizada uma pesquisa autoral com leitores do clube de leitura Escuro Medo, entre os dias 01 e 04 de março de 2025. A partir das entrevistas, foram identificadas as seguintes necessidades principais: 1. Uma plataforma brasileira expressiva voltada para leitores. 2. Uma plataforma intuitiva e livre de falhas técnicas. 3. Gerenciamento da biblioteca pessoal, incluindo registro de livros lidos e acompanhamento do histórico de leitura. 4. Realização e visualização de avaliações e resenhas de livros. 5. Interação social entre leitores. 6. Ferramentas eficazes de indicação e recomendação de livros.
+Para aprofundar a definição do público-alvo, foi realizada uma pesquisa autoral com leitores do clube de leitura Escuro Medo, entre os dias 01 e 04 de março de 2026. A partir das entrevistas, foram identificadas as seguintes necessidades principais: 
+1. Uma plataforma brasileira expressiva voltada para leitores.
+2.  Uma plataforma intuitiva e livre de falhas técnicas.
+3.  Gerenciamento da biblioteca pessoal, incluindo registro de livros lidos e acompanhamento do histórico de leitura.
+4.  Realização e visualização de avaliações e resenhas de livros.
+5.  Interação social entre leitores.
+6.  Ferramentas eficazes de indicação e recomendação de livros.
 
