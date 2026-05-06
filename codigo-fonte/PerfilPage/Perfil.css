@@ -29,7 +29,7 @@ a{
 }
 
 .section-container{
-    background-color: red;
+    background-color: #DCD4CD;
     height: 100vh;
     padding: 15px;
     
@@ -37,60 +37,63 @@ a{
 
 .perfil-container{
     height: 90%;   
-   background: linear-gradient(to right,aqua, white);
+   background: linear-gradient(to right,#e7e0da, #F3EFEA);
     display: flex;
     padding: 20px;
-    box-shadow: 4px 4px;
 }
 
-.profname{
-    background-color: chartreuse;
-    flex: 1;  
+.profname {
+    background-color: transparent;
+    flex: 1;
     display: flex;
     padding: 30px;
     flex-direction: column;
-}
-
-.profabas{
-
-    flex: 1;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    padding: 50px;
-    
+    gap: 20px;
+    border-radius: 10px;
 }
 
 .imgcontainer{
-    background-color: rgb(255, 255, 255);
-    flex: 3;
+    background-color: #e7e0da;
     display: flex;
     justify-content: center;
-
 }
 
-.imgcontainer img{
-    max-width: 400px;
-    max-height: 400px;
+.imgcontainer img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
-.nome{
-    background-color: rgb(255, 0, 179);
-    flex: 1;
+.nome h1 {
+    background-color: #DCD4CD;
+    margin: 0;
+    font-size: 32px;
     text-align: center;
-    font-size: 25px;
-
 }
+
 .descricao{
-    background-color: darkred;
-    flex: 2;
-    font-size: 20px;
+    background-color: #DCD4CD;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.abas{
-    background-color: darkgreen;
-    flex: 0,5;
-    
+.abas {
+    background-color: #CFC7C0;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.abas:hover {
+    background-color: #bfb7b0;
+    transform: translateY(-3px);
 }
 
 .social-container{
@@ -99,7 +102,7 @@ a{
 }
 
 .social-container span{
-    background-color: aliceblue;
+    background-color: #CFC7C0;
     padding: 10px;
     border-radius: 10px;
 }
@@ -108,7 +111,6 @@ a{
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     gap: 10px;
     height: 80%;
     padding: 20px;
