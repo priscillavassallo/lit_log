@@ -37,7 +37,11 @@ header {
 svg {
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
 >>>>>>> 781954d7cd4c3b3c4e17d0147bd3cd8a894aa37e
+=======
+>>>>>>> bf70fece9c60803b56f2ddc284f8f1819df58890
+>>>>>>> 17e0ea7ec09e191144f714a9ab774c87e54c1937
     width: 30px;
     height: 30px;
     margin-left: 1pc;
@@ -140,5 +144,9 @@ a {
         gap: 10px;
         padding-bottom: 15px;
     }
+<<<<<<< HEAD
 >>>>>>> 781954d7cd4c3b3c4e17d0147bd3cd8a894aa37e
+=======
+>>>>>>> bf70fece9c60803b56f2ddc284f8f1819df58890
+>>>>>>> 17e0ea7ec09e191144f714a9ab774c87e54c1937
 }
