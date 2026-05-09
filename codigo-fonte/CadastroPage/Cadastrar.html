@@ -1,53 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+    <link rel="icon" href="../img/Logo.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
+    <title>Página de Cadastro</title>
     <link rel="stylesheet" href="Cadastrar.css">
 </head>
+
 <body>
     <header>
         <div class="margem" id="LogoLandinPage">
-            <a href="../HomePage/Home.html"><img src="../Img/Logo.png" alt="" height="70px" style="margin-left: 5pc; margin-right: 5px; margin-top: 10px;" ></a>
+            <a href="../HomePage/Home.html">
+                <img src="../Img/Logo.png" alt="" height="70px"
+                    style="margin-left: 5pc; margin-right: 5px; margin-top: 10px;">
+            </a>
         </div>
         <div>
             <a href="../HomePage/Home.html">Litlog</a>
         </div>
     </header>
+
     <section class="section">
-       
+
         <div class="container">
-           
+
             <form class="form-container">
-                 <div class="title-form">
-                <h1>Create Account</h1>
-            </div>
-                <div>
-                    <label for="username">Username</label>
-                    <input type="text" name="username" placeholder="Choose a username" required>
+
+                <div class="title-form">
+                    <h1>Criar Conta</h1>
                 </div>
-                
+
+                <div>
+                    <label for="username">Nome de usuário</label>
+                    <input type="text" name="username" placeholder="Escolha um nome de usuário" required>
+                </div>
+
                 <div>
                     <label for="email">Email</label>
-                    <input type="email" name="email" placeholder="you@example.com" required>
+                    <input type="email" name="email" placeholder="voce@exemplo.com" required>
                 </div>
 
                 <div>
-                    <label for="password">Password</label>
-                    <input type="password" name="password" placeholder="Enter your password" required>
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" placeholder="Insira sua senha" required>
                 </div>
+
                 <div class="btn-container">
-                    <button type="submit" class="submit">Sign Up</button>
-                    <p>Already have an account? <a href="../LoginPage/Login.html"><span class="login-link">Log in</span></a></p>
+                    <button type="submit" class="submit">Cadastrar</button>
+                    <p>Já tem uma conta? <a href="../LoginPage/Login.html"><span class="login-link">Entrar</span></a>
+                    </p>
                 </div>
+
             </form>
+
             <div class="image-container">
-                <img src="../Img/girl-library-floor-reading.jpg" alt="girl-reading">
+                <img src="../Img/girl-library-floor-reading.jpg" alt="menina lendo na biblioteca">
             </div>
+
         </div>
+
     </section>
-   
 
 </body>
+
 </html>

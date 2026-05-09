@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
-body{
+body {
     background-image: url(../Img/mancha-bg.avif);
     background-size: cover;
     background-position: center;
@@ -13,7 +13,7 @@ body{
     height: 100vh;
 }
 
-header{
+header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,19 +25,18 @@ header{
     background-color: rgba(219, 218, 205, 0.42);
 }
 
-svg{
+svg {
     width: 30px;
     height: 30px;
     margin-left: 1pc;
 }
 
-a{
+a {
     text-decoration: none;
     color: black;
 }
 
-
-.section{
+.section {
     display: flex;
     min-height: 100vh;
     background-color: #dcd4cd6b;
@@ -47,31 +46,29 @@ a{
     padding: 3rem;
 }
 
-
-.container{
-
+.container {
     background-color: #fff;
     display: flex;
     max-width: 900px;
     width: 100%;
     box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.6);
-  
-
 }
 
-.form-container{
+.form-container {
     flex: 1;
     padding: 3rem;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
-.title-form{
+
+.title-form {
     font-size: 1rem;
     font-weight: bold;
     margin-bottom: 1rem;
 }
-.form-container input{  
+
+.form-container input {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -82,10 +79,8 @@ a{
 }
 
 .image-container {
-  flex: 1;
-
+    flex: 1;
 }
-
 
 .image-container img {
     opacity: 0.8;
@@ -100,7 +95,8 @@ a{
     flex-direction: column;
     margin-top: 1rem;
 }
-.submit{
+
+.submit {
     background-color: #000000;
     color: #fff;
     padding: 0.8rem;
@@ -109,14 +105,14 @@ a{
     cursor: pointer;
     min-width: 100px;
     transition: 0.8s;
- 
 }
+
 .submit:hover {
     background-color: #DBDACD;
     color: #000;
 }
 
-.login-link{
+.login-link {
     color: #000;
     font-weight: bold;
     text-decoration: underline;
@@ -127,18 +123,15 @@ a{
         flex-direction: column;
         min-width: 100%;
     }
-    
-    .image-container{
+
+    .image-container {
         height: 300px;
         flex: none;
     }
 
-    .image-container img{
+    .image-container img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        
     }
-
-
 }
