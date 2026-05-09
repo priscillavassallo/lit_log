@@ -13,7 +13,8 @@ header{
     display: grid;
     grid-template-columns: 1fr 1fr 7fr 1fr 1fr 1fr 1fr 1fr;
     font-size: 20px;
-    background-color: rgba(219, 218, 205, 0.42);
+    background-color: #DBDACD;
+
 }
 
 svg{
@@ -25,4 +26,92 @@ svg{
 a{
     text-decoration: none;
     color: black;
+}
+
+.section-container{
+    background-color: #DCD4CD;
+    height: 100vh;
+    padding: 15px;
+    
+}
+
+.perfil-container{
+    height: 90%;   
+   background: linear-gradient(to right,#e7e0da, #F3EFEA);
+    display: flex;
+    padding: 20px;
+}
+
+.profname {
+    background-color: transparent;
+    flex: 1;
+    display: flex;
+    padding: 30px;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.imgcontainer{
+    background-color: #e7e0da;
+    display: flex;
+    justify-content: center;
+}
+
+.imgcontainer img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.nome h1 {
+    background-color: #DCD4CD;
+    margin: 0;
+    font-size: 32px;
+    text-align: center;
+}
+
+.descricao{
+    background-color: #DCD4CD;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.abas {
+    background-color: #CFC7C0;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.abas:hover {
+    background-color: #bfb7b0;
+    transform: translateY(-3px);
+}
+
+.social-container{
+    display: flex;
+    gap: 20px;
+}
+
+.social-container span{
+    background-color: #CFC7C0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.abascontainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    height: 80%;
+    padding: 20px;
 }
