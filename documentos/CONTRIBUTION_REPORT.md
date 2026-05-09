@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 09/05/2026 17:28
+**Última atualização:** 09/05/2026 18:02
 
 ---
 
@@ -12,8 +12,8 @@
 | Carlos Eduardo Ribeiro da Silva |         3 |       422 |        44 |          5 |              0 |               0 |
 | Gabriel Clemente Ribeiro        |        37 |      1120 |       583 |         15 |             26 |               2 |
 | Gustavo Lima                    |        14 |       258 |       120 |          5 |             14 |               2 |
-| Priscilla Vassallo              |        24 |       265 |       198 |          2 |             24 |               1 |
-| github-actions[bot]             |       101 |       585 |       463 |          3 |            101 |               1 |
+| Priscilla Vassallo              |        25 |       266 |       199 |          2 |             25 |               1 |
+| github-actions[bot]             |       102 |       589 |       467 |          3 |            102 |               1 |
 | github-classroom[bot]           |         2 |      1548 |         0 |         19 |              2 |               3 |
 | iagofalquer                     |         9 |        98 |       119 |          1 |              9 |               1 |
 | lima280                         |         4 |      1564 |         8 |         21 |              0 |               0 |
@@ -23,9 +23,9 @@
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-02**: Carlos: 1, Carlos Eduardo Ribeiro da Silva: 3, Gabriel Clemente Ribeiro: 8, Priscilla Vassallo: 8, github-actions[bot]: 13, lima280: 2, marcusfcruz: 3, priscillavassallo: 1
+**2026-05-02**: Carlos: 1, Carlos Eduardo Ribeiro da Silva: 3, Gabriel Clemente Ribeiro: 7, Priscilla Vassallo: 9, github-actions[bot]: 14, lima280: 2, marcusfcruz: 3, priscillavassallo: 1
 
-**2026-04-25**: Carlos: 2, Gabriel Clemente Ribeiro: 17, github-actions[bot]: 18, lima280: 2
+**2026-04-25**: Carlos: 2, Gabriel Clemente Ribeiro: 18, github-actions[bot]: 18, lima280: 2
 
 **2026-04-11**: Carlos: 2, Gustavo Lima: 2, Priscilla Vassallo: 8, github-actions[bot]: 40, iagofalquer: 9, marcusfcruz: 22
 
