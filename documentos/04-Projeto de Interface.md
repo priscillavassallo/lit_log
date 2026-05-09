@@ -5,11 +5,12 @@
 
 O fluxograma apresentado na Figura 1 ilustra o fluxo de ações possíveis do usuário pelo sistema. Já o fluxograma apresentado na Figura 2 apresenta o mapa de telas (arquitetura) da plataforma. O detalhamento de cada tela desse fluxo é apresentado na seção de Protótipo de Baixa Fidelidade a seguir. A versão interativa pode ser acessada no seguinte link: https://www.figma.com/proto/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=4001-1299&p=f&t=zmzQsvcQD1ibKGqO-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=4001%3A1299&show-proto-sidebar=1.
 
-<img width="1111" height="1601" alt="Page Flow Diagram - Updated" src="https://github.com/user-attachments/assets/1a4cdfea-224f-4b8a-bc8b-73b03be1ea1f" />
+<img width="1024" height="1535" alt="USER FLOW" src="https://github.com/user-attachments/assets/efb85051-b95d-4a32-80d0-3b9d16b1c904" />
 
 *Figura 1 - Fluxo do usuário*
 
-<img width="1045" height="1601" alt="Page Flow Diagram - Updated" src="https://github.com/user-attachments/assets/83395555-ef09-4b0e-86dd-db5ab95de6d0" />
+<img width="1111" height="1601" alt="Page Flow Diagram - Updated" src="https://github.com/user-attachments/assets/697e119f-462e-41d3-a118-6d3d7eec6823" />
+
 
 *Figura 2 - Mapa de telas (arquitetura)*
 
