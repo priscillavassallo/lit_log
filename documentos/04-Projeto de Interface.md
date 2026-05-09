@@ -1,31 +1,19 @@
-
 # Projeto de Interface
 
 ## User Flow
 
-O fluxograma apresentado na Figura 1 ilustra o fluxo de interação do usuário pelas telas do sistema. Nas Figuras 2, 3, 4 e 5, é possível visualizar uma visão geral das telas em miniatura. O detalhamento de cada tela desse fluxo é apresentado na seção de Protótipo de Baixa Fidelidade a seguir. A versão interativa pode ser acessada no seguinte link: https://www.figma.com/proto/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=4001-1299&p=f&t=zmzQsvcQD1ibKGqO-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=4001%3A1299&show-proto-sidebar=1.
+O fluxograma apresentado na Figura 1 ilustra o fluxo de ações possíveis do usuário pelo sistema. Já o fluxograma apresentado na Figura 2 apresenta o mapa de telas (arquitetura) da plataforma. O detalhamento de cada tela desse fluxo é apresentado na seção de Protótipo de Baixa Fidelidade a seguir. A versão interativa pode ser acessada no seguinte link: https://www.figma.com/proto/JBuKFydooHcFZprGDIFVrG/LitLog--c%C3%B3pia-?node-id=4001-1299&p=f&t=zmzQsvcQD1ibKGqO-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=4001%3A1299&show-proto-sidebar=1.
 
-<img width="1045" height="1601" alt="Page Flow Diagram - Updated" src="https://github.com/user-attachments/assets/4207b4f2-b3f8-44a9-bc5a-a00970d6ea66" />
+<img width="1024" height="1535" alt="USER FLOW" src="https://github.com/user-attachments/assets/fbc0b01d-e492-43ab-b76e-7c585047e3a7" />
 
-*Figura 1 - Fluxo de telas do usuário*
+_Figura 1 - Fluxo do usuário_
 
-<img width="1896" height="849" alt="Prototipo parte 1" src="https://github.com/user-attachments/assets/eb0eb7f2-6170-458a-99aa-b7154012c21d" />
+<img width="1111" height="1601" alt="Page Flow Diagram - Updated" src="https://github.com/user-attachments/assets/697e119f-462e-41d3-a118-6d3d7eec6823" />
 
-*Figura 2 - Telas do usuário*
-
-<img width="1847" height="720" alt="Prototipo parte 2" src="https://github.com/user-attachments/assets/159f1de2-e41e-447b-ac1b-4cbb3e486ae8" />
-
-*Figura 3 - Telas do usuário*
-
-<img width="1882" height="865" alt="Prototipo parte 3" src="https://github.com/user-attachments/assets/e68a9a71-af7c-4f32-a659-09b7349e414d" />
-
-*Figura 4 - Telas do usuário*
-
-<img width="1876" height="747" alt="Prototipo parte 4" src="https://github.com/user-attachments/assets/f72c3288-7ac2-4ab0-8e1f-232dd6611e74" />
-
-*Figura 5 - Telas do usuário*
+_Figura 2 - Mapa de telas (arquitetura)_
 
 ## Protótipo
+
 As telas do sistema, de modo geral, seguem uma estrutura padrão apresentada na Figura 6, composta por três blocos principais:
 
 - Top Bar – funciona como um menu global, contendo a logo, o nome da aplicação e os principais atalhos de navegação.
@@ -34,7 +22,7 @@ As telas do sistema, de modo geral, seguem uma estrutura padrão apresentada na 
 
 <img width="1440" height="1024" alt="PROTOTIPO" src="https://github.com/user-attachments/assets/38ef5168-bcba-44a6-9f0a-9b91f0128dd8" />
 
-*Figura 6 - Estrutura padrão do site*
+_Figura 3 - Estrutura padrão do site_
 
 ### Protótipo de baixa fidelidade
 
@@ -44,9 +32,9 @@ Apresenta as opções de cadastro e login, além de destacar os principais atrat
 
 <img width="1440" height="1024" alt="Landing Page" src="https://github.com/user-attachments/assets/5bc0a54e-0859-4e19-bd94-e2497dce78fc" />
 
-*Figura 7 - Landing Page*
+_Figura 4 - Landing Page_
 
----------------------------------------------------------------------------
+---
 
 **Register Page**
 
@@ -54,9 +42,9 @@ Reúne os campos necessários para criação de conta e apresenta a política de
 
 <img width="1440" height="1024" alt="Register Page" src="https://github.com/user-attachments/assets/f3856187-da3c-4978-8ec4-d41968513782" />
 
-*Figura 8 - Register Page*
+_Figura 5 - Register Page_
 
----------------------------------------------------------------------------
+---
 
 **Login Page**
 
@@ -64,9 +52,9 @@ Permite a autenticação por meio de nome do usuário e senha para acesso à pla
 
 <img width="1440" height="1024" alt="Log In Page" src="https://github.com/user-attachments/assets/cce7df4d-9c57-47ec-b3f5-bde14a0d3876" />
 
-*Figura 9 - Login Page*
+_Figura 6 - Login Page_
 
----------------------------------------------------------------------------
+---
 
 **Home Page**
 
@@ -74,9 +62,9 @@ Exibe a Top Bar com os principais atalhos de navegação: livros, leitores e per
 
 <img width="1440" height="1945" alt="Home Page" src="https://github.com/user-attachments/assets/23ace352-78a2-40f2-9f8b-3b0c749ab1bd" />
 
-*Figura 10 - Home Page*
+_Figura 7 - Home Page_
 
----------------------------------------------------------------------------
+---
 
 **+LOG Modal**
 
@@ -84,9 +72,9 @@ Atalho estratégico na Top Bar para registrar uma leitura, que abre um modal ond
 
 <img width="1440" height="1945" alt="+LOG Modal" src="https://github.com/user-attachments/assets/ae01a7bc-1f9a-4ab9-8edf-25de820a20a8" />
 
-*Figura 11 - +LOG Modal*
+_Figura 8 - +LOG Modal_
 
----------------------------------------------------------------------------
+---
 
 **Profile Page**
 
@@ -94,9 +82,9 @@ Mostra avatar/foto, bio opcional, botão de seguir, livros favoritos, reviews re
 
 <img width="1440" height="1024" alt="Profile Page" src="https://github.com/user-attachments/assets/a6b26438-fd1d-47fe-8f9b-9f675f8ae83b" />
 
-*Figura 12 - Profile Page*
+_Figura 9 - Profile Page_
 
----------------------------------------------------------------------------
+---
 
 **Diary Page**
 
@@ -104,9 +92,9 @@ Exibe todos os livros registrados como lidos ou em leitura pelo usuário.
 
 <img width="1440" height="1024" alt="Diary Page" src="https://github.com/user-attachments/assets/64a5c528-3059-4b0a-b9e2-6a8269fa4d06" />
 
-*Figura 13 - Diary Page*
+_Figura 10 - Diary Page_
 
----------------------------------------------------------------------------
+---
 
 **The Pile Page**
 
@@ -114,9 +102,9 @@ Lista os livros marcados como desejados para futuras leituras.
 
 <img width="1440" height="1024" alt="The Pile Page" src="https://github.com/user-attachments/assets/95b44d6f-9b7a-4f7e-93a5-e3ec42b0d2dd" />
 
-*Figura 14 - The Pile Page*
+_Figura 11 - The Pile Page_
 
----------------------------------------------------------------------------
+---
 
 **Author Page**
 
@@ -124,9 +112,9 @@ Apresenta informações sobre o autor, incluindo breve biografia, obras publicad
 
 <img width="1440" height="1024" alt="Author Page" src="https://github.com/user-attachments/assets/d45f8bc2-2ac7-4dcd-80c3-aa9fcc43e179" />
 
-*Figura 15 - Author Page*
+_Figura 12 - Author Page_
 
----------------------------------------------------------------------------
+---
 
 **Books Page**
 
@@ -134,19 +122,19 @@ Exibe livros com capa, título, descrição, reviews recentes, avaliação médi
 
 <img width="1440" height="2919" alt="Books Page" src="https://github.com/user-attachments/assets/0ab22701-159d-493e-8262-61c37ed83080" />
 
-*Figura 16 - Books Page*
+_Figura 13 - Books Page_
 
----------------------------------------------------------------------------
+---
 
 **Lists Page**
 
-Reúne coleções de livros organizadas por temas ou categorias, criadas por membros para membros. Com o intuito de incitar a descoberta de novas leituras, inclusive por formas criativas como listas por *mood*, por exemplo.
+Reúne coleções de livros organizadas por temas ou categorias, criadas por membros para membros. Com o intuito de incitar a descoberta de novas leituras, inclusive por formas criativas como listas por _mood_, por exemplo.
 
 <img width="1440" height="4132" alt="Lists Page 2" src="https://github.com/user-attachments/assets/38fbc0b9-beba-4dcc-becc-826e4afe5058" />
 
-*Figura 17 - Lists Page*
+_Figura 14 - Lists Page_
 
----------------------------------------------------------------------------
+---
 
 **Single List Page**
 
@@ -154,9 +142,9 @@ Mostra os detalhes de uma lista específica, exibindo os livros que a compõem, 
 
 <img width="1440" height="1024" alt="Single List Page" src="https://github.com/user-attachments/assets/48292ead-8f25-42b0-8325-24c9e0de1a6c" />
 
-*Figura 18 - Single List Page*
+_Figura 15 - Single List Page_
 
----------------------------------------------------------------------------
+---
 
 **Single Book Page**
 
@@ -164,9 +152,9 @@ Apresenta as informações completas de um livro, incluindo capa, título, descr
 
 <img width="1440" height="1024" alt="Single Book Page" src="https://github.com/user-attachments/assets/cc0298e7-0d5b-4a25-a485-f107d1ebb76b" />
 
-*Figura 19 - Single Book Page*
+_Figura 16 - Single Book Page_
 
----------------------------------------------------------------------------
+---
 
 **Search Results Page**
 
@@ -174,4 +162,4 @@ Apresenta resultados com base na busca do usuário, exibindo livros, autores e l
 
 <img width="1440" height="1024" alt="Search Results Page" src="https://github.com/user-attachments/assets/182ff136-3289-4291-af6e-bcb192b84554" />
 
-*Figura 20 - Search Results Page*
+_Figura 17 - Search Results Page_
