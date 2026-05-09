@@ -163,6 +163,4 @@ Apresenta resultados com base na busca do usuário, exibindo livros, autores e l
 
 <img width="1440" height="1024" alt="Search Results Page" src="https://github.com/user-attachments/assets/182ff136-3289-4291-af6e-bcb192b84554" />
 
-*Figura 17<img width="1024" height="1535" alt="USER FLOW" src="https://github.com/user-attachments/assets/32eb9eae-918e-4bd0-9b52-23da88dda626" />
-<img width="1024" height="1535" alt="USER FLOW" src="https://github.com/user-attachments/assets/72c10ee6-712b-4808-8133-d3e0c1199675" />
- - Search Results Page*
+*Figura 17 - Search Results Page*
