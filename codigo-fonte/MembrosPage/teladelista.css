@@ -2,26 +2,30 @@ body {
 background-color: #FFE4C4;
 font-family: Arial, Helvetica, sans-serif;
 color: black;
+margin: 0;
 }
 
 header {
 display: flex;
 align-items: center;
-background-color: rgb(252, 8, 8);
-justify-content: space-between;
-border:none;
-padding: 20px;
+justify-content: center;
+width: 100%;
+height: 10%;
+display: grid;
+grid-template-columns: 1fr 1fr 7fr 1fr 1fr 1fr 1fr 1fr;
+font-size: 20px;
+background-color: rgba(219, 218, 205, 0.42);
+}
+
+svg {
+width: 30px;
+height: 30px;
+margin-left: 1pc;
+}
+
+a {
 text-decoration: none;
-}
-
-h1 {
-color: #FFE4C4;
-}
-
-.links {
-
-    text-decoration: none;
-    color: aqua;
+color: black;
 }
 
 .section {
@@ -38,12 +42,13 @@ color: black;
 .book-grid{
 display: flex;
 gap: 20px;
+flex-wrap: wrap;
 
 }
 
 .book-grid article {
 padding: 12px;
-background-color: rgb(252, 8, 8);
+width: 180px;
 }
 
 .book-grid img {
@@ -61,9 +66,18 @@ color:yellowgreen ;
 .recomendacao {
 display: flex;
 gap: 30px;
+flex-wrap: wrap;
 }
 
-profile-grid img {
+.profile-grid {
+display: flex;
+align-items: center;
+gap: 12px;
+padding: 12px;
+background-color: rgb(252, 8, 8);
+}
+
+.profile-grid img {
 width: 90px;
 height: 90px;
 border-radius: 60%;
@@ -84,12 +98,11 @@ flex-direction: column;
 gap : 15px;
 }
 .links{
-gap:;
-px;
+gap: 10px;
+flex-wrap: wrap;
 }
 section{
-padding: 25px 
-20px
+padding: 25px 20px;
 }
 .profile-grid{
 width: 100%;
