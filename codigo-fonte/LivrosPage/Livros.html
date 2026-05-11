@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="icon" href="../img/Logo.png" type="image/png">
+    <link rel="icon" href="../Img/Logo.png" type="image/png">
     <link rel="stylesheet" href="Livros.css">
     <title>LitLog</title>
 </head>
@@ -27,6 +27,151 @@
         </div>
         <div>+ Log</div>
     </header>
-    
+    <main class="paginaLivros">
+        <section class="areaLivros areaPrincipal">
+            <div class="linhaFiltro">
+                <a href="../PesquisaPage/Pesquisa.html">Filtrar &gt;</a>
+            </div>
+
+            <div class="secaoLivros">
+                <h2>POPULARES DA SEMANA</h2>
+                <div class="controleCarrossel">
+                    <button class="botaoCarrossel" onclick="moverCarrossel('popularesSemana', -1)">&#10094;</button>
+                    <div class="livrosCarrossel" id="popularesSemana">
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                    </div>
+                    <button class="botaoCarrossel" onclick="moverCarrossel('popularesSemana', 1)">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="secaoLivros">
+                <h2>LANCAMENTOS</h2>
+                <div class="controleCarrossel">
+                    <button class="botaoCarrossel" onclick="moverCarrossel('lancamentos', -1)">&#10094;</button>
+                    <div class="livrosCarrossel" id="lancamentos">
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                    </div>
+                    <button class="botaoCarrossel" onclick="moverCarrossel('lancamentos', 1)">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="secaoLivros">
+                <h2>RECEM AVALIADOS</h2>
+                <div class="controleCarrossel">
+                    <button class="botaoCarrossel" onclick="moverCarrossel('recemAvaliados', -1)">&#10094;</button>
+                    <div class="livrosCarrossel" id="recemAvaliados">
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                    </div>
+                    <button class="botaoCarrossel" onclick="moverCarrossel('recemAvaliados', 1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="areaLivros areaRecomendacoes">
+            <div class="secaoLivros">
+                <h2>PARECIDOS COM SUAS LEITURAS</h2>
+                <div class="controleCarrossel">
+                    <button class="botaoCarrossel" onclick="moverCarrossel('parecidosLeituras', -1)">&#10094;</button>
+                    <div class="livrosCarrossel" id="parecidosLeituras">
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                    </div>
+                    <button class="botaoCarrossel" onclick="moverCarrossel('parecidosLeituras', 1)">&#10095;</button>
+                </div>
+            </div>
+
+            <div class="secaoLivros">
+                <h2>LIDOS POR SEUS AMIGOS</h2>
+                <div class="controleCarrossel">
+                    <button class="botaoCarrossel" onclick="moverCarrossel('lidosAmigos', -1)">&#10094;</button>
+                    <div class="livrosCarrossel" id="lidosAmigos">
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                        <div class="livro"><div class="capaLivro"></div></div>
+                    </div>
+                    <button class="botaoCarrossel" onclick="moverCarrossel('lidosAmigos', 1)">&#10095;</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function moverCarrossel(idCarrossel, direcao){
+            var carrossel = document.getElementById(idCarrossel);
+            carrossel.scrollLeft = carrossel.scrollLeft + (direcao * 190);
+        }
+    </script>
 </body>
 </html>

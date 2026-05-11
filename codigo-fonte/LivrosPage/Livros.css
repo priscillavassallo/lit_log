@@ -26,3 +26,130 @@ a{
     text-decoration: none;
     color: black;
 }
+
+.paginaLivros{
+    width: 100%;
+    margin: 0 0 45px 0;
+}
+
+.areaLivros{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 18px 4vw 20px 4vw;
+}
+
+.areaPrincipal{
+    background-color: #DBDACD;
+}
+
+.areaRecomendacoes{
+    background-color: #DBDACD;
+}
+
+.linhaFiltro{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 0 20px 0;
+    font-size: 13px;
+}
+
+.secaoLivros{
+    margin: 0 0 32px 0;
+}
+
+.secaoLivros h2{
+    margin: 0 0 12px 0;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.controleCarrossel{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.livrosCarrossel{
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.livro{
+    min-width: 150px;
+    width: 150px;
+    margin: 0 18px 0 0;
+}
+
+.capaLivro{
+    width: 100%;
+    height: 210px;
+    background-color: #883a3a;
+}
+
+.botaoCarrossel{
+    width: 34px;
+    height: 34px;
+    margin: 0 10px 0 0;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    color: #111111;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.botaoCarrossel:last-child{
+    margin: 0 0 0 10px;
+}
+
+.botaoCarrossel:hover{
+    background-color: #f1f0e7;
+}
+
+@media (max-width: 760px){
+    header{
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 12px;
+        padding: 10px 0 15px;
+        font-size: 16px;
+    }
+
+    header div:nth-child(3){
+        display: none;
+    }
+
+    #LogoLandinPage img{
+        height: 54px;
+        margin-left: 15px !important;
+    }
+
+    .paginaLivros{
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .areaLivros{
+        padding: 18px 18px 32px 18px;
+    }
+
+    .livro{
+        min-width: 120px;
+        width: 120px;
+    }
+
+    .capaLivro{
+        height: 170px;
+    }
+
+    .botaoCarrossel{
+        display: none;
+    }
+
+    .livrosCarrossel{
+        overflow-x: auto;
+    }
+}
