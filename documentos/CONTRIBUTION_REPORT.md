@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 11/05/2026 22:41
+**Última atualização:** 11/05/2026 23:53
 
 ---
 
@@ -13,20 +13,20 @@
 | Gabriel Clemente Ribeiro        |        40 |      1287 |       803 |         16 |             27 |               2 |
 | Gustavo Lima                    |        14 |       258 |       120 |          5 |             14 |               2 |
 | Priscilla Vassallo              |        25 |       266 |       199 |          2 |             25 |               1 |
-| github-actions[bot]             |       112 |       678 |       598 |          3 |            112 |               1 |
+| github-actions[bot]             |       113 |       687 |       607 |          3 |            113 |               1 |
 | github-classroom[bot]           |         2 |      1548 |         0 |         19 |              2 |               3 |
 | iago oliveira garcia            |         1 |       338 |       147 |          8 |              0 |               0 |
 | iagofalquer                     |         9 |        98 |       119 |          1 |              9 |               1 |
-| lima280                         |         5 |      2012 |        16 |         22 |              0 |               0 |
+| lima280                         |         7 |      2147 |       124 |         31 |              0 |               0 |
 | marcusfcruz                     |        26 |       930 |       128 |          6 |             22 |               1 |
 | priscillavassallo               |         5 |       603 |        63 |          6 |              1 |               0 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-04**: Carlos Eduardo Ribeiro da Silva: 9, Gabriel Clemente Ribeiro: 6, Priscilla Vassallo: 5, github-actions[bot]: 14, iago oliveira garcia: 1, lima280: 1, priscillavassallo: 5
+**2026-05-04**: Carlos Eduardo Ribeiro da Silva: 9, Gabriel Clemente Ribeiro: 5, Priscilla Vassallo: 5, github-actions[bot]: 15, iago oliveira garcia: 1, lima280: 3, priscillavassallo: 5
 
-**2026-04-27**: Carlos: 4, Gabriel Clemente Ribeiro: 22, Priscilla Vassallo: 4, github-actions[bot]: 26, lima280: 2, marcusfcruz: 4
+**2026-04-27**: Carlos: 4, Gabriel Clemente Ribeiro: 23, Priscilla Vassallo: 4, github-actions[bot]: 26, lima280: 2, marcusfcruz: 4
 
 **2026-04-20**: github-actions[bot]: 2, lima280: 2
 
