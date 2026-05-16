@@ -1,0 +1,156 @@
+.list-page {
+    padding: 40px;
+}
+
+.list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.list-card {
+background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.list-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.list-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.list-info {
+    padding: 15px;
+}
+
+.list-info h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.list-info p {
+    color: #777;
+    margin-top: 5px;
+}
+
+.fake-cover {
+    width: 100%;
+    height: 180px;
+
+    background-color: #CFC7C0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 50px;
+}
+
+.empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 60px;
+}
+
+.criar-lista {
+    padding: 20px 40px;
+
+    font-size: 22px;
+    font-weight: 600;
+
+    border: none;
+    border-radius: 15px;
+
+    background-color: #CFC7C0;
+    color: black;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.criar-lista:hover {
+
+    background-color: #BDB4AD;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.popup {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #F3EFEA;
+
+    padding: 35px;
+
+    border-radius: 22px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.15),
+    0 4px 10px rgba(0,0,0,0.08);
+
+    z-index: 1001;
+
+    width: 350px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.topo-listas{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.criar-lista{
+    padding: 12px 22px;
+
+    font-size: 16px;
+
+    border-radius: 12px;
+}
+
+.overlay{
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.25);
+
+    backdrop-filter: blur(4px);
+
+    z-index: 999;
+}

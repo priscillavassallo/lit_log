@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="list.css">
+    <title>LitLog</title>
+</head>
+<body>
+<section class="list-page">
+
+    <div class="list-container">
+
+    <div class="topo-listas">
+
+        <h1>Minhas Listas</h1>
+
+        <button id="abrir-popup" class="criar-lista">
+            + Nova Lista
+        </button>
+
+    </div>
+
+    <div class="list-grid" id="list-grid">
+
+        <!-- LISTAS APARECEM AQUI -->
+
+    </div>
+
+</div>
+
+</section>
+
+<div class="overlay hidden"></div>
+
+<div class="popup hidden">
+
+    <h2>Nova Lista</h2>
+
+    <input 
+        type="text"
+        id="nome-lista"
+        placeholder="Nome da lista"
+    >
+
+    <button id="criar-lista-popup">
+        Criar
+    </button>
+
+</div>
+
+<script>
+
+console.log("JS funcionando");
+
+const botao = document.getElementById("abrir-popup");
+
+const popup = document.querySelector(".popup");
+
+const overlay = document.querySelector(".overlay");
+
+const input = document.getElementById("nome-lista");
+
+const criarLista = document.getElementById("criar-lista-popup");
+
+const grid = document.getElementById("list-grid");
+
+botao.addEventListener("click", () => {
+
+    popup.classList.remove("hidden");
+
+    overlay.classList.remove("hidden");
+
+});
+
+criarLista.addEventListener("click", () => {
+
+    const nomeLista = input.value;
+
+    if(nomeLista === "") return;
+
+    const novoCard = document.createElement("div");
+
+    novoCard.classList.add("list-card");
+
+    novoCard.innerHTML = `
+    
+    <div class="fake-cover">
+        📚
+    </div>
+
+    <div class="list-info">
+        <h2>${nomeLista}</h2>
+        <p>0 livros</p>
+    </div>
+
+`;
+
+    novoCard.addEventListener("click", () => {
+
+    window.location.href = `lista.html?nome=${nomeLista}`;
+
+});
+
+    overlay.addEventListener("click", () => {
+
+    popup.classList.add("hidden");
+
+    overlay.classList.add("hidden");
+
+});
+
+    grid.appendChild(novoCard);
+
+    input.value = "";
+
+    popup.classList.add("hidden");
+
+    overlay.classList.add("hidden");
+
+});
+
+overlay.addEventListener("click", () => {
+
+    popup.classList.add("hidden");
+
+    overlay.classList.add("hidden");
+
+});
+
+
+</script>
+
+</body>
+</html>
