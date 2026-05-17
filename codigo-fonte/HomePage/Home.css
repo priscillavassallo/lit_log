@@ -1,235 +1,246 @@
-body{
-    margin: 0;
-    background-color: #DBDACD;
-    font-family: 'Regular', poppins, sans-serif;
-    background-image: url('../Img/Banner.png');
-    background-position-x: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+body {
+  margin: 0;
+  background-color: #dbdacd;
+  font-family: "Regular", poppins, sans-serif;
+  background-image: url("../Img/Banner.png");
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 10%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 7fr 1fr 1fr 1fr 1fr 1fr;
-    font-size: 20px;
-    background-color: rgba(219, 218, 205, 0.42);
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 10%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 7fr 1fr 1fr 1fr 1fr 1fr;
+  font-size: 20px;
+  background-color: rgba(219, 218, 205, 0.42);
 }
 
-svg{
-    width: 30px;
-    height: 30px;
-    margin-left: 1pc;
+svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 1pc;
 }
 
-a{
-    text-decoration: none;
-    color: black;
+a {
+  text-decoration: none;
+  color: black;
 }
 
-.botaoLog{
-    background-color: transparent;
-    border: none;
-    color: black;
-    cursor: pointer;
-    font: inherit;
+.botaoLog {
+  background-color: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font: inherit;
 }
 
-.modalLog{
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.55);
+.modalLog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.55);
 }
 
-.modalLog.modalAberto{
-    display: flex;
+.modalLog.modalAberto {
+  display: flex;
 }
 
-.conteudoModalLog{
-    position: relative;
-    width: 100%;
-    max-width: 470px;
-    padding: 28px;
-    box-sizing: border-box;
-    background-color: #DBDACD;
-    border-radius: 5px;
+.conteudoModalLog {
+  position: relative;
+  width: 100%;
+  max-width: 470px;
+  padding: 28px;
+  box-sizing: border-box;
+  background-color: #dbdacd;
+  border-radius: 5px;
 }
 
-.conteudoModalLog h2{
-    margin: 0 0 20px 0;
-    color: #111111;
-    font-size: 30px;
-    font-family: 'Regular', Cormorant Garamond, serif;
+.conteudoModalLog h2 {
+  margin: 0 0 20px 0;
+  color: #111111;
+  font-size: 30px;
+  font-family:
+    "Regular",
+    Cormorant Garamond,
+    serif;
 }
 
-.fecharModalLog{
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 32px;
-    height: 32px;
-    background-color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 18px;
+.fecharModalLog {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
 }
 
-.formLog{
-    display: flex;
-    flex-direction: column;
+.formLog {
+  display: flex;
+  flex-direction: column;
 }
 
-.formLog label{
-    margin: 0 0 6px 0;
-    color: #222222;
-    font-size: 14px;
+.formLog label {
+  margin: 0 0 6px 0;
+  color: #222222;
+  font-size: 14px;
 }
 
 .formLog input,
 .formLog select,
-.formLog textarea{
-    margin: 0 0 14px 0;
-    padding: 11px;
-    background-color: #ffffff;
-    border: 1px solid #c7c3b4;
-    border-radius: 5px;
-    color: #222222;
-    font: inherit;
+.formLog textarea {
+  margin: 0 0 14px 0;
+  padding: 11px;
+  background-color: #ffffff;
+  border: 1px solid #c7c3b4;
+  border-radius: 5px;
+  color: #222222;
+  font: inherit;
 }
 
-.formLog textarea{
-    resize: vertical;
+.formLog textarea {
+  resize: vertical;
 }
 
-.acoesModalLog{
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 6px;
+.acoesModalLog {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
 }
 
 .botaoCancelarLog,
-.botaoSalvarLog{
-    min-width: 95px;
-    padding: 11px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font: inherit;
+.botaoSalvarLog {
+  min-width: 95px;
+  padding: 11px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font: inherit;
 }
 
-.botaoCancelarLog{
-    background-color: #ffffff;
-    color: #222222;
+.botaoCancelarLog {
+  background-color: #ffffff;
+  color: #222222;
 }
 
-.botaoSalvarLog{
-    background-color: #28251f;
-    color: #ffffff;
+.botaoSalvarLog {
+  background-color: #28251f;
+  color: #ffffff;
 }
 
-#Banner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 40pc;
-    font-size: 2pc;
-    color: #ffffff;
-    font-family: 'Regular', Cormorant Garamond, serif;
+#Banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 40pc;
+  font-size: 2pc;
+  color: #ffffff;
+  font-family:
+    "Regular",
+    Cormorant Garamond,
+    serif;
 }
 
-#TituloBanner{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 5pc;
-    color: #ffffff;
-    font-family: 'Regular', Cormorant Garamond, serif;
+#TituloBanner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 5pc;
+  color: #ffffff;
+  font-family:
+    "Regular",
+    Cormorant Garamond,
+    serif;
 }
 
-
-#CaixaCarrossel{
-    width: 100%;
-    margin: 0 auto;
-    padding: 35px;
-    background-color: #DBDACD;
+#CaixaCarrossel {
+  width: auto;
+  margin: 0 auto;
+  padding: 35px;
+  background-color: #dbdacd;
 }
 
-.subtituloCarrossel{
-    margin: 0 0 40px 0;
-    color: #1f1f1f;
-    font-size: 38px;
-    font-family: 'Regular', Cormorant Garamond, serif;
+.subtituloCarrossel {
+  margin: 0 0 40px 0;
+  color: #1f1f1f;
+  font-size: 38px;
+  font-family:
+    "Regular",
+    Cormorant Garamond,
+    serif;
 }
 
-.linhaCarrossel{
-    margin: 0 0 45px 0;
+.linhaCarrossel {
+  margin: 0 0 45px 0;
 }
 
-.tituloLinha{
-    margin: 0 0 20px 0;
-    color: #111111;
-    font-size: 18px;
+.tituloLinha {
+  margin: 0 0 20px 0;
+  color: #111111;
+  font-size: 18px;
 }
 
-.controleCarrossel{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+.controleCarrossel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-.livrosCarrossel{
-    display: flex;
-    align-items: center;
-    width: 90%;
-    overflow: hidden;
+.livrosCarrossel {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  overflow: hidden;
 }
 
-.livro{
-    width: 180px;
-    min-width: 180px;
-    margin: 0 18px 0 18px;
+.livro {
+  width: 180px;
+  min-width: 180px;
+  margin: 0 18px 0 18px;
 }
 
-.capaLivro{
-    width: 100%;
-    height: 230px;
-    background-color: #883a3a;
-    border-radius: 5px;
+.capaLivro {
+  width: 100%;
+  height: 230px;
+  background-color: #883a3a;
+  border-radius: 5px;
 }
 
-.botaoCarrossel{
-    width: 45px;
-    height: 45px;
-    margin: 0 10px 0 10px;
-    background-color: #ffffff;
-    color: #1f1f1f;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 24px;
+.botaoCarrossel {
+  width: 45px;
+  height: 45px;
+  margin: 0 10px 0 10px;
+  background-color: #ffffff;
+  color: #1f1f1f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 24px;
 }
 
-.nomeLivro{
-    margin: 12px 0 0 0;
-    color: #28251f;
-    text-align: center;
-    font-size: 15px;
+.nomeLivro {
+  margin: 12px 0 0 0;
+  color: #28251f;
+  text-align: center;
+  font-size: 15px;
 }
