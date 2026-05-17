@@ -2,6 +2,11 @@ const entradaBusca = document.getElementById("entrada-busca");
 const botaoBusca = document.getElementById("botao-busca");
 const containerResultados = document.getElementById("container-resultados");
 const tituloPrincipal = document.getElementById("titulo-principal");
+const form = document.getElementById("formulario-busca");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+});
 
 function buscarLivros() {
   tituloPrincipal.innerHTML = `Resultados para "${entradaBusca.value}"`;
