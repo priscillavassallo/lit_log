@@ -1,5 +1,5 @@
 // CONFIG google_books_api_key
-const GOOGLE_API_KEY = window._env_.API_KEY;
+const GOOGLE_API_KEY = window._env_?.API_KEY || "";
 
 // evita múltiplas execuções acidentais
 let alreadyLoaded = false;
@@ -125,7 +125,7 @@ async function getOpenLibraryPT(isbn) {
 async function getGoogleBookPT(isbn) {
   try {
     console.log("ativando google");
-    const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&langRestrict=pt&key=${GOOGLE_API_KEY}`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&langRestrict=pt${GOOGLE_API_KEY ? `&key=${GOOGLE_API_KEY}` : ""}`;
     const res = await fetch(url);
     const data = await res.json();
     console.log(data);
@@ -153,7 +153,7 @@ async function getGoogleBookPT(isbn) {
 // GOOGLE BOOKS - qualquer idioma
 async function getGoogleBookAnyLang(isbn) {
   try {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${GOOGLE_API_KEY}`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}${GOOGLE_API_KEY ? `&key=${GOOGLE_API_KEY}` : ""}`;
     const res = await fetch(url);
     const data = await res.json();
 
