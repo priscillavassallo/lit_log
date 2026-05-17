@@ -50,7 +50,8 @@ async function loadBookByISBN() {
 
       if (googlePT.description) {
         finalBook.description = googlePT.description;
-        return renderBook(finalBook); // ACHOU descrição PT → acabou
+        return renderBook(finalBook);
+        // achou descrição PT = acabou
       }
     }
 
@@ -128,7 +129,7 @@ async function getGoogleBookPT(isbn) {
     const url = `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&langRestrict=pt${GOOGLE_API_KEY ? `&key=${GOOGLE_API_KEY}` : ""}`;
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data);
+    console.log(data); // verificando se está certo via terminal
     if (!data.items) return null;
 
     const b = data.items[0].volumeInfo;
