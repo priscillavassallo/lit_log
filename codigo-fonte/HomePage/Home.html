@@ -1,222 +1,261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="icon" href="../Img/Logo.png" type="image/png">
-    <link rel="stylesheet" href="Home.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="icon" href="../Img/Logo.png" type="image/png" />
+    <link rel="stylesheet" href="../compartilhado/modal.css" />
+    <link rel="stylesheet" href="Home.css" />
+
     <title>LitLog</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="margem" id="LogoLandinPage">
-            <img src="../Img/Logo.png" alt="" height="70px" style="margin-left: 5pc; margin-right: 5px; margin-top: 10px;" >
-        </div>
-        <div>
-            Litlog
-        </div>
-        <div></div>
-        <div><a href="../PerfilPage/Perfil.html">Perfil</a></div>
-        <div><a href="../LivrosPage/Livros.html">Livros</a></div>
-        <div><a href="../MembrosPage/teladelista.html">Membros</a></div>
-        <div>
-            <a href="../PesquisaPage/Pesquisa.html"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 50 50">
-                <path d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"></path>
-            </svg></a>
-        </div>
-        <div><button class="botaoLog" type="button" onclick="abrirModalLog()">+ Log</button></div>
+      <div class="margem" id="LogoLandinPage">
+        <img
+          src="../Img/Logo.png"
+          alt=""
+          height="70px"
+          style="margin-left: 5pc; margin-right: 5px; margin-top: 10px"
+        />
+      </div>
+      <div>Litlog</div>
+      <div></div>
+      <div><a href="../PerfilPage/Perfil.html">Perfil</a></div>
+      <div><a href="../LivrosPage/Livros.html">Livros</a></div>
+      <div><a href="../MembrosPage/teladelista.html">Membros</a></div>
+      <div>
+        <a href="../PesquisaPage/Pesquisa.html">
+          <!-- prettier-ignore-start -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="100"
+            height="100"
+            viewBox="0 0 50 50"
+          >
+            <path
+              d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+            ></path>
+          </svg>
+          <!-- prettier-ignore-start -->
+        </a>
+      </div>
+      <div>
+        <button class="botaoLog" type="button" onclick="abrirModalLog()">
+          + Log
+        </button>
+      </div>
     </header>
-    <div class="modalLog" id="modalLog" aria-hidden="true" onclick="fecharModalPorFora(event)">
-        <div class="conteudoModalLog" role="dialog" aria-modal="true" aria-labelledby="tituloModalLog">
-            <button class="fecharModalLog" type="button" onclick="fecharModalLog()" aria-label="Fechar">x</button>
-            <h2 id="tituloModalLog">Novo log</h2>
-            <form class="formLog" onsubmit="salvarLog(event)">
-                <label for="livroLog">Livro</label>
-                <input id="livroLog" type="text" placeholder="Nome do livro" required>
+    <div
+      class="modalLog"
+      id="modalLog"
+      aria-hidden="true"
+      onclick="fecharModalPorFora(event)"
+    >
+      <div
+        class="conteudoModalLog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalLog"
+      >
+        <button
+          class="fecharModalLog"
+          type="button"
+          onclick="fecharModalLog()"
+          aria-label="Fechar"
+        >
+          x
+        </button>
+        <h2 id="tituloModalLog">Novo log</h2>
+        <form class="formLog" onsubmit="salvarLog(event)">
+          <label for="livroLog">Livro</label>
+          <input
+            id="livroLog"
+            type="text"
+            placeholder="Nome do livro"
+            required
+          />
 
-                <label for="autorLog">Autor</label>
-                <input id="autorLog" type="text" placeholder="Nome do autor">
+          <label for="autorLog">Autor</label>
+          <input id="autorLog" type="text" placeholder="Nome do autor" />
 
-                <label for="statusLog">Status</label>
-                <select id="statusLog">
-                    <option>Lendo</option>
-                    <option>Quero ler</option>
-                    <option>Concluido</option>
-                </select>
+          <label for="statusLog">Status</label>
+          <select id="statusLog">
+            <option>Lendo</option>
+            <option>Quero ler</option>
+            <option>Concluido</option>
+          </select>
 
-                <div class="acoesModalLog">
-                    <button class="botaoCancelarLog" type="button" onclick="fecharModalLog()">Cancelar</button>
-                    <button class="botaoSalvarLog" type="submit">Salvar</button>
-                </div>
-            </form>
-        </div>
+          <div class="acoesModalLog">
+            <button
+              class="botaoCancelarLog"
+              type="button"
+              onclick="fecharModalLog()"
+            >
+              Cancelar
+            </button>
+            <button class="botaoSalvarLog" type="submit">Salvar</button>
+          </div>
+        </form>
+      </div>
     </div>
     <section id="Banner">
-        <div>
-            <div id="TituloBanner">
-                Litlog 
-            </div>
-            <br>É a rede social para os amantes de livros.<br>Descubra, compartilhe e conecte-se com outros leitores apaixonados.
-        </div>
+      <div>
+        <div id="TituloBanner">Litlog</div>
+        <br />É a rede social para os amantes de livros.<br />Descubra,
+        compartilhe e conecte-se com outros leitores apaixonados.
+      </div>
     </section>
     <section>
-        <div id="CaixaCarrossel">
-            <div class="subtituloCarrossel">Descobertas entre leitores</div>
-
-            <div class="linhaCarrossel">
-                <div class="tituloLinha">NOVO DOS AMIGOS</div>
-                <div class="controleCarrossel">
-                    <button class="botaoCarrossel" onclick="moverCarrossel('carrosselAmigos', -1)">&#10094;</button>
-                    <div class="livrosCarrossel" id="carrosselAmigos">
-                        <a href="../DetalhesLivroPage/DetalhesLivro.html"><div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Clube da meia-noite</div>
-                        </div></a>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Notas de margem</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Ultima pagina</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Leitura em comum</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Capitulo aberto</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Proxima leitura</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Biblioteca secreta</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Noite de resenha</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Paginas soltas</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Marca-texto</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Leitor viajante</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">A lista final</div>
-                        </div>
-                    </div>
-                    <button class="botaoCarrossel" onclick="moverCarrossel('carrosselAmigos', 1)">&#10095;</button>
-                </div>
+      <div id="CaixaCarrossel">
+        <div class="linhaCarrossel">
+          <div class="tituloLinha">EM ALTA ESTA SEMANA</div>
+          <div class="controleCarrossel">
+            <button
+              class="botaoCarrossel"
+              onclick="moverCarrossel('carrosselAmigos', -1)"
+            >
+              &#10094;
+            </button>
+            <div class="livrosCarrossel" id="carrosselAmigos">
+              <a href="../DetalhesLivroPage/DetalhesLivro.html"
+                ><div class="livro">
+                  <div class="capaLivro"></div>
+                  <div class="nomeLivro">Clube da meia-noite</div>
+                </div></a
+              >
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Notas de margem</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Ultima pagina</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Leitura em comum</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Capitulo aberto</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Proxima leitura</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Biblioteca secreta</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Noite de resenha</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Paginas soltas</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Marca-texto</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Leitor viajante</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">A lista final</div>
+              </div>
             </div>
-
-            <div class="linhaCarrossel">
-                <div class="tituloLinha">POPULAR COM AMIGOS</div>
-                <div class="controleCarrossel">
-                    <button class="botaoCarrossel" onclick="moverCarrossel('carrosselPopular', -1)">&#10094;</button>
-                    <div class="livrosCarrossel" id="carrosselPopular">
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Entre capitulos</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Mapa das historias</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Depois do epilogo</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Vozes da estante</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Livro da semana</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Estante favorita</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Favoritos do mes</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Historias cruzadas</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Cafe e leitura</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Ritmo de paginas</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Livro marcado</div>
-                        </div>
-                        <div class="livro">
-                            <div class="capaLivro"></div>
-                            <div class="nomeLivro">Ultimo capitulo</div>
-                        </div>
-                    </div>
-                    <button class="botaoCarrossel" onclick="moverCarrossel('carrosselPopular', 1)">&#10095;</button>
-                </div>
-            </div>
+            <button
+              class="botaoCarrossel"
+              onclick="moverCarrossel('carrosselAmigos', 1)"
+            >
+              &#10095;
+            </button>
+          </div>
         </div>
+
+        <div class="linhaCarrossel">
+          <div class="tituloLinha">NOVOS REGISTROS DOS SEUS AMIGOS</div>
+          <div class="controleCarrossel">
+            <button
+              class="botaoCarrossel"
+              onclick="moverCarrossel('carrosselPopular', -1)"
+            >
+              &#10094;
+            </button>
+            <div class="livrosCarrossel" id="carrosselPopular">
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Entre capitulos</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Mapa das historias</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Depois do epilogo</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Vozes da estante</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Livro da semana</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Estante favorita</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Favoritos do mes</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Historias cruzadas</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Cafe e leitura</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Ritmo de paginas</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Livro marcado</div>
+              </div>
+              <div class="livro">
+                <div class="capaLivro"></div>
+                <div class="nomeLivro">Ultimo capitulo</div>
+              </div>
+            </div>
+            <button
+              class="botaoCarrossel"
+              onclick="moverCarrossel('carrosselPopular', 1)"
+            >
+              &#10095;
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
     <script>
-        function moverCarrossel(idCarrossel, direcao){
-            var carrossel = document.getElementById(idCarrossel);
-            carrossel.scrollLeft = carrossel.scrollLeft + (direcao * 216);
-        }
-
-        function abrirModalLog(){
-            var modal = document.getElementById('modalLog');
-            modal.classList.add('modalAberto');
-            modal.setAttribute('aria-hidden', 'false');
-            document.getElementById('livroLog').focus();
-        }
-
-        function fecharModalLog(){
-            var modal = document.getElementById('modalLog');
-            modal.classList.remove('modalAberto');
-            modal.setAttribute('aria-hidden', 'true');
-        }
-
-        function fecharModalPorFora(event){
-            if(event.target.id === 'modalLog'){
-                fecharModalLog();
-            }
-        }
-
-        function salvarLog(event){
-            event.preventDefault();
-            event.target.reset();
-            fecharModalLog();
-        }
-
-        document.addEventListener('keydown', function(event){
-            if(event.key === 'Escape'){
-                fecharModalLog();
-            }
-        });
+      function moverCarrossel(idCarrossel, direcao) {
+        var carrossel = document.getElementById(idCarrossel);
+        carrossel.scrollLeft = carrossel.scrollLeft + direcao * 216;
+      }
     </script>
-</body>
+    <script src="../compartilhado/modal.js"></script>
+  </body>
 </html>

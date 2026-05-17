@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="icon" href="../Img/Logo.png" type="image/png" />
+    <link rel="stylesheet" href="../compartilhado/modal.css" />
+
     <link rel="stylesheet" href="Pesquisa.css" />
     <title>Pesquisa - LitLog</title>
   </head>
@@ -59,15 +61,71 @@
         </form>
       </div>
 
-      <div>+ Log</div>
+      <button class="botaoLog" type="button" onclick="abrirModalLog()">
+        + Log
+      </button>
     </header>
+    <div
+      class="modalLog"
+      id="modalLog"
+      aria-hidden="true"
+      onclick="fecharModalPorFora(event)"
+    >
+      <div
+        class="conteudoModalLog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalLog"
+      >
+        <button
+          class="fecharModalLog"
+          type="button"
+          onclick="fecharModalLog()"
+          aria-label="Fechar"
+        >
+          x
+        </button>
+        <h2 id="tituloModalLog">Novo log</h2>
+        <form class="formLog" onsubmit="salvarLog(event)">
+          <label for="livroLog">Livro</label>
+          <input
+            id="livroLog"
+            type="text"
+            placeholder="Nome do livro"
+            required
+          />
+
+          <label for="autorLog">Autor</label>
+          <input id="autorLog" type="text" placeholder="Nome do autor" />
+
+          <label for="statusLog">Status</label>
+          <select id="statusLog">
+            <option>Lendo</option>
+            <option>Quero ler</option>
+            <option>Concluido</option>
+          </select>
+
+          <div class="acoesModalLog">
+            <button
+              class="botaoCancelarLog"
+              type="button"
+              onclick="fecharModalLog()"
+            >
+              Cancelar
+            </button>
+            <button class="botaoSalvarLog" type="submit">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <section class="exibir-livros">
       <h1 id="titulo-principal">Nenhum resultado encontrado...</h1>
       <div id="container-resultados"></div>
     </section>
 
-    <script src="livros.js"></script>
+    <script src="../compartilhado/livros.js"></script>
     <script src="Pesquisa.js"></script>
+    <script src="../compartilhado/modal.js"></script>
   </body>
 </html>
