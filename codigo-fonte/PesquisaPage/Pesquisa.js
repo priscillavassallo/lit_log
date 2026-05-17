@@ -17,7 +17,8 @@ function buscarLivros() {
     (livro) =>
       livro.titulo.toLowerCase().includes(consulta) ||
       livro.genero.toLowerCase().includes(consulta) ||
-      livro.autor.toLowerCase().includes(consulta),
+      livro.autor.toLowerCase().includes(consulta) ||
+      livro.isbn.includes(consulta),
   );
 
   containerResultados.innerHTML = "";
@@ -25,7 +26,7 @@ function buscarLivros() {
   livrosFiltrados.forEach(
     (livroFiltrado) =>
       (containerResultados.innerHTML += `
-            <div class="cartao-livro">
+            <a href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livroFiltrado.isbn}"><div class="cartao-livro">
                 <div class="container-capa">
                     <img src="${livroFiltrado.capa}">
                     <h2>por ${livroFiltrado.autor}</h2>
@@ -37,6 +38,7 @@ function buscarLivros() {
                     <p id="genero">${livroFiltrado.genero}</p>
                 </div>
             </div>
+            </a>
         `),
   );
 }
