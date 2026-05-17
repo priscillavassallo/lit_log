@@ -35,35 +35,59 @@ async function loadBookByISBN() {
     };
 
     // OPEN LIBRARY (dados parciais)
-    const openData = await getOpenLibraryPT(isbn);
-    if (openData) {
-      console.log(openData);
-      finalBook = { ...finalBook, ...openData };
+    const jsonData = await getJson(isbn);
+    if (jsonData) {
+      finalBook = { ...finalBook, ...jsonData };
     }
-
-    // GOOGLE BOOKS PT (prioridade para descrição PT)
-    const googlePT = await getGoogleBookPT(isbn);
-    if (googlePT) {
-      finalBook.title ??= googlePT.title;
-      finalBook.authors ??= googlePT.authors;
-      finalBook.cover ??= googlePT.cover;
-
-      if (googlePT.description) {
-        finalBook.description = googlePT.description;
-        return renderBook(finalBook);
-        // achou descrição PT = acabou
+    if (!jsonData) {
+      const openData = await getOpenLibraryPT(isbn);
+      if (openData) {
+        console.log(openData);
+        finalBook = { ...finalBook, ...openData };
       }
     }
 
-    // GOOGLE BOOKS qualquer idioma
-    const googleAny = await getGoogleBookAnyLang(isbn);
-    if (googleAny) {
-      finalBook.title ??= googleAny.title;
-      finalBook.authors ??= googleAny.authors;
-      finalBook.cover ??= googleAny.cover;
+    // GOOGLE BOOKS PT (prioridade para descrição PT)
+    if (!jsonData) {
+      const googlePT = await getGoogleBookPT(isbn);
+      if (googlePT) {
+        finalBook.title ??= googlePT.title;
+        finalBook.authors ??= googlePT.authors;
+        finalBook.cover ??= googlePT.cover;
 
-      if (googleAny.description && !finalBook.description) {
-        finalBook.description = await translateToPT(googleAny.description);
+        if (googlePT.description) {
+          finalBook.description ??= googlePT.description;
+          return renderBook(finalBook);
+          // achou descrição PT = acabou
+        }
+      }
+    }
+    if (!jsonData) {
+      const openDataAny = await getOpenLibraryAny(isbn);
+      if (openDataAny) {
+        finalBook.title ??= openDataAny.title;
+        finalBook.authors ??= openDataAny.authors;
+        finalBook.cover ??= openDataAny.cover;
+        if (openDataAny.description && !finalBook.description) {
+          finalBook.description ??= await translateToPT(
+            openDataAny.description,
+          );
+          finalBook.description ??= openDataAny.description;
+        }
+      }
+    }
+    // GOOGLE BOOKS qualquer idioma
+    if (!jsonData) {
+      const googleAny = await getGoogleBookAnyLang(isbn);
+      if (googleAny && !jsonData) {
+        finalBook.title ??= googleAny.title;
+        finalBook.authors ??= googleAny.authors;
+        finalBook.cover ??= googleAny.cover;
+
+        if (googleAny.description && !finalBook.description) {
+          finalBook.description ??= await translateToPT(googleAny.description);
+        }
+        finalBook.description ??= googleAny.description;
       }
     }
 
@@ -77,6 +101,27 @@ async function loadBookByISBN() {
     console.error(err);
     showError("Erro ao carregar livro");
   }
+}
+async function getJson(isbn) {
+  console.log("procura json");
+  function checkIsbn(livro) {
+    return livro.isbn == isbn;
+  }
+  const livrosFiltrados = livros.filter(checkIsbn);
+
+  console.log(livrosFiltrados);
+  if (!livrosFiltrados[0]) {
+    return null;
+  }
+  if (livrosFiltrados) {
+    return {
+      title: livrosFiltrados[0].titulo,
+      authors: livrosFiltrados[0].autor,
+      description: livrosFiltrados[0].sinopse,
+      cover: livrosFiltrados[0].capa,
+    };
+  }
+  return null;
 }
 
 // OPEN LIBRARY - procura descrição em português
@@ -115,6 +160,29 @@ async function getOpenLibraryPT(isbn) {
       title: d.title,
       authors: d.authors?.map((a) => a.name).join(", "),
       description: descriptionPT, // pode vir null → fluxo continua
+      cover: book.thumbnail_url?.replace("-S.jpg", "-L.jpg"),
+    };
+  } catch {
+    return null;
+  }
+}
+
+async function getOpenLibraryAny(isbn) {
+  try {
+    console.log("ativou open lib");
+    const url = `https://openlibrary.org/api/books?bibkeys=ISBN:${isbn}&jscmd=details&format=json`;
+    const res = await fetch(url);
+    const data = await res.json();
+    console.log(data);
+    const book = data[`ISBN:${isbn}`];
+    if (!book?.details) return null;
+
+    const d = book.details;
+
+    return {
+      title: d.title,
+      authors: d.authors?.map((a) => a.name).join(", "),
+      description: d.description,
       cover: book.thumbnail_url?.replace("-S.jpg", "-L.jpg"),
     };
   } catch {
