@@ -1,23 +1,25 @@
-const entradaBusca = document.getElementById('entrada-busca');
-const botaoBusca = document.getElementById('botao-busca');
-const containerResultados = document.getElementById('container-resultados');
-const tituloPrincipal = document.getElementById('titulo-principal');
+const entradaBusca = document.getElementById("entrada-busca");
+const botaoBusca = document.getElementById("botao-busca");
+const containerResultados = document.getElementById("container-resultados");
+const tituloPrincipal = document.getElementById("titulo-principal");
 
 function buscarLivros() {
-    tituloPrincipal.innerHTML = `<h1 id="titulo-principal">Resultados para "${entradaBusca.value}"</h1>`;
+  tituloPrincipal.innerHTML = `Resultados para "${entradaBusca.value}"`;
 
-    const consulta = entradaBusca.value.toLowerCase();
+  const consulta = entradaBusca.value.toLowerCase();
 
-    const livrosFiltrados = livros.filter(livro =>
-        livro.titulo.toLowerCase().includes(consulta) ||
-        livro.genero.toLowerCase().includes(consulta) ||
-        livro.autor.toLowerCase().includes(consulta)
-    );
+  const livrosFiltrados = livros.filter(
+    (livro) =>
+      livro.titulo.toLowerCase().includes(consulta) ||
+      livro.genero.toLowerCase().includes(consulta) ||
+      livro.autor.toLowerCase().includes(consulta),
+  );
 
-    containerResultados.innerHTML = '';
+  containerResultados.innerHTML = "";
 
-    livrosFiltrados.forEach(livroFiltrado =>
-        containerResultados.innerHTML += `
+  livrosFiltrados.forEach(
+    (livroFiltrado) =>
+      (containerResultados.innerHTML += `
             <div class="cartao-livro">
                 <div class="container-capa">
                     <img src="${livroFiltrado.capa}">
@@ -30,8 +32,8 @@ function buscarLivros() {
                     <p id="genero">${livroFiltrado.genero}</p>
                 </div>
             </div>
-        `
-    );
+        `),
+  );
 }
 
-botaoBusca.addEventListener('click', buscarLivros);
+botaoBusca.addEventListener("click", buscarLivros);
