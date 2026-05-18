@@ -19,3 +19,5 @@ O site em HTML/CSS/JS é um projeto estático. É necessário implantá-lo em um
 #### Adicionado/Atualizado/Removido
 
 - Relação de artefatos ...
+
+
