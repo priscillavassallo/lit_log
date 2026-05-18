@@ -2,10 +2,7 @@ body {
   margin: 0;
   background-color: #dbdacd;
   font-family: "Regular", poppins, sans-serif;
-  background-image: url("../Img/Banner.png");
-  background-position-x: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  
 }
 
 header {
@@ -34,11 +31,15 @@ a {
 }
 
 #Banner {
+  background-image: url("../Img/Banner.png");
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: 40pc;
+  height: 30pc;
   font-size: 2pc;
   color: #ffffff;
   font-family:
