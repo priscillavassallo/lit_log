@@ -107,14 +107,59 @@ const livros = [
     isbn: "9780060883287",
     capa: "https://covers.openlibrary.org/b/isbn/9780060883287-M.jpg",
   },
-  {
-    titulo: "O Senhor dos Anéis",
+    {
+    titulo: "O Hobbit",
     autor: "J.R.R. Tolkien",
     genero: "Fantasia",
     sinopse:
-      "O hobbit Frodo Bolseiro parte numa jornada épica para destruir o Um Anel no Monte da Perdição, salvando a Terra-Média do Senhor das Trevas Sauron.",
-    isbn: "9780618640157",
-    capa: "https://covers.openlibrary.org/b/isbn/9780618640157-M.jpg",
+      "Bilbo Bolseiro embarca em uma aventura inesperada ao lado de anões e do mago Gandalf em busca de um tesouro guardado por um dragão.",
+    isbn: "9780547928227",
+    capa: "https://covers.openlibrary.org/b/isbn/9780547928227-L.jpg",
+  },
+  {
+    titulo: "A Sociedade do Anel",
+    autor: "J.R.R. Tolkien",
+    genero: "Fantasia",
+    sinopse:
+      "Frodo Bolseiro inicia sua jornada para destruir o Um Anel antes que ele caia nas mãos do Senhor do Escuro, Sauron.",
+    isbn: "9780547928210",
+    capa: "https://covers.openlibrary.org/b/isbn/9780547928210-L.jpg",
+  },
+  {
+    titulo: "As Duas Torres",
+    autor: "J.R.R. Tolkien",
+    genero: "Fantasia",
+    sinopse:
+      "A Sociedade se divide enquanto a guerra cresce na Terra-média e Frodo continua sua perigosa missão rumo a Mordor.",
+    isbn: "9780547928203",
+    capa: "https://covers.openlibrary.org/b/isbn/9780547928203-L.jpg",
+  },
+  {
+    titulo: "O Retorno do Rei",
+    autor: "J.R.R. Tolkien",
+    genero: "Fantasia",
+    sinopse:
+      "A batalha final pelo destino da Terra-média acontece enquanto Frodo enfrenta os últimos desafios para destruir o Anel.",
+    isbn: "9780547928197",
+    capa: "https://covers.openlibrary.org/b/isbn/9780547928197-L.jpg",
+  },
+  {
+    titulo: "O Silmarillion",
+    autor: "J.R.R. Tolkien",
+    genero: "Fantasia",
+    sinopse:
+      "Uma coletânea de lendas e histórias antigas da Terra-média, narrando a criação do mundo e as guerras contra Morgoth.",
+    isbn: "9780261102736",
+    capa: "https://covers.openlibrary.org/b/isbn/9780261102736-M.jpg",
+  },
+  {
+    titulo: "Contos Inacabados",
+    autor: "J.R.R. Tolkien",
+    genero: "Fantasia",
+    sinopse:
+      "Histórias e relatos inéditos que expandem os acontecimentos e personagens da Terra-média.",
+    isbn: "9780261103627",
+    capa: "https://covers.openlibrary.org/b/isbn/9780261103627-M.jpg",
   },
   {
     titulo: "O Hobbit",
@@ -125,14 +170,68 @@ const livros = [
     isbn: "9780547928227",
     capa: "https://covers.openlibrary.org/b/isbn/9780547928227-M.jpg",
   },
-  {
+   {
     titulo: "Harry Potter e a Pedra Filosofal",
     autor: "J.K. Rowling",
     genero: "Fantasia",
     sinopse:
-      "Harry Potter descobre que é um bruxo e parte para Hogwarts, escola de magia, onde enfrenta seu destino ligado ao vilão Voldemort.",
+      "Harry Potter descobre que é um bruxo e parte para Hogwarts, escola de magia, onde começa sua jornada contra Voldemort.",
     isbn: "9780439708180",
     capa: "https://covers.openlibrary.org/b/isbn/9780439708180-M.jpg",
+  },
+  {
+    titulo: "Harry Potter e a Câmara Secreta",
+    autor: "J.K. Rowling",
+    genero: "Fantasia",
+    sinopse:
+      "Harry retorna a Hogwarts e enfrenta uma ameaça misteriosa ligada à lendária Câmara Secreta.",
+    isbn: "9780439064873",
+    capa: "https://covers.openlibrary.org/b/isbn/9780439064873-M.jpg",
+  },
+  {
+    titulo: "Harry Potter e o Prisioneiro de Azkaban",
+    autor: "J.K. Rowling",
+    genero: "Fantasia",
+    sinopse:
+      "Harry descobre segredos sobre o passado de seus pais enquanto um perigoso fugitivo escapa de Azkaban.",
+    isbn: "9780747542155",
+    capa: "https://covers.openlibrary.org/b/isbn/9780747542155-M.jpg",
+  },
+  {
+    titulo: "Harry Potter e o Cálice de Fogo",
+    autor: "J.K. Rowling",
+    genero: "Fantasia",
+    sinopse:
+      "Harry é escolhido misteriosamente para participar do Torneio Tribruxo, enfrentando desafios mortais.",
+    isbn: "9780747546245",
+    capa: "https://covers.openlibrary.org/b/isbn/9780747546245-M.jpg",
+  },
+  {
+    titulo: "Harry Potter e a Ordem da Fênix",
+    autor: "J.K. Rowling",
+    genero: "Fantasia",
+    sinopse:
+      "Com Voldemort de volta, Harry enfrenta a desconfiança do Ministério da Magia e forma a Armada de Dumbledore.",
+    isbn: "9780747551003",
+    capa: "https://covers.openlibrary.org/b/isbn/9780747551003-M.jpg",
+  },
+  {
+    titulo: "Harry Potter e o Enigma do Príncipe",
+    autor: "J.K. Rowling",
+    genero: "Fantasia",
+    sinopse:
+      "Harry aprende mais sobre o passado de Voldemort enquanto Hogwarts se torna cada vez mais perigosa.",
+    isbn: "9780747581086",
+    capa: "https://covers.openlibrary.org/b/isbn/9780747581086-M.jpg",
+  },
+  {
+    titulo: "Harry Potter e as Relíquias da Morte",
+    autor: "J.K. Rowling",
+    genero: "Fantasia",
+    sinopse:
+      "Harry, Rony e Hermione partem em busca das Horcruxes para derrotar Voldemort de uma vez por todas.",
+    isbn: "9780747591054",
+    capa: "https://covers.openlibrary.org/b/isbn/9780747591054-M.jpg",
   },
   {
     titulo: "O Grande Gatsby",
@@ -689,8 +788,8 @@ const livros = [
     genero: "Terror",
     sinopse:
       "Um grupo de amigos em Derry, Maine, enfrenta uma entidade maligna que se manifesta como o palhaço Pennywise, revisitando o terror da infância décadas depois.",
-    isbn: "9781501156700",
-    capa: "https://covers.openlibrary.org/b/isbn/9781501156700-M.jpg",
+    isbn: "9781501142970",
+    capa: "https://covers.openlibrary.org/b/isbn/9781501142970-M.jpg",
   },
   {
     titulo: "A Sangue Frio",

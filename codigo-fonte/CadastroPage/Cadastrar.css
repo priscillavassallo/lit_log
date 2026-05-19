@@ -35,7 +35,6 @@ label {
 input {
   width: 300px;
   height: 30px;
-  border-radius: 5px;
   border: 1px solid #ccc;
   padding: 5px;
   font-size: 20px;
@@ -64,7 +63,7 @@ button {
 .container {
   background-color: #fff;
   display: flex;
-  max-width: 900px;
+  max-width: 700px;
   width: 100%;
   box-shadow: 10px 4px 8px rgba(0, 0, 0, 0.6);
 }
