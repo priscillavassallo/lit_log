@@ -1,131 +1,135 @@
 body {
-    margin: 0;
-    background-color: #DBDACD;
-    font-family: 'Regular', Poppins, sans-serif;
+  margin: 0;
+  background-color: #dbdacd;
+  font-family: "Regular", Poppins, sans-serif;
 }
 
 header {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 90px;
-    grid-template-columns: 1fr 1fr 5fr 1fr 1fr 1fr 1fr 1fr;
-    font-size: 20px;
-    background-color: rgba(219, 218, 205, 0.85);
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto auto auto auto;
+  align-items: center;
+  gap: 24px;
+  padding: 0 24px;
+  font-size: 20px;
+  background-color: white;
+  position: sticky;
+  top: 0;
 }
 
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .conteudo {
-    padding: 50px 8%;
+  padding: 50px 8%;
 }
 
 .tituloPagina {
-    text-align: center;
-    margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .tituloPagina h1 {
-    margin: 0;
-    font-size: 60px;
-    font-family: 'Regular', Cormorant Garamond, serif;
-    color: #28251f;
+  margin: 0;
+  font-size: 60px;
+  font-family:
+    "Regular",
+    Cormorant Garamond,
+    serif;
+  color: #28251f;
 }
 
 .tituloPagina p {
-    font-size: 20px;
-    color: #3d3a32;
+  font-size: 20px;
+  color: #3d3a32;
 }
 
 .filtros {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
 }
 
 .botaoFiltro {
-    padding: 12px 22px;
-    background-color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
+  padding: 12px 22px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .botaoFiltro.ativo {
-    background-color: #28251f;
-    color: #ffffff;
+  background-color: #28251f;
+  color: #ffffff;
 }
 
 .gradeLivros {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
 }
 
 .cardLivro {
-    background-color: rgba(255, 255, 255, 0.55);
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
+  background-color: rgba(255, 255, 255, 0.55);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
 }
 
 .capaLivro {
-    width: 100%;
-    height: 250px;
-    background-color: #d4d4d4;
-    border-radius: 5px;
-    margin-bottom: 15px;
+  width: 100%;
+  height: 250px;
+  background-color: #d4d4d4;
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
 .cardLivro h3 {
-    margin: 10px 0 5px 0;
-    color: #28251f;
+  margin: 10px 0 5px 0;
+  color: #28251f;
 }
 
 .cardLivro p {
-    margin: 0 0 15px 0;
-    color: #5c584d;
+  margin: 0 0 15px 0;
+  color: #5c584d;
 }
 
 .status {
-    display: inline-block;
-    padding: 7px 12px;
-    border-radius: 20px;
-    font-size: 14px;
+  display: inline-block;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 14px;
 }
 
 .lendo {
-    background-color: #ede2b8;
+  background-color: #ede2b8;
 }
 
 .queroLer {
-    background-color: #d8d2c0;
+  background-color: #d8d2c0;
 }
 
 .lido {
-    background-color: #c7d6bd;
+  background-color: #c7d6bd;
 }
 
 @media (max-width: 768px) {
-    header {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 10px;
-        padding-bottom: 15px;
-    }
+  header {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 10px;
+    padding-bottom: 15px;
+  }
 
-    .tituloPagina h1 {
-        font-size: 45px;
-    }
+  .tituloPagina h1 {
+    font-size: 45px;
+  }
 
-    .conteudo {
-        padding: 35px 5%;
-    }
+  .conteudo {
+    padding: 35px 5%;
+  }
 }
