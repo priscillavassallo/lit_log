@@ -110,7 +110,7 @@ button {
   margin-top: 1rem;
 }
 
-.submit {
+#submit {
   background-color: #000000;
   color: #fff;
   padding: 0.8rem;
@@ -121,7 +121,7 @@ button {
   transition: 0.8s;
 }
 
-.submit:hover {
+#submit:hover {
   background-color: #dbdacd;
   color: #000;
 }
