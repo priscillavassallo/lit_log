@@ -6,6 +6,8 @@ const form = document.getElementById("formulario-busca");
 const overlay = document.getElementById('overlay')
 const btnCancelarModal = document.getElementById('cancelar')
 const btnSalvarModal = document.getElementById('salvar')
+const selectListas = document.getElementById('listasUsuario')
+let livroClicado = null
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -47,7 +49,7 @@ function buscarLivros() {
                    
                     <p>${livroFiltrado.sinopse}</p>
                     <p id="genero">${livroFiltrado.genero}</p>
-                    <button class="addLista">Adicionar a lista</button>
+                    <button class="addLista" data-isbn="${livroFiltrado.isbn}">Adicionar a lista</button>
                 </div>
             </div>
            
@@ -55,10 +57,13 @@ function buscarLivros() {
 
   );
 
-}
+ }
 botaoBusca.addEventListener("click", buscarLivros);
 containerResultados.addEventListener('click', (e)=>{
   if(e.target.classList.contains('addLista')){
+    
+    livroClicado = e.target.dataset.isbn
+
     overlay.style.display = 'flex'
     renderListas()
   }
@@ -79,14 +84,34 @@ overlay.addEventListener('click',(e)=>{
 const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
 
 function renderListas(){
-  const selectListas = document.getElementById('listasUsuario')
+  
     selectListas.innerHTML = '';
   usuarioLogado.listas.forEach(lista=>{
-    const listaSelect = document.createElement('option')
-     listaSelect.value = lista.nome;
-    listaSelect.textContent = lista.nome;
-    selectListas.appendChild(listaSelect)
+    const optionLista = document.createElement('option')
+    optionLista.setAttribute('data-list', lista.nome)
+     optionLista.value = lista.nome;
+    optionLista.textContent = lista.nome;
+    selectListas.appendChild(optionLista)
 
   })
+
+  vincularLista()
     
 }
+
+
+function salvarLivro() {
+  const nomeLista = selectListas.value;
+
+  const lista = usuarioLogado.listas.find(
+    (lista) => lista.nome === nomeLista
+  );
+
+
+  lista.livros.push(livroClicado)
+
+  localStorage.setItem('usuarioLogado',JSON.stringify(usuarioLogado))
+
+}
+
+btnSalvarModal.addEventListener('click', salvarLivro)
