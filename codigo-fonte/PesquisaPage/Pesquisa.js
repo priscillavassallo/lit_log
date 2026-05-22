@@ -3,6 +3,7 @@ const botaoBusca = document.getElementById("botao-busca");
 const containerResultados = document.getElementById("container-resultados");
 const tituloPrincipal = document.getElementById("titulo-principal");
 const form = document.getElementById("formulario-busca");
+const modal = document.getElementById('modalAddLivro')
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -18,7 +19,7 @@ function buscarLivros() {
       livro.titulo.toLowerCase().includes(consulta) ||
       livro.genero.toLowerCase().includes(consulta) ||
       livro.autor.toLowerCase().includes(consulta) ||
-      livro.isbn.includes(consulta),
+      livro.isbn.includes(consulta)
   );
 
   containerResultados.innerHTML = "";
@@ -26,21 +27,46 @@ function buscarLivros() {
   livrosFiltrados.forEach(
     (livroFiltrado) =>
       (containerResultados.innerHTML += `
-            <a href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livroFiltrado.isbn}"><div class="cartao-livro">
+           
+            <div class="cartao-livro">
+
                 <div class="container-capa">
-                    <img src="${livroFiltrado.capa}">
-                    <h2>por ${livroFiltrado.autor}</h2>
+
+                  <a href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livroFiltrado.isbn}"> 
+                  <img src="${livroFiltrado.capa}" onerror="this.src='../Img/sem-capa.png'">
+                  </a>
+                  <h2>por ${livroFiltrado.autor}</h2>
                 </div>
 
                 <div class="titulo-sinopse">
-                    <h1>${livroFiltrado.titulo}</h1>
+
+                <a href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livroFiltrado.isbn}">  <h1>${livroFiltrado.titulo}</h1></a>
+
+                   
                     <p>${livroFiltrado.sinopse}</p>
                     <p id="genero">${livroFiltrado.genero}</p>
+                    <button class="addLista">Adicionar a lista</button>
                 </div>
             </div>
-            </a>
-        `),
+           
+        `)
+
   );
+
+     const addListButtons = document.querySelectorAll('.addLista')
+     addListButtons.forEach((btn, index)=>{
+      btn.addEventListener('click', (index)=>{
+        modal.innerHTML=`<div id= cardModal>
+        
+        
+        </div>`
+
+
+      })
+     })
 }
 
 botaoBusca.addEventListener("click", buscarLivros);
+
+
+
