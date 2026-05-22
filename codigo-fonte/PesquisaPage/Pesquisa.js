@@ -3,7 +3,9 @@ const botaoBusca = document.getElementById("botao-busca");
 const containerResultados = document.getElementById("container-resultados");
 const tituloPrincipal = document.getElementById("titulo-principal");
 const form = document.getElementById("formulario-busca");
-const modal = document.getElementById('modalAddLivro')
+const overlay = document.getElementById('overlay')
+const btnCancelarModal = document.getElementById('cancelar')
+const btnSalvarModal = document.getElementById('salvar')
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -53,20 +55,25 @@ function buscarLivros() {
 
   );
 
-     const addListButtons = document.querySelectorAll('.addLista')
-     addListButtons.forEach((btn, index)=>{
-      btn.addEventListener('click', (index)=>{
-        modal.innerHTML=`<div id= cardModal>
-        
-        
-        </div>`
+}
+botaoBusca.addEventListener("click", buscarLivros);
+containerResultados.addEventListener('click', (e)=>{
+  if(e.target.classList.contains('addLista')){
+    overlay.style.display = 'flex'
+  }
+})
 
 
-      })
-     })
+function ocultarOverlay(){
+  overlay.style.display = 'none'
 }
 
-botaoBusca.addEventListener("click", buscarLivros);
+overlay.addEventListener('click',(e)=>{
+   if ((e.target === overlay) || (e.target === btnCancelarModal)) {
+    ocultarOverlay();
+   }
+})
+
 
 
 

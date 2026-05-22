@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="icon" href="../Img/Logo.png" type="image/png" />
-    <link rel="stylesheet" href="../compartilhado/modal.css" />
 
+    <link rel="stylesheet" href="../compartilhado/modal.css" />
     <link rel="stylesheet" href="Pesquisa.css" />
+
     <title>Pesquisa | LitLog</title>
   </head>
 
@@ -17,7 +18,7 @@
         <a href="../HomePage/Home.html">
           <img
             src="../Img/Logo.png"
-            alt=""
+            alt="Logo"
             height="70px"
             style="margin-left: 5pc; margin-right: 5px; margin-top: 10px"
           />
@@ -40,17 +41,16 @@
         <a href="../PesquisaPage/Pesquisa.html">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
+            viewBox="0 0 50 50"
             width="100"
             height="100"
-            viewBox="0 0 50 50"
           >
             <path
-              d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+              d="M 21 3 C 11.6 3 4 10.6 4 20 C 4 29.4 11.6 37 21 37 C 24.35 37 27.46 36.01 30.09 34.34 L 42.37 46.62 L 46.62 42.37 L 34.5 30.28 C 36.68 27.42 38 23.87 38 20 C 38 10.6 30.4 3 21 3 Z M 21 7 C 28.2 7 34 12.8 34 20 C 34 27.2 28.2 33 21 33 C 13.8 33 8 27.2 8 20 C 8 12.8 13.8 7 21 7 Z"
             ></path>
           </svg>
         </a>
+
         <form id="formulario-busca">
           <input
             type="text"
@@ -65,6 +65,8 @@
         + Log
       </button>
     </header>
+
+    <!-- MODAL LOG -->
     <div
       class="modalLog"
       id="modalLog"
@@ -85,15 +87,12 @@
         >
           x
         </button>
+
         <h2 id="tituloModalLog">Novo log</h2>
+
         <form class="formLog" onsubmit="salvarLog(event)">
           <label for="livroLog">Livro</label>
-          <input
-            id="livroLog"
-            type="text"
-            placeholder="Nome do livro"
-            required
-          />
+          <input id="livroLog" type="text" placeholder="Nome do livro" required />
 
           <label for="autorLog">Autor</label>
           <input id="autorLog" type="text" placeholder="Nome do autor" />
@@ -113,18 +112,36 @@
             >
               Cancelar
             </button>
-            <button class="botaoSalvarLog" type="submit">Salvar</button>
+
+            <button class="botaoSalvarLog" type="submit">
+              Salvar
+            </button>
           </div>
         </form>
       </div>
     </div>
 
+    <!-- RESULTADOS -->
     <section class="exibir-livros">
       <h1 id="titulo-principal">Nenhum resultado encontrado...</h1>
       <div id="container-resultados"></div>
     </section>
 
-    <div id="modalAddLivro"></div>
+    <!-- MODAL ADD LIVRO -->
+    <div id="overlay">
+      <div class="modal">
+        <h2>Selecione a lista</h2>
+      <div><select name="" id="">
+        <option value="">terror</option>
+        <option value="">comedia</option>
+      </select></div>
+
+      <div id="btnsModalConainer">
+        <button id="cancelar">Cancelar</button>
+        <button id="salvar">Salvar</button>
+      </div>
+      </div>
+    </div>
 
     <script src="../compartilhado/livros.js"></script>
     <script src="Pesquisa.js"></script>
