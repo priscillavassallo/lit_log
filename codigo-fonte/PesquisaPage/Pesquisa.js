@@ -61,7 +61,13 @@ function buscarLivros() {
 botaoBusca.addEventListener("click", buscarLivros);
 containerResultados.addEventListener('click', (e)=>{
   if(e.target.classList.contains('addLista')){
-    
+    if(usuarioLogado.listas.length ===0){
+      const redireciona = confirm(`Nenhuma lista criada pressione OK para criar `)
+      if(redireciona){
+        window.location.href ='../List/list.html'
+      }
+      return
+    }
      const isbn = e.target.dataset.isbn
     livroClicado = livros.find((livro)=> livro.isbn===isbn)
 
@@ -76,7 +82,7 @@ function ocultarOverlay(){
 }
 
 overlay.addEventListener('click',(e)=>{
-   if ((e.target === overlay) || (e.target === btnCancelarModal)) {
+   if ((e.target === overlay) || (e.target === btnCancelarModal) || (e.target === btnSalvarModal)) {
     ocultarOverlay();
    }
 })
@@ -106,10 +112,18 @@ function salvarLivro() {
     (lista) => lista.nome === nomeLista
   );
 
+  const livroDuplicado =lista.livros.some((livro)=> livro.isbn===livroClicado.isbn)
+
+  if(livroDuplicado){
+    alert('O livro já está na lista')
+    return
+  }
 
   lista.livros.push(livroClicado)
 
   localStorage.setItem('usuarioLogado',JSON.stringify(usuarioLogado))
+
+  alert('Livro salvo com sucesso!')
 
 }
 
