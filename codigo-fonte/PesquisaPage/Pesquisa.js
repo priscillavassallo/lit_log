@@ -60,6 +60,7 @@ botaoBusca.addEventListener("click", buscarLivros);
 containerResultados.addEventListener('click', (e)=>{
   if(e.target.classList.contains('addLista')){
     overlay.style.display = 'flex'
+    renderListas()
   }
 })
 
@@ -75,5 +76,17 @@ overlay.addEventListener('click',(e)=>{
 })
 
 
+const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
 
+function renderListas(){
+  const selectListas = document.getElementById('listasUsuario')
+    selectListas.innerHTML = '';
+  usuarioLogado.listas.forEach(lista=>{
+    const listaSelect = document.createElement('option')
+     listaSelect.value = lista.nome;
+    listaSelect.textContent = lista.nome;
+    selectListas.appendChild(listaSelect)
 
+  })
+    
+}
