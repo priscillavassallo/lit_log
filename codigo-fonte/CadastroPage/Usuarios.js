@@ -16,8 +16,7 @@ btCadastrar.addEventListener('click', (e)=>{
 
     usuarios.push(novoUsuario)
     localStorage.setItem('usuarios', JSON.stringify(usuarios))
+    localStorage.setItem('usuarioLogado',JSON.stringify(novoUsuario))
     alert('Usuario cadastrado com sucesso!')
     window.location.href='../HomePage/Home.html'
 })
-
-console.log(usuarios)
