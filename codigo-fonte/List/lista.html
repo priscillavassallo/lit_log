@@ -9,14 +9,25 @@
 <body>
 
     <h1 id="titulo-lista"></h1>
+    <span id="aviso">Pesquise por um livro e adicione a lista</span>
+    <span id="pesq"><a href="../PesquisaPage/Pesquisa.html" target="_blank">Pesquisar Livro>></a></span>
 
     <script>
-
     const parametros = new URLSearchParams(window.location.search);
-
     const nome = parametros.get("nome");
-
     document.getElementById("titulo-lista").textContent = nome;
+
+    
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
+    const aviso = document.getElementById('aviso')
+    const listaAtual = usuarioLogado.listas.find(lista=>
+        lista.nome === nome
+    )
+
+    if(listaAtual.livros.length === 0){
+        aviso.textContent = 'Sua lista está vazia, experimente pesquisar por um livro e adicione a lista'
+    }
+
 
     </script>
 

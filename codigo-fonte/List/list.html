@@ -49,9 +49,13 @@
 
 </div>
 
+<script src="../CadastroPage/Usuarios.js"></script>
+
 <script>
 
 console.log("JS funcionando");
+
+
 
 const botao = document.getElementById("abrir-popup");
 
@@ -61,9 +65,11 @@ const overlay = document.querySelector(".overlay");
 
 const input = document.getElementById("nome-lista");
 
-const criarLista = document.getElementById("criar-lista-popup");
+const btnCriar = document.getElementById("criar-lista-popup");
 
 const grid = document.getElementById("list-grid");
+
+const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
 
 botao.addEventListener("click", () => {
 
@@ -73,12 +79,26 @@ botao.addEventListener("click", () => {
 
 });
 
-criarLista.addEventListener("click", () => {
-
+function criarLista(){
+    
     const nomeLista = input.value;
-
     if(nomeLista === "") return;
 
+    usuarioLogado.listas.push(
+        {   nome: nomeLista,
+        livros: []
+        }
+    )
+
+  localStorage.setItem('usuarioLogado',JSON.stringify(usuarioLogado))
+   const ultimaLista = usuarioLogado.listas.at(-1)
+   renderizarLista(ultimaLista)
+
+  
+
+}
+
+function renderizarLista(lista){
     const novoCard = document.createElement("div");
 
     novoCard.classList.add("list-card");
@@ -90,25 +110,18 @@ criarLista.addEventListener("click", () => {
     </div>
 
     <div class="list-info">
-        <h2>${nomeLista}</h2>
-        <p>0 livros</p>
+        <h2>${lista.nome}</h2>
+        <p>${lista.livros.length}</p>
     </div>
 
-`;
+    `;
+
 
     novoCard.addEventListener("click", () => {
 
-    window.location.href = `lista.html?nome=${nomeLista}`;
+    window.location.href = `lista.html?nome=${lista.nome}`;
 
-});
-
-    overlay.addEventListener("click", () => {
-
-    popup.classList.add("hidden");
-
-    overlay.classList.add("hidden");
-
-});
+    });
 
     grid.appendChild(novoCard);
 
@@ -117,8 +130,14 @@ criarLista.addEventListener("click", () => {
     popup.classList.add("hidden");
 
     overlay.classList.add("hidden");
+}
 
+btnCriar.addEventListener("click",criarLista)
+usuarioLogado.listas.forEach(lista => {
+    renderizarLista(lista)
+    
 });
+
 
 overlay.addEventListener("click", () => {
 
@@ -127,6 +146,8 @@ overlay.addEventListener("click", () => {
     overlay.classList.add("hidden");
 
 });
+
+
 
 
 </script>
