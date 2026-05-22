@@ -111,7 +111,7 @@ function renderizarLista(lista){
 
     <div class="list-info">
         <h2>${lista.nome}</h2>
-        <p>${lista.livros.length}</p>
+        <p>${lista.livros.length===0? 'Nenhum livro':lista.livros.length>1?lista.livros.length + ' livros':'1 Livro'}</p>
     </div>
 
     `;

@@ -37,7 +37,7 @@ function buscarLivros() {
                 <div class="container-capa">
 
                   <a href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livroFiltrado.isbn}"> 
-                  <img src="${livroFiltrado.capa}" onerror="this.src='../Img/sem-capa.png'">
+                  <img src="${livroFiltrado.capa}">
                   </a>
                   <h2>por ${livroFiltrado.autor}</h2>
                 </div>
@@ -62,7 +62,8 @@ botaoBusca.addEventListener("click", buscarLivros);
 containerResultados.addEventListener('click', (e)=>{
   if(e.target.classList.contains('addLista')){
     
-    livroClicado = e.target.dataset.isbn
+     const isbn = e.target.dataset.isbn
+    livroClicado = livros.find((livro)=> livro.isbn===isbn)
 
     overlay.style.display = 'flex'
     renderListas()
@@ -94,8 +95,6 @@ function renderListas(){
     selectListas.appendChild(optionLista)
 
   })
-
-  vincularLista()
     
 }
 
