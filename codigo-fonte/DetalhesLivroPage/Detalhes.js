@@ -273,3 +273,7 @@ function showError(msg) {
   authorEl.innerText = "";
   descEl.innerText = "";
 }
+
+
+// Funcionalidade adicionar a lista
+
