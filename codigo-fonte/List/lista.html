@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Minha Lista</title>
+    <link rel="stylesheet" href="lista.css">
 </head>
 
 <body>
@@ -30,10 +31,16 @@
     }
     listaAtual.livros.forEach(livro => {
         listaHTML.innerHTML+=`
-        <div id="card-container">
-            <img src="${livro.capa}">
-            <h3>${livro.titulo}</h3>   
-        <div>
+        
+            <div id="card-container">
+                <a href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}"><img src="${livro.capa}"></a>
+                
+                <h3>
+                    <a style=" text-decoration: none; "href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}">
+                    ${livro.titulo}</a>
+                </h3>   
+            </div>
+
         `
     });
 

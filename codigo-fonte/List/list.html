@@ -82,6 +82,11 @@ botao.addEventListener("click", () => {
 function criarLista(){
     
     const nomeLista = input.value;
+    const listaDuplicada = usuarioLogado.listas.some((lista)=> lista.nome === nomeLista)
+    if(listaDuplicada) {
+        alert('Esse nome de lista já está em uso. Use outro nome')
+        return
+    }
     if(nomeLista === "") return;
 
     usuarioLogado.listas.push(
@@ -112,10 +117,33 @@ function renderizarLista(lista){
     <div class="list-info">
         <h2>${lista.nome}</h2>
         <p>${lista.livros.length===0? 'Nenhum livro':lista.livros.length>1?lista.livros.length + ' livros':'1 Livro'}</p>
+        <div>
+            <button class="excluirL" data-lista="${lista.nome}">Excluir lista</button>
+        </div>
     </div>
 
     `;
+    
+const btnsExcluir = document.querySelectorAll('.excluirL')
 
+btnsExcluir.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        const listaAtual = e.target.dataset.lista
+
+        const indexL = usuarioLogado.listas.findIndex(
+            (lista) => lista.nome === listaAtual
+        )
+
+        usuarioLogado.listas.splice(indexL, 1)
+        localStorage.setItem(
+    'usuarioLogado',
+    JSON.stringify(usuarioLogado)
+)
+        novoCard.remove()
+    })
+})
 
     novoCard.addEventListener("click", () => {
 
