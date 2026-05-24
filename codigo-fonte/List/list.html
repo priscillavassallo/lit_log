@@ -124,26 +124,21 @@ function renderizarLista(lista){
 
     `;
     
-const btnsExcluir = document.querySelectorAll('.excluirL')
+const btnExcluir = novoCard.querySelector('.excluirL')
+btnExcluir.addEventListener('click', (e)=>{
+    e.stopPropagation()
 
-btnsExcluir.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault()
-
-        const listaAtual = e.target.dataset.lista
-
-        const indexL = usuarioLogado.listas.findIndex(
-            (lista) => lista.nome === listaAtual
-        )
-
-        usuarioLogado.listas.splice(indexL, 1)
-        localStorage.setItem(
-    'usuarioLogado',
-    JSON.stringify(usuarioLogado)
-)
-        novoCard.remove()
-    })
+    const btnClicado = e.target.dataset.lista
+    const cardSelecionado = usuarioLogado.listas.findIndex((lista)=>lista.nome=== btnClicado)
+    usuarioLogado.listas.splice(cardSelecionado,1)
+    const respExcluir = confirm('Sua lista será excluída permanentemente. Pressione OK para continuar.')
+    if(respExcluir){
+    localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado))
+    location.reload()
+    }
+    
 })
+
 
     novoCard.addEventListener("click", () => {
 
