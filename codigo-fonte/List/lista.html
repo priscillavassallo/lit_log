@@ -4,19 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Minha Lista</title>
+    <link rel="stylesheet" href="lista.css">
 </head>
 
 <body>
 
     <h1 id="titulo-lista"></h1>
+    <span id="aviso">Pesquise por um livro e adicione a lista</span>
+    <span id="pesq"><a href="../PesquisaPage/Pesquisa.html" target="_blank">Pesquisar Livro>></a></span>
+    <div id="lista"></div>
 
     <script>
-
     const parametros = new URLSearchParams(window.location.search);
-
     const nome = parametros.get("nome");
-
     document.getElementById("titulo-lista").textContent = nome;
+
+    const listaHTML =document.getElementById('lista')
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'))
+    const aviso = document.getElementById('aviso')
+    const listaAtual = usuarioLogado.listas.find(lista=>
+        lista.nome === nome
+    )
+
+    if(listaAtual.livros.length === 0){
+        aviso.textContent = 'Sua lista está vazia, experimente pesquisar por um livro e adicione a lista'
+    }
+
+function renderLista(listaAtual){
+    listaAtual.livros.forEach(livro => {
+        listaHTML.innerHTML+=`
+        
+            <div id="card-container">
+                <a href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}"><img src="${livro.capa}"></a>
+                
+                <h3>
+                    <a style=" text-decoration: none; "href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}">
+                    ${livro.titulo}</a>
+                </h3> 
+                <div><button class="removerL" data-isbn =${livro.isbn}>Remover</button></div>  
+            </div>
+
+        `
+    });
+
+    const btnsRemover = document.querySelectorAll('.removerL')
+    btnsRemover.forEach((btn)=>{
+        btn.addEventListener('click', (e)=>{
+            const btnClicado = e.target.dataset.isbn
+           const livroSelecionado = listaAtual.livros.findIndex((livro)=> livro.isbn === btnClicado)
+           listaAtual.livros.splice(livroSelecionado,1)
+           localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado))
+           location.reload()
+        })
+    })
+
+
+}
+ renderLista(listaAtual)
+    window.addEventListener('focus', () => {
+    location.reload();
+    });
 
     </script>
 

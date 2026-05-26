@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 26/05/2026 01:27
+**Última atualização:** 26/05/2026 01:45
 
 ---
 
@@ -10,10 +10,10 @@
 |---------------------------------|-----------|-----------|-----------|------------|----------------|-----------------|
 | Carlos                          |         6 |        26 |        14 |          2 |              6 |               1 |
 | Carlos Eduardo Ribeiro da Silva |        11 |      8900 |        91 |         76 |              3 |               9 |
-| Gabriel Clemente Ribeiro        |        43 |      1671 |       902 |         24 |             27 |               2 |
+| Gabriel Clemente Ribeiro        |        58 |      2285 |      1081 |         31 |             27 |               2 |
 | Gustavo Lima                    |        14 |       258 |       120 |          5 |             14 |               2 |
 | Priscilla Vassallo              |        25 |       266 |       199 |          2 |             25 |               1 |
-| github-actions[bot]             |       122 |       775 |       695 |          3 |            122 |               1 |
+| github-actions[bot]             |       123 |       784 |       702 |          3 |            123 |               1 |
 | github-classroom[bot]           |         2 |      1548 |         0 |         19 |              2 |               3 |
 | iago oliveira garcia            |         3 |       368 |       174 |         17 |              0 |               0 |
 | iagofalquer                     |         9 |        98 |       119 |          1 |              9 |               1 |
@@ -24,7 +24,7 @@
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-19**: Carlos Eduardo Ribeiro da Silva: 1, Gabriel Clemente Ribeiro: 2, github-actions[bot]: 2, priscillavassallo: 7
+**2026-05-19**: Carlos Eduardo Ribeiro da Silva: 1, Gabriel Clemente Ribeiro: 17, github-actions[bot]: 3, priscillavassallo: 7
 
 **2026-05-12**: Carlos Eduardo Ribeiro da Silva: 1, Gabriel Clemente Ribeiro: 1, github-actions[bot]: 6, iago oliveira garcia: 2, priscillavassallo: 20
 
