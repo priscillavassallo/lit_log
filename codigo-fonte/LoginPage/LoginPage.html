@@ -27,7 +27,7 @@
 
     <section class="section">
       <div class="container">
-        <form class="form-container" action="../HomePage/Home.html">
+        <form class="form-container" id="formCadastro" >
           <div class="title-form">
             <h1>Login</h1>
           </div>
@@ -38,6 +38,7 @@
             <input
               type="email"
               name="email"
+              id="email"
               placeholder="voce@exemplo.com"
               required
             />
@@ -48,6 +49,7 @@
               <input
                 type="password"
                 name="password"
+                id="senha"
                 placeholder="Insira sua senha"
                 required
               />
@@ -57,6 +59,12 @@
 
           <div class="btn-container">
             <button type="submit" class="submit">Entrar</button>
+            <p>
+              Não tem uma conta?
+              <a href="../CadastroPage/Cadastrar.html"
+                ><span class="cadastrar-link">Cadastre-se</span></a
+              >
+            </p>
           </div>
         </form>
 
@@ -68,5 +76,6 @@
         </div>
       </div>
     </section>
+    <script src="ValidaçãoLogin.js"></script>
   </body>
 </html>
