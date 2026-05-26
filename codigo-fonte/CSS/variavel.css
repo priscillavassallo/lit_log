@@ -1,0 +1,43 @@
+:root {
+  --color-primary: #191522;
+  --color-secondary: #262238;
+
+  --color-background: #E7E0DA;
+  --color-surface: #F3EFEA;
+  --color-white: #FFFFFF;
+
+  --color-text: #1F1F1F;
+  --color-text-light: #6F6A73;
+
+  --color-border: #CFC7C0;
+  --color-hover: #322C49;
+
+  --font-primary: 'Poppins', sans-serif;
+  --font-title: 'Cormorant Garamond', serif;
+
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 24px;
+  --text-2xl: 32px;
+  --text-3xl: 48px;
+  --text-4xl: 64px;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-full: 999px;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.12);
+
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
