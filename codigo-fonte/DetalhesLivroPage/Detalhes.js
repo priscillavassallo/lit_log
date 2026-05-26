@@ -240,10 +240,7 @@ function showError(msg) {
   descEl.innerText = "";
 }
 
-
-// ==========================
-// MODAL LISTA (IGUAL BUSCA)
-// ==========================
+//Modal adicionar a lista
 
 const isbnUrl = new URLSearchParams(window.location.search).get("isbn");
 
