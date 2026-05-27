@@ -254,6 +254,13 @@ let usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 let livroClicado = null;
 
 btnAdd.addEventListener("click", () => {
+   if (usuarioLogado.listas.length === 0) {
+    const redireciona = confirm(`Nenhuma lista criada pressione OK para criar`);
+    if (redireciona) {
+      window.location.href = '../List/list.html';
+    }
+    return;
+  }
   overlay.style.display = "flex";
   renderListas();
 });
@@ -272,15 +279,6 @@ function renderListas() {
 
 function salvarLivro() {
   const nomeLista = selectListas.value;
-
-  if (usuarioLogado.listas.length === 0) {
-    const redireciona = confirm(`Nenhuma lista criada pressione OK para criar`);
-    if (redireciona) {
-      window.location.href = '../List/list.html';
-    }
-    return;
-  }
-
   const lista = usuarioLogado.listas.find(
     (lista) => lista.nome === nomeLista
   );
