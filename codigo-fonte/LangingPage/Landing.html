@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="icon" href="../Img/Logo.png" type="image/png">
-    <link rel="stylesheet" href="Landing.css">
+    <link rel="stylesheet" href="../CSS/variavel.css" />
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet" href="../CSS/componentes.css" />
+    
+    <link rel="stylesheet" href="Landing.css" />
     <title>Litlog</title>
 </head>
 <body>
-    <header>
-        <div class="margem" id="LogoLandinPage">
-            <img src="../Img/Logo.png" alt="" height="70px" style="margin: 10px;">
-        </div>
-        <div style="font-size: 30px;">
-            Litlog
-        </div>
-        <div></div>
-        <div>
-            <a href="../LoginPage/LoginPage.html" style="margin: 5px;">Entrar</a>
-        </div>
-        <div>
-            <a href="../CadastroPage/Cadastrar.html" style="margin: 5px;">Cadastrar</a>
-        </div>
+    <header class="topbar landing-topbar">
+        <nav class="topbar-nav landing-nav">
+  <a href="../LoginPage/LoginPage.html" class="landing-login">
+    Entrar
+  </a>
+
+  <a href="../CadastroPage/Cadastrar.html">
+    <button class="landing-register" type="button">
+      Cadastrar
+    </button>
+  </a>
+</nav>
     </header>
     <div id="textoLanding">
         Descubra livros incríveis,<br> através de avaliações em que você confia.
