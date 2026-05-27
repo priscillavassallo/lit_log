@@ -39,8 +39,7 @@
           >
             <path
               d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
-            ></path></svg
-        ></a>
+            ></path></svg></a>
       </div>
       <div>
         <button class="botaoLog" type="button" onclick="abrirModalLog()">
@@ -102,55 +101,62 @@
       </div>
     </div>
     <section class="section-container">
-      <div class="perfil-container">
-        <div class="profname">
-          <div class="imgcontainer">
-            <img
-              src="https://www.indy100.com/media-library/the-gen-z-stare-why-millennials-are-so-bothered-by-it.jpg?id=65262954&width=1245&height=700&quality=50&coordinates=0%2C0%2C0%2C0"
-              alt="Imagem De Perfil"
-            />
-          </div>
-          <div class="nome">
-            <h1>Mapê</h1>
-          </div>
-          <div class="descricao">
-            <p>
-              Gosto de livros que me fazem pensar, e mais ainda de livros que me
-              fazem parar de pensar
-            </p>
-          </div>
+    <div class="perfil-container">
+
+      <div class="profname">
+        <div class="imgcontainer">
+          <img
+            src="https://www.indy100.com/media-library/the-gen-z-stare-why-millennials-are-so-bothered-by-it.jpg?id=65262954&width=1245&height=700&quality=50&coordinates=0%2C0%2C0%2C0"
+            alt="Imagem De Perfil"
+          />
         </div>
 
-        <div class="profabas">
-          <div class="social-container">
-            <span>Seguindo</span>
-            <span>Seguidores</span>
+        <div class="nome">
+          <h1>Mapê</h1>
+        </div>
+
+        <!-- 🔥 ÚNICA MUDANÇA REAL -->
+        <div class="descricao-container">
+          <textarea id="desc" readonly>
+Gosto de livros que me fazem pensar, e mais ainda de livros que me fazem parar de pensar
+          </textarea>
+
+          <button id="btnDesc">Editar</button>
+        </div>
+      </div>
+
+      <div class="profabas">
+        <div class="social-container">
+          <span>Seguindo</span>
+          <span>Seguidores</span>
+        </div>
+
+        <div class="abascontainer">
+          <div class="abas">
+            <h2>Pilha de Livros</h2>
           </div>
 
-          <div class="abascontainer">
-            <div class="abas">
-              <h2>Pilha de Livros</h2>
-            </div>
+          <div class="abas">
+            <h2>Diario</h2>
+          </div>
 
-            <div class="abas">
-              <h2>Diario</h2>
-            </div>
+          <div class="abas">
+            <h2><a href="../List/list.html">Listas</a></h2>
+          </div>
 
-            <div class="abas">
-              <h2><a href="../List/list.html">Listas</a></h2>
-            </div>
+          <div class="abas">
+            <h2>Livros Favoritos</h2>
+          </div>
 
-            <div class="abas">
-              <h2>Livros Favoritos</h2>
-            </div>
-
-            <div class="abas">
-              <h2>Lidos recentemente</h2>
-            </div>
+          <div class="abas">
+            <h2>Lidos recentemente</h2>
           </div>
         </div>
       </div>
-    </section>
+
+    </div>
+  </section>
     <script src="../compartilhado/modal.js"></script>
+    <script src="Perfil.js"></script>
   </body>
 </html>

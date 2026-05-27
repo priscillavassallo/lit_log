@@ -20,7 +20,7 @@ form.addEventListener('submit', (e) => {
 
     function validarCadastro(novoUsuario){
 
-        if (senha.length < 8 || senha.length > 12) {
+        if (senha.length < 8) {
             alert('A senha deve conter no mínimo 8 caracteres.')
             return
         }
