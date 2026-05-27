@@ -1,4 +1,4 @@
-@import url('./variavel.css');
+@import url("./variavel.css");
 
 * {
   margin: 0;
@@ -6,31 +6,10 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background-color: var(--color-background);
-  color: var(--color-text);
   font-family: var(--font-primary);
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-button,
-input,
-textarea,
-select {
-  font-family: inherit;
-}
-
-button {
-  border: none;
-  cursor: pointer;
+  color: var(--color-text);
 }
 
 a {
@@ -38,6 +17,30 @@ a {
   color: inherit;
 }
 
-ul {
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  border: none;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+ul,
+ol {
   list-style: none;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+html {
+  scroll-behavior: smooth;
 }

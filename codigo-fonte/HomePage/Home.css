@@ -1,32 +1,3 @@
-body {
-  margin: 0;
-  background-color: #dbdacd;
-  font-family: "Regular", poppins, sans-serif;
-}
-
-header {
-  display: grid;
-  grid-template-columns: auto 1fr auto auto auto auto auto auto;
-  align-items: center;
-  gap: 24px;
-  padding: 0 24px;
-  font-size: 20px;
-  background-color: white;
-  position: sticky;
-  top: 0;
-}
-
-svg {
-  width: 30px;
-  height: 30px;
-  margin-left: 1pc;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
 #Banner {
   background-image: url("../Img/Banner.png");
   background-position-x: center;
@@ -61,8 +32,8 @@ a {
 #CaixaCarrossel {
   width: auto;
   margin: 0 auto;
-  padding: 35px;
-  background-color: #f3efea;
+  padding: var(--space-xl);
+  background-color: var(--color-surface);
 }
 
 .subtituloCarrossel {
@@ -80,9 +51,9 @@ a {
 }
 
 .tituloLinha {
-  margin: 0 0 20px 0;
-  color: #111111;
-  font-size: 18px;
+  margin: 0 0 var(--space-lg) 0;
+  color: var(--color-text);
+  font-size: var(--text-lg);
 }
 
 .controleCarrossel {

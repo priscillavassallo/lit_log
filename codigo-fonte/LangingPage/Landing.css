@@ -36,3 +36,36 @@ a{
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.landing-topbar {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  box-shadow: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.landing-login {
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.landing-login:hover {
+  opacity: 0.7;
+}
+
+.landing-register {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 12px 22px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+}
+
+.landing-register:hover {
+  background: var(--color-secondary);
+}
