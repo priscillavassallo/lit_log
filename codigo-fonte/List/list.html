@@ -96,6 +96,17 @@ function criarLista(){
     )
 
   localStorage.setItem('usuarioLogado',JSON.stringify(usuarioLogado))
+  const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        const index = usuarios.findIndex(
+            u => u.nomeUsuario === usuarioLogado.nomeUsuario
+        );
+
+        if (index !== -1) {
+            usuarios[index] = usuarioLogado;
+        }
+
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
    const ultimaLista = usuarioLogado.listas.at(-1)
    renderizarLista(ultimaLista)
 
@@ -134,6 +145,17 @@ btnExcluir.addEventListener('click', (e)=>{
     const respExcluir = confirm('Sua lista será excluída permanentemente. Pressione OK para continuar.')
     if(respExcluir){
     localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado))
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        const index = usuarios.findIndex(
+            u => u.nomeUsuario === usuarioLogado.nomeUsuario
+        );
+
+        if (index !== -1) {
+            usuarios[index] = usuarioLogado;
+        }
+
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
     location.reload()
     }
     

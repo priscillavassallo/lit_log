@@ -5,7 +5,7 @@ const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
 const btnEdit = document.getElementById('btnDesc');
 
 nomeUsuario.textContent = usuarioLogado.nomeUsuario;
-descricao.value = usuarioLogado.desc;
+descricao.value = usuarioLogado.desc || [];
 
 btnEdit.addEventListener('click', () => {
     if (btnEdit.textContent === 'Editar') {

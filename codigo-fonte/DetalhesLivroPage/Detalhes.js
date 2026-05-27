@@ -301,6 +301,17 @@ function salvarLivro() {
   lista.livros.push(livro);
 
   localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
+  const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        const index = usuarios.findIndex(
+            u => u.nomeUsuario === usuarioLogado.nomeUsuario
+        );
+
+        if (index !== -1) {
+            usuarios[index] = usuarioLogado;
+        }
+
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
   alert("Livro salvo com sucesso!");
 
