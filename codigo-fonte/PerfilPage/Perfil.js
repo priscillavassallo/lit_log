@@ -25,6 +25,7 @@ btnEdit.addEventListener('click', () => {
         localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
 
         const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+        alert('Descrição salva!')
 
         const index = usuarios.findIndex(
             u => u.nomeUsuario === usuarioLogado.nomeUsuario
