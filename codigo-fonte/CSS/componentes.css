@@ -137,44 +137,49 @@
 
 @media (max-width: 768px) {
   .topbar {
-    height: auto;
+    height: 64px;
     min-height: 64px;
-    padding: var(--space-sm) var(--space-md);
-    flex-wrap: wrap;
+    padding: 0 var(--space-sm);
+    flex-wrap: nowrap;
+    gap: var(--space-sm);
   }
 
   .topbar-logo-img {
-    height: 42px;
+    height: 40px;
   }
 
-  .topbar-menu-btn {
-    display: block;
+  .topbar-logo span {
+    font-size: var(--text-base);
   }
 
   .topbar-nav {
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-md);
-
-    padding: var(--space-md) 0;
-  }
-
-  .topbar.active .topbar-nav {
+    width: auto;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    padding: 0;
   }
 
-  .topbar-link,
+  .topbar-link {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
   .topbar-search {
-    width: 100%;
-    justify-content: flex-start;
+    width: 34px;
+    height: 34px;
   }
-}
 
-.topbar-logo {
-  width: 48px;
-  height: 48px;
+  .topbar-search svg {
+    width: 24px;
+    height: 24px;
+  }
 
-  object-fit: contain;
+  .btn-primary {
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
 }

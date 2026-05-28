@@ -3,10 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="list.css">
-    <title>LitLog</title>
+    <link rel="icon" href="../Img/Logo.png" type="image/png" />
+
+    <link rel="stylesheet" href="../CSS/variavel.css" />
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet" href="../CSS/componentes.css" />
+    <link rel="stylesheet" href="../compartilhado/modal.css" />
+    <link rel="stylesheet" href="list.css" />
+    <title>Listas</title>
 </head>
 <body>
+    <header class="topbar">
+  <a href="../HomePage/Home.html" class="topbar-logo">
+    <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
+    <span>LitLog</span>
+  </a>
+
+  <nav class="topbar-nav">
+    <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
+    <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
+    <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+
+    <a href="../PesquisaPage/Pesquisa.html" class="topbar-search" aria-label="Pesquisar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+        <path
+          d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+        ></path>
+      </svg>
+    </a>
+
+    <button class="btn-primary" type="button" onclick="abrirModalLog()">
+      + Log
+    </button>
+  </nav>
+</header>
 <section class="list-page">
 
     <div class="list-container">
@@ -22,41 +52,89 @@
     </div>
 
     <div class="list-grid" id="list-grid">
-
-        <!-- LISTAS APARECEM AQUI -->
-
     </div>
-
 </div>
 
 </section>
 
-<div class="overlay hidden"></div>
+    <div
+      class="modalLog"
+      id="modalLog"
+      aria-hidden="true"
+      onclick="fecharModalPorFora(event)"
+    >
+      <div
+        class="conteudoModalLog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalLog"
+      >
+        <button
+          class="fecharModalLog"
+          type="button"
+          onclick="fecharModalLog()"
+          aria-label="Fechar"
+        >
+          &times;
+        </button>
+        <h2 id="tituloModalLog">Novo log</h2>
+        <form class="formLog" onsubmit="salvarLog(event)">
+          <label for="livroLog">Livro</label>
+          <input
+              class="input"
+              id="livroLog"
+              type="text"
+              placeholder="Nome do livro"
+              required
+            />
 
-<div class="popup hidden">
+          <label for="autorLog">Autor</label>
+          <input
+              class="input"
+              id="autorLog"
+              type="text"
+              placeholder="Nome do autor"
+            />
 
+          <label for="statusLog">Status</label>
+          <select class="input" id="statusLog">
+            <option>Lendo</option>
+            <option>Quero ler</option>
+            <option>Concluído</option>
+          </select>
+
+          <div class="acoesModalLog">
+            <button
+              class="btn-secondary"
+              type="button"
+              onclick="fecharModalLog()"
+            >
+              Cancelar
+            </button>
+
+            <button class="btn-primary" type="submit">
+              Salvar
+            </button>
+          </div>
+        </form>
+    </div>
+</div>
+    <div class="overlay hidden"></div>
+    <div class="popup hidden">
     <h2>Nova Lista</h2>
-
     <input 
         type="text"
         id="nome-lista"
         placeholder="Nome da lista"
     >
-
     <button id="criar-lista-popup">
         Criar
     </button>
-
 </div>
 
 <script src="../CadastroPage/Usuarios.js"></script>
 
 <script>
-
-console.log("JS funcionando");
-
-
-
 const botao = document.getElementById("abrir-popup");
 
 const popup = document.querySelector(".popup");
@@ -96,6 +174,17 @@ function criarLista(){
     )
 
   localStorage.setItem('usuarioLogado',JSON.stringify(usuarioLogado))
+  const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        const index = usuarios.findIndex(
+            u => u.nomeUsuario === usuarioLogado.nomeUsuario
+        );
+
+        if (index !== -1) {
+            usuarios[index] = usuarioLogado;
+        }
+
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
    const ultimaLista = usuarioLogado.listas.at(-1)
    renderizarLista(ultimaLista)
 
@@ -134,6 +223,17 @@ btnExcluir.addEventListener('click', (e)=>{
     const respExcluir = confirm('Sua lista será excluída permanentemente. Pressione OK para continuar.')
     if(respExcluir){
     localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado))
+    const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+        const index = usuarios.findIndex(
+            u => u.nomeUsuario === usuarioLogado.nomeUsuario
+        );
+
+        if (index !== -1) {
+            usuarios[index] = usuarioLogado;
+        }
+
+        localStorage.setItem('usuarios', JSON.stringify(usuarios));
     location.reload()
     }
     
@@ -169,11 +269,8 @@ overlay.addEventListener("click", () => {
     overlay.classList.add("hidden");
 
 });
-
-
-
-
 </script>
 
+<script src="../compartilhado/modal.js"></script>
 </body>
 </html>

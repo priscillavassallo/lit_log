@@ -1,15 +1,17 @@
 .list-page {
-    padding: 40px;
+  min-height: calc(100vh - 72px);
+  padding: var(--space-2xl);
+  background: var(--color-surface);
 }
 
 .list-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
 }
 
 .list-card {
-background: white;
+    background: white;
     border-radius: 15px;
     overflow: hidden;
     cursor: pointer;
@@ -20,7 +22,6 @@ background: white;
 
 .list-card:hover {
     transform: translateY(-5px);
-
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
@@ -44,16 +45,22 @@ background: white;
     margin-top: 5px;
 }
 
+.list-container {
+  width: min(1500px, 95%);
+  margin: 0 auto;
+  background: var(--color-white);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
 .fake-cover {
     width: 100%;
     height: 180px;
-
     background-color: #CFC7C0;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     font-size: 50px;
 }
 
@@ -61,33 +68,24 @@ background: white;
     display: flex;
     justify-content: center;
     align-items: center;
-
     height: 60px;
 }
 
 .criar-lista {
     padding: 20px 40px;
-
     font-size: 22px;
     font-weight: 600;
-
     border: none;
     border-radius: 15px;
-
     background-color: #CFC7C0;
     color: black;
-
     cursor: pointer;
-
     transition: all 0.2s ease;
-
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .criar-lista:hover {
-
     background-color: #BDB4AD;
-
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
@@ -96,61 +94,129 @@ background: white;
 }
 
 .popup {
-    position: fixed;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 380px;
+  background: var(--color-surface);
+  padding: var(--space-2xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  z-index: 1001;
+}
 
-    top: 50%;
-    left: 50%;
+.popup h2 {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: var(--text-2xl);
+  font-family: var(--font-title);
+  font-weight: 600;
+}
 
-    transform: translate(-50%, -50%);
+#nome-lista {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  font-size: var(--text-base);
+  outline: none;
+  transition: var(--transition-fast);
+}
 
-    background: #F3EFEA;
+#nome-lista:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(106, 92, 255, 0.12);
+}
 
-    padding: 35px;
+#criar-lista-popup {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  padding: 12px 22px;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
 
-    border-radius: 22px;
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,0.15),
-    0 4px 10px rgba(0,0,0,0.08);
-
-    z-index: 1001;
-
-    width: 350px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 18px;
+#criar-lista-popup:hover {
+  background: var(--color-secondary);
 }
 
 .topo-listas{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     margin-bottom: 30px;
 }
 
-.criar-lista{
-    padding: 12px 22px;
+.criar-lista {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 12px 22px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
 
-    font-size: 16px;
-
-    border-radius: 12px;
+.criar-lista:hover {
+  background: var(--color-secondary);
 }
 
 .overlay{
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
     height: 100%;
-
     background: rgba(0,0,0,0.25);
-
     backdrop-filter: blur(4px);
-
     z-index: 999;
+}
+
+@media (max-width: 768px) {
+  .list-page {
+    padding: var(--space-md);
+  }
+
+  .list-container {
+    width: 100%;
+    padding: var(--space-lg);
+  }
+
+  .topo-listas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-md);
+  }
+
+  .topo-listas h1 {
+    text-align: center;
+    font-size: var(--text-2xl);
+  }
+
+  .criar-lista {
+    width: 100%;
+  }
+
+  .list-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .popup {
+    width: calc(100% - 32px);
+    padding: var(--space-xl);
+  }
 }

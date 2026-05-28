@@ -4,11 +4,6 @@
   padding: var(--space-xl);
 }
 
-.perfil-esquerda {
-  gap: var(--space-lg);
-  padding: var(--space-lg);
-  border-radius: var(--radius-lg);
-}
 
 .perfil-direita h3 {
   color: var(--color-text-light);
@@ -17,27 +12,13 @@
   margin-bottom: 8px;
 }
 
-.perfil-direita {
-  padding: var(--space-xl);
-  border-radius: var(--radius-lg);
-}
-
-.descricao {
-  padding: var(--space-lg);
-  border-radius: var(--radius-md);
-}
-
-.livro {
-  border-radius: var(--radius-md);
-}
-
 .perfil-esquerda {
   width: 30%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--space-lg);
   background: var(--color-white);
-  padding: 24px;
+  padding: var(--space-lg);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-soft);
   height: fit-content;
@@ -52,9 +33,10 @@
 }
 
 .livros-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 220px);
+  gap: var(--space-xl);
+  justify-content: center;
 }
 
 .livro {
@@ -70,11 +52,10 @@
 }
 
 .livro img {
-    width: 100%;
-    height:300px;
-    object-fit: cover;
-    display: block;
-    object-fit: cover;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
 }
 
 .livro p {
@@ -107,15 +88,10 @@
 
 .imgcontainer {
   width: 100%;
-
   aspect-ratio: 1 / 1;
-
   border-radius: var(--radius-lg);
-
   overflow: hidden;
-
   background: var(--color-border);
-
   box-shadow: var(--shadow-soft);
 }
 
@@ -126,12 +102,13 @@
 }
 
 .descricao {
-    background: var(--color-white);
-    padding: var(--space-lg);
-    border-radius: var(--radius-md);
-    line-height: 1.5;
-    font-size: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: var(--color-white);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  line-height: 1.8;
+  font-size: var(--text-base);
+  color: var(--color-text-light);
+  box-shadow: var(--shadow-soft);
 }
 
 .autor {
@@ -140,4 +117,45 @@
   color: var(--color-primary);
   margin: 8px 0 32px 0;
   line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .perfil-container {
+    flex-direction: column;
+    padding: var(--space-md);
+    gap: var(--space-lg);
+  }
+
+  .perfil-esquerda,
+  .perfil-direita {
+    width: 100%;
+  }
+
+  .perfil-direita {
+    padding: var(--space-lg);
+  }
+
+  .autor {
+    font-size: var(--text-2xl);
+  }
+
+  .livros-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    justify-content: center;
+  }
+
+  .livro img {
+    aspect-ratio: 2 / 3;
+  }
+
+  .imgcontainer {
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
 }

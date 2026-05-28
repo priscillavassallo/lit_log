@@ -1,32 +1,3 @@
-body {
-  margin: 0;
-  background-color: #f3efea;
-  font-family: "Regular", poppins, sans-serif;
-}
-
-header {
-  display: grid;
-  grid-template-columns: auto 1fr auto auto auto auto auto auto;
-  align-items: center;
-  gap: 24px;
-  padding: 0 24px;
-  font-size: 20px;
-  background-color: white;
-  position: sticky;
-  top: 0;
-}
-
-svg {
-  width: 30px;
-  height: 30px;
-  margin-left: 1pc;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
 .paginaLivros {
   width: 100%;
   margin: 0 0 45px 0;
@@ -58,10 +29,12 @@ a {
 }
 
 .secaoLivros h2 {
-  margin: 0 0 12px 0;
-  color: #111111;
-  font-size: 14px;
-  font-weight: 400;
+  margin: 0 0 var(--space-lg) 0;
+  color: var(--color-primary);
+  font-size: var(--text-xl);
+  font-family: var(--font-title);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .controleCarrossel {
@@ -102,54 +75,15 @@ a {
   font-size: 20px;
 }
 
-.botaoCarrossel:last-child {
-  margin: 0 0 0 10px;
+.botaoCarrossel {
+  background-color: var(--color-white);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  transition: var(--transition-fast);
+  box-shadow: var(--shadow-soft);
 }
+
 
 .botaoCarrossel:hover {
-  background-color: #f1f0e7;
-}
-
-@media (max-width: 760px) {
-  header {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    padding: 10px 0 15px;
-    font-size: 16px;
-  }
-
-  header div:nth-child(3) {
-    display: none;
-  }
-
-  #LogoLandinPage img {
-    height: 54px;
-    margin-left: 15px !important;
-  }
-
-  .paginaLivros {
-    width: 100%;
-    margin-bottom: 0;
-  }
-
-  .areaLivros {
-    padding: 18px 18px 32px 18px;
-  }
-
-  .livro {
-    min-width: 120px;
-    width: 120px;
-  }
-
-  .capaLivro {
-    height: 170px;
-  }
-
-  .botaoCarrossel {
-    display: none;
-  }
-
-  .livrosCarrossel {
-    overflow-x: auto;
-  }
+  background-color: var(--color-surface);
 }
