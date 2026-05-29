@@ -1,70 +1,448 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../Img/Logo.png" type="image/png">
-    <link rel="stylesheet" href="ThePile.css">
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="icon" href="../Img/Logo.png" type="image/png" />
+
+    <link rel="stylesheet" href="../CSS/variavel.css" />
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet" href="../CSS/componentes.css" />
+    <link rel="stylesheet" href="../compartilhado/modal.css" />
+    <link rel="stylesheet" href="ThePile.css" />
+
     <title>Pilha de Livros - LitLog</title>
-</head>
-<body>
-    <header>
-        <div class="margem" id="LogoLandinPage">
-            <img src="../Img/Logo.png" alt="Logo LitLog" height="70px" style="margin-left: 5pc; margin-right: 5px; margin-top: 10px;">
-        </div>
-        <div>
-            <a href="../HomePage/Home.html">Litlog</a>
-        </div>
-        <div></div>
-        <div><a href="../PerfilPage/Perfil.html">Meu Perfil</a></div>
-        <div><a href="../LivrosPage/Livros.html">Livros</a></div>
-        <div><a href="../MembrosPage/teladelista.html">Coleções</a></div>
-        <div><a href="../DiaryPage/Diary.html">Diary</a></div>
-        <div><a href="../PesquisaPage/Pesquisa.html">Buscar</a></div>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <a href="../HomePage/Home.html" class="topbar-logo">
+        <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
+        <span>LitLog</span>
+      </a>
+
+      <nav class="topbar-nav">
+        <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
+        <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+
+        <a
+          href="../PesquisaPage/Pesquisa.html"
+          class="topbar-search"
+          aria-label="Pesquisar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+            <path
+              d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+            ></path>
+          </svg>
+        </a>
+
+        <button class="btn-primary" type="button" onclick="abrirModalLog()">
+          + Log
+        </button>
+      </nav>
     </header>
 
-    <main class="conteudo">
-        <section class="tituloPagina">
-            <h1>The Pile</h1>
-            <p>Sua pilha de livros para ler, organizar e acompanhar.</p>
-        </section>
+    <div
+      class="modalLog"
+      id="modalLog"
+      aria-hidden="true"
+      onclick="fecharModalPorFora(event)"
+    >
+      <div
+        class="conteudoModalLog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalLog"
+      >
+        <button
+          class="fecharModalLog"
+          type="button"
+          onclick="fecharModalLog()"
+          aria-label="Fechar"
+        >
+          &times;
+        </button>
 
-        <section class="filtros">
-            <button class="botaoFiltro ativo">Todos</button>
-            <button class="botaoFiltro">Quero ler</button>
-            <button class="botaoFiltro">Lendo</button>
-            <button class="botaoFiltro">Lidos</button>
-        </section>
+        <h2 id="tituloModalLog">Novo log</h2>
 
-        <section class="gradeLivros">
-            <div class="cardLivro">
-                <div class="capaLivro"></div>
-                <h3>Clube da meia-noite</h3>
-                <p>Autor desconhecido</p>
-                <span class="status lendo">Lendo</span>
-            </div>
+        <form class="formLog" onsubmit="salvarLog(event)">
+          <label for="livroLog">Livro</label>
+          <input id="livroLog" type="text" placeholder="Nome do livro" required />
 
-            <div class="cardLivro">
-                <div class="capaLivro"></div>
-                <h3>Notas de margem</h3>
-                <p>Autor desconhecido</p>
-                <span class="status queroLer">Quero ler</span>
-            </div>
+          <label for="autorLog">Autor</label>
+          <input id="autorLog" type="text" placeholder="Nome do autor" />
 
-            <div class="cardLivro">
-                <div class="capaLivro"></div>
-                <h3>Última página</h3>
-                <p>Autor desconhecido</p>
-                <span class="status lido">Lido</span>
-            </div>
+          <label for="statusLog">Status</label>
+          <select id="statusLog">
+            <option>Lendo</option>
+            <option>Quero ler</option>
+            <option>Concluído</option>
+          </select>
 
-            <div class="cardLivro">
-                <div class="capaLivro"></div>
-                <h3>Capítulo aberto</h3>
-                <p>Autor desconhecido</p>
-                <span class="status queroLer">Quero ler</span>
-            </div>
-        </section>
+          <div class="acoesModalLog">
+            <button
+              class="botaoCancelarLog"
+              type="button"
+              onclick="fecharModalLog()"
+            >
+              Cancelar
+            </button>
+            <button class="botaoSalvarLog" type="submit">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <main class="pile-page">
+      <section class="pile-hero">
+        <h1>Pilha de Livros</h1>
+        <p>Sua pilha de livros para ler, organizar e acompanhar.</p>
+      </section>
+
+      <section class="pile-card pile-form-card">
+        <h2>Adicionar livro à pilha</h2>
+
+        <form class="pile-form" onsubmit="adicionarLivroNaPilha(event)">
+          <div class="pile-form-group">
+            <label for="livroPilha">Livro</label>
+            <select id="livroPilha" required>
+              <option value="">Selecione um livro</option>
+            </select>
+          </div>
+
+          <div class="pile-form-group">
+            <label for="statusPilha">Status</label>
+            <select id="statusPilha" required>
+              <option value="Quero ler">Quero ler</option>
+              <option value="Lendo">Lendo</option>
+              <option value="Lido">Lido</option>
+            </select>
+          </div>
+
+          <button class="btn-primary pile-add" type="submit">
+            Adicionar à pilha
+          </button>
+        </form>
+      </section>
+
+      <section class="pile-filters" aria-label="Filtros da pilha de livros">
+        <button
+          class="pile-filter active"
+          type="button"
+          data-filter="Todos"
+          onclick="filtrarPilha('Todos', this)"
+        >
+          Todos
+        </button>
+
+        <button
+          class="pile-filter"
+          type="button"
+          data-filter="Quero ler"
+          onclick="filtrarPilha('Quero ler', this)"
+        >
+          Quero ler
+        </button>
+
+        <button
+          class="pile-filter"
+          type="button"
+          data-filter="Lendo"
+          onclick="filtrarPilha('Lendo', this)"
+        >
+          Lendo
+        </button>
+
+        <button
+          class="pile-filter"
+          type="button"
+          data-filter="Lido"
+          onclick="filtrarPilha('Lido', this)"
+        >
+          Lidos
+        </button>
+      </section>
+
+      <section class="pile-grid" id="gradeLivros"></section>
     </main>
-</body>
+
+    <script src="../compartilhado/livros.js"></script>
+
+    <script>
+      const chavePilhaLivros = "litlog_pilha_livros";
+      let filtroAtual = "Todos";
+
+      const livrosExemploPilha = [
+        {
+          titulo: "A Biblioteca da Meia-Noite",
+          autor: "Matt Haig",
+          capa: "https://covers.openlibrary.org/b/isbn/9780525559474-M.jpg",
+          status: "Lendo",
+        },
+        {
+          titulo: "Dom Quixote",
+          autor: "Miguel de Cervantes",
+          capa: "https://covers.openlibrary.org/b/isbn/9780060934347-M.jpg",
+          status: "Quero ler",
+        },
+        {
+          titulo: "O Processo",
+          autor: "Franz Kafka",
+          capa: "https://covers.openlibrary.org/b/isbn/9780805209990-M.jpg",
+          status: "Lido",
+        },
+        {
+          titulo: "O Hobbit",
+          autor: "J.R.R. Tolkien",
+          capa: "https://covers.openlibrary.org/b/isbn/9780547928227-M.jpg",
+          status: "Quero ler",
+        },
+      ];
+
+      function limparTexto(texto) {
+        return String(texto)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function buscarPilhaLivros() {
+        const pilhaSalva = localStorage.getItem(chavePilhaLivros);
+
+        if (!pilhaSalva) {
+          salvarPilhaLivros(livrosExemploPilha);
+          return livrosExemploPilha;
+        }
+
+        return JSON.parse(pilhaSalva);
+      }
+
+      function salvarPilhaLivros(pilha) {
+        localStorage.setItem(chavePilhaLivros, JSON.stringify(pilha));
+      }
+
+      function carregarLivrosNoSelect() {
+        const selectLivro = document.getElementById("livroPilha");
+
+        if (!selectLivro || typeof livros === "undefined" || !Array.isArray(livros)) {
+          return;
+        }
+
+        selectLivro.innerHTML = '<option value="">Selecione um livro</option>';
+
+        const livrosSemRepeticao = [];
+
+        livros.forEach(function (livro) {
+          const jaExiste = livrosSemRepeticao.some(function (item) {
+            return item.titulo === livro.titulo;
+          });
+
+          if (!jaExiste) {
+            livrosSemRepeticao.push(livro);
+          }
+        });
+
+        const livrosOrdenados = livrosSemRepeticao.sort(function (a, b) {
+          return a.titulo.localeCompare(b.titulo, "pt-BR");
+        });
+
+        livrosOrdenados.forEach(function (livro) {
+          const option = document.createElement("option");
+          option.value = livro.titulo;
+          option.textContent = livro.titulo + " - " + livro.autor;
+          selectLivro.appendChild(option);
+        });
+      }
+
+      function buscarLivroPorTitulo(titulo) {
+        if (typeof livros === "undefined" || !Array.isArray(livros)) {
+          return null;
+        }
+
+        return livros.find(function (livro) {
+          return livro.titulo === titulo;
+        });
+      }
+
+      function adicionarLivroNaPilha(event) {
+        event.preventDefault();
+
+        const tituloSelecionado = document.getElementById("livroPilha").value;
+        const statusSelecionado = document.getElementById("statusPilha").value;
+        const livroEncontrado = buscarLivroPorTitulo(tituloSelecionado);
+
+        if (!livroEncontrado) {
+          alert("Selecione um livro válido.");
+          return;
+        }
+
+        const pilha = buscarPilhaLivros();
+
+        const jaExisteNaPilha = pilha.some(function (livro) {
+          return livro.titulo === livroEncontrado.titulo;
+        });
+
+        if (jaExisteNaPilha) {
+          alert("Este livro já está na sua pilha.");
+          return;
+        }
+
+        const novoLivro = {
+          titulo: livroEncontrado.titulo,
+          autor: livroEncontrado.autor,
+          capa: livroEncontrado.capa,
+          status: statusSelecionado,
+        };
+
+        pilha.unshift(novoLivro);
+        salvarPilhaLivros(pilha);
+        renderizarPilhaLivros();
+
+        document.getElementById("livroPilha").value = "";
+        document.getElementById("statusPilha").value = "Quero ler";
+      }
+
+      function alterarStatusLivro(index, novoStatus) {
+        const pilha = buscarPilhaLivros();
+
+        pilha[index].status = novoStatus;
+
+        salvarPilhaLivros(pilha);
+        renderizarPilhaLivros();
+      }
+
+      function excluirLivroDaPilha(index) {
+        const confirmarExclusao = confirm(
+          "Tem certeza que deseja excluir este livro da pilha?"
+        );
+
+        if (!confirmarExclusao) {
+          return;
+        }
+
+        const pilha = buscarPilhaLivros();
+
+        pilha.splice(index, 1);
+
+        salvarPilhaLivros(pilha);
+        renderizarPilhaLivros();
+      }
+
+      function filtrarPilha(filtro, botao) {
+        filtroAtual = filtro;
+
+        const botoes = document.querySelectorAll(".pile-filter");
+
+        botoes.forEach(function (item) {
+          item.classList.remove("active");
+        });
+
+        botao.classList.add("active");
+        renderizarPilhaLivros();
+      }
+
+      function obterClasseStatus(status) {
+        if (status === "Lendo") {
+          return "status-lendo";
+        }
+
+        if (status === "Lido") {
+          return "status-lido";
+        }
+
+        return "status-quero-ler";
+      }
+
+      function renderizarPilhaLivros() {
+        const gradeLivros = document.getElementById("gradeLivros");
+        const pilha = buscarPilhaLivros();
+
+        const livrosFiltrados = pilha
+          .map(function (livro, index) {
+            return {
+              livro: livro,
+              indexOriginal: index,
+            };
+          })
+          .filter(function (item) {
+            return filtroAtual === "Todos" || item.livro.status === filtroAtual;
+          });
+
+        gradeLivros.innerHTML = "";
+
+        if (livrosFiltrados.length === 0) {
+          gradeLivros.innerHTML = `
+            <p class="pile-empty">
+              Nenhum livro encontrado neste filtro.
+            </p>
+          `;
+          return;
+        }
+
+        livrosFiltrados.forEach(function (item) {
+          const livro = item.livro;
+          const indexOriginal = item.indexOriginal;
+          const classeStatus = obterClasseStatus(livro.status);
+
+          const card = document.createElement("article");
+          card.classList.add("pile-book-card");
+
+          card.innerHTML = `
+            <div class="pile-cover-wrapper">
+              <img
+                class="pile-cover"
+                src="${limparTexto(livro.capa)}"
+                alt="Capa do livro ${limparTexto(livro.titulo)}"
+              />
+            </div>
+
+            <div class="pile-book-info">
+              <h3>${limparTexto(livro.titulo)}</h3>
+              <p>${limparTexto(livro.autor)}</p>
+
+              <span class="pile-status ${classeStatus}">
+                ${limparTexto(livro.status)}
+              </span>
+
+              <label class="pile-status-label" for="statusLivro${indexOriginal}">
+                Alterar status
+              </label>
+
+              <select
+                id="statusLivro${indexOriginal}"
+                class="pile-status-select"
+                onchange="alterarStatusLivro(${indexOriginal}, this.value)"
+              >
+                <option value="Quero ler" ${livro.status === "Quero ler" ? "selected" : ""}>Quero ler</option>
+                <option value="Lendo" ${livro.status === "Lendo" ? "selected" : ""}>Lendo</option>
+                <option value="Lido" ${livro.status === "Lido" ? "selected" : ""}>Lido</option>
+              </select>
+
+              <button
+                class="pile-delete"
+                type="button"
+                onclick="excluirLivroDaPilha(${indexOriginal})"
+              >
+                Excluir
+              </button>
+            </div>
+          `;
+
+          gradeLivros.appendChild(card);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        carregarLivrosNoSelect();
+        renderizarPilhaLivros();
+      });
+    </script>
+
+    <script src="../compartilhado/modal.js"></script>
+  </body>
 </html>

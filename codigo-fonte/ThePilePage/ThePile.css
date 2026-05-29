@@ -1,135 +1,240 @@
-body {
-  margin: 0;
-  background-color: #dbdacd;
-  font-family: "Regular", Poppins, sans-serif;
+.pile-page {
+  padding: var(--space-2xl) 8%;
 }
 
-header {
-  display: grid;
-  grid-template-columns: auto 1fr auto auto auto auto auto auto;
-  align-items: center;
-  gap: 24px;
-  padding: 0 24px;
-  font-size: 20px;
-  background-color: white;
-  position: sticky;
-  top: 0;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-.conteudo {
-  padding: 50px 8%;
-}
-
-.tituloPagina {
+.pile-hero {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: var(--space-2xl);
 }
 
-.tituloPagina h1 {
-  margin: 0;
-  font-size: 60px;
-  font-family:
-    "Regular",
-    Cormorant Garamond,
-    serif;
-  color: #28251f;
+.pile-hero h1 {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-title);
+  font-size: var(--text-4xl);
+  color: var(--color-text);
 }
 
-.tituloPagina p {
-  font-size: 20px;
-  color: #3d3a32;
+.pile-hero p {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
 }
 
-.filtros {
+.pile-card {
+  max-width: 900px;
+  margin: 0 auto var(--space-xl);
+  padding: var(--space-xl);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.pile-card h2 {
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-title);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
+}
+
+.pile-form {
+  display: grid;
+  grid-template-columns: 1fr 220px auto;
+  align-items: end;
+  gap: var(--space-md);
+}
+
+.pile-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.pile-form-group label {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.pile-form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-text);
+}
+
+.pile-add {
+  height: 44px;
+  white-space: nowrap;
+}
+
+.pile-filters {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 40px;
   flex-wrap: wrap;
+  gap: var(--space-md);
+  margin-bottom: var(--space-2xl);
 }
 
-.botaoFiltro {
+.pile-filter {
   padding: 12px 22px;
-  background-color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
+  background-color: var(--color-white);
+  color: var(--color-text);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-base);
+  transition: var(--transition-fast);
 }
 
-.botaoFiltro.ativo {
-  background-color: #28251f;
-  color: #ffffff;
+.pile-filter:hover,
+.pile-filter.active {
+  background-color: var(--color-text);
+  color: var(--color-white);
 }
 
-.gradeLivros {
+.pile-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, 240px);
+  justify-content: center;
+  gap: var(--space-xl);
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-.cardLivro {
-  background-color: rgba(255, 255, 255, 0.55);
-  padding: 20px;
-  border-radius: 8px;
+.pile-book-card {
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.pile-cover-wrapper {
+  width: 100%;
+  height: 310px;
+  padding: var(--space-md);
+  background-color: var(--color-white);
+}
+
+.pile-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pile-book-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
   text-align: center;
 }
 
-.capaLivro {
-  width: 100%;
-  height: 250px;
-  background-color: #d4d4d4;
-  border-radius: 5px;
-  margin-bottom: 15px;
+.pile-book-info h3 {
+  color: var(--color-text);
+  font-size: var(--text-base);
+  line-height: 1.2;
 }
 
-.cardLivro h3 {
-  margin: 10px 0 5px 0;
-  color: #28251f;
+.pile-book-info p {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
 }
 
-.cardLivro p {
-  margin: 0 0 15px 0;
-  color: #5c584d;
-}
-
-.status {
+.pile-status {
   display: inline-block;
+  width: fit-content;
+  margin: var(--space-xs) auto;
   padding: 7px 12px;
   border-radius: 20px;
-  font-size: 14px;
+  font-size: var(--text-sm);
 }
 
-.lendo {
+.status-lendo {
   background-color: #ede2b8;
 }
 
-.queroLer {
+.status-quero-ler {
   background-color: #d8d2c0;
 }
 
-.lido {
+.status-lido {
   background-color: #c7d6bd;
 }
 
-@media (max-width: 768px) {
-  header {
+.pile-status-label {
+  margin-top: var(--space-sm);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.pile-status-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-text);
+}
+
+.pile-delete {
+  margin-top: var(--space-sm);
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  transition: var(--transition-fast);
+}
+
+.pile-delete:hover {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.pile-empty {
+  grid-column: 1 / -1;
+  padding: var(--space-xl);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .pile-form {
     grid-template-columns: 1fr;
-    text-align: center;
-    gap: 10px;
-    padding-bottom: 15px;
   }
 
-  .tituloPagina h1 {
-    font-size: 45px;
+  .pile-add {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .pile-page {
+    padding: var(--space-xl) var(--space-md);
   }
 
-  .conteudo {
-    padding: 35px 5%;
+  .pile-hero h1 {
+    font-size: var(--text-3xl);
+  }
+
+  .pile-card {
+    padding: var(--space-lg);
+  }
+
+  .pile-grid {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  }
+
+  .pile-book-card {
+    width: 100%;
+  }
+
+  .pile-cover-wrapper {
+    height: 250px;
   }
 }
