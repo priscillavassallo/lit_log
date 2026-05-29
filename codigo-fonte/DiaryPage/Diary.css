@@ -1,141 +1,148 @@
-body {
-  margin: 0;
-  background-color: #dbdacd;
-  font-family: "Regular", Poppins, sans-serif;
+.diary-page {
+  padding: var(--space-2xl) 8%;
 }
 
-header {
-  display: grid;
-  grid-template-columns: auto 1fr auto auto auto auto auto auto;
-  align-items: center;
-  gap: 24px;
-  padding: 0 24px;
-  font-size: 20px;
-  background-color: white;
-  position: sticky;
-  top: 0;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-.conteudo {
-  padding: 50px 8%;
-}
-
-.tituloPagina {
+.diary-hero {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: var(--space-2xl);
 }
 
-.tituloPagina h1 {
-  margin: 0;
-  font-size: 60px;
-  font-family:
-    "Regular",
-    Cormorant Garamond,
-    serif;
-  color: #28251f;
+.diary-hero h1 {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-title);
+  font-size: var(--text-4xl);
+  color: var(--color-text);
 }
 
-.tituloPagina p {
-  font-size: 20px;
-  color: #3d3a32;
+.diary-hero p {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
 }
 
-.novoRegistro,
-.registros {
+.diary-card {
   max-width: 850px;
-  margin: 0 auto 40px auto;
-  background-color: rgba(255, 255, 255, 0.55);
-  padding: 30px;
-  border-radius: 8px;
+  margin: 0 auto var(--space-xl);
+  padding: var(--space-xl);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
 }
 
-.novoRegistro h2,
-.registros h2 {
-  margin-top: 0;
-  color: #28251f;
-  font-family:
-    "Regular",
-    Cormorant Garamond,
-    serif;
-  font-size: 36px;
+.diary-card h2 {
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-title);
+  font-size: var(--text-2xl);
+  color: var(--color-text);
 }
 
-form {
+.diary-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--space-md);
 }
 
-label {
-  font-weight: bold;
-  color: #28251f;
+.diary-form label {
+  font-weight: 600;
+  color: var(--color-text);
 }
 
-input,
-textarea {
+.diary-form input,
+.diary-form textarea,
+.diary-form select {
+  width: 100%;
   padding: 12px;
-  border: 1px solid #b8b4a4;
-  border-radius: 5px;
-  font-size: 16px;
-  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-text);
 }
 
-textarea {
+.diary-form textarea {
   min-height: 130px;
   resize: vertical;
 }
 
-button {
-  width: 180px;
-  padding: 12px;
-  background-color: #28251f;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+.diary-save {
+  width: fit-content;
+  margin-top: var(--space-sm);
 }
 
-.cardRegistro {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 6px;
-  margin-bottom: 18px;
+.diary-records {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
-.cardRegistro h3 {
-  margin: 0 0 5px 0;
-  color: #28251f;
+.diary-record {
+  padding: var(--space-lg);
+  background-color: var(--color-white);
+  border-radius: var(--radius-sm);
 }
 
-.data {
-  margin: 0 0 12px 0;
-  color: #7a7568;
-  font-size: 14px;
+.diary-record h3 {
+  margin-bottom: var(--space-xs);
+  color: var(--color-text);
+}
+
+.diary-date {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.diary-record-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.diary-delete {
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  transition: var(--transition-fast);
+}
+
+.diary-delete:hover {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.diary-empty {
+  padding: var(--space-lg);
+  background-color: var(--color-white);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  text-align: center;
 }
 
 @media (max-width: 768px) {
-  header {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 10px;
-    padding-bottom: 15px;
+  .diary-page {
+    padding: var(--space-xl) var(--space-md);
   }
 
-  .tituloPagina h1 {
-    font-size: 45px;
+  .diary-hero h1 {
+    font-size: var(--text-3xl);
   }
 
-  .conteudo {
-    padding: 35px 5%;
+  .diary-card {
+    padding: var(--space-lg);
   }
 
-  button {
+  .diary-save {
+    width: 100%;
+  }
+
+  .diary-record-header {
+    flex-direction: column;
+  }
+
+  .diary-delete {
     width: 100%;
   }
 }

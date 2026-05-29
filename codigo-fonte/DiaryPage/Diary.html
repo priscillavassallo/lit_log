@@ -1,66 +1,323 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../Img/Logo.png" type="image/png">
-    <link rel="stylesheet" href="Diary.css">
-    <title>Diario - LitLog</title>
-</head>
-<body>
-    <header>
-        <div class="margem" id="LogoLandinPage">
-            <img src="../Img/Logo.png" alt="Logo LitLog" height="70px" style="margin-left: 5pc; margin-right: 5px; margin-top: 10px;">
-        </div>
-        <div>
-            <a href="../HomePage/Home.html">Litlog</a>
-        </div>
-        <div></div>
-        <div><a href="../PerfilPage/Perfil.html">Meu Perfil</a></div>
-        <div><a href="../LivrosPage/Livros.html">Livros</a></div>
-        <div><a href="../MembrosPage/teladelista.html">Coleções</a></div>
-        <div><a href="../ThePilePage/ThePile.html">The Pile</a></div>
-        <div><a href="../PesquisaPage/Pesquisa.html">Buscar</a></div>
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="icon" href="../Img/Logo.png" type="image/png" />
+
+    <link rel="stylesheet" href="../CSS/variavel.css" />
+    <link rel="stylesheet" href="../CSS/global.css" />
+    <link rel="stylesheet" href="../CSS/componentes.css" />
+    <link rel="stylesheet" href="../compartilhado/modal.css" />
+    <link rel="stylesheet" href="Diary.css" />
+
+    <title>Diário - LitLog</title>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <a href="../HomePage/Home.html" class="topbar-logo">
+        <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
+        <span>LitLog</span>
+      </a>
+
+      <nav class="topbar-nav">
+        <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
+        <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+
+        <a
+          href="../PesquisaPage/Pesquisa.html"
+          class="topbar-search"
+          aria-label="Pesquisar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+            <path
+              d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+            ></path>
+          </svg>
+        </a>
+
+        <button class="btn-primary" type="button" onclick="abrirModalLog()">
+          + Log
+        </button>
+      </nav>
     </header>
 
-    <main class="conteudo">
-        <section class="tituloPagina">
-            <h1>Diary</h1>
-            <p>Registre suas leituras, pensamentos e progresso literário.</p>
-        </section>
+    <div
+      class="modalLog"
+      id="modalLog"
+      aria-hidden="true"
+      onclick="fecharModalPorFora(event)"
+    >
+      <div
+        class="conteudoModalLog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalLog"
+      >
+        <button
+          class="fecharModalLog"
+          type="button"
+          onclick="fecharModalLog()"
+          aria-label="Fechar"
+        >
+          &times;
+        </button>
 
-        <section class="novoRegistro">
-            <h2>Novo registro</h2>
+        <h2 id="tituloModalLog">Novo log</h2>
 
-            <form>
-                <label for="livro">Livro</label>
-                <input type="text" id="livro" placeholder="Digite o nome do livro">
+        <form class="formLog" onsubmit="salvarLog(event)">
+          <label for="livroLog">Livro</label>
+          <input id="livroLog" type="text" placeholder="Nome do livro" required />
 
-                <label for="pagina">Página atual</label>
-                <input type="number" id="pagina" placeholder="Ex: 120">
+          <label for="autorLog">Autor</label>
+          <input id="autorLog" type="text" placeholder="Nome do autor" />
 
-                <label for="anotacao">Anotação</label>
-                <textarea id="anotacao" placeholder="Escreva suas impressões sobre a leitura"></textarea>
+          <label for="statusLog">Status</label>
+          <select id="statusLog">
+            <option>Lendo</option>
+            <option>Quero ler</option>
+            <option>Concluído</option>
+          </select>
 
-                <button type="button">Salvar registro</button>
-            </form>
-        </section>
+          <div class="acoesModalLog">
+            <button
+              class="botaoCancelarLog"
+              type="button"
+              onclick="fecharModalLog()"
+            >
+              Cancelar
+            </button>
+            <button class="botaoSalvarLog" type="submit">Salvar</button>
+          </div>
+        </form>
+      </div>
+    </div>
 
-        <section class="registros">
-            <h2>Últimos registros</h2>
+    <main class="diary-page">
+      <section class="diary-hero">
+        <h1>Diário</h1>
+        <p>Registre suas leituras, pensamentos e progresso literário.</p>
+      </section>
 
-            <div class="cardRegistro">
-                <h3>Clube da meia-noite</h3>
-                <p class="data">Página 45 • Hoje</p>
-                <p>A leitura está ficando mais envolvente e os personagens começaram a se conectar melhor.</p>
-            </div>
+      <section class="diary-card">
+        <h2>Novo registro</h2>
 
-            <div class="cardRegistro">
-                <h3>Notas de margem</h3>
-                <p class="data">Página 82 • Ontem</p>
-                <p>Algumas passagens chamaram atenção pela forma como tratam memória e rotina.</p>
-            </div>
-        </section>
+        <form class="diary-form" onsubmit="salvarRegistroDiario(event)">
+          <label for="livro">Livro</label>
+          <select id="livro" required>
+            <option value="">Selecione um livro</option>
+          </select>
+
+          <label for="pagina">Página atual</label>
+          <input type="number" id="pagina" placeholder="Ex: 120" required />
+
+          <label for="anotacao">Anotação</label>
+          <textarea
+            id="anotacao"
+            placeholder="Escreva suas impressões sobre a leitura"
+            required
+          ></textarea>
+
+          <button class="btn-primary diary-save" type="submit">
+            Salvar registro
+          </button>
+        </form>
+      </section>
+
+      <section class="diary-card">
+        <h2>Últimos registros</h2>
+
+        <div class="diary-records" id="listaRegistros"></div>
+      </section>
     </main>
-</body>
+
+    <script src="../compartilhado/livros.js"></script>
+
+    <script>
+      const chaveRegistrosDiario = "litlog_registros_diario";
+
+      const registrosExemploDiario = [
+        {
+          livro: "Clube da meia-noite",
+          pagina: "45",
+          data: "Hoje",
+          anotacao:
+            "A leitura está ficando mais envolvente e os personagens começaram a se conectar melhor.",
+        },
+        {
+          livro: "Notas de margem",
+          pagina: "82",
+          data: "Ontem",
+          anotacao:
+            "Algumas passagens chamaram atenção pela forma como tratam memória e rotina.",
+        },
+      ];
+
+      function carregarLivrosNoSelect() {
+        const selectLivro = document.getElementById("livro");
+
+        if (!selectLivro || typeof livros === "undefined") {
+          return;
+        }
+
+        selectLivro.innerHTML = '<option value="">Selecione um livro</option>';
+
+        const livrosSemRepeticao = [];
+
+        livros.forEach(function (livro) {
+          const jaExiste = livrosSemRepeticao.some(function (item) {
+            return item.titulo === livro.titulo;
+          });
+
+          if (!jaExiste) {
+            livrosSemRepeticao.push(livro);
+          }
+        });
+
+        const livrosOrdenados = livrosSemRepeticao.sort(function (a, b) {
+          return a.titulo.localeCompare(b.titulo, "pt-BR");
+        });
+
+        livrosOrdenados.forEach(function (livro) {
+          const option = document.createElement("option");
+          option.value = livro.titulo;
+          option.textContent = livro.titulo + " - " + livro.autor;
+          selectLivro.appendChild(option);
+        });
+      }
+
+      function buscarRegistrosDiario() {
+        const registrosSalvos = localStorage.getItem(chaveRegistrosDiario);
+
+        if (!registrosSalvos) {
+          salvarRegistrosDiario(registrosExemploDiario);
+          return registrosExemploDiario;
+        }
+
+        return JSON.parse(registrosSalvos);
+      }
+
+      function salvarRegistrosDiario(registros) {
+        localStorage.setItem(chaveRegistrosDiario, JSON.stringify(registros));
+      }
+
+      function criarDataRegistro() {
+        const dataAtual = new Date();
+
+        return dataAtual.toLocaleDateString("pt-BR", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        });
+      }
+
+      function limparTexto(texto) {
+        return String(texto)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function renderizarRegistrosDiario() {
+        const listaRegistros = document.getElementById("listaRegistros");
+        const registros = buscarRegistrosDiario();
+
+        listaRegistros.innerHTML = "";
+
+        if (registros.length === 0) {
+          listaRegistros.innerHTML = `
+            <p class="diary-empty">
+              Nenhum registro salvo no diário.
+            </p>
+          `;
+          return;
+        }
+
+        registros.forEach(function (registro, index) {
+          const novoRegistro = document.createElement("article");
+          novoRegistro.classList.add("diary-record");
+
+          novoRegistro.innerHTML = `
+            <div class="diary-record-header">
+              <div>
+                <h3>${limparTexto(registro.livro)}</h3>
+                <p class="diary-date">Página ${limparTexto(registro.pagina)} • ${limparTexto(registro.data)}</p>
+              </div>
+
+              <button
+                class="diary-delete"
+                type="button"
+                onclick="excluirRegistroDiario(${index})"
+              >
+                Excluir
+              </button>
+            </div>
+
+            <p>${limparTexto(registro.anotacao)}</p>
+          `;
+
+          listaRegistros.appendChild(novoRegistro);
+        });
+      }
+
+      function salvarRegistroDiario(event) {
+        event.preventDefault();
+
+        const livro = document.getElementById("livro").value.trim();
+        const pagina = document.getElementById("pagina").value.trim();
+        const anotacao = document.getElementById("anotacao").value.trim();
+
+        if (!livro || !pagina || !anotacao) {
+          alert("Preencha todos os campos antes de salvar.");
+          return;
+        }
+
+        const registros = buscarRegistrosDiario();
+
+        const novoRegistro = {
+          livro: livro,
+          pagina: pagina,
+          anotacao: anotacao,
+          data: criarDataRegistro(),
+        };
+
+        registros.unshift(novoRegistro);
+        salvarRegistrosDiario(registros);
+        renderizarRegistrosDiario();
+
+        document.getElementById("livro").value = "";
+        document.getElementById("pagina").value = "";
+        document.getElementById("anotacao").value = "";
+      }
+
+      function excluirRegistroDiario(index) {
+        const confirmarExclusao = confirm(
+          "Tem certeza que deseja excluir este registro?"
+        );
+
+        if (!confirmarExclusao) {
+          return;
+        }
+
+        const registros = buscarRegistrosDiario();
+
+        registros.splice(index, 1);
+
+        salvarRegistrosDiario(registros);
+        renderizarRegistrosDiario();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        carregarLivrosNoSelect();
+        renderizarRegistrosDiario();
+      });
+    </script>
+
+    <script src="../compartilhado/modal.js"></script>
+  </body>
 </html>
