@@ -53,7 +53,7 @@
 
 .container-capa {
   width: 100%;
-  height: auto;
+  height: 400px;
   box-sizing: border-box;
   padding: 2rem;
   display: flex;
