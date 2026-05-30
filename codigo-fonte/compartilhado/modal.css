@@ -28,7 +28,9 @@
 .conteudoModalLog {
   position: relative;
   width: 100%;
-  max-width: 470px;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: 28px;
   box-sizing: border-box;
   background-color: #dbdacd;
@@ -110,4 +112,29 @@
 .botaoSalvarLog {
   background-color: #28251f;
   color: #ffffff;
+}
+
+.avaliacaoEstrelas {
+  display: flex;
+  gap: 6px;
+  margin: 0 0 14px 0;
+}
+
+.estrelaLog {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  color: #28251f;
+  cursor: pointer;
+  font-size: 30px;
+  line-height: 1;
+  transition: transform 0.15s ease;
+}
+
+.estrelaLog:hover {
+  transform: scale(1.12);
+}
+
+.estrelaLog.ativa {
+  color: #c49a2c;
 }

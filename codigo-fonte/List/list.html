@@ -57,68 +57,6 @@
 
 </section>
 
-    <div
-      class="modalLog"
-      id="modalLog"
-      aria-hidden="true"
-      onclick="fecharModalPorFora(event)"
-    >
-      <div
-        class="conteudoModalLog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="tituloModalLog"
-      >
-        <button
-          class="fecharModalLog"
-          type="button"
-          onclick="fecharModalLog()"
-          aria-label="Fechar"
-        >
-          &times;
-        </button>
-        <h2 id="tituloModalLog">Novo log</h2>
-        <form class="formLog" onsubmit="salvarLog(event)">
-          <label for="livroLog">Livro</label>
-          <input
-              class="input"
-              id="livroLog"
-              type="text"
-              placeholder="Nome do livro"
-              required
-            />
-
-          <label for="autorLog">Autor</label>
-          <input
-              class="input"
-              id="autorLog"
-              type="text"
-              placeholder="Nome do autor"
-            />
-
-          <label for="statusLog">Status</label>
-          <select class="input" id="statusLog">
-            <option>Lendo</option>
-            <option>Quero ler</option>
-            <option>Concluído</option>
-          </select>
-
-          <div class="acoesModalLog">
-            <button
-              class="btn-secondary"
-              type="button"
-              onclick="fecharModalLog()"
-            >
-              Cancelar
-            </button>
-
-            <button class="btn-primary" type="submit">
-              Salvar
-            </button>
-          </div>
-        </form>
-    </div>
-</div>
     <div class="overlay hidden"></div>
     <div class="popup hidden">
     <h2>Nova Lista</h2>
@@ -271,6 +209,7 @@ overlay.addEventListener("click", () => {
 });
 </script>
 
+<script src="../compartilhado/livros.js"></script>
 <script src="../compartilhado/modal.js"></script>
 </body>
 </html>
