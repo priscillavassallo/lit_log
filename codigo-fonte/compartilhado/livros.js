@@ -1321,5 +1321,21 @@ const livros = [
       "Conhecido pela poesia, Leminski também foi um exímio ficcionista. Durante anos, o poeta organizou um volume que reunia uma deliciosa seleção de narrativas curtas, crônicas e textos esparsos. Depois de sua morte, o livro foi enviado a seu editor, mas antes que fosse lançado, ele também morreu e o livro ficou perdido. Agora, como um presente para a legião de fãs que Leminski segue angariando a cada geração, trazemos esta reedição com prefácio especial de Alice Ruiz. Como toda a obra de Leminski, este é um livro difícil de definir: erudito, pop, cômico e lírico, tudo isso às vezes num mesmo conto.",
     isbn: "6556928569",
     capa: "https://m.media-amazon.com/images/I/81MCw25oTvL._AC_UF1000,1000_QL80_.jpg",
-  },
+  }, 
 ];
+
+livros.forEach((livro) => {
+  const totalAvaliacoes = Math.floor((Math.random() * 300) + 50);
+
+  let somaAvaliacoes = 0;
+
+  for (let i = 0; i < totalAvaliacoes; i++) {
+    somaAvaliacoes += Math.floor(Math.random() * 5) + 1;
+  }
+
+  const mediaAvaliacoes = (somaAvaliacoes / totalAvaliacoes).toFixed(1);
+
+  livro.mediaNota = mediaAvaliacoes;
+  livro.totalAvaliacoes = totalAvaliacoes;
+  livro.totalNotas = somaAvaliacoes;
+});

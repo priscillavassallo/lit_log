@@ -84,9 +84,18 @@
   background: var(--color-secondary);
 }
 
-.estrelas {
-  width: 260px;
+.selected {
+  cursor: pointer;
+  color: gold;
 }
+
+.hover{
+  cursor: pointer;
+  color: gold;
+  transition: color 0.3s ease;
+}
+
+
 
 #overlay{
   inset: 0;
