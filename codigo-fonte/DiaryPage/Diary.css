@@ -146,3 +146,8 @@
     width: 100%;
   }
 }
+.diary-rating {
+  margin-bottom: var(--space-sm);
+  color: #c49a2c;
+  font-size: var(--text-lg);
+}

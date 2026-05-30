@@ -45,86 +45,10 @@
       </nav>
     </header>
 
-    <div
-      class="modalLog"
-      id="modalLog"
-      aria-hidden="true"
-      onclick="fecharModalPorFora(event)"
-    >
-      <div
-        class="conteudoModalLog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="tituloModalLog"
-      >
-        <button
-          class="fecharModalLog"
-          type="button"
-          onclick="fecharModalLog()"
-          aria-label="Fechar"
-        >
-          &times;
-        </button>
-
-        <h2 id="tituloModalLog">Novo log</h2>
-
-        <form class="formLog" onsubmit="salvarLog(event)">
-          <label for="livroLog">Livro</label>
-          <input id="livroLog" type="text" placeholder="Nome do livro" required />
-
-          <label for="autorLog">Autor</label>
-          <input id="autorLog" type="text" placeholder="Nome do autor" />
-
-          <label for="statusLog">Status</label>
-          <select id="statusLog">
-            <option>Lendo</option>
-            <option>Quero ler</option>
-            <option>Concluído</option>
-          </select>
-
-          <div class="acoesModalLog">
-            <button
-              class="botaoCancelarLog"
-              type="button"
-              onclick="fecharModalLog()"
-            >
-              Cancelar
-            </button>
-            <button class="botaoSalvarLog" type="submit">Salvar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
     <main class="diary-page">
       <section class="diary-hero">
         <h1>Diário</h1>
         <p>Registre suas leituras, pensamentos e progresso literário.</p>
-      </section>
-
-      <section class="diary-card">
-        <h2>Novo registro</h2>
-
-        <form class="diary-form" onsubmit="salvarRegistroDiario(event)">
-          <label for="livro">Livro</label>
-          <select id="livro" required>
-            <option value="">Selecione um livro</option>
-          </select>
-
-          <label for="pagina">Página atual</label>
-          <input type="number" id="pagina" placeholder="Ex: 120" required />
-
-          <label for="anotacao">Anotação</label>
-          <textarea
-            id="anotacao"
-            placeholder="Escreva suas impressões sobre a leitura"
-            required
-          ></textarea>
-
-          <button class="btn-primary diary-save" type="submit">
-            Salvar registro
-          </button>
-        </form>
       </section>
 
       <section class="diary-card">
@@ -134,84 +58,68 @@
       </section>
     </main>
 
-    <script src="../compartilhado/livros.js"></script>
-
     <script>
       const chaveRegistrosDiario = "litlog_registros_diario";
 
       const registrosExemploDiario = [
         {
           livro: "Clube da meia-noite",
+          autor: "Autor desconhecido",
+          status: "Lendo",
           pagina: "45",
+          avaliacao: "4",
           data: "Hoje",
           anotacao:
             "A leitura está ficando mais envolvente e os personagens começaram a se conectar melhor.",
         },
         {
           livro: "Notas de margem",
+          autor: "Autor desconhecido",
+          status: "Quero ler",
           pagina: "82",
+          avaliacao: "3",
           data: "Ontem",
           anotacao:
             "Algumas passagens chamaram atenção pela forma como tratam memória e rotina.",
         },
       ];
 
-      function carregarLivrosNoSelect() {
-        const selectLivro = document.getElementById("livro");
-
-        if (!selectLivro || typeof livros === "undefined") {
-          return;
-        }
-
-        selectLivro.innerHTML = '<option value="">Selecione um livro</option>';
-
-        const livrosSemRepeticao = [];
-
-        livros.forEach(function (livro) {
-          const jaExiste = livrosSemRepeticao.some(function (item) {
-            return item.titulo === livro.titulo;
-          });
-
-          if (!jaExiste) {
-            livrosSemRepeticao.push(livro);
-          }
-        });
-
-        const livrosOrdenados = livrosSemRepeticao.sort(function (a, b) {
-          return a.titulo.localeCompare(b.titulo, "pt-BR");
-        });
-
-        livrosOrdenados.forEach(function (livro) {
-          const option = document.createElement("option");
-          option.value = livro.titulo;
-          option.textContent = livro.titulo + " - " + livro.autor;
-          selectLivro.appendChild(option);
-        });
-      }
-
       function buscarRegistrosDiario() {
         const registrosSalvos = localStorage.getItem(chaveRegistrosDiario);
 
-        if (!registrosSalvos) {
-          salvarRegistrosDiario(registrosExemploDiario);
-          return registrosExemploDiario;
+        if (registrosSalvos) {
+          const registros = JSON.parse(registrosSalvos);
+
+          if (registros.length > 0) {
+            return registros;
+          }
         }
 
-        return JSON.parse(registrosSalvos);
-      }
+        const pilhaSalva = localStorage.getItem("litlog_pilha_livros");
 
-      function salvarRegistrosDiario(registros) {
-        localStorage.setItem(chaveRegistrosDiario, JSON.stringify(registros));
-      }
+        if (pilhaSalva) {
+          const pilha = JSON.parse(pilhaSalva);
 
-      function criarDataRegistro() {
-        const dataAtual = new Date();
+          if (pilha.length > 0) {
+            const registrosCriadosPelaPilha = pilha.map(function (livro) {
+              return {
+                livro: livro.titulo,
+                autor: livro.autor,
+                status: livro.status,
+                pagina: "Não informado",
+                avaliacao: "Sem avaliação",
+                data: "Importado da pilha",
+                anotacao: "Livro adicionado a partir da Pilha de Livros.",
+              };
+            });
 
-        return dataAtual.toLocaleDateString("pt-BR", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        });
+            salvarRegistrosDiario(registrosCriadosPelaPilha);
+            return registrosCriadosPelaPilha;
+          }
+        }
+
+        salvarRegistrosDiario(registrosExemploDiario);
+        return registrosExemploDiario;
       }
 
       function limparTexto(texto) {
@@ -221,6 +129,20 @@
           .replaceAll(">", "&gt;")
           .replaceAll('"', "&quot;")
           .replaceAll("'", "&#039;");
+      }
+
+      function montarEstrelas(avaliacao) {
+        if (!avaliacao || avaliacao === "Sem avaliação") {
+          return "Sem avaliação";
+        }
+
+        const quantidade = Number(avaliacao);
+
+        if (!quantidade) {
+          return "Sem avaliação";
+        }
+
+        return "★".repeat(quantidade) + "☆".repeat(5 - quantidade);
       }
 
       function renderizarRegistrosDiario() {
@@ -246,7 +168,9 @@
             <div class="diary-record-header">
               <div>
                 <h3>${limparTexto(registro.livro)}</h3>
-                <p class="diary-date">Página ${limparTexto(registro.pagina)} • ${limparTexto(registro.data)}</p>
+                <p class="diary-date">
+                  ${limparTexto(registro.autor || "Autor não informado")}
+                </p>
               </div>
 
               <button
@@ -258,46 +182,26 @@
               </button>
             </div>
 
-            <p>${limparTexto(registro.anotacao)}</p>
+            <p class="diary-date">
+              Status: ${limparTexto(registro.status || "Não informado")} •
+              Página ${limparTexto(registro.pagina || "Não informado")} •
+              ${limparTexto(registro.data || "")}
+            </p>
+
+            <p class="diary-rating">
+              ${limparTexto(montarEstrelas(registro.avaliacao))}
+            </p>
+
+            <p>${limparTexto(registro.anotacao || "Sem anotação")}</p>
           `;
 
           listaRegistros.appendChild(novoRegistro);
         });
       }
 
-      function salvarRegistroDiario(event) {
-        event.preventDefault();
-
-        const livro = document.getElementById("livro").value.trim();
-        const pagina = document.getElementById("pagina").value.trim();
-        const anotacao = document.getElementById("anotacao").value.trim();
-
-        if (!livro || !pagina || !anotacao) {
-          alert("Preencha todos os campos antes de salvar.");
-          return;
-        }
-
-        const registros = buscarRegistrosDiario();
-
-        const novoRegistro = {
-          livro: livro,
-          pagina: pagina,
-          anotacao: anotacao,
-          data: criarDataRegistro(),
-        };
-
-        registros.unshift(novoRegistro);
-        salvarRegistrosDiario(registros);
-        renderizarRegistrosDiario();
-
-        document.getElementById("livro").value = "";
-        document.getElementById("pagina").value = "";
-        document.getElementById("anotacao").value = "";
-      }
-
       function excluirRegistroDiario(index) {
         const confirmarExclusao = confirm(
-          "Tem certeza que deseja excluir este registro?"
+          "Tem certeza que deseja excluir este registro e remover o livro da pilha?"
         );
 
         if (!confirmarExclusao) {
@@ -305,19 +209,32 @@
         }
 
         const registros = buscarRegistrosDiario();
+        const registroRemovido = registros[index];
 
         registros.splice(index, 1);
-
         salvarRegistrosDiario(registros);
+
+        const pilha =
+          JSON.parse(localStorage.getItem("litlog_pilha_livros")) || [];
+
+        const pilhaAtualizada = pilha.filter(function (livro) {
+          return livro.titulo !== registroRemovido.livro;
+        });
+
+        localStorage.setItem(
+          "litlog_pilha_livros",
+          JSON.stringify(pilhaAtualizada)
+        );
+
         renderizarRegistrosDiario();
       }
 
       document.addEventListener("DOMContentLoaded", function () {
-        carregarLivrosNoSelect();
         renderizarRegistrosDiario();
       });
     </script>
 
+    <script src="../compartilhado/livros.js"></script>
     <script src="../compartilhado/modal.js"></script>
   </body>
 </html>

@@ -3,145 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="icon" href="../Img/Logo.png" type="image/png" />
 
     <link rel="stylesheet" href="../CSS/variavel.css" />
     <link rel="stylesheet" href="../CSS/global.css" />
     <link rel="stylesheet" href="../CSS/componentes.css" />
-
     <link rel="stylesheet" href="../compartilhado/modal.css" />
     <link rel="stylesheet" href="Pesquisa.css" />
+
     <title>Pesquisa | LitLog</title>
   </head>
 
   <body>
     <header class="topbar">
-  <a href="../HomePage/Home.html" class="topbar-logo">
-    <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
-    <span>LitLog</span>
-  </a>
-
-  <nav class="topbar-nav">
-    <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
-
-    <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-
-    <a href="../MembrosPage/teladelista.html" class="topbar-link">
-      Coleções
-    </a>
-
-    <div class="container-lupa">
-      <a
-        href="../PesquisaPage/Pesquisa.html"
-        class="topbar-search"
-        aria-label="Pesquisar"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-          <path
-            d="M 21 3 C 11.6 3 4 10.6 4 20 C 4 29.4 11.6 37 21 37 C 24.35 37 27.46 36.01 30.09 34.34 L 42.37 46.62 L 46.62 42.37 L 34.5 30.28 C 36.68 27.42 38 23.87 38 20 C 38 10.6 30.4 3 21 3 Z M 21 7 C 28.2 7 34 12.8 34 20 C 34 27.2 28.2 33 21 33 C 13.8 33 8 27.2 8 20 C 8 12.8 13.8 7 21 7 Z"
-          ></path>
-        </svg>
+      <a href="../HomePage/Home.html" class="topbar-logo">
+        <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
+        <span>LitLog</span>
       </a>
 
-      <form id="formulario-busca">
-        <input
-          type="text"
-          id="entrada-busca"
-          placeholder="Busque seus livros..."
-        />
+      <nav class="topbar-nav">
+        <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
+        <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
 
-        <button id="botao-busca" type="submit">
-          Buscar
-        </button>
-      </form>
-    </div>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link">
+          Coleções
+        </a>
 
-    <button
-      class="btn-primary"
-      type="button"
-      onclick="abrirModalLog()"
-    >
-      + Log
-    </button>
-  </nav>
-</header>
+        <div class="container-lupa">
+          <a
+            href="../PesquisaPage/Pesquisa.html"
+            class="topbar-search"
+            aria-label="Pesquisar"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+              <path
+                d="M 21 3 C 11.6 3 4 10.6 4 20 C 4 29.4 11.6 37 21 37 C 24.35 37 27.46 36.01 30.09 34.34 L 42.37 46.62 L 46.62 42.37 L 34.5 30.28 C 36.68 27.42 38 23.87 38 20 C 38 10.6 30.4 3 21 3 Z M 21 7 C 28.2 7 34 12.8 34 20 C 34 27.2 28.2 33 21 33 C 13.8 33 8 27.2 8 20 C 8 12.8 13.8 7 21 7 Z"
+              ></path>
+            </svg>
+          </a>
 
-    <div
-      class="modalLog"
-      id="modalLog"
-      aria-hidden="true"
-      onclick="fecharModalPorFora(event)"
-    >
-      <div
-        class="conteudoModalLog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="tituloModalLog"
-      >
-        <button
-          class="fecharModalLog"
-          type="button"
-          onclick="fecharModalLog()"
-          aria-label="Fechar"
-        >
-          &times;
-        </button>
+          <form id="formulario-busca">
+            <input
+              type="text"
+              id="entrada-busca"
+              placeholder="Busque seus livros..."
+            />
 
-        <h2 id="tituloModalLog">Novo log</h2>
-
-        <form class="formLog" onsubmit="salvarLog(event)">
-          <label for="livroLog">Livro</label>
-          <input id="livroLog" type="text" placeholder="Nome do livro" required />
-
-          <label for="autorLog">Autor</label>
-          <input id="autorLog" type="text" placeholder="Nome do autor" />
-
-          <label for="statusLog">Status</label>
-          <select id="statusLog">
-            <option>Lendo</option>
-            <option>Quero ler</option>
-            <option>Concluido</option>
-          </select>
-
-          <div class="acoesModalLog">
-            <button
-              class="botaoCancelarLog"
-              type="button"
-              onclick="fecharModalLog()"
-            >
-              Cancelar
+            <button id="botao-busca" type="submit">
+              Buscar
             </button>
+          </form>
+        </div>
 
-            <button class="botaoSalvarLog" type="submit">
-              Salvar
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-
+        <button class="btn-primary" type="button" onclick="abrirModalLog()">
+          + Log
+        </button>
+      </nav>
+    </header>
 
     <section class="exibir-livros">
       <h1 id="titulo-principal">Nenhuma pesquisa realizada...</h1>
       <div id="container-resultados"></div>
     </section>
 
-
     <div id="overlay">
       <div class="modal">
         <h2>Selecione a lista</h2>
-      <div>
-        <select name="" id="listasUsuario">
-         <option value="Nenhuma-Lista">Você nao possui listas</option>
-        </select>
-    
-      </div>
 
-      <div id="btnsModalConainer">
-        <button id="cancelar">Cancelar</button>
-        <button id="salvar">Salvar</button>
-      </div>
+        <div>
+          <select id="listasUsuario">
+            <option value="Nenhuma-Lista">Você não possui listas</option>
+          </select>
+        </div>
+
+        <div id="btnsModalConainer">
+          <button id="cancelar">Cancelar</button>
+          <button id="salvar">Salvar</button>
+        </div>
       </div>
     </div>
 
