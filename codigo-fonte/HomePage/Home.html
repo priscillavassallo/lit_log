@@ -42,59 +42,83 @@
     </button>
   </nav>
 </header>
-    <div
-      class="modalLog"
-      id="modalLog"
-      aria-hidden="true"
-      onclick="fecharModalPorFora(event)"
+<div
+  class="modalLog"
+  id="modalLog"
+  aria-hidden="true"
+  onclick="fecharModalPorFora(event)"
+>
+  <div
+    class="conteudoModalLog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloModalLog"
+  >
+    <button
+      class="fecharModalLog"
+      type="button"
+      onclick="fecharModalLog()"
+      aria-label="Fechar"
     >
-      <div
-        class="conteudoModalLog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="tituloModalLog"
-      >
+      &times;
+    </button>
+
+    <h2 id="tituloModalLog">Novo log</h2>
+
+    <form class="formLog" onsubmit="salvarLog(event)">
+      <label for="livroLog">Livro</label>
+      <input
+        id="livroLog"
+        type="text"
+        list="listaLivrosLog"
+        placeholder="Pesquise ou selecione um livro"
+        autocomplete="off"
+        required
+      />
+      <datalist id="listaLivrosLog"></datalist>
+
+      <label for="statusLog">Status</label>
+      <select id="statusLog" required>
+        <option value="Quero ler">Quero ler</option>
+        <option value="Lendo">Lendo</option>
+        <option value="Lido">Lido</option>
+      </select>
+
+      <label for="paginaLog">Página atual</label>
+      <input id="paginaLog" type="number" placeholder="Ex: 120" />
+<label>Avaliação</label>
+
+      <div class="avaliacaoEstrelas" id="avaliacaoEstrelas">
+        <button type="button" class="estrelaLog" data-value="1" onclick="selecionarAvaliacaoLog(1)">☆</button>
+        <button type="button" class="estrelaLog" data-value="2" onclick="selecionarAvaliacaoLog(2)">☆</button>
+        <button type="button" class="estrelaLog" data-value="3" onclick="selecionarAvaliacaoLog(3)">☆</button>
+        <button type="button" class="estrelaLog" data-value="4" onclick="selecionarAvaliacaoLog(4)">☆</button>
+        <button type="button" class="estrelaLog" data-value="5" onclick="selecionarAvaliacaoLog(5)">☆</button>
+      </div>
+
+      <input type="hidden" id="avaliacaoLog" value="" />
+
+      <label for="anotacaoLog">Anotação</label>
+      <textarea
+        id="anotacaoLog"
+        rows="4"
+        placeholder="Escreva suas impressões sobre a leitura"
+      ></textarea>
+
+      <div class="acoesModalLog">
         <button
-          class="fecharModalLog"
+          class="botaoCancelarLog"
           type="button"
           onclick="fecharModalLog()"
-          aria-label="Fechar"
         >
-          &times;
+          Cancelar
         </button>
-        <h2 id="tituloModalLog">Novo log</h2>
-        <form class="formLog" onsubmit="salvarLog(event)">
-          <label for="livroLog">Livro</label>
-          <input
-            id="livroLog"
-            type="text"
-            placeholder="Nome do livro"
-            required
-          />
 
-          <label for="autorLog">Autor</label>
-          <input id="autorLog" type="text" placeholder="Nome do autor" />
-
-          <label for="statusLog">Status</label>
-          <select id="statusLog">
-            <option>Lendo</option>
-            <option>Quero ler</option>
-            <option>Concluído</option>
-          </select>
-
-          <div class="acoesModalLog">
-            <button
-              class="botaoCancelarLog"
-              type="button"
-              onclick="fecharModalLog()"
-            >
-              Cancelar
-            </button>
-            <button class="botaoSalvarLog" type="submit">Salvar</button>
-          </div>
-        </form>
+        <button class="botaoSalvarLog" type="submit">Salvar</button>
       </div>
-    </div>
+    </form>
+  </div>
+</div>
     <section id="Banner">
       <div>
         <div id="TituloBanner">LitLog</div>
@@ -412,6 +436,7 @@
         carrossel.scrollLeft = carrossel.scrollLeft + direcao * 216;
       }
     </script>
+    <script src="../compartilhado/livros.js"></script>
     <script src="../compartilhado/modal.js"></script>
   </body>
 </html>

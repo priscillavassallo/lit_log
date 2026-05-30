@@ -3,148 +3,110 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="icon" href="../Img/Logo.png" type="image/png" />
+
     <link rel="stylesheet" href="../CSS/variavel.css" />
     <link rel="stylesheet" href="../CSS/global.css" />
     <link rel="stylesheet" href="../CSS/componentes.css" />
-    
     <link rel="stylesheet" href="../compartilhado/modal.css" />
     <link rel="stylesheet" href="Perfil.css" />
-    <title>Meu Perfil </title>
+
+    <title>Meu Perfil</title>
   </head>
+
   <body>
     <header class="topbar">
-  <a href="../HomePage/Home.html" class="topbar-logo">
-    <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
-    <span>LitLog</span>
-  </a>
+      <a href="../HomePage/Home.html" class="topbar-logo">
+        <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
+        <span>LitLog</span>
+      </a>
 
-  <nav class="topbar-nav">
-    <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
-    <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-    <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+      <nav class="topbar-nav">
+        <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
+        <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
 
-    <a href="../PesquisaPage/Pesquisa.html" class="topbar-search" aria-label="Pesquisar">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-        <path
-          d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
-        ></path>
-      </svg>
-    </a>
-
-    <button class="btn-primary" type="button" onclick="abrirModalLog()">
-      + Log
-    </button>
-  </nav>
-</header>
-    <div
-      class="modalLog"
-      id="modalLog"
-      aria-hidden="true"
-      onclick="fecharModalPorFora(event)"
-    >
-      <div
-        class="conteudoModalLog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="tituloModalLog"
-      >
-        <button
-          class="fecharModalLog"
-          type="button"
-          onclick="fecharModalLog()"
-          aria-label="Fechar"
+        <a
+          href="../PesquisaPage/Pesquisa.html"
+          class="topbar-search"
+          aria-label="Pesquisar"
         >
-          x
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+            <path
+              d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+            ></path>
+          </svg>
+        </a>
+
+        <button class="btn-primary" type="button" onclick="abrirModalLog()">
+          + Log
         </button>
-        <h2 id="tituloModalLog">Novo log</h2>
-        <form class="formLog" onsubmit="salvarLog(event)">
-          <label for="livroLog">Livro</label>
-          <input
-              class="input"
-              id="livroLog"
-              type="text"
-              placeholder="Nome do livro"
-              required
+      </nav>
+    </header>
+
+    <section class="section-container">
+      <div class="perfil-container">
+        <div class="profname">
+          <div class="imgcontainer">
+            <img
+              src="../Img/user.png"
+              alt="Imagem De Perfil"
+              id="fotoPerfil"
             />
 
-          <label for="autorLog">Autor</label>
-          <input class="input" id="autorLog" type="text" placeholder="Nome do autor" />
-
-          <label for="statusLog">Status</label>
-          <select class="input" id="statusLog">
-            <option>Lendo</option>
-            <option>Quero ler</option>
-            <option>Concluído</option>
-          </select>
-
-          <div class="acoesModalLog">
-            <button
-              class="btn-secondary"
-              type="button"
-              onclick="fecharModalLog()"
-            >
-              Cancelar
-            </button>
-            <button class="btn-primary" type="submit">Salvar</button>
+            <div id="selectFile-contianer">
+              <input type="file" id="selectFoto" accept="image/*" />
+              <span id="textFile">Alterar foto de perfil</span>
+            </div>
           </div>
-        </form>
-      </div>
-    </div>
-    <section class="section-container">
-    <div class="perfil-container">
 
-      <div class="profname">
-        <div class="imgcontainer">
-          <img
-            src="../Img/user.png"
-            alt="Imagem De Perfil"
-            id="fotoPerfil"
-          />
-          <div id="selectFile-contianer">
-            <input type="file" id="selectFoto" accept="images/*">
-            <span id="textFile">Alterar foto de perfil</span>
+          <div class="nome">
+            <h1>Nome de Usuário</h1>
           </div>
-          
+
+          <div class="descricao-container">
+            <textarea
+              id="desc"
+              placeholder="Fale dos seus gostos e interesses"
+              readonly
+            ></textarea>
+
+            <button id="btnDesc">Editar</button>
+          </div>
         </div>
 
-        <div class="nome">
-          <h1>Nome de Usuário</h1>
-        </div>
+        <div class="profabas">
+          <div class="social-container">
+            <span>Seguindo</span>
+            <span>Seguidores</span>
+          </div>
 
-        <div class="descricao-container">
-          <textarea id="desc" placeholder="Fale dos seus gostos e interesses" readonly>
-              
-          </textarea>
+          <div class="abascontainer">
+            <div class="abas">
+              <h2>
+                <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
+              </h2>
+            </div>
 
-          <button id="btnDesc">Editar</button>
-        </div>
-      </div>
+            <div class="abas">
+              <h2>
+                <a href="../DiaryPage/Diary.html">Diário</a>
+              </h2>
+            </div>
 
-      <div class="profabas">
-        <div class="social-container">
-          <span>Seguindo</span>
-          <span>Seguidores</span>
-        </div>
-        <div class="abascontainer">
-            <a href="../ThePilePage/ThePile.html"><div class="abas">
-              <h2>Pilha de Livros</h2>
-            </div></a>
-
-            <a href="../DiaryPage/Diary.html"><div class="abas">
-              <h2>Diario</h2>
-            </div></a>
-
-            <a href="../List/list.html"><div class="abas">
-              <h2>Listas</h2>
-            </div></a>
+            <div class="abas">
+              <h2>
+                <a href="../List/list.html">Listas</a>
+              </h2>
+            </div>
           </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <script src="../compartilhado/livros.js"></script>
     <script src="../compartilhado/modal.js"></script>
     <script src="Perfil.js"></script>
   </body>

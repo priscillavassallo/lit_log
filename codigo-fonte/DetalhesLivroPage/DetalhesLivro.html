@@ -3,11 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link rel="icon" href="../Img/Logo.png" type="image/png" />
+
     <link rel="stylesheet" href="../CSS/variavel.css" />
     <link rel="stylesheet" href="../CSS/global.css" />
     <link rel="stylesheet" href="../CSS/componentes.css" />
+    <link rel="stylesheet" href="../compartilhado/modal.css" />
     <link rel="stylesheet" href="DetalhesLivro.css" />
+
     <title>LitLog | Detalhes do Livro</title>
   </head>
 
@@ -22,15 +26,19 @@
         <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
         <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
         <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
-      
-        <a href="../PesquisaPage/Pesquisa.html" class="topbar-search" aria-label="Pesquisar">
+
+        <a
+          href="../PesquisaPage/Pesquisa.html"
+          class="topbar-search"
+          aria-label="Pesquisar"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
             <path
-  d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"></path>
-  
+              d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+            ></path>
           </svg>
         </a>
-      
+
         <button class="btn-primary" type="button" onclick="abrirModalLog()">
           + Log
         </button>
@@ -38,10 +46,9 @@
     </header>
 
     <main class="container">
-      
       <div class="left">
         <div class="capa">
-          <img id="bookCover" />
+          <img id="bookCover" alt="Capa do livro" />
         </div>
 
         <h1 class="titulo" id="bookTitle">Carregando livro...</h1>
@@ -51,14 +58,16 @@
         </div>
       </div>
 
-      
       <div class="right">
         <div class="onde" id="bookAuthor"></div>
         <div class="preco" id="bookYear"></div>
+
         <div class="avaliacao" id="bookRating">
-          <img src="../Img/rating stars.png" class="estrelas" />
+          <img src="../Img/rating stars.png" class="estrelas" alt="Avaliação" />
         </div>
+
         <h1 class="onde" id="bookReviews">Últimas Resenhas</h1>
+
         <p><b>_vi.vivi</b> Lorem ipsum dolor sit amet.</p>
         <p><b>filipe_mesq</b> Nunc quis mauris non metus ultricies laoreet.</p>
         <p><b>dano.moreno0</b> Proin sed magna elit. Sed sed dapibus sapien.</p>
@@ -66,29 +75,24 @@
         <button class="add">Adicionar à Lista</button>
       </div>
 
+      <div id="overlay">
+        <div class="modal">
+          <h2>Selecione a lista</h2>
 
-    <div id="overlay">
-      <div class="modal">
-        <h2>Selecione a lista</h2>
-      <div>
-        <select name="" id="listasUsuario">
-      
-        </select>
-    
+          <div>
+            <select id="listasUsuario"></select>
+          </div>
+
+          <div id="btnsModalConainer">
+            <button id="cancelar">Cancelar</button>
+            <button id="salvar">Salvar</button>
+          </div>
+        </div>
       </div>
-
-      <div id="btnsModalConainer">
-        <button id="cancelar">Cancelar</button>
-        <button id="salvar">Salvar</button>
-      </div>
-      </div>
-    </div>
-
-
-
     </main>
-    <script src="../compartilhado/livros.js"></script>
 
+    <script src="../compartilhado/livros.js"></script>
     <script src="Detalhes.js"></script>
+    <script src="../compartilhado/modal.js"></script>
   </body>
 </html>

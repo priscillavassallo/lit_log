@@ -45,87 +45,10 @@
       </nav>
     </header>
 
-    <div
-      class="modalLog"
-      id="modalLog"
-      aria-hidden="true"
-      onclick="fecharModalPorFora(event)"
-    >
-      <div
-        class="conteudoModalLog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="tituloModalLog"
-      >
-        <button
-          class="fecharModalLog"
-          type="button"
-          onclick="fecharModalLog()"
-          aria-label="Fechar"
-        >
-          &times;
-        </button>
-
-        <h2 id="tituloModalLog">Novo log</h2>
-
-        <form class="formLog" onsubmit="salvarLog(event)">
-          <label for="livroLog">Livro</label>
-          <input id="livroLog" type="text" placeholder="Nome do livro" required />
-
-          <label for="autorLog">Autor</label>
-          <input id="autorLog" type="text" placeholder="Nome do autor" />
-
-          <label for="statusLog">Status</label>
-          <select id="statusLog">
-            <option>Lendo</option>
-            <option>Quero ler</option>
-            <option>Concluído</option>
-          </select>
-
-          <div class="acoesModalLog">
-            <button
-              class="botaoCancelarLog"
-              type="button"
-              onclick="fecharModalLog()"
-            >
-              Cancelar
-            </button>
-            <button class="botaoSalvarLog" type="submit">Salvar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-
     <main class="pile-page">
       <section class="pile-hero">
         <h1>Pilha de Livros</h1>
         <p>Sua pilha de livros para ler, organizar e acompanhar.</p>
-      </section>
-
-      <section class="pile-card pile-form-card">
-        <h2>Adicionar livro à pilha</h2>
-
-        <form class="pile-form" onsubmit="adicionarLivroNaPilha(event)">
-          <div class="pile-form-group">
-            <label for="livroPilha">Livro</label>
-            <select id="livroPilha" required>
-              <option value="">Selecione um livro</option>
-            </select>
-          </div>
-
-          <div class="pile-form-group">
-            <label for="statusPilha">Status</label>
-            <select id="statusPilha" required>
-              <option value="Quero ler">Quero ler</option>
-              <option value="Lendo">Lendo</option>
-              <option value="Lido">Lido</option>
-            </select>
-          </div>
-
-          <button class="btn-primary pile-add" type="submit">
-            Adicionar à pilha
-          </button>
-        </form>
       </section>
 
       <section class="pile-filters" aria-label="Filtros da pilha de livros">
@@ -168,8 +91,6 @@
 
       <section class="pile-grid" id="gradeLivros"></section>
     </main>
-
-    <script src="../compartilhado/livros.js"></script>
 
     <script>
       const chavePilhaLivros = "litlog_pilha_livros";
@@ -219,106 +140,47 @@
           return livrosExemploPilha;
         }
 
-        return JSON.parse(pilhaSalva);
+        const pilha = JSON.parse(pilhaSalva);
+
+        if (pilha.length === 0) {
+          salvarPilhaLivros(livrosExemploPilha);
+          return livrosExemploPilha;
+        }
+
+        return pilha;
       }
 
       function salvarPilhaLivros(pilha) {
         localStorage.setItem(chavePilhaLivros, JSON.stringify(pilha));
       }
 
-      function carregarLivrosNoSelect() {
-        const selectLivro = document.getElementById("livroPilha");
+      function alterarStatusLivro(index, novoStatus) {
+        const pilha = buscarPilhaLivros();
+        const livroAlterado = pilha[index];
 
-        if (!selectLivro || typeof livros === "undefined" || !Array.isArray(livros)) {
-          return;
-        }
+        pilha[index].status = novoStatus;
+        salvarPilhaLivros(pilha);
 
-        selectLivro.innerHTML = '<option value="">Selecione um livro</option>';
+        const registrosDiario =
+          JSON.parse(localStorage.getItem("litlog_registros_diario")) || [];
 
-        const livrosSemRepeticao = [];
-
-        livros.forEach(function (livro) {
-          const jaExiste = livrosSemRepeticao.some(function (item) {
-            return item.titulo === livro.titulo;
-          });
-
-          if (!jaExiste) {
-            livrosSemRepeticao.push(livro);
+        registrosDiario.forEach(function (registro) {
+          if (registro.livro === livroAlterado.titulo) {
+            registro.status = novoStatus;
           }
         });
 
-        const livrosOrdenados = livrosSemRepeticao.sort(function (a, b) {
-          return a.titulo.localeCompare(b.titulo, "pt-BR");
-        });
+        localStorage.setItem(
+          "litlog_registros_diario",
+          JSON.stringify(registrosDiario)
+        );
 
-        livrosOrdenados.forEach(function (livro) {
-          const option = document.createElement("option");
-          option.value = livro.titulo;
-          option.textContent = livro.titulo + " - " + livro.autor;
-          selectLivro.appendChild(option);
-        });
-      }
-
-      function buscarLivroPorTitulo(titulo) {
-        if (typeof livros === "undefined" || !Array.isArray(livros)) {
-          return null;
-        }
-
-        return livros.find(function (livro) {
-          return livro.titulo === titulo;
-        });
-      }
-
-      function adicionarLivroNaPilha(event) {
-        event.preventDefault();
-
-        const tituloSelecionado = document.getElementById("livroPilha").value;
-        const statusSelecionado = document.getElementById("statusPilha").value;
-        const livroEncontrado = buscarLivroPorTitulo(tituloSelecionado);
-
-        if (!livroEncontrado) {
-          alert("Selecione um livro válido.");
-          return;
-        }
-
-        const pilha = buscarPilhaLivros();
-
-        const jaExisteNaPilha = pilha.some(function (livro) {
-          return livro.titulo === livroEncontrado.titulo;
-        });
-
-        if (jaExisteNaPilha) {
-          alert("Este livro já está na sua pilha.");
-          return;
-        }
-
-        const novoLivro = {
-          titulo: livroEncontrado.titulo,
-          autor: livroEncontrado.autor,
-          capa: livroEncontrado.capa,
-          status: statusSelecionado,
-        };
-
-        pilha.unshift(novoLivro);
-        salvarPilhaLivros(pilha);
-        renderizarPilhaLivros();
-
-        document.getElementById("livroPilha").value = "";
-        document.getElementById("statusPilha").value = "Quero ler";
-      }
-
-      function alterarStatusLivro(index, novoStatus) {
-        const pilha = buscarPilhaLivros();
-
-        pilha[index].status = novoStatus;
-
-        salvarPilhaLivros(pilha);
         renderizarPilhaLivros();
       }
 
       function excluirLivroDaPilha(index) {
         const confirmarExclusao = confirm(
-          "Tem certeza que deseja excluir este livro da pilha?"
+          "Tem certeza que deseja excluir este livro da pilha e seus registros no diário?"
         );
 
         if (!confirmarExclusao) {
@@ -326,10 +188,23 @@
         }
 
         const pilha = buscarPilhaLivros();
+        const livroRemovido = pilha[index];
 
         pilha.splice(index, 1);
-
         salvarPilhaLivros(pilha);
+
+        const registrosDiario =
+          JSON.parse(localStorage.getItem("litlog_registros_diario")) || [];
+
+        const registrosAtualizados = registrosDiario.filter(function (registro) {
+          return registro.livro !== livroRemovido.titulo;
+        });
+
+        localStorage.setItem(
+          "litlog_registros_diario",
+          JSON.stringify(registrosAtualizados)
+        );
+
         renderizarPilhaLivros();
       }
 
@@ -438,11 +313,11 @@
       }
 
       document.addEventListener("DOMContentLoaded", function () {
-        carregarLivrosNoSelect();
         renderizarPilhaLivros();
       });
     </script>
 
+    <script src="../compartilhado/livros.js"></script>
     <script src="../compartilhado/modal.js"></script>
   </body>
 </html>
