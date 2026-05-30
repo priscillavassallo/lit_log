@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="../CSS/global.css" />
     <link rel="stylesheet" href="../CSS/componentes.css" />
     <link rel="stylesheet" href="lista.css" />
-</head>
+
+    <link rel="stylesheet" href="../compartilhado/modal.css" />
+  </head>
 
 <body>
     <header class="topbar">
@@ -50,6 +52,85 @@
     </span>
 
     <div id="lista"></div>
+
+<div
+  class="modalLog"
+  id="modalLog"
+  aria-hidden="true"
+  onclick="fecharModalPorFora(event)"
+>
+  <div
+    class="conteudoModalLog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="tituloModalLog"
+  >
+    <button
+      class="fecharModalLog"
+      type="button"
+      onclick="fecharModalLog()"
+      aria-label="Fechar"
+    >
+      &times;
+    </button>
+
+    <h2 id="tituloModalLog">Novo log</h2>
+
+    <form class="formLog" onsubmit="salvarLog(event)">
+      <label for="livroLog">Livro</label>
+      <input
+        id="livroLog"
+        type="text"
+        list="listaLivrosLog"
+        placeholder="Pesquise ou selecione um livro"
+        autocomplete="off"
+        required
+      />
+      <datalist id="listaLivrosLog"></datalist>
+
+      <label for="statusLog">Status</label>
+      <select id="statusLog" required>
+        <option value="Quero ler">Quero ler</option>
+        <option value="Lendo">Lendo</option>
+        <option value="Lido">Lido</option>
+      </select>
+
+      <label for="paginaLog">Página atual</label>
+      <input id="paginaLog" type="number" placeholder="Ex: 120" />
+<label>Avaliação</label>
+
+      <div class="avaliacaoEstrelas" id="avaliacaoEstrelas">
+        <button type="button" class="estrelaLog" data-value="1" onclick="selecionarAvaliacaoLog(1)">☆</button>
+        <button type="button" class="estrelaLog" data-value="2" onclick="selecionarAvaliacaoLog(2)">☆</button>
+        <button type="button" class="estrelaLog" data-value="3" onclick="selecionarAvaliacaoLog(3)">☆</button>
+        <button type="button" class="estrelaLog" data-value="4" onclick="selecionarAvaliacaoLog(4)">☆</button>
+        <button type="button" class="estrelaLog" data-value="5" onclick="selecionarAvaliacaoLog(5)">☆</button>
+      </div>
+
+      <input type="hidden" id="avaliacaoLog" value="" />
+
+      <label for="anotacaoLog">Anotação</label>
+      <textarea
+        id="anotacaoLog"
+        rows="4"
+        placeholder="Escreva suas impressões sobre a leitura"
+      ></textarea>
+
+      <div class="acoesModalLog">
+        <button
+          class="botaoCancelarLog"
+          type="button"
+          onclick="fecharModalLog()"
+        >
+          Cancelar
+        </button>
+
+        <button class="botaoSalvarLog" type="submit">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+      
 
     <script>
   const parametros = new URLSearchParams(window.location.search);
@@ -99,37 +180,26 @@
             </a>
           </h3>
 
-          <div class="menu-card">
-
-              <button
-                class="menu-btn"
-                type="button"
-                aria-label="Opções"
-              ></button>
-
-              <div class="menu-dropdown">
-            
-                <button
-                  class="removerL"
-                  data-isbn="${livro.isbn}"
-                >
-                  Remover
-                </button>
-            
-              </div>
-          
-            </div>
-
-            <div class="menu-dropdown">
-              <button
-                class="removerL"
-                data-isbn="${livro.isbn}"
-              >
-                Remover
-              </button>
-            </div>
+      <div class="menu-card">
+      
+        <button
+          class="menu-btn"
+          type="button"
+          aria-label="Opções"
+        ></button>
+      
+        <div class="menu-dropdown">
+          <button
+            class="removerL"
+            data-isbn="${livro.isbn}"
+          >
+            Remover
+          </button>
+        
           </div>
+      
         </div>
+      </div>
       `;
     });
   }
