@@ -1,12 +1,15 @@
-#lista{
-    margin: 2rem;
-    padding: 1rem;
-    background-color:#F3EFEA;
-    border: 2px solid #000;
-    border-radius: 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    gap: 1rem;
+#lista {
+  width: fit-content;
+  max-width: 100%;
+  margin: var(--space-xl) auto;
+  padding: var(--space-xl);
+  background: var(--color-white);
+  border: none;
+  border-radius: var(--radius-lg);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 200px));
+  gap: var(--space-xl);
+  box-shadow: var(--shadow-soft);
 }
 
 #card-container{
@@ -32,11 +35,89 @@
 
 }
 
-.removerL{
+.menu-card {
   position: absolute;
-  top: 10px;   
-  right: 15px;  
+  top: 12px;
+  right: 12px;
+}
 
+.menu-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.menu-btn::before {
+  content: "⋯";
+  font-size: 24px;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 42px;
+  right: 0;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  min-width: 120px;
+}
+
+.menu-dropdown.ativo {
+  display: block;
+}
+
+.menu-card:hover .menu-dropdown {
+  display: block;
+}
+
+.removerL {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 12px 16px;
+  cursor: pointer;
+  color: var(--color-primary);
+  text-align: left;
+}
+
+.removerL:hover {
+  background: var(--color-surface);
+}
+
+#titulo-lista {
+  margin: var(--space-2xl) auto var(--space-sm);
+  text-align: center;
+
+  color: var(--color-primary);
+
+  font-family: var(--font-title);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+}
+
+#aviso,
+#pesq {
+  display: block;
+  text-align: center;
+  color: var(--color-text-light);
+  margin-bottom: var(--space-sm);
+}
+
+#pesq a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
 }
 
 

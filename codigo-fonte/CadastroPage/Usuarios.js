@@ -45,3 +45,27 @@ form.addEventListener('submit', (e) => {
 
     validarCadastro(novoUsuario)
 })
+
+const perfisFicticios = [{
+        id: 1,
+        nomeUsuario: "Ana flavia",
+        seguidores: [],
+        seguindo: []
+    },
+    {
+        id: 2,
+        nomeUsuario: "Leo Andrade",
+        seguidores: [],
+        seguindo: []
+    },
+    {
+        id: 3,
+        nomeUsuario: "Isadora Doria",
+        seguidores: [],
+        seguindo: []
+    }]
+
+    localStorage.setItem(
+        "perfisFicticios",
+        JSON.stringify(perfisFicticios)
+    )
