@@ -47,7 +47,8 @@
 }
 
 .linhaCarrossel {
-  margin: 0 0 45px 0;
+  margin: 35px;
+  margin-top: 25px;
 }
 
 .tituloLinha {
@@ -96,8 +97,13 @@
 }
 
 .nomeLivro {
-  margin: 12px 0 0 0;
-  color: #28251f;
+  margin-top: 12px;
+  color: var(--color-text);
   text-align: center;
-  font-size: 15px;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  min-height: 42px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
