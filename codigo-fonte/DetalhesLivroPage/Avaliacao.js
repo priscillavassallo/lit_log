@@ -17,7 +17,7 @@ function renderMediaGeral() {
 
     mediaGeral.innerHTML = `
        <span class="mediaGeral">
-           ${livro.mediaNota} &#9733; (${livro.totalAvaliacoes} avaliações)
+           ${livro.mediaNota} <span id="star">&#9733;</span> (${livro.totalAvaliacoes} avaliações)
        </span>
     `;
 }

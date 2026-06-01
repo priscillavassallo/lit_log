@@ -84,9 +84,18 @@
   background: var(--color-secondary);
 }
 
+#star {
+  color: gold;
+  font-size: 22px;
+}
+.estrelaUser {
+  color: #443f3f;
+  font-size: 22px;
+}
 .selected {
   cursor: pointer;
   color: gold;
+  font-size: 22px;
 }
 
 .hover{
