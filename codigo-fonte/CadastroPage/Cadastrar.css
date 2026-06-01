@@ -96,20 +96,21 @@ button {
 }
 
 #submit {
-  background-color: #000000;
+  background-color: #191522;
   color: #fff;
   padding: 0.8rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   min-width: 100px;
-  transition: 0.8s;
+  transition: 0.3s;
 }
 
 #submit:hover {
-  background-color: #dbdacd;
-  color: #000;
+  background-color: #262238;
+  color: #fff;
 }
+
 
 .login-link {
   color: #000;

@@ -25,16 +25,6 @@ input {
   font-size: 20px;
 }
 
-button {
-  width: 100px;
-  height: 40px;
-  background-color: white;
-  color: black;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .section {
   display: flex;
   min-height: 100vh;
@@ -100,27 +90,26 @@ button {
 }
 
 .submit {
-  background-color: #000000;
+  background-color: #191522;
   color: #fff;
   padding: 0.8rem;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   min-width: 100px;
-  transition: 0.8s;
+  transition: 0.3s;
 }
 
 .submit:hover {
-  background-color: #dbdacd;
-  color: #000;
+  background-color: #262238;
+  color: #fff;
 }
 
-.login-link {
+.cadastrar-link {
   color: #000;
   font-weight: bold;
   text-decoration: underline;
 }
-
 @media screen and (max-width: 768px) {
   .container {
     flex-direction: column;
