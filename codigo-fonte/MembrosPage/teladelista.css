@@ -132,3 +132,24 @@
     overflow-x: auto;
   }
 }
+.linhaFiltro {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.linhaFiltro label {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.linhaFiltro select {
+  padding: 10px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-text);
+  font: inherit;
+}

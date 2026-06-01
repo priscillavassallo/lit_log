@@ -7,36 +7,41 @@
     <link rel="stylesheet" href="../CSS/variavel.css" />
     <link rel="stylesheet" href="../CSS/global.css" />
     <link rel="stylesheet" href="../CSS/componentes.css" />
-
     <link rel="stylesheet" href="../compartilhado/modal.css" />
     <link rel="stylesheet" href="teladelista.css" />
     <title>LitLog</title>
   </head>
+
   <body>
     <header class="topbar">
-  <a href="../HomePage/Home.html" class="topbar-logo">
-    <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
-    <span>LitLog</span>
-  </a>
+      <a href="../HomePage/Home.html" class="topbar-logo">
+        <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
+        <span>LitLog</span>
+      </a>
 
-  <nav class="topbar-nav">
-    <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
-    <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-    <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+      <nav class="topbar-nav">
+        <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
+        <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
 
-    <a href="../PesquisaPage/Pesquisa.html" class="topbar-search" aria-label="Pesquisar">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-        <path
-          d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
-        ></path>
-      </svg>
-    </a>
+        <a
+          href="../PesquisaPage/Pesquisa.html"
+          class="topbar-search"
+          aria-label="Pesquisar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+            <path
+              d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+            ></path>
+          </svg>
+        </a>
 
-    <button class="btn-primary" type="button" onclick="abrirModalLog()">
-      + Log
-    </button>
-  </nav>
-</header>
+        <button class="btn-primary" type="button" onclick="abrirModalLog()">
+          + Log
+        </button>
+      </nav>
+    </header>
+
     <main class="paginaLivros">
       <section class="areaLivros areaPrincipal">
         <div class="subtituloCarrossel">
@@ -49,11 +54,22 @@
             adicioná-los como amigos ou favoritar.
           </p>
         </div>
+
         <div class="linhaFiltro">
-          <a href="../PesquisaPage/Pesquisa.html">Filtrar &gt;</a>
+          <label for="filtroGenero">Filtrar por gênero:</label>
+
+          <select id="filtroGenero" onchange="filtrarColecoes()">
+            <option value="todos">Todos</option>
+            <option value="premiados">Premiados</option>
+            <option value="terror">Terror</option>
+            <option value="classicos">Clássicos</option>
+            <option value="contemporaneos">Contemporâneos</option>
+          </select>
         </div>
-        <div class="secaoLivros">
+
+        <div class="secaoLivros" data-genero="premiados">
           <h2>VENCEDORES DO PRÊMIO PULITZER 2016-2026 POR @LAISMAZER</h2>
+
           <div class="controleCarrossel">
             <button
               class="botaoCarrossel"
@@ -61,10 +77,9 @@
             >
               &#10094;
             </button>
+
             <div class="livrosCarrossel" id="popularesSemana">
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780393356687"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780393356687">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -74,9 +89,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781631491665"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781631491665">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -86,9 +99,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780802124944"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780802124944">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -98,9 +109,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307387899"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307387899">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -110,9 +119,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062671189"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062671189">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -122,9 +129,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780063251922"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780063251922">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -134,9 +139,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385550369"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385550369">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -146,9 +149,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780812982626"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780812982626">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -158,9 +159,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385537070"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385537070">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -170,9 +169,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593420317"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593420317">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -182,9 +179,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307593313"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307593313">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -194,9 +189,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780316055444"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780316055444">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -206,9 +199,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062896391"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062896391">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -218,9 +209,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385542364"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385542364">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -230,9 +219,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593490617"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593490617">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -242,9 +229,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781501173219"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781501173219">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -254,6 +239,7 @@
                 </div>
               </a>
             </div>
+
             <button
               class="botaoCarrossel"
               onclick="moverCarrossel('popularesSemana', 1)"
@@ -263,8 +249,9 @@
           </div>
         </div>
 
-        <div class="secaoLivros">
+        <div class="secaoLivros" data-genero="terror">
           <h2>TOP 10 LIVROS DE TERROR POR @GABBYVIANNA</h2>
+
           <div class="controleCarrossel">
             <button
               class="botaoCarrossel"
@@ -272,10 +259,9 @@
             >
               &#10094;
             </button>
+
             <div class="livrosCarrossel" id="lancamentos">
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781501142970"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781501142970">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -285,9 +271,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307743657"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307743657">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -297,9 +281,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780141439846"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780141439846">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -309,9 +291,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780486282114"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780486282114">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -321,9 +301,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780061007224"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780061007224">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -333,9 +311,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780143039983"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780143039983">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -345,9 +321,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780380807345"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780380807345">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -357,9 +331,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781501156700"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781501156700">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -369,9 +341,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062259653"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062259653">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -381,9 +351,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781594748622"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781594748622">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -393,6 +361,7 @@
                 </div>
               </a>
             </div>
+
             <button
               class="botaoCarrossel"
               onclick="moverCarrossel('lancamentos', 1)"
@@ -402,8 +371,9 @@
           </div>
         </div>
 
-        <div class="secaoLivros">
+        <div class="secaoLivros" data-genero="classicos">
           <h2>LIVROS PARA LER PELO MENOS UMA VEZ NA VIDA POR @DUDAMELLOGS</h2>
+
           <div class="controleCarrossel">
             <button
               class="botaoCarrossel"
@@ -411,10 +381,9 @@
             >
               &#10094;
             </button>
+
             <div class="livrosCarrossel" id="recemAvaliados">
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307588371"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307588371">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -424,9 +393,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062671189"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062671189">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -436,9 +403,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307593313"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307593313">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -448,9 +413,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780141439556"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780141439556">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -459,9 +422,8 @@
                   <h4>O Morro dos Ventos Uivantes</h4>
                 </div>
               </a>
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780553213690"
-              >
+
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780553213690">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -470,9 +432,8 @@
                   <h4>A Metamorfose</h4>
                 </div>
               </a>
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780142437247"
-              >
+
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780142437247">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -481,9 +442,8 @@
                   <h4>Moby Dick</h4>
                 </div>
               </a>
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780451526342"
-              >
+
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780451526342">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -492,9 +452,8 @@
                   <h4>A Revolução dos Bichos</h4>
                 </div>
               </a>
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385490818"
-              >
+
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385490818">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -503,9 +462,8 @@
                   <h4>O Conto da Aia</h4>
                 </div>
               </a>
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780393356687"
-              >
+
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780393356687">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -515,6 +473,7 @@
                 </div>
               </a>
             </div>
+
             <button
               class="botaoCarrossel"
               onclick="moverCarrossel('recemAvaliados', 1)"
@@ -526,8 +485,9 @@
       </section>
 
       <section class="areaLivros areaRecomendacoes">
-        <div class="secaoLivros">
+        <div class="secaoLivros" data-genero="contemporaneos">
           <h2>.° PARA LER ENQUANTO CHOVE BY @AP.AOLA</h2>
+
           <div class="controleCarrossel">
             <button
               class="botaoCarrossel"
@@ -535,10 +495,9 @@
             >
               &#10094;
             </button>
+
             <div class="livrosCarrossel" id="lidosAmigos">
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780525559474"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780525559474">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -548,9 +507,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780525536291"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780525536291">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -560,9 +517,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593318171"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593318171">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -572,9 +527,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593321201"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593321201">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -584,9 +537,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780063072640"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780063072640">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -596,9 +547,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780802162175"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780802162175">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -608,9 +557,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780060883287"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780060883287">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -620,9 +567,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780316769174"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780316769174">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -632,9 +577,7 @@
                 </div>
               </a>
 
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780441569595"
-              >
+              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780441569595">
                 <div class="livro">
                   <img
                     class="capaLivro"
@@ -644,6 +587,7 @@
                 </div>
               </a>
             </div>
+
             <button
               class="botaoCarrossel"
               onclick="moverCarrossel('lidosAmigos', 1)"
@@ -660,7 +604,23 @@
         var carrossel = document.getElementById(idCarrossel);
         carrossel.scrollLeft = carrossel.scrollLeft + direcao * 190;
       }
+
+      function filtrarColecoes() {
+        var filtroSelecionado = document.getElementById("filtroGenero").value;
+        var secoes = document.querySelectorAll(".secaoLivros");
+
+        secoes.forEach(function (secao) {
+          var genero = secao.getAttribute("data-genero");
+
+          if (filtroSelecionado === "todos" || genero === filtroSelecionado) {
+            secao.style.display = "block";
+          } else {
+            secao.style.display = "none";
+          }
+        });
+      }
     </script>
+
     <script src="../compartilhado/livros.js"></script>
     <script src="../compartilhado/modal.js"></script>
   </body>
