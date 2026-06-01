@@ -1,40 +1,48 @@
-body{
-    margin: 0;
-    background-color: #DBDACD;
-    font-family: 'Regular', poppins, sans-serif;
+body {
+  margin: 0;
+  height: 100dvh;
+  background-color: #dbdacd;
+  font-family: "Regular", poppins, sans-serif;
 }
 
-header{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 10%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 8fr 1fr 2fr;
-    font-size: 20px;
+header {
+  display: flex;
+  align-items: center;
+  height: 10dvh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 8fr 1fr 2fr;
+  font-size: 20px;
 }
 
-#LogoLandinPage{
-    display: flex;
-    justify-content: right;
+#LogoLandinPage {
+  display: flex;
+  justify-content: right;
 }
 
-a{
-    text-decoration: none;
-    color: black;
+a {
+  text-decoration: none;
+  color: black;
 }
 
-#textoLanding{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 40pc;
-    font-size: 2pc;
-    background-image: url('../Img/FundoLanding.png');
-    background-size: 100pc;
-    background-position: center;
-    background-repeat: no-repeat;
+#textoLanding {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+  height: 90dvh;
+  font-size: 2pc;
+  background-image: url("../Img/FundoLanding.webp");
+  background-size: 120% 100%;
+  background-position: 50% 15dvh;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  height: 100dvh;
+}
+
+.tituloPrincipal {
+  margin-top: 15dvh;
 }
 
 .landing-topbar {
