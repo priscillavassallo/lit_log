@@ -36,7 +36,7 @@ function buscarLivros() {
 
                 <div class="container-capa">
 
-                  <a href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livroFiltrado.isbn}"> 
+                  <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=${livroFiltrado.isbn}"> 
                   <img src="${livroFiltrado.capa}">
                   </a>
                   <h2>por ${livroFiltrado.autor}</h2>
@@ -44,7 +44,7 @@ function buscarLivros() {
 
                 <div class="titulo-sinopse">
 
-                <a href="/codigo-fonte/DetalhesLivroPage/DetalhesLivro.html?isbn=${livroFiltrado.isbn}">  <h1>${livroFiltrado.titulo}</h1></a>
+                <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=${livroFiltrado.isbn}">  <h1>${livroFiltrado.titulo}</h1></a>
 
                    
                     <p>${livroFiltrado.sinopse}</p>
