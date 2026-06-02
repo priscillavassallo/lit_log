@@ -14,6 +14,11 @@ form.addEventListener("submit", function (event) {
 });
 
 function buscarLivros() {
+  if (entradaBusca.value.trim() === "") {
+    alert("Por favor, insira um termo de busca.");
+    return;
+  }
+
   tituloPrincipal.innerHTML = `Resultados para "${entradaBusca.value}"`;
 
   const consulta = entradaBusca.value.toLowerCase();
@@ -25,6 +30,12 @@ function buscarLivros() {
       livro.autor.toLowerCase().includes(consulta) ||
       livro.isbn.includes(consulta)
   );
+
+   if(livrosFiltrados.length === 0){
+    tituloPrincipal.innerHTML = 'Nenhum resultado encontrado...';
+    containerResultados.innerHTML = "";
+    return
+  }
 
   containerResultados.innerHTML = "";
 

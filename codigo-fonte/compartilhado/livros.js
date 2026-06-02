@@ -161,16 +161,8 @@ const livros = [
     isbn: "9780261103627",
     capa: "https://covers.openlibrary.org/b/isbn/9780261103627-M.jpg",
   },
+  
   {
-    titulo: "O Hobbit",
-    autor: "J.R.R. Tolkien",
-    genero: "Fantasia",
-    sinopse:
-      "O hobbit Bilbo Bolseiro é recrutado por Gandalf para uma aventura com treze anões rumo à Montanha Solitária, onde o dragão Smaug guarda um tesouro imenso.",
-    isbn: "9780547928227",
-    capa: "https://covers.openlibrary.org/b/isbn/9780547928227-M.jpg",
-  },
-   {
     titulo: "Harry Potter e a Pedra Filosofal",
     autor: "J.K. Rowling",
     genero: "Fantasia",
@@ -666,15 +658,6 @@ const livros = [
     capa: "https://covers.openlibrary.org/b/isbn/9780486282114-M.jpg",
   },
   {
-    titulo: "Drácula",
-    autor: "Bram Stoker",
-    genero: "Gótico",
-    sinopse:
-      "O vampiro conde Drácula emigra da Transilvânia para a Inglaterra ameaçando jovens mulheres, enquanto um grupo de heróis liderado pelo Professor Van Helsing o persegue.",
-    isbn: "9780141439846",
-    capa: "https://covers.openlibrary.org/b/isbn/9780141439846-M.jpg",
-  },
-  {
     titulo: "O Médico e o Monstro",
     autor: "Robert Louis Stevenson",
     genero: "Gótico",
@@ -1062,15 +1045,6 @@ const livros = [
     capa: "https://covers.openlibrary.org/b/isbn/9780593420317-M.jpg",
   },
   {
-    titulo: "A Árvore do Mundo",
-    autor: "Richard Powers",
-    genero: "Ficção",
-    sinopse:
-      "Vidas humanas se entrelaçam com árvores em uma narrativa sobre ecologia, destruição ambiental e conexão com a natureza.",
-    isbn: "9780393356687",
-    capa: "https://covers.openlibrary.org/b/isbn/9780393356687-M.jpg",
-  },
-  {
     titulo: "A Vida de Malcolm X (The Dead Are Arising)",
     autor: "Les Payne",
     genero: "Biografia",
@@ -1122,24 +1096,6 @@ const livros = [
       "Vidas humanas se entrelaçam com árvores em uma narrativa sobre ecologia, destruição ambiental e conexão com a natureza.",
     isbn: "9780393356687",
     capa: "https://covers.openlibrary.org/b/isbn/9780393356687-M.jpg",
-  },
-  {
-    titulo: "A Visita Cruel do Tempo",
-    autor: "Jennifer Egan",
-    genero: "Ficção",
-    sinopse:
-      "Histórias interligadas sobre música, tecnologia e passagem do tempo na vida de vários personagens.",
-    isbn: "9780307593313",
-    capa: "https://covers.openlibrary.org/b/isbn/9780307593313-M.jpg",
-  },
-  {
-    titulo: "O Filho do Mestre de Orfãos",
-    autor: "Adam Johnson",
-    genero: "Ficção",
-    sinopse:
-      "Um homem vive na Coreia do Norte e enfrenta identidade, propaganda e sobrevivência sob um regime totalitário.",
-    isbn: "9780812982626",
-    capa: "https://covers.openlibrary.org/b/isbn/9780812982626-M.jpg",
   },
   {
     titulo: "O Trilho Subterrâneo",
