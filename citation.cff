@@ -15,13 +15,11 @@ authors:
     given-names: Priscilla
   - name-suffix: Professor
     affiliation: PUC Minas
-  - name-suffix: Professor
-    affiliation: PUC Minas
     family-names: de Paiva Carvalho
     given-names: Joyce Christina
 keywords:
   - 
   - 
-repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog.git
+repository-code: https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog
 version: 1.0.0
 date-released: 2026-07-07
