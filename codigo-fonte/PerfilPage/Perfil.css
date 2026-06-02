@@ -141,6 +141,16 @@ h2 {
   margin: 0;
 }
 
+.linkSair {
+  text-decoration: underline;
+}
+
+.sairContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
 .abas:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-md);
