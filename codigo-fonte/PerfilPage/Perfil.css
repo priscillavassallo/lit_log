@@ -117,13 +117,14 @@
   box-shadow: var(--shadow-sm);
 }
 
-.descricao-container:hover #btnDesc{
+.descricao-container:hover #btnDesc {
   visibility: visible;
   background: var(--color-secondary);
 }
 
 .abas {
   background: var(--color-surface);
+  width: 100%;
   padding: 18px 22px;
   border-radius: var(--radius-lg);
   display: flex;
@@ -136,9 +137,9 @@
   border: 1px solid var(--color-border);
 }
 
-  h2 {
-    margin: 0;
-  }
+h2 {
+  margin: 0;
+}
 
 .abas:hover {
   transform: translateY(-4px);
@@ -190,14 +191,13 @@
   min-width: 320px;
 }
 
-
-#selectFile-contianer{
+#selectFile-contianer {
   position: absolute;
   inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   opacity: 0;
   transition: 0.3s;
 }
@@ -213,7 +213,7 @@
   cursor: pointer;
 }
 
-#textFile{
+#textFile {
   color: #f5f5f5;
 }
 
