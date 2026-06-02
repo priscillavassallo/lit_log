@@ -52,17 +52,85 @@
       </section>
 
       <section class="diary-card">
+        <h2>Filtros</h2>
+
+        <div class="diary-filters">
+          <div class="diary-filter-group">
+            <label for="filtroLivroDiario">Livro</label>
+            <select id="filtroLivroDiario" onchange="aplicarFiltrosDiario()">
+              <option value="todos">Todos os livros</option>
+            </select>
+          </div>
+
+          <div class="diary-filter-group">
+            <label for="filtroStatusDiario">Status</label>
+            <select id="filtroStatusDiario" onchange="aplicarFiltrosDiario()">
+              <option value="todos">Todos os status</option>
+              <option value="Quero ler">Quero ler</option>
+              <option value="Lendo">Lendo</option>
+              <option value="Lido">Lido</option>
+            </select>
+          </div>
+
+          <button
+            class="btn-secondary"
+            type="button"
+            onclick="limparFiltrosDiario()"
+          >
+            Limpar filtros
+          </button>
+        </div>
+      </section>
+
+      <section class="diary-card">
         <h2>Últimos registros</h2>
 
         <div class="diary-records" id="listaRegistros"></div>
       </section>
     </main>
 
+    <div class="diary-confirm-overlay" id="modalExcluirDiario">
+      <div class="diary-confirm-box">
+        <h2>Excluir registro</h2>
+
+        <p id="textoExclusaoDiario">
+          Tem certeza que deseja excluir este comentário?
+        </p>
+
+        <label class="diary-confirm-check">
+          <input type="checkbox" id="removerLivroDaPilha" />
+          Também remover este livro da Pilha de Livros
+        </label>
+
+        <div class="diary-confirm-actions">
+          <button
+            class="btn-secondary"
+            type="button"
+            onclick="fecharModalExclusaoDiario()"
+          >
+            Cancelar
+          </button>
+
+          <button
+            class="btn-primary"
+            type="button"
+            onclick="confirmarExclusaoDiario()"
+          >
+            Excluir
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script>
       const chaveRegistrosDiario = "litlog_registros_diario";
+      let indiceRegistroParaExcluir = null;
+      let filtroLivroAtual = "todos";
+      let filtroStatusAtual = "todos";
 
       const registrosExemploDiario = [
         {
+          id: Date.now() + 1,
           livro: "Clube da meia-noite",
           autor: "Autor desconhecido",
           status: "Lendo",
@@ -73,6 +141,7 @@
             "A leitura está ficando mais envolvente e os personagens começaram a se conectar melhor.",
         },
         {
+          id: Date.now() + 2,
           livro: "Notas de margem",
           autor: "Autor desconhecido",
           status: "Quero ler",
@@ -91,7 +160,16 @@
           const registros = JSON.parse(registrosSalvos);
 
           if (registros.length > 0) {
-            return registros;
+            const registrosComId = registros.map(function (registro, index) {
+              if (!registro.id) {
+                registro.id = Date.now() + index;
+              }
+
+              return registro;
+            });
+
+            salvarRegistrosDiario(registrosComId);
+            return registrosComId;
           }
         }
 
@@ -101,8 +179,9 @@
           const pilha = JSON.parse(pilhaSalva);
 
           if (pilha.length > 0) {
-            const registrosCriadosPelaPilha = pilha.map(function (livro) {
+            const registrosCriadosPelaPilha = pilha.map(function (livro, index) {
               return {
+                id: Date.now() + index,
                 livro: livro.titulo,
                 autor: livro.autor,
                 status: livro.status,
@@ -120,6 +199,10 @@
 
         salvarRegistrosDiario(registrosExemploDiario);
         return registrosExemploDiario;
+      }
+
+      function salvarRegistrosDiario(registros) {
+        localStorage.setItem(chaveRegistrosDiario, JSON.stringify(registros));
       }
 
       function limparTexto(texto) {
@@ -145,22 +228,89 @@
         return "★".repeat(quantidade) + "☆".repeat(5 - quantidade);
       }
 
+      function carregarFiltroLivrosDiario() {
+        const filtroLivro = document.getElementById("filtroLivroDiario");
+        const registros = buscarRegistrosDiario();
+
+        const valorAtual = filtroLivro.value;
+
+        filtroLivro.innerHTML = '<option value="todos">Todos os livros</option>';
+
+        const livrosUnicos = [];
+
+        registros.forEach(function (registro) {
+          if (!livrosUnicos.includes(registro.livro)) {
+            livrosUnicos.push(registro.livro);
+          }
+        });
+
+        livrosUnicos.sort(function (a, b) {
+          return a.localeCompare(b, "pt-BR");
+        });
+
+        livrosUnicos.forEach(function (livro) {
+          const option = document.createElement("option");
+          option.value = livro;
+          option.textContent = livro;
+          filtroLivro.appendChild(option);
+        });
+
+        if (livrosUnicos.includes(valorAtual)) {
+          filtroLivro.value = valorAtual;
+        }
+      }
+
+      function aplicarFiltrosDiario() {
+        filtroLivroAtual = document.getElementById("filtroLivroDiario").value;
+        filtroStatusAtual = document.getElementById("filtroStatusDiario").value;
+
+        renderizarRegistrosDiario();
+      }
+
+      function limparFiltrosDiario() {
+        document.getElementById("filtroLivroDiario").value = "todos";
+        document.getElementById("filtroStatusDiario").value = "todos";
+
+        filtroLivroAtual = "todos";
+        filtroStatusAtual = "todos";
+
+        renderizarRegistrosDiario();
+      }
+
+      function filtrarRegistrosDiario(registros) {
+        return registros.filter(function (registro) {
+          const filtroLivroOk =
+            filtroLivroAtual === "todos" || registro.livro === filtroLivroAtual;
+
+          const filtroStatusOk =
+            filtroStatusAtual === "todos" ||
+            registro.status === filtroStatusAtual;
+
+          return filtroLivroOk && filtroStatusOk;
+        });
+      }
+
       function renderizarRegistrosDiario() {
         const listaRegistros = document.getElementById("listaRegistros");
         const registros = buscarRegistrosDiario();
+        const registrosFiltrados = filtrarRegistrosDiario(registros);
 
         listaRegistros.innerHTML = "";
 
-        if (registros.length === 0) {
+        if (registrosFiltrados.length === 0) {
           listaRegistros.innerHTML = `
             <p class="diary-empty">
-              Nenhum registro salvo no diário.
+              Nenhum registro encontrado para este filtro.
             </p>
           `;
           return;
         }
 
-        registros.forEach(function (registro, index) {
+        registrosFiltrados.forEach(function (registro) {
+          const indexOriginal = registros.findIndex(function (item) {
+            return item.id === registro.id;
+          });
+
           const novoRegistro = document.createElement("article");
           novoRegistro.classList.add("diary-record");
 
@@ -176,7 +326,7 @@
               <button
                 class="diary-delete"
                 type="button"
-                onclick="excluirRegistroDiario(${index})"
+                onclick="abrirModalExclusaoDiario(${indexOriginal})"
               >
                 Excluir
               </button>
@@ -199,37 +349,66 @@
         });
       }
 
-      function excluirRegistroDiario(index) {
-        const confirmarExclusao = confirm(
-          "Tem certeza que deseja excluir este registro e remover o livro da pilha?"
-        );
+      function abrirModalExclusaoDiario(index) {
+        const registros = buscarRegistrosDiario();
+        const registro = registros[index];
 
-        if (!confirmarExclusao) {
+        indiceRegistroParaExcluir = index;
+
+        document.getElementById("removerLivroDaPilha").checked = false;
+
+        document.getElementById("textoExclusaoDiario").textContent =
+          'Tem certeza que deseja excluir o comentário sobre "' +
+          registro.livro +
+          '"?';
+
+        document
+          .getElementById("modalExcluirDiario")
+          .classList.add("modal-aberto");
+      }
+
+      function fecharModalExclusaoDiario() {
+        indiceRegistroParaExcluir = null;
+
+        document
+          .getElementById("modalExcluirDiario")
+          .classList.remove("modal-aberto");
+      }
+
+      function confirmarExclusaoDiario() {
+        if (indiceRegistroParaExcluir === null) {
           return;
         }
 
         const registros = buscarRegistrosDiario();
-        const registroRemovido = registros[index];
+        const registroRemovido = registros[indiceRegistroParaExcluir];
+        const removerLivroDaPilha =
+          document.getElementById("removerLivroDaPilha").checked;
 
-        registros.splice(index, 1);
+        registros.splice(indiceRegistroParaExcluir, 1);
         salvarRegistrosDiario(registros);
 
-        const pilha =
-          JSON.parse(localStorage.getItem("litlog_pilha_livros")) || [];
+        if (removerLivroDaPilha) {
+          const pilha =
+            JSON.parse(localStorage.getItem("litlog_pilha_livros")) || [];
 
-        const pilhaAtualizada = pilha.filter(function (livro) {
-          return livro.titulo !== registroRemovido.livro;
-        });
+          const pilhaAtualizada = pilha.filter(function (livro) {
+            return livro.titulo !== registroRemovido.livro;
+          });
 
-        localStorage.setItem(
-          "litlog_pilha_livros",
-          JSON.stringify(pilhaAtualizada)
-        );
+          localStorage.setItem(
+            "litlog_pilha_livros",
+            JSON.stringify(pilhaAtualizada)
+          );
+        }
 
+        fecharModalExclusaoDiario();
+        carregarFiltroLivrosDiario();
         renderizarRegistrosDiario();
       }
 
       document.addEventListener("DOMContentLoaded", function () {
+        carregarFiltroLivrosDiario();
         renderizarRegistrosDiario();
       });
     </script>

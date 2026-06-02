@@ -46,10 +46,18 @@
     <main class="paginaLivros">
       <section class="areaLivros areaPrincipal">
         <div class="linhaFiltro">
-          <a href="../PesquisaPage/Pesquisa.html">Filtrar &gt;</a>
+          <label for="filtroLivros">Filtrar por categoria:</label>
+
+          <select id="filtroLivros" onchange="filtrarSecoesLivros()">
+            <option value="todos">Todos</option>
+            <option value="lancamentos">Lançamentos</option>
+            <option value="classicos">Clássicos</option>
+            <option value="ficcao">Ficção</option>
+            <option value="amigos">Lidos por amigos</option>
+          </select>
         </div>
 
-        <div class="secaoLivros">
+        <div class="secaoLivros" data-categoria="lancamentos">
           <h2>LANÇAMENTOS</h2>
           <div class="controleCarrossel">
             <button
@@ -176,7 +184,7 @@
           </div>
         </div>
 
-        <div class="secaoLivros">
+        <div class="secaoLivros"data-categoria="classicos">
           <h2>RECÉM AVALIADOS</h2>
           <div class="controleCarrossel">
             <button
@@ -317,7 +325,7 @@
       </section>
 
       <section class="areaLivros areaRecomendacoes">
-        <div class="secaoLivros">
+        <div class="secaoLivros" data-categoria="ficcao">
           <h2>PARECIDOS COM SUAS LEITURAS</h2>
           <div class="controleCarrossel">
             <button
@@ -444,7 +452,7 @@
           </div>
         </div>
 
-        <div class="secaoLivros">
+        <div class="secaoLivros"data-categoria="amigos">
           <h2>LIDOS POR SEUS AMIGOS</h2>
           <div class="controleCarrossel">
             <button
@@ -584,14 +592,27 @@
         </div>
       </section>
     </main>
-
     <script>
       function moverCarrossel(idCarrossel, direcao) {
         var carrossel = document.getElementById(idCarrossel);
         carrossel.scrollLeft = carrossel.scrollLeft + direcao * 190;
       }
-    </script>
 
+      function filtrarSecoesLivros() {
+        var filtroSelecionado = document.getElementById("filtroLivros").value;
+        var secoes = document.querySelectorAll(".secaoLivros");
+
+        secoes.forEach(function (secao) {
+          var categoria = secao.getAttribute("data-categoria");
+
+          if (filtroSelecionado === "todos" || categoria === filtroSelecionado) {
+            secao.style.display = "block";
+          } else {
+            secao.style.display = "none";
+          }
+        });
+      }
+    </script>
     <script src="../compartilhado/livros.js"></script>
     <script src="../compartilhado/modal.js"></script>
   </body>
