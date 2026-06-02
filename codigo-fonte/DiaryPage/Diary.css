@@ -151,3 +151,127 @@
   color: #c49a2c;
   font-size: var(--text-lg);
 }
+.pile-comments-help {
+  padding: 12px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+}
+
+.pile-comments-area {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.pile-comments-area label {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.pile-comments-area select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.pile-comment-select-area {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.diary-filters {
+  display: flex;
+  align-items: end;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.diary-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.diary-filter-group label {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.diary-filter-group select {
+  min-width: 220px;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-white);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.diary-confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.55);
+}
+
+.diary-confirm-overlay.modal-aberto {
+  display: flex;
+}
+
+.diary-confirm-box {
+  width: 100%;
+  max-width: 430px;
+  padding: var(--space-xl);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.diary-confirm-box h2 {
+  margin-bottom: var(--space-md);
+  font-family: var(--font-title);
+  color: var(--color-text);
+}
+
+.diary-confirm-box p {
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+.diary-confirm-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+}
+
+.diary-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+@media (max-width: 768px) {
+  .diary-filters {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .diary-filter-group select {
+    width: 100%;
+  }
+
+  .diary-confirm-actions {
+    flex-direction: column;
+  }
+}

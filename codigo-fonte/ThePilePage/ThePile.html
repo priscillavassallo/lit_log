@@ -92,9 +92,69 @@
       <section class="pile-grid" id="gradeLivros"></section>
     </main>
 
+    <div class="pile-delete-overlay" id="modalExcluirPilha">
+      <div class="pile-delete-box">
+        <h2>Excluir da pilha</h2>
+
+        <p id="textoExclusaoPilha">
+          Tem certeza que deseja remover este livro da Pilha?
+        </p>
+
+        <div class="pile-comments-area">
+          <h3>Comentários no Diário</h3>
+
+          <p class="pile-comments-help" id="resumoComentariosPilha">
+            Nenhum comentário encontrado para este livro.
+          </p>
+
+          <label for="acaoComentariosPilha">
+            O que deseja fazer com os comentários?
+          </label>
+
+          <select
+            id="acaoComentariosPilha"
+            onchange="alterarAcaoComentariosPilha()"
+          >
+            <option value="manter">Manter comentários no Diário</option>
+            <option value="todos">Apagar todos os comentários deste livro</option>
+            <option value="um">Apagar apenas um comentário específico</option>
+          </select>
+
+          <div class="pile-comment-select-area" id="areaSelecionarComentarioPilha">
+            <label for="comentarioSelecionadoPilha">
+              Escolha o comentário
+            </label>
+
+            <select id="comentarioSelecionadoPilha"></select>
+          </div>
+        </div>
+
+        <div class="pile-delete-actions">
+          <button
+            class="btn-secondary"
+            type="button"
+            onclick="fecharModalExclusaoPilha()"
+          >
+            Cancelar
+          </button>
+
+          <button
+            class="btn-primary"
+            type="button"
+            onclick="confirmarExclusaoPilha()"
+          >
+            Confirmar exclusão
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script>
       const chavePilhaLivros = "litlog_pilha_livros";
+      const chaveRegistrosDiario = "litlog_registros_diario";
+
       let filtroAtual = "Todos";
+      let indiceLivroParaExcluir = null;
 
       const livrosExemploPilha = [
         {
@@ -140,18 +200,40 @@
           return livrosExemploPilha;
         }
 
-        const pilha = JSON.parse(pilhaSalva);
-
-        if (pilha.length === 0) {
-          salvarPilhaLivros(livrosExemploPilha);
-          return livrosExemploPilha;
-        }
-
-        return pilha;
+        return JSON.parse(pilhaSalva);
       }
 
       function salvarPilhaLivros(pilha) {
         localStorage.setItem(chavePilhaLivros, JSON.stringify(pilha));
+      }
+
+      function buscarRegistrosDiario() {
+        const registrosSalvos = localStorage.getItem(chaveRegistrosDiario);
+
+        if (!registrosSalvos) {
+          return [];
+        }
+
+        const registros = JSON.parse(registrosSalvos);
+
+        const registrosComId = registros.map(function (registro, index) {
+          if (!registro.id) {
+            registro.id = Date.now() + index;
+          }
+
+          return registro;
+        });
+
+        localStorage.setItem(
+          chaveRegistrosDiario,
+          JSON.stringify(registrosComId)
+        );
+
+        return registrosComId;
+      }
+
+      function salvarRegistrosDiario(registros) {
+        localStorage.setItem(chaveRegistrosDiario, JSON.stringify(registros));
       }
 
       function alterarStatusLivro(index, novoStatus) {
@@ -161,8 +243,7 @@
         pilha[index].status = novoStatus;
         salvarPilhaLivros(pilha);
 
-        const registrosDiario =
-          JSON.parse(localStorage.getItem("litlog_registros_diario")) || [];
+        const registrosDiario = buscarRegistrosDiario();
 
         registrosDiario.forEach(function (registro) {
           if (registro.livro === livroAlterado.titulo) {
@@ -170,41 +251,148 @@
           }
         });
 
-        localStorage.setItem(
-          "litlog_registros_diario",
-          JSON.stringify(registrosDiario)
-        );
-
+        salvarRegistrosDiario(registrosDiario);
         renderizarPilhaLivros();
       }
 
-      function excluirLivroDaPilha(index) {
-        const confirmarExclusao = confirm(
-          "Tem certeza que deseja excluir este livro da pilha e seus registros no diário?"
+      function abrirModalExclusaoPilha(index) {
+        const pilha = buscarPilhaLivros();
+        const livro = pilha[index];
+        const comentarios = buscarComentariosDoLivro(livro.titulo);
+
+        indiceLivroParaExcluir = index;
+
+        document.getElementById("textoExclusaoPilha").textContent =
+          'Você está removendo "' + livro.titulo + '" da Pilha de Livros.';
+
+        renderizarComentariosExclusaoPilha(comentarios);
+
+        document
+          .getElementById("modalExcluirPilha")
+          .classList.add("modal-aberto");
+      }
+
+      function fecharModalExclusaoPilha() {
+        indiceLivroParaExcluir = null;
+
+        document
+          .getElementById("modalExcluirPilha")
+          .classList.remove("modal-aberto");
+      }
+
+      function buscarComentariosDoLivro(tituloLivro) {
+        const registrosDiario = buscarRegistrosDiario();
+
+        return registrosDiario.filter(function (registro) {
+          return registro.livro === tituloLivro;
+        });
+      }
+
+      function renderizarComentariosExclusaoPilha(comentarios) {
+        const resumoComentarios = document.getElementById(
+          "resumoComentariosPilha"
         );
 
-        if (!confirmarExclusao) {
+        const acaoComentarios = document.getElementById(
+          "acaoComentariosPilha"
+        );
+
+        const comentarioSelecionado = document.getElementById(
+          "comentarioSelecionadoPilha"
+        );
+
+        const areaSelecionarComentario = document.getElementById(
+          "areaSelecionarComentarioPilha"
+        );
+
+        comentarioSelecionado.innerHTML = "";
+        acaoComentarios.value = "manter";
+        areaSelecionarComentario.style.display = "none";
+
+        if (comentarios.length === 0) {
+          resumoComentarios.textContent =
+            "Este livro não possui comentários no Diário.";
+
+          acaoComentarios.disabled = true;
+          return;
+        }
+
+        acaoComentarios.disabled = false;
+
+        resumoComentarios.textContent =
+          "Este livro possui " +
+          comentarios.length +
+          (comentarios.length === 1
+            ? " comentário no Diário."
+            : " comentários no Diário.");
+
+        comentarios.forEach(function (comentario) {
+          const option = document.createElement("option");
+
+          option.value = comentario.id;
+          option.textContent =
+            "Página " +
+            (comentario.pagina || "Não informado") +
+            " • " +
+            (comentario.data || "Sem data") +
+            " • " +
+            (comentario.anotacao || "Sem anotação");
+
+          comentarioSelecionado.appendChild(option);
+        });
+      }
+
+      function alterarAcaoComentariosPilha() {
+        const acaoComentarios = document.getElementById(
+          "acaoComentariosPilha"
+        ).value;
+
+        const areaSelecionarComentario = document.getElementById(
+          "areaSelecionarComentarioPilha"
+        );
+
+        if (acaoComentarios === "um") {
+          areaSelecionarComentario.style.display = "flex";
+        } else {
+          areaSelecionarComentario.style.display = "none";
+        }
+      }
+
+      function confirmarExclusaoPilha() {
+        if (indiceLivroParaExcluir === null) {
           return;
         }
 
         const pilha = buscarPilhaLivros();
-        const livroRemovido = pilha[index];
+        const livroRemovido = pilha[indiceLivroParaExcluir];
+        const acaoComentarios = document.getElementById(
+          "acaoComentariosPilha"
+        ).value;
 
-        pilha.splice(index, 1);
+        pilha.splice(indiceLivroParaExcluir, 1);
         salvarPilhaLivros(pilha);
 
-        const registrosDiario =
-          JSON.parse(localStorage.getItem("litlog_registros_diario")) || [];
+        let registrosDiario = buscarRegistrosDiario();
 
-        const registrosAtualizados = registrosDiario.filter(function (registro) {
-          return registro.livro !== livroRemovido.titulo;
-        });
+        if (acaoComentarios === "todos") {
+          registrosDiario = registrosDiario.filter(function (registro) {
+            return registro.livro !== livroRemovido.titulo;
+          });
+        }
 
-        localStorage.setItem(
-          "litlog_registros_diario",
-          JSON.stringify(registrosAtualizados)
-        );
+        if (acaoComentarios === "um") {
+          const comentarioSelecionado = Number(
+            document.getElementById("comentarioSelecionadoPilha").value
+          );
 
+          registrosDiario = registrosDiario.filter(function (registro) {
+            return Number(registro.id) !== comentarioSelecionado;
+          });
+        }
+
+        salvarRegistrosDiario(registrosDiario);
+
+        fecharModalExclusaoPilha();
         renderizarPilhaLivros();
       }
 
@@ -301,7 +489,7 @@
               <button
                 class="pile-delete"
                 type="button"
-                onclick="excluirLivroDaPilha(${indexOriginal})"
+                onclick="abrirModalExclusaoPilha(${indexOriginal})"
               >
                 Excluir
               </button>
