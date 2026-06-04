@@ -58,6 +58,10 @@ h3 {
   font-weight: 300;
 }
 
+.oculta {
+  display: none !important;
+}
+
 .nome h1 {
   margin: 0;
   font-size: var(--text-4xl);
@@ -95,7 +99,7 @@ h3 {
   transition: var(--transition-fast);
 }
 
-.descricao-container:hover {
+.descricao-container-hover:hover {
   box-shadow: var(--shadow-md);
 }
 
