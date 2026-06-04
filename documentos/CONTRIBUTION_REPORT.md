@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 02/06/2026 20:28
+**Última atualização:** 04/06/2026 16:49
 
 ---
 
@@ -13,36 +13,36 @@
 | Gabriel Clemente Ribeiro        |        82 |      3080 |      1423 |         38 |             27 |               2 |
 | Gustavo Lima                    |        15 |       259 |       123 |          6 |             14 |               2 |
 | Priscilla Vassallo              |        25 |       266 |       199 |          2 |             25 |               1 |
-| github-actions[bot]             |       147 |       956 |       872 |          3 |            147 |               1 |
+| github-actions[bot]             |       148 |       961 |       877 |          3 |            148 |               1 |
 | github-classroom[bot]           |         2 |      1548 |         0 |         19 |              2 |               3 |
 | iago oliveira garcia            |         3 |       368 |       174 |         17 |              0 |               0 |
 | iagofalquer                     |         9 |        98 |       119 |          1 |              9 |               1 |
 | lima280                         |         8 |     11878 |       124 |         83 |              1 |               4 |
 | marcusfcruz                     |        37 |      3654 |      1545 |         19 |             22 |               1 |
-| priscillavassallo               |        41 |      5660 |      2363 |         31 |              1 |               0 |
+| priscillavassallo               |        45 |      5792 |      2439 |         34 |              1 |               0 |
 
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-05-26**: Carlos: 3, Carlos Eduardo Ribeiro da Silva: 10, Gabriel Clemente Ribeiro: 21, Gustavo Lima: 1, github-actions[bot]: 20, lima280: 1, marcusfcruz: 11, priscillavassallo: 9
+**2026-05-28**: Carlos: 3, Carlos Eduardo Ribeiro da Silva: 8, Gabriel Clemente Ribeiro: 13, Gustavo Lima: 1, github-actions[bot]: 17, lima280: 1, marcusfcruz: 11, priscillavassallo: 13
 
-**2026-05-19**: Carlos Eduardo Ribeiro da Silva: 3, Gabriel Clemente Ribeiro: 20, github-actions[bot]: 7, priscillavassallo: 7
+**2026-05-21**: Carlos Eduardo Ribeiro da Silva: 5, Gabriel Clemente Ribeiro: 28, github-actions[bot]: 10
 
-**2026-05-12**: Carlos Eduardo Ribeiro da Silva: 1, Gabriel Clemente Ribeiro: 1, github-actions[bot]: 6, iago oliveira garcia: 2, priscillavassallo: 20
+**2026-05-14**: Carlos Eduardo Ribeiro da Silva: 1, Gabriel Clemente Ribeiro: 1, github-actions[bot]: 7, iago oliveira garcia: 2, priscillavassallo: 27
 
-**2026-05-05**: Carlos Eduardo Ribeiro da Silva: 9, Gabriel Clemente Ribeiro: 5, Priscilla Vassallo: 5, github-actions[bot]: 16, iago oliveira garcia: 1, lima280: 3, priscillavassallo: 5
+**2026-05-07**: Carlos Eduardo Ribeiro da Silva: 2, Gabriel Clemente Ribeiro: 5, Priscilla Vassallo: 5, github-actions[bot]: 14, iago oliveira garcia: 1, lima280: 3, priscillavassallo: 5
 
-**2026-04-28**: Carlos: 2, Gabriel Clemente Ribeiro: 23, Priscilla Vassallo: 4, github-actions[bot]: 24, lima280: 2, marcusfcruz: 4
+**2026-04-30**: Carlos: 2, Carlos Eduardo Ribeiro da Silva: 7, Gabriel Clemente Ribeiro: 21, Priscilla Vassallo: 4, github-actions[bot]: 26, lima280: 2, marcusfcruz: 4
 
-**2026-04-21**: Carlos: 2, github-actions[bot]: 4, lima280: 2
+**2026-04-23**: Carlos: 2, Gabriel Clemente Ribeiro: 2, github-actions[bot]: 4, lima280: 2
 
-**2026-04-07**: Carlos: 2, Gabriel Clemente Ribeiro: 12, Gustavo Lima: 4, Priscilla Vassallo: 16, github-actions[bot]: 62, iagofalquer: 9, marcusfcruz: 22
+**2026-04-09**: Carlos: 2, Gabriel Clemente Ribeiro: 8, Gustavo Lima: 2, Priscilla Vassallo: 16, github-actions[bot]: 56, iagofalquer: 9, marcusfcruz: 22
 
-**2026-03-31**: Gustavo Lima: 2, github-actions[bot]: 2
+**2026-04-02**: Gabriel Clemente Ribeiro: 4, Gustavo Lima: 4, github-actions[bot]: 8
 
-**2026-03-24**: Gustavo Lima: 8, github-actions[bot]: 6
+**2026-03-26**: Gustavo Lima: 8, github-actions[bot]: 6
 
-**2026-03-17**: github-classroom[bot]: 2
+**2026-03-19**: github-classroom[bot]: 2
 
 
 
