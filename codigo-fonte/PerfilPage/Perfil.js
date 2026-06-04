@@ -1,9 +1,11 @@
-const nomeUsuario = document.querySelector(".nome h1");
+const nomeExibição = document.querySelector(".nome h1");
+const nomeUsuario = document.querySelector(".nome h3");
 const descricao = document.getElementById("desc");
 const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 const btnEdit = document.getElementById("btnDesc");
 
-nomeUsuario.textContent = usuarioLogado.nomeUsuario;
+nomeUsuario.textContent = "@" + usuarioLogado.nomeUsuario;
+nomeExibição.textContent = usuarioLogado.nome;
 descricao.value = usuarioLogado.desc || [];
 
 btnEdit.addEventListener("click", () => {
