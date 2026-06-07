@@ -14,8 +14,9 @@ const fotoPerfil = document.getElementById("fotoPerfil");
 const idLinkSair = document.getElementById("idLinkSair");
 const btnSeguir = document.getElementById("btnSeguir");
 const seguidas = JSON.parse(localStorage.getItem("seguidas")) || [];
+const btnSeguindo = document.getElementById("btnSeguindo");
+const btnSeguidores = document.getElementById("btnSeguidores");
 
-console.log(pageName);
 let pageUser;
 let sameUser = false;
 if (usuarioLogado.nomeUsuario == pageName || !pageName) {
@@ -129,4 +130,113 @@ function checkIfFollows(seguidor, seguido) {
     (item) => item.seguidor === seguidor && item.seguido === seguido,
   );
   return resultado;
+}
+
+function criarModalSeguidas(versão) {
+  if (document.getElementById("modalSeguidas")) {
+    return;
+  }
+
+  var modal = document.createElement("div");
+  modal.className = "modalLog";
+  modal.id = "modalSeguidas";
+  modal.setAttribute("aria-hidden", "true");
+  modal.setAttribute("onclick", "fecharModalSeguidasPorFora(event)");
+
+  modal.innerHTML = `
+    <div
+      class="conteudoModalLog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="tituloModalSeguidas"
+    >
+      <button
+        class="fecharModalLog"
+        type="button"
+        onclick="fecharModalSeguidas()"
+        aria-label="Fechar"
+      >
+        &times;
+      </button>
+
+      <h2 id="tituloModalSeguidas"></h2>
+      <div id="listagem">
+      <span>Ninguém por enquanto</span>
+      </div>
+      
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+}
+function fecharModalSeguidas() {
+  var modal = document.getElementById("modalSeguidas");
+
+  if (!modal) {
+    return;
+  }
+
+  modal.classList.remove("modalAberto");
+  modal.setAttribute("aria-hidden", "true");
+}
+
+function fecharModalSeguidasPorFora(event) {
+  if (event.target.id === "modalSeguidas") {
+    fecharModalSeguidas();
+  }
+}
+
+btnSeguindo.addEventListener("click", (event) => {
+  abrirModalSeguidas("Seguindo");
+});
+btnSeguidores.addEventListener("click", (event) => {
+  abrirModalSeguidas("Seguidores");
+});
+
+function abrirModalSeguidas(versão) {
+  criarModalSeguidas(versão);
+  const titulo = document.getElementById("tituloModalSeguidas");
+  titulo.innerText = versão;
+  let listados;
+  const listagem = document.getElementById("listagem");
+  console.log(listagem);
+  listagem.innerHTML = "";
+
+  if (versão == "Seguidores") {
+    listados = seguidas.filter((item) => item.seguido === pageUser.nomeUsuario);
+    console.log(listados);
+    if (listados.length > 0) {
+      listados.forEach((listado) => {
+        listagem.innerHTML += `
+      <a href="./Perfil.html?username=${listado.seguidor}">${listado.seguidor}</a>
+      `;
+      });
+    } else {
+      listagem.innerText = "Ninguém por enquanto";
+    }
+  }
+  if (versão == "Seguindo") {
+    listados = seguidas.filter(
+      (item) => item.seguidor === pageUser.nomeUsuario,
+    );
+    console.log(listados);
+    if (listados.length > 0) {
+      listados.forEach((listado) => {
+        console.log(listado.seguido);
+
+        listagem.innerHTML += `
+      <a href="./Perfil.html?username=${listado.seguido}"> ${listado.seguido}</a>
+      `;
+      });
+    } else {
+      listagem.innerText = "Ninguém por enquanto";
+    }
+  }
+
+  var modal = document.getElementById("modalSeguidas");
+
+  modal.classList.add("modalAberto");
+  modal.setAttribute("aria-hidden", "false");
+
+  //document.getElementById("livroLog").focus();
 }
