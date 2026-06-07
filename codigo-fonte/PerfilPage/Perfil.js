@@ -12,15 +12,18 @@ const imgContainer = document.querySelector(".imgcontainer");
 const btnSelect = document.getElementById("selectFoto");
 const fotoPerfil = document.getElementById("fotoPerfil");
 const idLinkSair = document.getElementById("idLinkSair");
+const btnSeguir = document.getElementById("btnSeguir");
+const seguidas = JSON.parse(localStorage.getItem("seguidas")) || [];
 
 console.log(pageName);
 let pageUser;
 let sameUser = false;
-if (usuarioLogado.userName == pageName || !pageName) {
+if (usuarioLogado.nomeUsuario == pageName || !pageName) {
   console.log("sameuser");
   sameUser = true;
   pageUser = usuarioLogado;
   descContainer.classList.add("descricao-container-hover");
+  btnSeguir.classList.add("oculta");
 } else {
   const userList = JSON.parse(localStorage.getItem("usuarios"));
   pageUser = userList.find((user) => {
@@ -93,4 +96,37 @@ if (sameUser) {
       localStorage.setItem("usuarioLogado", JSON.stringify(usuarios[index]));
     });
   });
+}
+
+if (!sameUser) {
+  const seguidor = usuarioLogado.nomeUsuario;
+  const seguido = perfilAtivo.nomeUsuario;
+  const objSeguidorSeguido = { seguidor: seguidor, seguido: seguido };
+  if (checkIfFollows(usuarioLogado.nomeUsuario, perfilAtivo.nomeUsuario)) {
+    btnSeguir.textContent = "já segue!";
+    btnSeguir.addEventListener("click", () => {
+      const index = seguidas.findIndex(
+        (item) =>
+          item.seguidor === usuarioLogado.nomeUsuario &&
+          item.seguido === perfilAtivo.nomeUsuario,
+      );
+      if (index !== -1) {
+        seguidas.splice(index, 1);
+      }
+      localStorage.setItem("seguidas", JSON.stringify(seguidas));
+      location.reload();
+    });
+  } else {
+    btnSeguir.addEventListener("click", () => {
+      seguidas.push(objSeguidorSeguido);
+      localStorage.setItem("seguidas", JSON.stringify(seguidas));
+      location.reload();
+    });
+  }
+}
+function checkIfFollows(seguidor, seguido) {
+  const resultado = seguidas.some(
+    (item) => item.seguidor === seguidor && item.seguido === seguido,
+  );
+  return resultado;
 }

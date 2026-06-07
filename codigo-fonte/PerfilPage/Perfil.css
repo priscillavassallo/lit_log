@@ -137,6 +137,20 @@ h3 {
   background: var(--color-secondary);
 }
 
+.btnSeguir {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  z-index: 5;
+  background-color: red;
+  width: 20px;
+  height: 20px;
+}
+
+.wrapper {
+  position: relative;
+}
+
 .abas {
   background: var(--color-surface);
   width: 100%;
