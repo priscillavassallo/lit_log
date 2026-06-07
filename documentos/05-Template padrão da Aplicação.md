@@ -1,136 +1,105 @@
-# Template padrão da Aplicação
+# Template Padrão da Aplicação
 
-A identidade visual do LitLog foi desenvolvida utilizando tons suaves e modernos, buscando transmitir conforto visual, organização e uma experiência agradável para os usuários.
-
----
-
-# Base (background)
-
-Cores quentes e suaves que dominam o layout.
-
-- Warm Light Background: `#E7E0DA`
-- Soft Beige: `#DCD4CD` *(principal)*
-- Light Cream: `#F3EFEA`
-
-> O site inteiro vive nessa base neutra quente.
-
-<img width="300" alt="background" src="https://github.com/user-attachments/assets/f2e34803-18f3-43b7-8ef4-cc3551aa4403" />
-
-**Figura 1 – Base principal da interface do LitLog**
+A identidade visual do **LitLog** foi desenvolvida com base em uma paleta de cores suaves e contemporâneas, buscando proporcionar conforto visual, organização e uma experiência agradável aos usuários. A proposta estética combina elementos modernos com referências ao universo literário, reforçando o propósito da plataforma como um espaço dedicado ao registro e acompanhamento de leituras.
 
 ---
 
-# Neutros (tipografia e UI)
+## Componentes da Interface
 
-Botões e textos usam contraste escuro elegante.
+A interface do sistema foi estruturada com componentes reutilizáveis, garantindo consistência visual e melhor experiência de navegação.
+
+- **Header:** presente nas principais páginas da aplicação, responsável pela navegação entre as diferentes áreas do sistema.
+- **Cards:** utilizados para exibir informações sobre obras, avaliações e registros de leitura dos usuários.
+- **Botões e elementos interativos:** seguem a identidade visual do projeto, utilizando as cores principais da aplicação para manter a padronização entre as telas.
+
+---
+
+## Página Modelo da Aplicação
+
+<img width="1100" alt="home" src="https://github.com/user-attachments/assets/6cf87308-b17e-4456-99ce-66b661ed4a06" />
+
+**Figura 1 – Página principal da aplicação LitLog**
+
+---
+
+## Tipografia
+
+A tipografia foi selecionada com o objetivo de equilibrar legibilidade e personalidade visual. O projeto utiliza a combinação das seguintes famílias tipográficas:
+
+- **Poppins (sans-serif):** utilizada em títulos, menus e elementos de destaque, proporcionando uma aparência moderna e limpa.
+- **Cormorant Garamond (serif):** aplicada em elementos específicos para reforçar a conexão com o universo literário e transmitir elegância.
+
+Essa combinação contribui para uma identidade visual equilibrada, unindo modernidade e sofisticação.
+
+---
+
+## Iconografia
+
+A aplicação utiliza ícones simples e intuitivos, facilitando a interação do usuário com os recursos do sistema.
+
+- 🔍 **Ícone de lupa:** utilizado nos mecanismos de pesquisa e busca de livros.
+- ★ **Ícone de estrelas:** empregado na avaliação das obras pelos usuários.
+- 📚 **Ícone de livro:** presente em listas.
+
+---
+
+## Base Visual (Background)
+
+A identidade visual do LitLog é sustentada por uma base neutra e acolhedora, composta por tons de *greige* (mistura de cinza e bege), que contribuem para uma navegação confortável e elegante.
+
+**Paleta principal:**
+
+- Light/Soft Greige: `#E7E0DA`
+- Medium/Warm Greige: `#CFC7C0`
+
+<img width="300" alt="background" src="https://github.com/user-attachments/assets/528ff95e-d5eb-4883-897c-25ffbfc8db9b" />
+
+**Figura 2 – Base principal da interface do LitLog**
+
+Nas páginas de **Login**, **Cadastro** e **Landing Page**, são utilizados elementos gráficos com combinações de cores mais vibrantes.
+
+<img width="300" alt="bg landing" src="https://github.com/user-attachments/assets/c0091843-fd02-4192-b6b9-b1e5e0e1d3c6" />
+
+**Figura 3 – Elementos visuais aplicados nas telas de acesso ao sistema**
+
+---
+
+## Botões e Elementos de Interface
+
+Os botões e cards contam com efeitos de **hover**, incluindo aumento sutil de escala (*scale effect*) e aplicação de sombras, proporcionando maior sensação de profundidade e interatividade durante o uso da plataforma.
+
+**Paleta principal:**
 
 - Primary Dark: `#191522`
 - Dark Purple Navy: `#262238`
-- Soft Gray Text: `#6F6A73`
-- Light Gray UI: `#CFC7C0`
+- White: `#FFFFFF`
 
-<img width="300" alt="Neutros (tipografia e UI)" src="https://github.com/user-attachments/assets/e188cabc-07b9-4484-a12c-9d9def5e5a52" />
+<img width="300" alt="btns" src="https://github.com/user-attachments/assets/52a2d4c3-e0d9-4b75-8708-81e17b8292f0" />
 
-**Figura 2 – Aplicação das cores neutras na interface**
-
----
-
-# Cores principais (brand vibes)
-
-As cores que aparecem nos blobs, cards e CTAs.
-
-- Royal Purple: `#6A5CFF`
-- Lavender: `#B6A8FF`
-- Sky Blue: `#8EBBFF`
-- Soft Indigo: `#7C86A9`
-
-<img width="300" alt="Cores principais (brand vibes)" src="https://github.com/user-attachments/assets/26fca876-d718-43c9-8f4f-8ae2311bb1fe" />
-
-**Figura 3 – Cores principais da identidade visual do LitLog**
+**Figura 4 – Paleta de cores botões**
 
 ---
 
-# Cores quentes de destaque
+## Responsividade
 
-Essas criam o efeito “glow” humano do site.
+A aplicação foi desenvolvida seguindo princípios de design responsivo, garantindo adaptação adequada a diferentes dispositivos e tamanhos de tela.
 
-- Vibrant Orange: `#FF7A2F`
-- Peach: `#FFB07C`
-- Coral: `#FF5A5F`
-- Warm Gold: `#CFA24E`
+Para isso, foram utilizadas as seguintes tecnologias:
 
-<img width="300" alt="Cores quentes de destaque" src="https://github.com/user-attachments/assets/68b5ab0d-2197-49bb-bb4f-68d3573bfef5" />
+- **Flexbox**
+- **CSS Grid**
+- **Media Queries**
 
-**Figura 4 – Cores de destaque utilizadas na interface**
-
----
-
-# Gradientes principais do layout
-
-## Gradiente roxo → azul (hero/footer)
-
-`#5F4BFF → #8EBBFF → #C7FFD8`
-
-<img width="300" alt="Gradiente roxo → azul (hero_footer)" src="https://github.com/user-attachments/assets/37928887-f685-4447-9b55-efaa49059cc5" />
-
-**Figura 5 – Gradiente principal utilizado no hero e footer**
+Esses recursos permitem que a interface mantenha sua organização, usabilidade e legibilidade em computadores, tablets e smartphones.
 
 ---
 
-## Gradiente laranja → rosa (blobs)
+## Logo da Aplicação
 
-`#FF7A2F → #FF5A5F → #FFB07C`
+A logo do **LitLog** foi desenvolvida para representar o universo da leitura de forma moderna e acolhedora. Sua composição visual remete à organização de livros, anotações e registros pessoais, conceitos diretamente relacionados à proposta da plataforma.
 
-<img width="300" alt="Gradiente laranja → rosa (blobs)" src="https://github.com/user-attachments/assets/7a626c3d-c930-4fc8-9a8c-c4843dd44172" />
-
-**Figura 6 – Gradiente utilizado nos elementos glow da interface**
-
----
-
-## Gradiente card multicolor (UI cards)
-
-`#FF7A2F → #B6A8FF → #8EBBFF`
-
-<img width="300" alt="Gradiente card multicolor (UI cards)" src="https://github.com/user-attachments/assets/2b323b6f-6c48-43fe-805e-3061fdcabcfe" />
-
-**Figura 7 – Gradiente utilizado nos cards e elementos visuais**
-
----
-
-# Componentes da Interface
-
-- **Header:** presente nas páginas principais da aplicação, contendo navegação entre as áreas do sistema.
-
-- **Cards de livros:** utilizados para exibir livros e informações relacionadas às leituras dos usuários.
-
-- **Botões e elementos interativos:** utilizam as cores principais da identidade visual do projeto para manter consistência visual entre as páginas.
-
----
-
-# Página Modelo da Aplicação
-
-<img width="1024" height="627" alt="home" src="https://github.com/user-attachments/assets/b326102d-3a3a-443f-9fb6-11dcce4790bc" />
-
-**Figura 8 – Página principal da aplicação LitLog**
-
----
-
-# Responsividade
-
-O projeto utiliza:
-
-- Flexbox
-- CSS Grid
-- Media Queries
-
-para adaptação da interface em diferentes tamanhos de tela.
-
----
-
-# Logo da aplicação
-
-A logo do LitLog foi desenvolvida com o objetivo de representar o universo da leitura de forma moderna e acolhedora. Sua composição visual remete à organização de livros, anotações e registros pessoais, elementos diretamente ligados à experiência dos leitores dentro da plataforma.
+Além de fortalecer a identidade da marca, a logo contribui para a criação de uma experiência visual consistente em todas as páginas do sistema.
 
 <img width="400" alt="Logo" src="https://github.com/user-attachments/assets/ba009a1f-4c60-4e02-a231-c852f6b44a63" />
 
-**Figura 9 – Logo oficial do LitLog**
+**Figura 5 – Logo oficial do LitLog**
