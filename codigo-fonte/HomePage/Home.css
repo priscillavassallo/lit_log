@@ -1,6 +1,6 @@
 #Banner {
-  background-image: url("../Img/Banner.png");
-  background-position-x: center;
+  background-image: url("../Img/banner2.svg");
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -27,6 +27,11 @@
     "Regular",
     Cormorant Garamond,
     serif;
+    text-shadow: 2px 2px 2px #000;
+}
+
+.pBanner {
+    text-shadow: 2px 2px 2px #000;
 }
 
 #CaixaCarrossel {
