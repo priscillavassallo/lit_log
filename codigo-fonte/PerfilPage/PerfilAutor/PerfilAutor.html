@@ -19,14 +19,20 @@
   <body>
     <header class="topbar">
       <a href="../../HomePage/Home.html" class="topbar-logo">
-        <img src="../../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
+        <img
+          src="../../Img/Logo.png"
+          alt="Logo LitLog"
+          class="topbar-logo-img"
+        />
         <span>LitLog</span>
       </a>
 
       <nav class="topbar-nav">
         <a href="../Perfil.html" class="topbar-link">Meu Perfil</a>
         <a href="../../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-        <a href="../../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+        <a href="../../MembrosPage/teladelista.html" class="topbar-link"
+          >Coleções</a
+        >
 
         <a
           href="../../PesquisaPage/Pesquisa.html"
@@ -48,57 +54,28 @@
 
     <main class="perfil-container">
       <div class="perfil-esquerda">
-        <div class="imgcontainer">
+        <div class="imgcontainer" id="containerFoto">
           <img src="../../Img/user.png" alt="Foto do Autor" />
         </div>
 
         <button class="btn-secondary" type="button">Compartilhar</button>
         <button class="btn-primary" type="button">Seguir</button>
 
-        <div class="descricao">
-          Descrição
-        </div>
+        <div class="descricao" id="descricao">Descrição indisponível</div>
       </div>
 
       <div class="perfil-direita">
         <h3>Livros escritos por</h3>
-        <h2 class="autor">Autor</h2>
+        <h2 class="autor" id="exibicaoNome">Autor</h2>
 
-        <div class="livros-grid">
-          <div class="livro">
-            <img src="../../Img/sem-capa.png" alt="Capa do Livro" />
-            <p class="titulo">Titulo</p>
-          </div>
-
-          <div class="livro">
-            <img src="../../Img/sem-capa.png" alt="Capa do Livro" />
-            <p class="titulo">Titulo</p>
-          </div>
-
-          <div class="livro">
-            <img src="../../Img/sem-capa.png" alt="Capa do Livro" />
-            <p class="titulo">Titulo</p>
-          </div>
-
-          <div class="livro">
-            <img src="../../Img/sem-capa.png" alt="Capa do Livro" />
-            <p class="titulo">Titulo</p>
-          </div>
-
-          <div class="livro">
-            <img src="../../Img/sem-capa.png" alt="Capa do Livro" />
-            <p class="titulo">Titulo</p>
-          </div>
-
-          <div class="livro">
-            <img src="../../Img/sem-capa.png" alt="Capa do Livro" />
-            <p class="titulo">Titulo</p>
-          </div>
+        <div class="livros-grid" id="lista-livros">
+          <h3>Nenhum livro a exibir...</h3>
         </div>
       </div>
     </main>
 
     <script src="../../compartilhado/livros.js"></script>
     <script src="../../compartilhado/modal.js"></script>
+    <script src="PerfilAutor.js" defer></script>
   </body>
 </html>
