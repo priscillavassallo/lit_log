@@ -431,6 +431,33 @@
         return "status-quero-ler";
       }
 
+      function obterIsbnLivro(livro) {
+        if (livro.isbn) {
+          return livro.isbn;
+        }
+
+        const capa = livro.capa || "";
+        const resultado = capa.match(/\/isbn\/([0-9Xx]+)-/);
+
+        if (resultado) {
+          return resultado[1];
+        }
+
+        return null;
+      }
+
+      function abrirDetalhesLivro(livro) {
+        const isbn = obterIsbnLivro(livro);
+
+        if (!isbn) {
+          alert("Não foi possível abrir os detalhes deste livro.");
+          return;
+        }
+
+        window.location.href =
+          "../DetalhesLivroPage/DetalhesLivro.html?isbn=" + encodeURIComponent(isbn);
+      }
+
       function renderizarPilhaLivros() {
         const gradeLivros = document.getElementById("gradeLivros");
         const pilha = buscarPilhaLivros();
@@ -465,6 +492,10 @@
           const card = document.createElement("article");
           card.classList.add("pile-book-card");
 
+          card.addEventListener("click", function () {
+            abrirDetalhesLivro(livro);
+          });
+
           card.innerHTML = `
             <div class="pile-cover-wrapper">
               <img
@@ -489,7 +520,8 @@
               <select
                 id="statusLivro${indexOriginal}"
                 class="pile-status-select"
-                onchange="alterarStatusLivro(${indexOriginal}, this.value)"
+                onclick="event.stopPropagation()"
+                onchange="event.stopPropagation(); alterarStatusLivro(${indexOriginal}, this.value)"
               >
                 <option value="Quero ler" ${livro.status === "Quero ler" ? "selected" : ""}>Quero ler</option>
                 <option value="Lendo" ${livro.status === "Lendo" ? "selected" : ""}>Lendo</option>
@@ -499,7 +531,7 @@
               <button
                 class="pile-delete"
                 type="button"
-                onclick="abrirModalExclusaoPilha(${indexOriginal})"
+                onclick="event.stopPropagation(); abrirModalExclusaoPilha(${indexOriginal})"
               >
                 Excluir
               </button>
