@@ -8,6 +8,7 @@ const btnCancelarModal = document.getElementById("cancelar");
 const btnSalvarModal = document.getElementById("salvar");
 const selectListas = document.getElementById("listasUsuario");
 let livroClicado = null;
+const usuarios = JSON.parse(localStorage.getItem("usuarios"));
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -30,8 +31,13 @@ function buscarLivros() {
       livro.autor.toLowerCase().includes(consulta) ||
       livro.isbn.includes(consulta),
   );
+  const usuariosFiltrados = usuarios.filter(
+    (usuario) =>
+      usuario.nomeUsuario.toLowerCase().includes(consulta) ||
+      usuario.nome.toLowerCase().includes(consulta),
+  );
 
-  if (livrosFiltrados.length === 0) {
+  if (livrosFiltrados.length === 0 && usuariosFiltrados.length === 0) {
     tituloPrincipal.innerHTML = "Nenhum resultado encontrado...";
     containerResultados.innerHTML = "";
     return;
@@ -66,6 +72,31 @@ function buscarLivros() {
            
         `),
   );
+
+  usuariosFiltrados.forEach((usuarioFiltrado) => {
+    containerResultados.innerHTML += `
+           
+            <div class="cartao-livro">
+
+                <div class="container-capa">
+
+                  <a href="../PerfilPage/Perfil.html?username=${usuarioFiltrado.nomeUsuario}"> 
+                  <img src="${usuarioFiltrado.foto}">
+                  </a>
+                  <h2><a href="../PerfilPage/Perfil.html?username=${usuarioFiltrado.nomeUsuario}">@${usuarioFiltrado.nomeUsuario}</a></h2>
+                </div>
+
+                <div class="nome-descricao">
+
+                <a href="../PerfilPage/Perfil.html?username=${usuarioFiltrado.nomeUsuario}">  <h1>${usuarioFiltrado.nome}</h1></a>
+
+                   
+                    <p>${usuarioFiltrado.desc}</p>
+                </div>
+            </div>
+           
+        `;
+  });
 }
 botaoBusca.addEventListener("click", buscarLivros);
 containerResultados.addEventListener("click", (e) => {
