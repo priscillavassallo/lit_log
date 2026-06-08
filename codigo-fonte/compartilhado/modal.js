@@ -1,3 +1,5 @@
+const usuarioLogadoModal = JSON.parse(localStorage.getItem("usuarioLogado"));
+
 function criarModalLog() {
   if (document.getElementById("modalLog")) {
     return;
@@ -116,7 +118,11 @@ function fecharModalPorFora(event) {
 function carregarLivrosNoLog() {
   var listaLivrosLog = document.getElementById("listaLivrosLog");
 
-  if (!listaLivrosLog || typeof livros === "undefined" || !Array.isArray(livros)) {
+  if (
+    !listaLivrosLog ||
+    typeof livros === "undefined" ||
+    !Array.isArray(livros)
+  ) {
     return;
   }
 
@@ -247,6 +253,7 @@ function salvarLog(event) {
   var registros = buscarRegistrosDiario();
 
   var novoRegistro = {
+    registrante: usuarioLogadoModal.nomeUsuario,
     livro: livroEncontrado.titulo,
     autor: livroEncontrado.autor,
     status: status,

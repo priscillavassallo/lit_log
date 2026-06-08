@@ -145,6 +145,7 @@ if (localStorage.length === 0) {
 }
 const registroDiario = [
   {
+    registrante: "nona_bacana_",
     livro: "O Retorno do Rei",
     autor: "J.R.R. Tolkien",
     status: "Lido",
@@ -154,6 +155,7 @@ const registroDiario = [
     data: "04/06/2026",
   },
   {
+    registrante: "nona_bacana_",
     livro: "A Sociedade do Anel",
     autor: "J.R.R. Tolkien",
     status: "Lido",
@@ -163,6 +165,7 @@ const registroDiario = [
     data: "04/06/2026",
   },
   {
+    registrante: "nona_bacana_",
     livro: "As Duas Torres",
     autor: "J.R.R. Tolkien",
     status: "Lido",

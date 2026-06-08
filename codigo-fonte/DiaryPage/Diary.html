@@ -26,7 +26,10 @@
         <div class="topbar-profile">
           <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
           <details class="topbar-profile-dropdown">
-            <summary class="topbar-profile-trigger" aria-label="Abrir menu do perfil"></summary>
+            <summary
+              class="topbar-profile-trigger"
+              aria-label="Abrir menu do perfil"
+            ></summary>
             <div class="topbar-profile-menu">
               <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
               <a href="../DiaryPage/Diary.html">Diario</a>
@@ -35,7 +38,9 @@
           </details>
         </div>
         <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-        <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link"
+          >Coleções</a
+        >
 
         <a
           href="../PesquisaPage/Pesquisa.html"
@@ -133,6 +138,7 @@
     </div>
 
     <script>
+      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
       const chaveRegistrosDiario = "litlog_registros_diario";
       let indiceRegistroParaExcluir = null;
       let filtroLivroAtual = "todos";
@@ -177,7 +183,6 @@
 
               return registro;
             });
-
             salvarRegistrosDiario(registrosComId);
             return registrosComId;
           }
@@ -189,18 +194,20 @@
           const pilha = JSON.parse(pilhaSalva);
 
           if (pilha.length > 0) {
-            const registrosCriadosPelaPilha = pilha.map(function (livro, index) {
-              return {
-                id: Date.now() + index,
-                livro: livro.titulo,
-                autor: livro.autor,
-                status: livro.status,
-                pagina: "Não informado",
-                avaliacao: "Sem avaliação",
-                data: "Importado da pilha",
-                anotacao: "Livro adicionado a partir da Pilha de Livros.",
-              };
-            });
+            const registrosCriadosPelaPilha = pilha.map(
+              function (livro, index) {
+                return {
+                  id: Date.now() + index,
+                  livro: livro.titulo,
+                  autor: livro.autor,
+                  status: livro.status,
+                  pagina: "Não informado",
+                  avaliacao: "Sem avaliação",
+                  data: "Importado da pilha",
+                  anotacao: "Livro adicionado a partir da Pilha de Livros.",
+                };
+              },
+            );
 
             salvarRegistrosDiario(registrosCriadosPelaPilha);
             return registrosCriadosPelaPilha;
@@ -244,7 +251,8 @@
 
         const valorAtual = filtroLivro.value;
 
-        filtroLivro.innerHTML = '<option value="todos">Todos os livros</option>';
+        filtroLivro.innerHTML =
+          '<option value="todos">Todos os livros</option>';
 
         const livrosUnicos = [];
 
@@ -303,14 +311,18 @@
       function renderizarRegistrosDiario() {
         const listaRegistros = document.getElementById("listaRegistros");
         const registros = buscarRegistrosDiario();
-        const registrosFiltrados = filtrarRegistrosDiario(registros);
+        const registrosDoUsuario = registros.filter(
+          (registro) => registro.registrante === usuarioLogado.nomeUsuario,
+        );
+
+        const registrosFiltrados = filtrarRegistrosDiario(registrosDoUsuario);
 
         listaRegistros.innerHTML = "";
 
         if (registrosFiltrados.length === 0) {
           listaRegistros.innerHTML = `
             <p class="diary-empty">
-              Nenhum registro encontrado para este filtro.
+              Nenhum registro encontrado.
             </p>
           `;
           return;
@@ -392,8 +404,9 @@
 
         const registros = buscarRegistrosDiario();
         const registroRemovido = registros[indiceRegistroParaExcluir];
-        const removerLivroDaPilha =
-          document.getElementById("removerLivroDaPilha").checked;
+        const removerLivroDaPilha = document.getElementById(
+          "removerLivroDaPilha",
+        ).checked;
 
         registros.splice(indiceRegistroParaExcluir, 1);
         salvarRegistrosDiario(registros);
@@ -408,7 +421,7 @@
 
           localStorage.setItem(
             "litlog_pilha_livros",
-            JSON.stringify(pilhaAtualizada)
+            JSON.stringify(pilhaAtualizada),
           );
         }
 
