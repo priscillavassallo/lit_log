@@ -16,6 +16,8 @@ const btnSeguir = document.getElementById("btnSeguir");
 const seguidas = JSON.parse(localStorage.getItem("seguidas")) || [];
 const btnSeguindo = document.getElementById("btnSeguindo");
 const btnSeguidores = document.getElementById("btnSeguidores");
+const iconSeguir = document.querySelector(".iconSeguir");
+const iconPararDeSeguir = document.querySelector(".iconPararDeSeguir");
 
 let pageUser;
 let sameUser = false;
@@ -104,7 +106,10 @@ if (!sameUser) {
   const seguido = perfilAtivo.nomeUsuario;
   const objSeguidorSeguido = { seguidor: seguidor, seguido: seguido };
   if (checkIfFollows(usuarioLogado.nomeUsuario, perfilAtivo.nomeUsuario)) {
-    btnSeguir.textContent = "já segue!";
+    iconPararDeSeguir.classList.remove("oculta");
+    btnSeguir.classList.remove("bgSeguir");
+    iconSeguir.classList.add("oculta");
+    btnSeguir.classList.add("bgPararDeSeguir");
     btnSeguir.addEventListener("click", () => {
       const index = seguidas.findIndex(
         (item) =>

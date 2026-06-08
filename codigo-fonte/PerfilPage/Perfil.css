@@ -142,9 +142,23 @@ h3 {
   bottom: 0;
   right: 5px;
   z-index: 5;
-  background-color: red;
-  width: 20px;
-  height: 20px;
+  width: 29px;
+  border-radius: 10px;
+  padding: 4px;
+  overflow: hidden;
+}
+.bgSeguir {
+  background-color: black;
+}
+.bgPararDeSeguir {
+  background-color: burlywood;
+}
+
+.iconSeguir {
+  width: 29px;
+}
+.iconPararDeSeguir {
+  width: 29px;
 }
 
 .wrapper {
