@@ -61,12 +61,25 @@
     <section class="section-container">
       <div class="perfil-container">
         <div class="profname">
-          <div class="imgcontainer">
-            <img src="../Img/user.png" alt="Imagem De Perfil" id="fotoPerfil" />
+          <div class="wrapper">
+            <button class="btnSeguir bgSeguir" id="btnSeguir">
+              <img src="../Img/person_add.svg" class="iconSeguir" />
+              <img
+                src="../Img/person_remove.svg"
+                class="iconPararDeSeguir oculta"
+              />
+            </button>
+            <div class="imgcontainer">
+              <img
+                src="../Img/user.png"
+                alt="Imagem De Perfil"
+                id="fotoPerfil"
+              />
 
-            <div id="selectFile-contianer">
-              <input type="file" id="selectFoto" accept="image/*" />
-              <span id="textFile">Alterar foto de perfil</span>
+              <div id="selectFile-contianer">
+                <input type="file" id="selectFoto" accept="image/*" />
+                <span id="textFile">Alterar foto de perfil</span>
+              </div>
             </div>
           </div>
 
@@ -88,8 +101,8 @@
 
         <div class="profabas">
           <div class="social-container">
-            <span>Seguindo</span>
-            <span>Seguidores</span>
+            <span id="btnSeguindo">Seguindo</span>
+            <span id="btnSeguidores">Seguidores</span>
           </div>
 
           <div class="abascontainer">

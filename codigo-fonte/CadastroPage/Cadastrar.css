@@ -2,12 +2,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Regular', poppins, sans-serif;
+  font-family: "Regular", poppins, sans-serif;
 }
 
 body {
-  background-color: #DBDACD;
-  background-image: url('../Img/mancha-bg.avif');
+  background-color: #dbdacd;
+  background-image: url("../Img/gradient-bg.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -110,7 +110,6 @@ button {
   background-color: #262238;
   color: #fff;
 }
-
 
 .login-link {
   color: #000;

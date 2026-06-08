@@ -63,7 +63,9 @@ async function loadBookByISBN() {
         finalBook.cover ??= openDataAny.cover;
 
         if (openDataAny.description && !finalBook.description) {
-          finalBook.description ??= await translateToPT(openDataAny.description);
+          finalBook.description ??= await translateToPT(
+            openDataAny.description,
+          );
           finalBook.description ??= openDataAny.description;
         }
       }
@@ -228,7 +230,9 @@ async function translateToPT(text) {
 
 function renderBook(book) {
   titleEl.innerText = book.title || "Sem título";
-  authorEl.innerText = book.authors || "Autor desconhecido";
+  authorEl.innerHTML = book.authors
+    ? `<a href="../PerfilPage/PerfilAutor/PerfilAutor.html?author=${book.authors}"> ${book.authors}</a>`
+    : "Autor desconhecido";
   descEl.innerHTML = book.description || "Descrição não disponível";
   coverEl.src =
     book.cover || "https://via.placeholder.com/200x300?text=Sem+Capa";
@@ -254,10 +258,10 @@ let usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 let livroClicado = null;
 
 btnAdd.addEventListener("click", () => {
-   if (usuarioLogado.listas.length === 0) {
+  if (usuarioLogado.listas.length === 0) {
     const redireciona = confirm(`Nenhuma lista criada pressione OK para criar`);
     if (redireciona) {
-      window.location.href = '../List/list.html';
+      window.location.href = "../List/list.html";
     }
     return;
   }
@@ -276,42 +280,34 @@ function renderListas() {
   });
 }
 
-
 function salvarLivro() {
   const nomeLista = selectListas.value;
-  const lista = usuarioLogado.listas.find(
-    (lista) => lista.nome === nomeLista
-  );
+  const lista = usuarioLogado.listas.find((lista) => lista.nome === nomeLista);
 
-  const livro = livros.find(
-    (l) => l.isbn === isbnUrl
-  );
+  const livro = livros.find((l) => l.isbn === isbnUrl);
 
-  const livroDuplicado = lista.livros.some(
-    (livro) => livro.isbn === isbnUrl
-  );
+  const livroDuplicado = lista.livros.some((livro) => livro.isbn === isbnUrl);
 
   if (livroDuplicado) {
     alert("Livro já está na lista");
     ocultarOverlay();
     return;
-    
   }
 
   lista.livros.push(livro);
 
   localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
-  const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-        const index = usuarios.findIndex(
-            u => u.nomeUsuario === usuarioLogado.nomeUsuario
-        );
+  const index = usuarios.findIndex(
+    (u) => u.nomeUsuario === usuarioLogado.nomeUsuario,
+  );
 
-        if (index !== -1) {
-            usuarios[index] = usuarioLogado;
-        }
+  if (index !== -1) {
+    usuarios[index] = usuarioLogado;
+  }
 
-        localStorage.setItem('usuarios', JSON.stringify(usuarios));
+  localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
   alert("Livro salvo com sucesso!");
 
