@@ -96,7 +96,17 @@
           <p>Ainda não há resenhas</p>
         </div>
 
-        <button class="add">Adicionar à Lista</button>
+        <div class="detalhes-acoes">
+          <button
+            class="quero-ler"
+            type="button"
+            onclick="adicionarLivroQueroLer()"
+          >
+            QUERO LER
+          </button>
+
+          <button class="add" type="button">LISTAR</button>
+        </div>
       </div>
 
       <div id="overlay">
@@ -114,6 +124,51 @@
         </div>
       </div>
     </main>
+
+    <script>
+      function obterLivroAtualParaPilha() {
+        const parametros = new URLSearchParams(window.location.search);
+        const isbn = parametros.get("isbn") || "";
+
+        return {
+          isbn: isbn,
+          titulo:
+            document.getElementById("bookTitle").textContent ||
+            "Livro sem título",
+          autor:
+            document.getElementById("bookAuthor").textContent ||
+            "Autor desconhecido",
+          capa: document.getElementById("bookCover").src || "",
+          status: "Quero ler",
+        };
+      }
+
+      function adicionarLivroQueroLer() {
+        const livroAtual = obterLivroAtualParaPilha();
+        const pilha =
+          JSON.parse(localStorage.getItem("litlog_pilha_livros")) || [];
+
+        const livroExistente = pilha.find(function (livro) {
+          return (
+            (livroAtual.isbn && livro.isbn === livroAtual.isbn) ||
+            livro.titulo === livroAtual.titulo
+          );
+        });
+
+        if (livroExistente) {
+          livroExistente.status = "Quero ler";
+          livroExistente.isbn = livroExistente.isbn || livroAtual.isbn;
+          livroExistente.capa = livroExistente.capa || livroAtual.capa;
+          livroExistente.autor = livroExistente.autor || livroAtual.autor;
+        } else {
+          pilha.push(livroAtual);
+        }
+
+        localStorage.setItem("litlog_pilha_livros", JSON.stringify(pilha));
+
+        window.location.href = "../ThePilePage/ThePile.html";
+      }
+    </script>
 
     <script src="../compartilhado/livros.js"></script>
     <script src="Detalhes.js"></script>
