@@ -64,29 +64,22 @@
 }
 
 .botaoCarrossel {
-  width: 34px;
-  height: 34px;
-  margin: 0 10px 0 0;
-  background-color: #ffffff;
+  width: 45px;
+  height: 45px;
+  margin: 0 10px 0 10px;
+  background-color: #191522;
+  color: #fff;
   border: none;
   border-radius: 5px;
-  color: #111111;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 24px;
+  transition: 0.3s;
 }
-
-.botaoCarrossel {
-  background-color: var(--color-white);
-  color: var(--color-text);
-  border-radius: var(--radius-md);
-  transition: var(--transition-fast);
-  box-shadow: var(--shadow-soft);
-}
-
-
 .botaoCarrossel:hover {
-  background-color: var(--color-surface);
+  background-color: #fff;
+  color: #191522;
 }
+
 
 .linhaFiltro {
   display: flex;

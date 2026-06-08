@@ -1,6 +1,6 @@
 #Banner {
-  background-image: url("../Img/Banner.png");
-  background-position-x: center;
+  background-image: url("../Img/banner2.svg");
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -27,6 +27,11 @@
     "Regular",
     Cormorant Garamond,
     serif;
+    text-shadow: 2px 2px 2px #000;
+}
+
+.pBanner {
+    text-shadow: 2px 2px 2px #000;
 }
 
 #CaixaCarrossel {
@@ -88,13 +93,19 @@
   width: 45px;
   height: 45px;
   margin: 0 10px 0 10px;
-  background-color: #ffffff;
-  color: #1f1f1f;
+  background-color: #191522;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 24px;
+  transition: 0.3s;
 }
+.botaoCarrossel:hover {
+  background-color: #fff;
+  color: #191522;
+}
+
 
 .nomeLivro {
   margin-top: 12px;

@@ -47,6 +47,7 @@ function paintStars() {
                 'nota' + usuarioLogado.nomeUsuario + livro.isbn,
                 JSON.stringify({ nota: value })
             );
+            alert('Avaliação atualizada com sucesso!');
 
             atualizarMedia();
             renderMediaGeral();
