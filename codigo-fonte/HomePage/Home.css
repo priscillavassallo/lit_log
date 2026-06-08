@@ -56,6 +56,13 @@
   margin-top: 25px;
 }
 
+
+.tituloCarrossel{
+  margin-bottom: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+}
+
 .tituloLinha {
   margin: 0 0 var(--space-lg) 0;
   color: var(--color-text);
