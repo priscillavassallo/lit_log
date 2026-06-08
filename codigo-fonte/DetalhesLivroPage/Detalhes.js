@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (alreadyLoaded) return;
   alreadyLoaded = true;
   loadBookByISBN();
+  carregarResenhas();
 });
 
 // FUNÇÃO PRINCIPAL
@@ -254,6 +255,9 @@ const btnCancelarModal = document.getElementById("cancelar");
 const btnSalvarModal = document.getElementById("salvar");
 const selectListas = document.getElementById("listasUsuario");
 
+const registros = JSON.parse(localStorage.getItem("litlog_registros_diario"));
+const registrosDoLivro = registros.filter((registro) => registro.isbn === isbn);
+
 let usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 let livroClicado = null;
 
@@ -324,4 +328,15 @@ overlay.addEventListener("click", (e) => {
 
 function ocultarOverlay() {
   overlay.style.display = "none";
+}
+const comentarios = document.getElementById("comentarios");
+function carregarResenhas() {
+  if (registrosDoLivro.length > 0) {
+    comentarios.innerHTML = "";
+    registrosDoLivro.forEach((registro) => {
+      comentarios.innerHTML += `
+      <p><a href="../PerfilPage/Perfil.html?username=${registro.registrante}"><b>${registro.registrante}</b></a> ${registro.anotacao}</p>
+      `;
+    });
+  }
 }

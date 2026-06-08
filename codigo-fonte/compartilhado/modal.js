@@ -261,6 +261,7 @@ function salvarLog(event) {
     avaliacao: avaliacao || "Sem avaliação",
     anotacao: anotacao || "Sem anotação",
     data: criarDataLog(),
+    isbn: livroEncontrado.isbn,
   };
 
   registros.unshift(novoRegistro);

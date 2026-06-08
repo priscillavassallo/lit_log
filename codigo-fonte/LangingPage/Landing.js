@@ -153,6 +153,7 @@ const registroDiario = [
     avaliacao: "5",
     anotacao: "Quero ler de novo! Muito bom",
     data: "04/06/2026",
+    isbn: "9780547928197",
   },
   {
     registrante: "nona_bacana_",
@@ -163,6 +164,7 @@ const registroDiario = [
     avaliacao: "5",
     anotacao: "Excelente",
     data: "04/06/2026",
+    isbn: "9780547928210",
   },
   {
     registrante: "nona_bacana_",
@@ -173,6 +175,7 @@ const registroDiario = [
     avaliacao: "5",
     anotacao: "Bom demais!! Releio de tempos em tempos!",
     data: "04/06/2026",
+    isbn: "9780547928203",
   },
 ];
 const pilhaDeLivros = [
