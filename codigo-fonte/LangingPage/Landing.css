@@ -26,9 +26,10 @@ a {
 
 #textoLanding {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   text-align: center;
+  flex-direction: column;
   height: 90dvh;
   font-size: 2pc;
   background-image: url("../Img/FundoLanding.webp");
@@ -42,15 +43,22 @@ a {
 }
 
 .tituloPrincipal {
-  margin-top: 15dvh;
+  margin-top: 7dvh;
+  margin-bottom: 2dvh;
   font-family: "Playfair Display", serif;
+  font-size: 1.75em;
+}
+
+.subtitulo {
+  margin-bottom: 5dvh;
+  font-size: calc(1rem * 1.15);
+  font-weight: 200;
 }
 
 .landing-topbar {
-  background: rgba(255, 255, 255, 0.65);
+  background-color: #dbdacd;
   backdrop-filter: blur(10px);
   box-shadow: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .landing-login {
@@ -68,7 +76,7 @@ a {
   color: var(--color-white);
   border: none;
   padding: 12px 22px;
-  border-radius: var(--radius-full);
+  border-radius: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition-fast);
@@ -77,4 +85,150 @@ a {
 
 .landing-register:hover {
   background: var(--color-secondary);
+}
+.fat-register {
+  width: 25dvh;
+  height: 8dvh;
+  border-radius: 20px;
+  font-size: 21px;
+}
+.bolinhasContainer {
+  position: absolute;
+  top: 50dvh;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+.bolinha {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 40px 40px;
+}
+.quadroFala {
+  position: absolute;
+  background-color: white;
+  border-radius: 20px;
+  width: 170px;
+  height: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  opacity: 0.8;
+  align-items: center;
+  z-index: 5;
+}
+.quadro1 {
+  top: 55px;
+  left: 425px;
+}
+.quadro2 {
+  top: 205px;
+  right: 470px;
+}
+.iconTransferir {
+  width: 15px;
+  margin: 15px;
+}
+.bolha {
+  position: absolute;
+  width: 29px;
+  padding: 8px;
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 10px;
+}
+.miniIcon {
+  width: 15px;
+}
+
+.bolinha1 {
+  top: 100px;
+  left: 400px;
+  background-image: url("../Img/landing/1.avif");
+}
+.bolinha2 {
+  background-image: url("../Img/landing/2.avif");
+  top: 200px;
+  right: 200px;
+}
+.bolha2 {
+  top: 185px;
+  right: 185px;
+}
+.bolinha3 {
+  background-image: url("../Img/landing/3.avif");
+  top: 300px;
+  left: 600px;
+}
+.bolha3 {
+  top: 285px;
+  left: 625px;
+}
+.bolinha4 {
+  background-image: url("../Img/landing/4.avif");
+  top: 150px;
+  left: 675px;
+}
+.bolha4 {
+  top: 135px;
+  left: 700px;
+}
+.bolinha5 {
+  background-image: url("../Img/landing/5.avif");
+  top: 50px;
+  right: 570px;
+}
+.bolinha6 {
+  background-image: url("../Img/landing/6.avif");
+  top: 250px;
+  right: 625px;
+}
+.bolha6 {
+  top: 235px;
+  right: 615px;
+}
+.bolinha7 {
+  background-image: url("../Img/landing/7.avif");
+}
+.bolinhaFicha {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.ficha {
+  border-radius: 20px;
+  display: flex;
+  position: absolute;
+
+  width: 250px;
+  height: 105px;
+  padding: 20px 30px;
+  background-color: white;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  z-index: 10;
+}
+.ficha1 {
+  top: 175px;
+  left: 270px;
+}
+.ficha2 {
+  top: 50px;
+  right: 270px;
+}
+.fichaNome {
+  font-size: 14px;
+  font-weight: 600;
+}
+.fichaTitulo {
+  font-size: 14px;
+  color: darkgray;
+}
+.fichaAcao {
+  font-size: 16px;
 }
