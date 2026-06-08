@@ -20,6 +20,11 @@
   align-items: center;
   position: relative;
 }
+
+.titulo-card{
+  margin-top: 10px;
+}
+
 #card-container img{
 
   background-color: #000000;

@@ -53,6 +53,8 @@ a {
   margin-bottom: 5dvh;
   font-size: calc(1rem * 1.15);
   font-weight: 200;
+  position: relative;
+  z-index: 20;
 }
 
 .landing-topbar {
@@ -91,6 +93,8 @@ a {
   height: 8dvh;
   border-radius: 20px;
   font-size: 21px;
+  position: relative;
+  z-index: 20;
 }
 .bolinhasContainer {
   position: absolute;
@@ -231,4 +235,15 @@ a {
 }
 .fichaAcao {
   font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+  .quadroFala,
+  .quadro1,
+  .quadro2,
+  .ficha,
+  .ficha1,
+  .ficha2 {
+    display: none !important;
+  }
 }
