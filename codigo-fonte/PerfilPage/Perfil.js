@@ -18,6 +18,9 @@ const btnSeguindo = document.getElementById("btnSeguindo");
 const btnSeguidores = document.getElementById("btnSeguidores");
 const iconSeguir = document.querySelector(".iconSeguir");
 const iconPararDeSeguir = document.querySelector(".iconPararDeSeguir");
+const linkThePile = document.getElementById("linkThePile");
+const linkDiary = document.getElementById("linkDiary");
+const linkList = document.getElementById("linkList");
 
 let pageUser;
 let sameUser = false;
@@ -36,6 +39,10 @@ if (usuarioLogado.nomeUsuario == pageName || !pageName) {
   btnSelect.classList.add("oculta");
   idLinkSair.classList.add("oculta");
   btnSelectContainer.classList.add("oculta");
+  linkThePile.href =
+    "../ThePilePage/ThePile.html?username=" + pageUser.nomeUsuario;
+  linkDiary.href = "../DiaryPage/Diary.html?username=" + pageUser.nomeUsuario;
+  linkList.href = "../List/list.html?username=" + pageUser.nomeUsuario;
 }
 const perfilAtivo = pageUser;
 

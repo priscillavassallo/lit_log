@@ -140,6 +140,21 @@
     <script>
       const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
       const chaveRegistrosDiario = "litlog_registros_diario";
+      const parametros = new URLSearchParams(window.location.search);
+      const pageName = parametros.get("username");
+      let pageUser;
+      let sameUser = false;
+      if (usuarioLogado.nomeUsuario == pageName || !pageName) {
+        console.log("sameuser");
+        sameUser = true;
+        pageUser = usuarioLogado;
+      } else {
+        const userList = JSON.parse(localStorage.getItem("usuarios"));
+        pageUser = userList.find((user) => {
+          return user.nomeUsuario == pageName;
+        });
+      }
+      const perfilAtivo = pageUser;
       let indiceRegistroParaExcluir = null;
       let filtroLivroAtual = "todos";
       let filtroStatusAtual = "todos";
@@ -312,7 +327,7 @@
         const listaRegistros = document.getElementById("listaRegistros");
         const registros = buscarRegistrosDiario();
         const registrosDoUsuario = registros.filter(
-          (registro) => registro.registrante === usuarioLogado.nomeUsuario,
+          (registro) => registro.registrante === perfilAtivo.nomeUsuario,
         );
 
         const registrosFiltrados = filtrarRegistrosDiario(registrosDoUsuario);
@@ -335,6 +350,16 @@
 
           const novoRegistro = document.createElement("article");
           novoRegistro.classList.add("diary-record");
+          const botãoExcluir = sameUser
+            ? `
+              <button
+                class="diary-delete"
+                type="button"
+                onclick="abrirModalExclusaoDiario(${indexOriginal})"
+              >
+                Excluir
+              </button>`
+            : "";
 
           novoRegistro.innerHTML = `
             <div class="diary-record-header">
@@ -345,13 +370,7 @@
                 </p>
               </div>
 
-              <button
-                class="diary-delete"
-                type="button"
-                onclick="abrirModalExclusaoDiario(${indexOriginal})"
-              >
-                Excluir
-              </button>
+              ${botãoExcluir}
             </div>
 
             <p class="diary-date">

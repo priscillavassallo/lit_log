@@ -173,6 +173,21 @@
       const chavePilhaLivros = "litlog_pilha_livros";
       const chaveRegistrosDiario = "litlog_registros_diario";
       const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+      const parametros = new URLSearchParams(window.location.search);
+      const pageName = parametros.get("username");
+      let pageUser;
+      let sameUser = false;
+      if (usuarioLogado.nomeUsuario == pageName || !pageName) {
+        console.log("sameuser");
+        sameUser = true;
+        pageUser = usuarioLogado;
+      } else {
+        const userList = JSON.parse(localStorage.getItem("usuarios"));
+        pageUser = userList.find((user) => {
+          return user.nomeUsuario == pageName;
+        });
+      }
+      const perfilAtivo = pageUser;
       let filtroAtual = "Todos";
       let indiceLivroParaExcluir = null;
 
@@ -219,7 +234,7 @@
           return livrosExemploPilha;
         }
         const pilhaFiltrada = pilhaSalva.filter(
-          (livro) => livro.dono === usuarioLogado.nomeUsuario,
+          (livro) => livro.dono === perfilAtivo.nomeUsuario,
         );
         return pilhaFiltrada;
       }
@@ -504,24 +519,8 @@
           card.addEventListener("click", function () {
             abrirDetalhesLivro(livro);
           });
-
-          card.innerHTML = `
-            <div class="pile-cover-wrapper">
-              <img
-                class="pile-cover"
-                src="${limparTexto(livro.capa)}"
-                alt="Capa do livro ${limparTexto(livro.titulo)}"
-              />
-            </div>
-
-            <div class="pile-book-info">
-              <h3>${limparTexto(livro.titulo)}</h3>
-              <p>${limparTexto(livro.autor)}</p>
-
-              <span class="pile-status ${classeStatus}">
-                ${limparTexto(livro.status)}
-              </span>
-
+          const deletarEAlterar = sameUser
+            ? `
               <label class="pile-status-label" for="statusLivro${indexOriginal}">
                 Alterar status
               </label>
@@ -543,10 +542,28 @@
                 onclick="event.stopPropagation(); abrirModalExclusaoPilha(${indexOriginal})"
               >
                 Excluir
-              </button>
+              </button>`
+            : "";
+
+          card.innerHTML = `
+            <div class="pile-cover-wrapper">
+              <img
+                class="pile-cover"
+                src="${limparTexto(livro.capa)}"
+                alt="Capa do livro ${limparTexto(livro.titulo)}"
+              />
+            </div>
+
+            <div class="pile-book-info">
+              <h3>${limparTexto(livro.titulo)}</h3>
+              <p>${limparTexto(livro.autor)}</p>
+
+              <span class="pile-status ${classeStatus}">
+                ${limparTexto(livro.status)}
+              </span>
+
             </div>
           `;
-
           gradeLivros.appendChild(card);
         });
       }

@@ -18,7 +18,9 @@
   font-size: var(--text-lg);
   color: var(--color-text-muted);
 }
-
+.oculta {
+  display: none;
+}
 .pile-card {
   max-width: 900px;
   margin: 0 auto var(--space-xl);

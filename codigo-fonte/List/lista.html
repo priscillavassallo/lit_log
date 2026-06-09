@@ -1,8 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Minha Lista</title>
     <link rel="icon" href="../Img/Logo.png" type="image/png" />
     <link rel="stylesheet" href="../CSS/variavel.css" />
@@ -10,187 +9,228 @@
     <link rel="stylesheet" href="../CSS/componentes.css" />
     <link rel="stylesheet" href="lista.css" />
     <link rel="stylesheet" href="../compartilhado/modal.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="topbar">
-  <a href="../HomePage/Home.html" class="topbar-logo">
-    <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
-    <span>LitLog</span>
-  </a>
+      <a href="../HomePage/Home.html" class="topbar-logo">
+        <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
+        <span>LitLog</span>
+      </a>
 
-  <nav class="topbar-nav">
-    <div class="topbar-profile">
-      <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
-      <details class="topbar-profile-dropdown">
-        <summary class="topbar-profile-trigger" aria-label="Abrir menu do perfil"></summary>
-        <div class="topbar-profile-menu">
-          <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
-          <a href="../DiaryPage/Diary.html">Diario</a>
-          <a href="../List/list.html">Listas</a>
+      <nav class="topbar-nav">
+        <div class="topbar-profile">
+          <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
+          <details class="topbar-profile-dropdown">
+            <summary
+              class="topbar-profile-trigger"
+              aria-label="Abrir menu do perfil"
+            ></summary>
+            <div class="topbar-profile-menu">
+              <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
+              <a href="../DiaryPage/Diary.html">Diario</a>
+              <a href="../List/list.html">Listas</a>
+            </div>
+          </details>
         </div>
-      </details>
-    </div>
-    <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-    <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+        <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link"
+          >Coleções</a
+        >
 
-    <a href="../PesquisaPage/Pesquisa.html" class="topbar-search" aria-label="Pesquisar">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-        <path
-          d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
-        ></path>
-      </svg>
-    </a>
+        <a
+          href="../PesquisaPage/Pesquisa.html"
+          class="topbar-search"
+          aria-label="Pesquisar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+            <path
+              d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
+            ></path>
+          </svg>
+        </a>
 
-    <button class="btn-primary" type="button" onclick="abrirModalLog()">
-      + Log
-    </button>
-  </nav>
-</header>
+        <button class="btn-primary" type="button" onclick="abrirModalLog()">
+          + Log
+        </button>
+      </nav>
+    </header>
 
     <h1 id="titulo-lista"></h1>
 
-    <span id="aviso">
-        Pesquise por um livro e adicione a lista
-    </span>
+    <span id="aviso"> Pesquise por um livro e adicione a lista </span>
 
     <span id="pesq">
-        <a href="../PesquisaPage/Pesquisa.html" target="_blank">
-            Pesquisar Livro >>
-        </a>
+      <a href="../PesquisaPage/Pesquisa.html" target="_blank">
+        Pesquisar Livro >>
+      </a>
     </span>
 
     <div id="lista"></div>
 
-<div
-  class="modalLog"
-  id="modalLog"
-  aria-hidden="true"
-  onclick="fecharModalPorFora(event)"
->
-  <div
-    class="conteudoModalLog"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="tituloModalLog"
-  >
-    <button
-      class="fecharModalLog"
-      type="button"
-      onclick="fecharModalLog()"
-      aria-label="Fechar"
+    <div
+      class="modalLog"
+      id="modalLog"
+      aria-hidden="true"
+      onclick="fecharModalPorFora(event)"
     >
-      &times;
-    </button>
-
-    <h2 id="tituloModalLog">Novo log</h2>
-
-    <form class="formLog" onsubmit="salvarLog(event)">
-      <label for="livroLog">Livro</label>
-      <input
-        id="livroLog"
-        type="text"
-        list="listaLivrosLog"
-        placeholder="Pesquise ou selecione um livro"
-        autocomplete="off"
-        required
-      />
-      <datalist id="listaLivrosLog"></datalist>
-
-      <label for="statusLog">Status</label>
-      <select id="statusLog" required>
-        <option value="Quero ler">Quero ler</option>
-        <option value="Lendo">Lendo</option>
-        <option value="Lido">Lido</option>
-      </select>
-
-      <label for="paginaLog">Página atual</label>
-      <input id="paginaLog" type="number" placeholder="Ex: 120" />
-<label>Avaliação</label>
-
-      <div class="avaliacaoEstrelas" id="avaliacaoEstrelas">
-        <button type="button" class="estrelaLog" data-value="1" onclick="selecionarAvaliacaoLog(1)">☆</button>
-        <button type="button" class="estrelaLog" data-value="2" onclick="selecionarAvaliacaoLog(2)">☆</button>
-        <button type="button" class="estrelaLog" data-value="3" onclick="selecionarAvaliacaoLog(3)">☆</button>
-        <button type="button" class="estrelaLog" data-value="4" onclick="selecionarAvaliacaoLog(4)">☆</button>
-        <button type="button" class="estrelaLog" data-value="5" onclick="selecionarAvaliacaoLog(5)">☆</button>
-      </div>
-
-      <input type="hidden" id="avaliacaoLog" value="" />
-
-      <label for="anotacaoLog">Anotação</label>
-      <textarea
-        id="anotacaoLog"
-        rows="4"
-        placeholder="Escreva suas impressões sobre a leitura"
-      ></textarea>
-
-      <div class="acoesModalLog">
+      <div
+        class="conteudoModalLog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalLog"
+      >
         <button
-          class="botaoCancelarLog"
+          class="fecharModalLog"
           type="button"
           onclick="fecharModalLog()"
+          aria-label="Fechar"
         >
-          Cancelar
+          &times;
         </button>
 
-        <button class="botaoSalvarLog" type="submit">Salvar</button>
+        <h2 id="tituloModalLog">Novo log</h2>
+
+        <form class="formLog" onsubmit="salvarLog(event)">
+          <label for="livroLog">Livro</label>
+          <input
+            id="livroLog"
+            type="text"
+            list="listaLivrosLog"
+            placeholder="Pesquise ou selecione um livro"
+            autocomplete="off"
+            required
+          />
+          <datalist id="listaLivrosLog"></datalist>
+
+          <label for="statusLog">Status</label>
+          <select id="statusLog" required>
+            <option value="Quero ler">Quero ler</option>
+            <option value="Lendo">Lendo</option>
+            <option value="Lido">Lido</option>
+          </select>
+
+          <label for="paginaLog">Página atual</label>
+          <input id="paginaLog" type="number" placeholder="Ex: 120" />
+          <label>Avaliação</label>
+
+          <div class="avaliacaoEstrelas" id="avaliacaoEstrelas">
+            <button
+              type="button"
+              class="estrelaLog"
+              data-value="1"
+              onclick="selecionarAvaliacaoLog(1)"
+            >
+              ☆
+            </button>
+            <button
+              type="button"
+              class="estrelaLog"
+              data-value="2"
+              onclick="selecionarAvaliacaoLog(2)"
+            >
+              ☆
+            </button>
+            <button
+              type="button"
+              class="estrelaLog"
+              data-value="3"
+              onclick="selecionarAvaliacaoLog(3)"
+            >
+              ☆
+            </button>
+            <button
+              type="button"
+              class="estrelaLog"
+              data-value="4"
+              onclick="selecionarAvaliacaoLog(4)"
+            >
+              ☆
+            </button>
+            <button
+              type="button"
+              class="estrelaLog"
+              data-value="5"
+              onclick="selecionarAvaliacaoLog(5)"
+            >
+              ☆
+            </button>
+          </div>
+
+          <input type="hidden" id="avaliacaoLog" value="" />
+
+          <label for="anotacaoLog">Anotação</label>
+          <textarea
+            id="anotacaoLog"
+            rows="4"
+            placeholder="Escreva suas impressões sobre a leitura"
+          ></textarea>
+
+          <div class="acoesModalLog">
+            <button
+              class="botaoCancelarLog"
+              type="button"
+              onclick="fecharModalLog()"
+            >
+              Cancelar
+            </button>
+
+            <button class="botaoSalvarLog" type="submit">Salvar</button>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-</div>
-      
+    </div>
 
     <script>
-  const parametros = new URLSearchParams(window.location.search);
-  const nome = parametros.get("nome");
+      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
-  document.getElementById("titulo-lista").textContent = nome;
+      const parametros = new URLSearchParams(window.location.search);
+      const nome = parametros.get("nome");
+      const pageName = parametros.get("username");
+      let pageUser;
+      let sameUser = false;
+      if (usuarioLogado.nomeUsuario == pageName || !pageName) {
+        console.log("sameuser");
+        sameUser = true;
+        pageUser = usuarioLogado;
+      } else {
+        const userList = JSON.parse(localStorage.getItem("usuarios"));
+        pageUser = userList.find((user) => {
+          return user.nomeUsuario == pageName;
+        });
+      }
+      const perfilAtivo = pageUser;
 
-  const listaHTML = document.getElementById("lista");
-  const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-  const aviso = document.getElementById("aviso");
+      document.getElementById("titulo-lista").textContent = nome;
 
-  const listaAtual = usuarioLogado.listas.find(
-    (lista) => lista.nome === nome
-  );
+      const listaHTML = document.getElementById("lista");
+      const aviso = document.getElementById("aviso");
 
-  let tamanhoAnterior = listaAtual.livros.length;
+      const listaAtual = perfilAtivo.listas.find(
+        (lista) => lista.nome === nome,
+      );
 
-  if (listaAtual.livros.length === 0) {
-    aviso.textContent =
-      "Sua lista está vazia, experimente pesquisar por um livro e adicione a lista";
+      let tamanhoAnterior = listaAtual.livros.length;
 
-    listaHTML.style.display = "none";
-  } else {
-  aviso.style.display = "none";
-  document.getElementById("pesq").style.display = "none";
-}
+      if (listaAtual.livros.length === 0) {
+        aviso.textContent =
+          "Sua lista está vazia, experimente pesquisar por um livro e adicione a lista";
 
-  function renderLista(listaAtual) {
-    if (listaAtual.livros.length === 0) return;
+        listaHTML.style.display = "none";
+      } else {
+        aviso.style.display = "none";
+        document.getElementById("pesq").style.display = "none";
+      }
 
-    listaHTML.style.display = "grid";
-    listaHTML.innerHTML = "";
+      function renderLista(listaAtual) {
+        if (listaAtual.livros.length === 0) return;
 
-    listaAtual.livros.forEach((livro) => {
-      listaHTML.innerHTML += `
-        <div id="card-container">
-          <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}">
-            <img src="${livro.capa}">
-          </a>
-
-          <h3 class="titulo-card">
-            <a
-              style="text-decoration: none;"
-              href="../DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}"
-            >
-              ${livro.titulo}
-            </a>
-          </h3>
-
-      <div class="menu-card">
-      
+        listaHTML.style.display = "grid";
+        listaHTML.innerHTML = "";
+        listaAtual.livros.forEach((livro) => {
+          const renderizaExcluir = sameUser
+            ? `
+          <div class="menu-card">
         <button
           class="menu-btn"
           type="button"
@@ -207,71 +247,76 @@
         
           </div>
       
-        </div>
+        </div>`
+            : "";
+
+          listaHTML.innerHTML += `
+        <div id="card-container">
+          <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}">
+            <img src="${livro.capa}">
+          </a>
+
+          <h3 class="titulo-card">
+            <a
+              style="text-decoration: none;"
+              href="../DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}"
+            >
+              ${livro.titulo}
+            </a>
+          </h3>
+          ${renderizaExcluir}
+ 
       </div>
       `;
-    });
-  }
-
-  renderLista(listaAtual);
-
-document.addEventListener("click", (e) => {
-
-  const menuBtn = e.target.closest(".menu-btn");
-
-  if (menuBtn) {
-
-    const dropdown =
-      menuBtn.parentElement.querySelector(".menu-dropdown");
-
-    document.querySelectorAll(".menu-dropdown").forEach((menu) => {
-      if (menu !== dropdown) {
-        menu.classList.remove("ativo");
+        });
       }
-    });
 
-    dropdown.classList.toggle("ativo");
+      renderLista(listaAtual);
 
-    return;
-  }
+      document.addEventListener("click", (e) => {
+        const menuBtn = e.target.closest(".menu-btn");
 
-  const removerBtn = e.target.closest(".removerL");
+        if (menuBtn) {
+          const dropdown =
+            menuBtn.parentElement.querySelector(".menu-dropdown");
 
-  if (removerBtn) {
+          document.querySelectorAll(".menu-dropdown").forEach((menu) => {
+            if (menu !== dropdown) {
+              menu.classList.remove("ativo");
+            }
+          });
 
-    const isbn = removerBtn.dataset.isbn;
+          dropdown.classList.toggle("ativo");
 
-    const livroSelecionado =
-      listaAtual.livros.findIndex(
-        (livro) => livro.isbn === isbn
-      );
+          return;
+        }
 
-    if (livroSelecionado !== -1) {
+        const removerBtn = e.target.closest(".removerL");
 
-      listaAtual.livros.splice(
-        livroSelecionado,
-        1
-      );
+        if (removerBtn) {
+          const isbn = removerBtn.dataset.isbn;
 
-      localStorage.setItem(
-        "usuarioLogado",
-        JSON.stringify(usuarioLogado)
-      );
+          const livroSelecionado = listaAtual.livros.findIndex(
+            (livro) => livro.isbn === isbn,
+          );
 
-      location.reload();
-    }
+          if (livroSelecionado !== -1) {
+            listaAtual.livros.splice(livroSelecionado, 1);
 
-    return;
-  }
+            localStorage.setItem("usuarioLogado", JSON.stringify(perfilAtivo));
 
-  document.querySelectorAll(".menu-dropdown").forEach((menu) => {
-    menu.classList.remove("ativo");
-  });
+            location.reload();
+          }
 
-});
-</script>
+          return;
+        }
 
-<script src="../compartilhado/modal.js"></script>
-</body>
+        document.querySelectorAll(".menu-dropdown").forEach((menu) => {
+          menu.classList.remove("ativo");
+        });
+      });
+    </script>
 
+    <script src="../compartilhado/modal.js"></script>
+  </body>
 </html>
