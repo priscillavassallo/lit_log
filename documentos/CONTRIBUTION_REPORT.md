@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 09/06/2026 19:06
+**Última atualização:** 09/06/2026 20:50
 
 ---
 
@@ -9,11 +9,11 @@
 | Aluno                           |   Commits |   Linhas+ |   Linhas- |   Arquivos |   Docs Commits |   Docs Arquivos |
 |---------------------------------|-----------|-----------|-----------|------------|----------------|-----------------|
 | Carlos                          |         9 |        45 |        35 |          3 |              6 |               1 |
-| Carlos Eduardo Ribeiro da Silva |        25 |     11023 |      1166 |         78 |              3 |               9 |
+| Carlos Eduardo Ribeiro da Silva |        27 |     11932 |      1271 |         79 |              3 |               9 |
 | Gabriel Clemente Ribeiro        |        91 |      3547 |      1550 |         44 |             28 |               2 |
 | Gustavo Lima                    |        16 |       260 |       124 |          6 |             15 |               2 |
 | Priscilla Vassallo              |        25 |       266 |       199 |          2 |             25 |               1 |
-| github-actions[bot]             |       168 |      1101 |      1015 |          3 |            168 |               1 |
+| github-actions[bot]             |       169 |      1105 |      1019 |          3 |            169 |               1 |
 | github-classroom[bot]           |         2 |      1548 |         0 |         19 |              2 |               3 |
 | iago oliveira garcia            |         3 |       368 |       174 |         17 |              0 |               0 |
 | iagofalquer                     |         9 |        98 |       119 |          1 |              9 |               1 |
@@ -24,9 +24,9 @@
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-06-02**: Carlos Eduardo Ribeiro da Silva: 2, Gabriel Clemente Ribeiro: 9, Gustavo Lima: 1, github-actions[bot]: 21, lima280: 2, marcusfcruz: 5, priscillavassallo: 30
+**2026-06-02**: Carlos Eduardo Ribeiro da Silva: 4, Gabriel Clemente Ribeiro: 9, Gustavo Lima: 1, github-actions[bot]: 21, lima280: 2, marcusfcruz: 5, priscillavassallo: 28
 
-**2026-05-26**: Carlos: 3, Carlos Eduardo Ribeiro da Silva: 10, Gabriel Clemente Ribeiro: 21, Gustavo Lima: 1, github-actions[bot]: 20, lima280: 1, marcusfcruz: 11, priscillavassallo: 7
+**2026-05-26**: Carlos: 3, Carlos Eduardo Ribeiro da Silva: 10, Gabriel Clemente Ribeiro: 21, Gustavo Lima: 1, github-actions[bot]: 21, lima280: 1, marcusfcruz: 11, priscillavassallo: 9
 
 **2026-05-19**: Carlos Eduardo Ribeiro da Silva: 3, Gabriel Clemente Ribeiro: 20, github-actions[bot]: 7, priscillavassallo: 7
 
