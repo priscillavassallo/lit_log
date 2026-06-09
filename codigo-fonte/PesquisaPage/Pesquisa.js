@@ -8,7 +8,7 @@ const btnCancelarModal = document.getElementById("cancelar");
 const btnSalvarModal = document.getElementById("salvar");
 const selectListas = document.getElementById("listasUsuario");
 let livroClicado = null;
-const usuarios = JSON.parse(localStorage.getItem("usuarios"));
+const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -36,18 +36,51 @@ function buscarLivros() {
       usuario.nomeUsuario.toLowerCase().includes(consulta) ||
       usuario.nome.toLowerCase().includes(consulta),
   );
+  const autoresFiltrados = [
+    ...new Set(
+      livros
+        .map((livro) => livro.autor)
+        .filter((autor) => autor.toLowerCase().includes(consulta)),
+    ),
+  ];
+  const listasFiltradas = usuarios.flatMap((usuario) =>
+    (usuario.listas || [])
+      .filter(
+        (lista) =>
+          lista.nome.toLowerCase().includes(consulta) ||
+          usuario.nomeUsuario.toLowerCase().includes(consulta) ||
+          usuario.nome.toLowerCase().includes(consulta) ||
+          (lista.livros || []).some(
+            (livro) =>
+              livro.titulo.toLowerCase().includes(consulta) ||
+              livro.autor.toLowerCase().includes(consulta),
+          ),
+      )
+      .map((lista) => ({
+        lista,
+        proprietario: usuario,
+      })),
+  );
 
-  if (livrosFiltrados.length === 0 && usuariosFiltrados.length === 0) {
+  if (
+    livrosFiltrados.length === 0 &&
+    usuariosFiltrados.length === 0 &&
+    autoresFiltrados.length === 0 &&
+    listasFiltradas.length === 0
+  ) {
     tituloPrincipal.innerHTML = "Nenhum resultado encontrado...";
     containerResultados.innerHTML = "";
     return;
   }
 
   containerResultados.innerHTML = "";
+  const secaoPessoas = criarSecaoResultados("Autores e Perfis");
+  const secaoLivros = criarSecaoResultados("Livros");
+  const secaoListas = criarSecaoResultados("Listas");
 
   livrosFiltrados.forEach(
     (livroFiltrado) =>
-      (containerResultados.innerHTML += `
+      (secaoLivros.innerHTML += `
            
             <div class="cartao-livro">
 
@@ -74,7 +107,7 @@ function buscarLivros() {
   );
 
   usuariosFiltrados.forEach((usuarioFiltrado) => {
-    containerResultados.innerHTML += `
+    secaoPessoas.innerHTML += `
            
             <div class="cartao-livro">
 
@@ -97,6 +130,94 @@ function buscarLivros() {
            
         `;
   });
+
+  autoresFiltrados.forEach((autor) => {
+    const livrosDoAutor = livros.filter((livro) => livro.autor === autor);
+    const primeiroLivro = livrosDoAutor[0];
+
+    secaoPessoas.innerHTML += `
+      <a
+        class="cartao-autor"
+        href="../PerfilPage/PerfilAutor/PerfilAutor.html?author=${encodeURIComponent(autor)}"
+      >
+        <img src="${primeiroLivro.capa}" alt="Livro de ${autor}">
+        <div>
+          <span class="tipo-resultado">Autor</span>
+          <h2>${autor}</h2>
+          <p>
+            ${
+              livrosDoAutor.length === 1
+                ? "1 livro no LitLog"
+                : `${livrosDoAutor.length} livros no LitLog`
+            }
+          </p>
+        </div>
+      </a>
+    `;
+  });
+
+  listasFiltradas.forEach(({ lista, proprietario }) => {
+    const nomeLista = encodeURIComponent(lista.nome);
+    const nomeUsuario = encodeURIComponent(proprietario.nomeUsuario);
+    const quantidadeLivros = (lista.livros || []).length;
+    const capas = (lista.livros || [])
+      .slice(0, 3)
+      .map((livro) => `<img src="${livro.capa}" alt="Capa de ${livro.titulo}">`)
+      .join("");
+
+    secaoListas.innerHTML += `
+      <a
+        class="cartao-lista"
+        href="../List/lista.html?nome=${nomeLista}&username=${nomeUsuario}"
+      >
+        <div class="capas-lista ${capas ? "" : "lista-sem-capas"}">
+          ${capas || "<span>Lista</span>"}
+        </div>
+
+        <div class="info-lista">
+          <span class="tipo-resultado">Lista</span>
+          <h2>${lista.nome}</h2>
+          <p>por @${proprietario.nomeUsuario}</p>
+          <strong>
+            ${quantidadeLivros === 1 ? "1 livro" : `${quantidadeLivros} livros`}
+          </strong>
+        </div>
+      </a>
+    `;
+  });
+
+  adicionarSecaoSeTiverResultados(
+    secaoPessoas,
+    usuariosFiltrados.length + autoresFiltrados.length,
+  );
+  adicionarSecaoSeTiverResultados(secaoLivros, livrosFiltrados.length);
+  adicionarSecaoSeTiverResultados(secaoListas, listasFiltradas.length);
+}
+
+function criarSecaoResultados(titulo) {
+  const secao = document.createElement("section");
+  secao.className = "grupo-resultados";
+  secao.dataset.titulo = titulo;
+  return secao;
+}
+
+function adicionarSecaoSeTiverResultados(secao, quantidade) {
+  if (quantidade === 0) return;
+
+  const titulo = document.createElement("h2");
+  titulo.className = "titulo-grupo-resultados";
+  titulo.textContent = secao.dataset.titulo;
+
+  const grade = document.createElement("div");
+  grade.className = "grade-resultados";
+
+  while (secao.firstChild) {
+    grade.appendChild(secao.firstChild);
+  }
+
+  secao.appendChild(titulo);
+  secao.appendChild(grade);
+  containerResultados.appendChild(secao);
 }
 botaoBusca.addEventListener("click", buscarLivros);
 containerResultados.addEventListener("click", (e) => {

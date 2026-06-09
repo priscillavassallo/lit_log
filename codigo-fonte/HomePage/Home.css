@@ -27,11 +27,11 @@
     "Regular",
     Cormorant Garamond,
     serif;
-    text-shadow: 2px 2px 2px #000;
+  text-shadow: 2px 2px 2px #000;
 }
 
 .pBanner {
-    text-shadow: 2px 2px 2px #000;
+  text-shadow: 2px 2px 2px #000;
 }
 
 #CaixaCarrossel {
@@ -56,10 +56,9 @@
   margin-top: 25px;
 }
 
-
-.tituloCarrossel{
+.tituloCarrossel {
   margin-bottom: 20px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 24px;
 }
 
@@ -113,6 +112,29 @@
   color: #191522;
 }
 
+.controleCarrossel.carrossel-vazio {
+  min-height: 230px;
+}
+
+.controleCarrossel.carrossel-vazio .botaoCarrossel {
+  display: none;
+}
+
+.mensagemRegistrosVazios {
+  width: 100%;
+  margin: 0;
+  color: var(--color-text-light);
+  text-align: center;
+  font-size: var(--text-base);
+}
+
+.donoRegistro {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-text-light);
+  text-align: center;
+  font-size: var(--text-sm);
+}
 
 .nomeLivro {
   margin-top: 12px;

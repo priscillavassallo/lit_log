@@ -183,43 +183,63 @@
 
     <script>
       const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+      if (!usuarioLogado) {
+        window.location.href = "../LoginPage/LoginPage.html";
+        throw new Error("Usuário não autenticado.");
+      }
 
       const parametros = new URLSearchParams(window.location.search);
       const nome = parametros.get("nome");
       const pageName = parametros.get("username");
-      let pageUser;
-      let sameUser = false;
-      if (usuarioLogado.nomeUsuario == pageName || !pageName) {
-        console.log("sameuser");
-        sameUser = true;
-        pageUser = usuarioLogado;
-      } else {
-        const userList = JSON.parse(localStorage.getItem("usuarios"));
-        pageUser = userList.find((user) => {
-          return user.nomeUsuario == pageName;
-        });
-      }
-      const perfilAtivo = pageUser;
-
-      document.getElementById("titulo-lista").textContent = nome;
+      const ownerName = pageName || usuarioLogado.nomeUsuario;
+      const sameUser = usuarioLogado.nomeUsuario === ownerName;
+      const perfilAtivo = sameUser
+        ? usuarioLogado
+        : usuarios.find((user) => user.nomeUsuario === ownerName);
 
       const listaHTML = document.getElementById("lista");
       const aviso = document.getElementById("aviso");
+      const linkPesquisa = document.getElementById("pesq");
+
+      if (!perfilAtivo) {
+        document.getElementById("titulo-lista").textContent =
+          "Perfil não encontrado";
+        aviso.textContent = "Não foi possível carregar as listas deste perfil.";
+        linkPesquisa.style.display = "none";
+        throw new Error("Proprietário da lista não encontrado.");
+      }
+
+      perfilAtivo.listas = Array.isArray(perfilAtivo.listas)
+        ? perfilAtivo.listas
+        : [];
 
       const listaAtual = perfilAtivo.listas.find(
         (lista) => lista.nome === nome,
       );
 
-      let tamanhoAnterior = listaAtual.livros.length;
+      document.getElementById("titulo-lista").textContent = sameUser
+        ? nome
+        : `${nome} · @${perfilAtivo.nomeUsuario}`;
+
+      if (!listaAtual) {
+        aviso.textContent = "Lista não encontrada.";
+        linkPesquisa.style.display = "none";
+        throw new Error("Lista não encontrada.");
+      }
 
       if (listaAtual.livros.length === 0) {
-        aviso.textContent =
-          "Sua lista está vazia, experimente pesquisar por um livro e adicione a lista";
-
+        aviso.textContent = sameUser
+          ? "Sua lista está vazia. Pesquise por um livro para adicioná-lo."
+          : `A lista de @${perfilAtivo.nomeUsuario} está vazia.`;
         listaHTML.style.display = "none";
+        if (!sameUser) {
+          linkPesquisa.style.display = "none";
+        }
       } else {
         aviso.style.display = "none";
-        document.getElementById("pesq").style.display = "none";
+        linkPesquisa.style.display = "none";
       }
 
       function renderLista(listaAtual) {
@@ -293,7 +313,7 @@
 
         const removerBtn = e.target.closest(".removerL");
 
-        if (removerBtn) {
+        if (removerBtn && sameUser) {
           const isbn = removerBtn.dataset.isbn;
 
           const livroSelecionado = listaAtual.livros.findIndex(
@@ -304,6 +324,15 @@
             listaAtual.livros.splice(livroSelecionado, 1);
 
             localStorage.setItem("usuarioLogado", JSON.stringify(perfilAtivo));
+
+            const index = usuarios.findIndex(
+              (user) => user.nomeUsuario === perfilAtivo.nomeUsuario,
+            );
+
+            if (index !== -1) {
+              usuarios[index] = perfilAtivo;
+              localStorage.setItem("usuarios", JSON.stringify(usuarios));
+            }
 
             location.reload();
           }

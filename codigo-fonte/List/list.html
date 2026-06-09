@@ -59,7 +59,7 @@
     <section class="list-page">
       <div class="list-container">
         <div class="topo-listas">
-          <h1>Minhas Listas</h1>
+          <h1 id="titulo-listas">Minhas Listas</h1>
 
           <button id="abrir-popup" class="criar-lista">+ Nova Lista</button>
         </div>
@@ -71,49 +71,72 @@
     <div class="overlay hidden"></div>
     <div class="popup hidden">
       <h2>Nova Lista</h2>
-      <input type="text" id="nome-lista" placeholder="Nome da lista" />
+      <input
+        type="text"
+        id="nome-lista"
+        maxlength="30"
+        placeholder="Nome da lista"
+      />
       <button id="criar-lista-popup">Criar</button>
     </div>
 
     <script>
       const botao = document.getElementById("abrir-popup");
-
       const popup = document.querySelector(".popup");
-
       const overlay = document.querySelector(".overlay");
-
       const input = document.getElementById("nome-lista");
-
       const btnCriar = document.getElementById("criar-lista-popup");
-
       const grid = document.getElementById("list-grid");
-
       const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+      if (!usuarioLogado) {
+        window.location.href = "../LoginPage/LoginPage.html";
+        throw new Error("Usuário não autenticado.");
+      }
 
       const parametros = new URLSearchParams(window.location.search);
       const pageName = parametros.get("username");
-      let pageUser;
-      let sameUser = false;
-      if (usuarioLogado.nomeUsuario == pageName || !pageName) {
-        sameUser = true;
-        pageUser = usuarioLogado;
-      } else {
-        const userList = JSON.parse(localStorage.getItem("usuarios"));
-        pageUser = userList.find((user) => {
-          return user.nomeUsuario == pageName;
+      const ownerName = pageName || usuarioLogado.nomeUsuario;
+      const sameUser = usuarioLogado.nomeUsuario === ownerName;
+      const perfilAtivo = sameUser
+        ? usuarioLogado
+        : usuarios.find((user) => user.nomeUsuario === ownerName);
+
+      if (!perfilAtivo) {
+        document.getElementById("titulo-listas").textContent =
+          "Perfil não encontrado";
+        botao.classList.add("oculta");
+        grid.innerHTML =
+          '<p class="empty-state">Não foi possível carregar as listas deste perfil.</p>';
+        throw new Error("Proprietário das listas não encontrado.");
+      }
+
+      perfilAtivo.listas = Array.isArray(perfilAtivo.listas)
+        ? perfilAtivo.listas
+        : [];
+
+      if (sameUser) {
+        botao.addEventListener("click", () => {
+          popup.classList.remove("hidden");
+          overlay.classList.remove("hidden");
         });
+      } else {
+        document.getElementById("titulo-listas").textContent =
+          `Listas de @${perfilAtivo.nomeUsuario}`;
         botao.classList.add("oculta");
       }
-      const perfilAtivo = pageUser;
-
-      botao.addEventListener("click", () => {
-        popup.classList.remove("hidden");
-
-        overlay.classList.remove("hidden");
-      });
 
       function criarLista() {
-        const nomeLista = input.value;
+        if (!sameUser) return;
+
+        const nomeLista = input.value.trim();
+
+        if (nomeLista.length > 30) {
+          alert("O nome da lista deve ter no máximo 30 caracteres.");
+          return;
+        }
+
         const listaDuplicada = usuarioLogado.listas.some(
           (lista) => lista.nome === nomeLista,
         );
@@ -121,13 +144,11 @@
           alert("Esse nome de lista já está em uso. Use outro nome");
           return;
         }
-        if (nomeLista === "") return;
+        if (!nomeLista) return;
 
         usuarioLogado.listas.push({ nome: nomeLista, livros: [] });
 
         localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
-        const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
         const index = usuarios.findIndex(
           (u) => u.nomeUsuario === usuarioLogado.nomeUsuario,
         );
@@ -166,6 +187,18 @@
 
              `;
 
+        const primeiroLivro = lista.livros[0];
+        const capaLista = novoCard.querySelector(".fake-cover");
+
+        if (primeiroLivro?.capa) {
+          capaLista.style.backgroundImage = `url("${primeiroLivro.capa}")`;
+          capaLista.setAttribute(
+            "aria-label",
+            `Capa de ${primeiroLivro.titulo}`,
+          );
+          capaLista.classList.add("com-capa");
+        }
+
         if (sameUser) {
           const btnExcluir = novoCard.querySelector(".excluirL");
 
@@ -176,24 +209,21 @@
             const cardSelecionado = perfilAtivo.listas.findIndex(
               (lista) => lista.nome === btnClicado,
             );
-            perfilAtivo.listas.splice(cardSelecionado, 1);
             const respExcluir = confirm(
               "Sua lista será excluída permanentemente. Pressione OK para continuar.",
             );
-            if (respExcluir) {
+            if (respExcluir && cardSelecionado !== -1) {
+              perfilAtivo.listas.splice(cardSelecionado, 1);
               localStorage.setItem(
                 "usuarioLogado",
                 JSON.stringify(perfilAtivo),
               );
-              const usuarios =
-                JSON.parse(localStorage.getItem("usuarios")) || [];
-
               const index = usuarios.findIndex(
-                (u) => u.nomeUsuario === usuarioLogado.nomeUsuario,
+                (u) => u.nomeUsuario === perfilAtivo.nomeUsuario,
               );
 
               if (index !== -1) {
-                usuarios[index] = usuarioLogado;
+                usuarios[index] = perfilAtivo;
               }
 
               localStorage.setItem("usuarios", JSON.stringify(usuarios));
@@ -203,27 +233,36 @@
         }
 
         novoCard.addEventListener("click", () => {
-          window.location.href = `lista.html?nome=${lista.nome}&username=${perfilAtivo.nomeUsuario}`;
+          const nomeLista = encodeURIComponent(lista.nome);
+          const nomeUsuario = encodeURIComponent(perfilAtivo.nomeUsuario);
+          window.location.href = `lista.html?nome=${nomeLista}&username=${nomeUsuario}`;
         });
 
         grid.appendChild(novoCard);
 
         input.value = "";
-
         popup.classList.add("hidden");
-
         overlay.classList.add("hidden");
       }
 
-      btnCriar.addEventListener("click", criarLista);
+      if (sameUser) {
+        btnCriar.addEventListener("click", criarLista);
+      }
 
       perfilAtivo.listas.forEach((lista) => {
         renderizarLista(lista);
       });
 
+      if (perfilAtivo.listas.length === 0) {
+        grid.innerHTML = `<p class="empty-state">${
+          sameUser
+            ? "Você ainda não criou nenhuma lista."
+            : `@${perfilAtivo.nomeUsuario} ainda não criou nenhuma lista.`
+        }</p>`;
+      }
+
       overlay.addEventListener("click", () => {
         popup.classList.add("hidden");
-
         overlay.classList.add("hidden");
       });
     </script>

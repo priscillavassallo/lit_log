@@ -173,21 +173,25 @@
       const chavePilhaLivros = "litlog_pilha_livros";
       const chaveRegistrosDiario = "litlog_registros_diario";
       const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+      if (!usuarioLogado) {
+        window.location.href = "../LoginPage/LoginPage.html";
+        throw new Error("Usuário não autenticado.");
+      }
+
       const parametros = new URLSearchParams(window.location.search);
       const pageName = parametros.get("username");
-      let pageUser;
-      let sameUser = false;
-      if (usuarioLogado.nomeUsuario == pageName || !pageName) {
-        console.log("sameuser");
-        sameUser = true;
-        pageUser = usuarioLogado;
-      } else {
-        const userList = JSON.parse(localStorage.getItem("usuarios"));
-        pageUser = userList.find((user) => {
-          return user.nomeUsuario == pageName;
-        });
+      const ownerName = pageName || usuarioLogado.nomeUsuario;
+      const sameUser = usuarioLogado.nomeUsuario === ownerName;
+      const perfilAtivo = sameUser
+        ? usuarioLogado
+        : usuarios.find((user) => user.nomeUsuario === ownerName);
+
+      if (!perfilAtivo) {
+        throw new Error("Proprietário da pilha não encontrado.");
       }
-      const perfilAtivo = pageUser;
+
       let filtroAtual = "Todos";
       let indiceLivroParaExcluir = null;
 
@@ -227,16 +231,116 @@
           .replaceAll("'", "&#039;");
       }
 
-      function buscarPilhaLivrosThePile() {
-        const pilhaSalva = JSON.parse(localStorage.getItem(chavePilhaLivros));
-        if (!pilhaSalva) {
-          salvarPilhaLivros(livrosExemploPilha);
-          return livrosExemploPilha;
+      function buscarPilhaCompleta() {
+        const pilhaSalva =
+          JSON.parse(localStorage.getItem(chavePilhaLivros)) || [];
+        let pilhaAlterada = false;
+
+        const registros =
+          JSON.parse(localStorage.getItem(chaveRegistrosDiario)) || [];
+
+        pilhaSalva.forEach(function (livro) {
+          const possiveisDonos = registros
+            .filter(function (registro) {
+              return (
+                registro.registrante &&
+                ((livro.isbn && registro.isbn === livro.isbn) ||
+                  registro.livro === livro.titulo)
+              );
+            })
+            .map(function (registro) {
+              return registro.registrante;
+            })
+            .filter(function (nomeUsuario, index, lista) {
+              return lista.indexOf(nomeUsuario) === index;
+            });
+
+          const donoTemRegistro = possiveisDonos.includes(livro.dono);
+
+          if (!donoTemRegistro && possiveisDonos.length === 1) {
+            livro.dono = possiveisDonos[0];
+            pilhaAlterada = true;
+          }
+        });
+
+        const livrosUnicos = [];
+
+        pilhaSalva.forEach(function (livro) {
+          if (!livro.dono) return;
+
+          const duplicado = livrosUnicos.some(function (item) {
+            return (
+              item.dono === livro.dono &&
+              ((livro.isbn && item.isbn === livro.isbn) ||
+                item.titulo === livro.titulo)
+            );
+          });
+
+          if (duplicado) {
+            pilhaAlterada = true;
+            return;
+          }
+
+          livrosUnicos.push(livro);
+        });
+
+        if (livrosUnicos.length !== pilhaSalva.length) {
+          pilhaSalva.splice(0, pilhaSalva.length, ...livrosUnicos);
         }
-        const pilhaFiltrada = pilhaSalva.filter(
-          (livro) => livro.dono === perfilAtivo.nomeUsuario,
-        );
-        return pilhaFiltrada;
+
+        const registrosDoPerfil = registros.filter(function (registro) {
+          return registro.registrante === perfilAtivo.nomeUsuario;
+        });
+        const chaveMigracao = "litlog_pilha_migrada_" + perfilAtivo.nomeUsuario;
+
+        if (!localStorage.getItem(chaveMigracao)) {
+          registrosDoPerfil.forEach(function (registro) {
+            const jaExiste = pilhaSalva.some(function (livro) {
+              return (
+                livro.dono === perfilAtivo.nomeUsuario &&
+                ((registro.isbn && livro.isbn === registro.isbn) ||
+                  livro.titulo === registro.livro)
+              );
+            });
+
+            if (jaExiste) return;
+
+            const livroCatalogo =
+              typeof livros !== "undefined"
+                ? livros.find(function (livro) {
+                    return (
+                      (registro.isbn && livro.isbn === registro.isbn) ||
+                      livro.titulo === registro.livro
+                    );
+                  })
+                : null;
+
+            pilhaSalva.push({
+              isbn: registro.isbn || livroCatalogo?.isbn || "",
+              titulo: registro.livro,
+              autor:
+                registro.autor || livroCatalogo?.autor || "Autor desconhecido",
+              capa: livroCatalogo?.capa || "../Img/sem-capa.png",
+              status: registro.status || "Quero ler",
+              dono: perfilAtivo.nomeUsuario,
+            });
+            pilhaAlterada = true;
+          });
+
+          localStorage.setItem(chaveMigracao, "true");
+        }
+
+        if (pilhaAlterada) {
+          salvarPilhaLivros(pilhaSalva);
+        }
+
+        return pilhaSalva;
+      }
+
+      function buscarPilhaLivrosThePile() {
+        return buscarPilhaCompleta().filter(function (livro) {
+          return livro.dono === perfilAtivo.nomeUsuario;
+        });
       }
 
       function salvarPilhaLivros(pilha) {
@@ -275,14 +379,27 @@
       function alterarStatusLivro(index, novoStatus) {
         const pilha = buscarPilhaLivrosThePile();
         const livroAlterado = pilha[index];
+        const pilhaCompleta = buscarPilhaCompleta();
+        const livroNaPilhaCompleta = pilhaCompleta.find(function (livro) {
+          return (
+            livro.dono === perfilAtivo.nomeUsuario &&
+            ((livroAlterado.isbn && livro.isbn === livroAlterado.isbn) ||
+              livro.titulo === livroAlterado.titulo)
+          );
+        });
 
-        pilha[index].status = novoStatus;
-        salvarPilhaLivros(pilha);
+        if (!livroNaPilhaCompleta) return;
+
+        livroNaPilhaCompleta.status = novoStatus;
+        salvarPilhaLivros(pilhaCompleta);
 
         const registrosDiario = buscarRegistrosDiario();
 
         registrosDiario.forEach(function (registro) {
-          if (registro.livro === livroAlterado.titulo) {
+          if (
+            registro.registrante === perfilAtivo.nomeUsuario &&
+            registro.livro === livroAlterado.titulo
+          ) {
             registro.status = novoStatus;
           }
         });
@@ -320,7 +437,10 @@
         const registrosDiario = buscarRegistrosDiario();
 
         return registrosDiario.filter(function (registro) {
-          return registro.livro === tituloLivro;
+          return (
+            registro.registrante === perfilAtivo.nomeUsuario &&
+            registro.livro === tituloLivro
+          );
         });
       }
 
@@ -399,18 +519,28 @@
 
         const pilha = buscarPilhaLivrosThePile();
         const livroRemovido = pilha[indiceLivroParaExcluir];
+        const pilhaCompleta = buscarPilhaCompleta();
         const acaoComentarios = document.getElementById(
           "acaoComentariosPilha",
         ).value;
 
-        pilha.splice(indiceLivroParaExcluir, 1);
-        salvarPilhaLivros(pilha);
+        const pilhaAtualizada = pilhaCompleta.filter(function (livro) {
+          const mesmoLivro =
+            (livroRemovido.isbn && livro.isbn === livroRemovido.isbn) ||
+            livro.titulo === livroRemovido.titulo;
+
+          return !(livro.dono === perfilAtivo.nomeUsuario && mesmoLivro);
+        });
+        salvarPilhaLivros(pilhaAtualizada);
 
         let registrosDiario = buscarRegistrosDiario();
 
         if (acaoComentarios === "todos") {
           registrosDiario = registrosDiario.filter(function (registro) {
-            return registro.livro !== livroRemovido.titulo;
+            return !(
+              registro.registrante === perfilAtivo.nomeUsuario &&
+              registro.livro === livroRemovido.titulo
+            );
           });
         }
 
@@ -420,7 +550,10 @@
           );
 
           registrosDiario = registrosDiario.filter(function (registro) {
-            return Number(registro.id) !== comentarioSelecionado;
+            return !(
+              registro.registrante === perfilAtivo.nomeUsuario &&
+              Number(registro.id) === comentarioSelecionado
+            );
           });
         }
 

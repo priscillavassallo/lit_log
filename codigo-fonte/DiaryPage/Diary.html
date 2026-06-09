@@ -435,7 +435,10 @@
             JSON.parse(localStorage.getItem("litlog_pilha_livros")) || [];
 
           const pilhaAtualizada = pilha.filter(function (livro) {
-            return livro.titulo !== registroRemovido.livro;
+            return !(
+              livro.dono === perfilAtivo.nomeUsuario &&
+              livro.titulo === registroRemovido.livro
+            );
           });
 
           localStorage.setItem(

@@ -270,7 +270,10 @@ function salvarLog(event) {
   var pilha = buscarPilhaLivros();
 
   var livroNaPilha = pilha.find(function (livro) {
-    return livro.titulo === livroEncontrado.titulo;
+    return (
+      livro.dono === usuarioLogadoModal.nomeUsuario &&
+      livro.titulo === livroEncontrado.titulo
+    );
   });
 
   if (livroNaPilha) {
