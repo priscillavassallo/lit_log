@@ -176,6 +176,9 @@
   background: var(--color-secondary);
 }
 
+#bookAuthor {
+  text-decoration: underline;
+}
 .detalhes-acoes .add {
   width: 130px;
 }
