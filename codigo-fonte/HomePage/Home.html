@@ -555,11 +555,39 @@
 
         controle.classList.remove("carrossel-vazio");
 
+        const livrosAgrupados = [];
+
         livrosDosAmigos.forEach((livro) => {
+          const isbn = obterIsbnLivroHome(livro);
+          const chaveLivro = isbn || livro.titulo.trim().toLowerCase();
+          const grupoExistente = livrosAgrupados.find(
+            (grupo) => grupo.chave === chaveLivro,
+          );
+
+          if (grupoExistente) {
+            if (!grupoExistente.usuarios.includes(livro.dono)) {
+              grupoExistente.usuarios.push(livro.dono);
+            }
+            return;
+          }
+
+          livrosAgrupados.push({
+            chave: chaveLivro,
+            livro,
+            usuarios: [livro.dono],
+          });
+        });
+
+        livrosAgrupados.forEach(({ livro, usuarios }) => {
           const isbn = obterIsbnLivroHome(livro);
           const destinoLivro = isbn
             ? `../DetalhesLivroPage/DetalhesLivro.html?isbn=${encodeURIComponent(isbn)}`
             : `../ThePilePage/ThePile.html?username=${encodeURIComponent(livro.dono)}`;
+          const primeiroUsuario = usuarios[0];
+          const quantidadeOutros = usuarios.length - 1;
+          const textoUsuarios = usuarios
+            .map((usuario) => `@${usuario}`)
+            .join(", ");
 
           carrossel.innerHTML += `
             <a href="${destinoLivro}">
@@ -570,7 +598,13 @@
                   alt="Capa de ${limparTextoHome(livro.titulo)}"
                 />
                 <h4 class="nomeLivro">${limparTextoHome(livro.titulo)}</h4>
-                <span class="donoRegistro">@${limparTextoHome(livro.dono)}</span>
+                <span
+                  class="donoRegistro"
+                  title="Adicionado por: ${limparTextoHome(textoUsuarios)}"
+                >
+                  @${limparTextoHome(primeiroUsuario)}
+                  ${quantidadeOutros > 0 ? `<strong>+${quantidadeOutros}</strong>` : ""}
+                </span>
               </div>
             </a>
           `;

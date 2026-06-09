@@ -88,6 +88,33 @@
   color: #191522;
 }
 
+.controleCarrossel.carrossel-vazio {
+  min-height: 210px;
+}
+
+.controleCarrossel.carrossel-vazio .botaoCarrossel {
+  display: none;
+}
+
+.mensagemLidosAmigos {
+  width: 100%;
+  margin: 0;
+  color: var(--color-text-light);
+  text-align: center;
+  font-size: var(--text-base);
+}
+
+.donoLivroAmigo {
+  color: var(--color-text-light);
+  font-size: var(--text-sm);
+  cursor: help;
+}
+
+.donoLivroAmigo strong {
+  margin-left: 4px;
+  color: var(--color-primary);
+}
+
 .linhaFiltro {
   display: flex;
   align-items: center;

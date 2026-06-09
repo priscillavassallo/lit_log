@@ -65,12 +65,19 @@
       <div class="perfil-container">
         <div class="profname">
           <div class="wrapper">
-            <button class="btnSeguir bgSeguir" id="btnSeguir">
-              <img src="../Img/person_add.svg" class="iconSeguir" />
+            <button
+              class="btnSeguir bgSeguir"
+              id="btnSeguir"
+              type="button"
+              aria-label="Seguir"
+            >
+              <img src="../Img/person_add.svg" class="iconSeguir" alt="" />
               <img
                 src="../Img/person_remove.svg"
                 class="iconPararDeSeguir oculta"
+                alt=""
               />
+              <span class="textoBtnSeguir">Seguir</span>
             </button>
             <div class="imgcontainer">
               <img
@@ -103,9 +110,46 @@
         </div>
 
         <div class="profabas">
-          <div class="social-container">
-            <span id="btnSeguindo">Seguindo</span>
-            <span id="btnSeguidores">Seguidores</span>
+          <div class="social-container" aria-label="Conexões do perfil">
+            <button
+              class="social-button"
+              id="btnSeguindo"
+              type="button"
+              aria-label="Ver pessoas que este perfil segue"
+            >
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4.42 0-7 2.17-7 5v1h9.26A6.94 6.94 0 0 1 11 17c0-1.5.47-2.89 1.27-4H9Zm9-1v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"
+                  />
+                </svg>
+              </span>
+              <span class="social-content">
+                <strong id="quantidadeSeguindo">0</strong>
+                <span>Seguindo</span>
+              </span>
+              <span class="social-arrow" aria-hidden="true">›</span>
+            </button>
+
+            <button
+              class="social-button"
+              id="btnSeguidores"
+              type="button"
+              aria-label="Ver seguidores deste perfil"
+            >
+              <span class="social-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M16 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm8 2c-1.1 0-2.08.13-2.95.37A5.8 5.8 0 0 1 15 17.5V20h7v-1c0-3.78-2.74-6-6-6ZM8 13c-3.26 0-6 2.22-6 6v1h11v-2.5C13 14.5 10.76 13 8 13Z"
+                  />
+                </svg>
+              </span>
+              <span class="social-content">
+                <strong id="quantidadeSeguidores">0</strong>
+                <span>Seguidores</span>
+              </span>
+              <span class="social-arrow" aria-hidden="true">›</span>
+            </button>
           </div>
 
           <div class="abascontainer">
@@ -128,17 +172,57 @@
             </a>
 
             <div class="sairContainer">
-              <a
-                class="linkSair"
-                id="idLinkSair"
-                href="../LangingPage/Landing.html"
-                >Sair</a
-              >
+              <button class="linkSair" id="idLinkSair" type="button">
+                Sair
+              </button>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <div
+      class="modalLog"
+      id="modalConfirmarSaida"
+      aria-hidden="true"
+      onclick="fecharModalSaidaPorFora(event)"
+    >
+      <div
+        class="conteudoModalLog modal-saida"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tituloModalSaida"
+      >
+        <button
+          class="fecharModalLog"
+          type="button"
+          onclick="fecharModalSaida()"
+          aria-label="Fechar confirmação de saída"
+        >
+          &times;
+        </button>
+
+        <h2 id="tituloModalSaida">Gostaria de sair?</h2>
+        <p>Você precisará entrar novamente para acessar o seu perfil.</p>
+
+        <div class="acoes-modal-saida">
+          <button
+            class="botao-cancelar-saida"
+            type="button"
+            onclick="fecharModalSaida()"
+          >
+            Cancelar
+          </button>
+          <button
+            class="botao-confirmar-saida"
+            id="btnConfirmarSaida"
+            type="button"
+          >
+            Sair
+          </button>
+        </div>
+      </div>
+    </div>
 
     <script src="../compartilhado/livros.js"></script>
     <script src="../compartilhado/modal.js"></script>

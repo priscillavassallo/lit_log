@@ -376,13 +376,37 @@
         localStorage.setItem(chaveRegistrosDiario, JSON.stringify(registros));
       }
 
+      function podeEditarPilha() {
+        return (
+          sameUser && perfilAtivo.nomeUsuario === usuarioLogado.nomeUsuario
+        );
+      }
+
       function alterarStatusLivro(index, novoStatus) {
+        if (!podeEditarPilha()) {
+          return;
+        }
+
+        const statusPermitidos = ["Quero ler", "Lendo", "Lido"];
+
+        if (!statusPermitidos.includes(novoStatus)) {
+          return;
+        }
+
         const pilha = buscarPilhaLivrosThePile();
         const livroAlterado = pilha[index];
+
+        if (
+          !livroAlterado ||
+          livroAlterado.dono !== usuarioLogado.nomeUsuario
+        ) {
+          return;
+        }
+
         const pilhaCompleta = buscarPilhaCompleta();
         const livroNaPilhaCompleta = pilhaCompleta.find(function (livro) {
           return (
-            livro.dono === perfilAtivo.nomeUsuario &&
+            livro.dono === usuarioLogado.nomeUsuario &&
             ((livroAlterado.isbn && livro.isbn === livroAlterado.isbn) ||
               livro.titulo === livroAlterado.titulo)
           );
@@ -397,7 +421,7 @@
 
         registrosDiario.forEach(function (registro) {
           if (
-            registro.registrante === perfilAtivo.nomeUsuario &&
+            registro.registrante === usuarioLogado.nomeUsuario &&
             registro.livro === livroAlterado.titulo
           ) {
             registro.status = novoStatus;
@@ -408,9 +432,64 @@
         renderizarPilhaLivros();
       }
 
+      function abrirEdicaoStatus(index) {
+        if (!podeEditarPilha()) {
+          return;
+        }
+
+        const areaEdicao = document.getElementById("areaEdicaoStatus" + index);
+        const botaoEditar = document.getElementById(
+          "botaoEditarStatus" + index,
+        );
+
+        if (!areaEdicao || !botaoEditar) {
+          return;
+        }
+
+        areaEdicao.hidden = false;
+        botaoEditar.hidden = true;
+      }
+
+      function cancelarEdicaoStatus(index) {
+        const areaEdicao = document.getElementById("areaEdicaoStatus" + index);
+        const botaoEditar = document.getElementById(
+          "botaoEditarStatus" + index,
+        );
+
+        if (!areaEdicao || !botaoEditar) {
+          return;
+        }
+
+        areaEdicao.hidden = true;
+        botaoEditar.hidden = false;
+      }
+
+      function salvarEdicaoStatus(index) {
+        if (!podeEditarPilha()) {
+          return;
+        }
+
+        const seletorStatus = document.getElementById("statusLivro" + index);
+
+        if (!seletorStatus) {
+          return;
+        }
+
+        alterarStatusLivro(index, seletorStatus.value);
+      }
+
       function abrirModalExclusaoPilha(index) {
+        if (!podeEditarPilha()) {
+          return;
+        }
+
         const pilha = buscarPilhaLivrosThePile();
         const livro = pilha[index];
+
+        if (!livro || livro.dono !== usuarioLogado.nomeUsuario) {
+          return;
+        }
+
         const comentarios = buscarComentariosDoLivro(livro.titulo);
 
         indiceLivroParaExcluir = index;
@@ -513,12 +592,21 @@
       }
 
       function confirmarExclusaoPilha() {
-        if (indiceLivroParaExcluir === null) {
+        if (!podeEditarPilha() || indiceLivroParaExcluir === null) {
           return;
         }
 
         const pilha = buscarPilhaLivrosThePile();
         const livroRemovido = pilha[indiceLivroParaExcluir];
+
+        if (
+          !livroRemovido ||
+          livroRemovido.dono !== usuarioLogado.nomeUsuario
+        ) {
+          fecharModalExclusaoPilha();
+          return;
+        }
+
         const pilhaCompleta = buscarPilhaCompleta();
         const acaoComentarios = document.getElementById(
           "acaoComentariosPilha",
@@ -529,7 +617,7 @@
             (livroRemovido.isbn && livro.isbn === livroRemovido.isbn) ||
             livro.titulo === livroRemovido.titulo;
 
-          return !(livro.dono === perfilAtivo.nomeUsuario && mesmoLivro);
+          return !(livro.dono === usuarioLogado.nomeUsuario && mesmoLivro);
         });
         salvarPilhaLivros(pilhaAtualizada);
 
@@ -538,7 +626,7 @@
         if (acaoComentarios === "todos") {
           registrosDiario = registrosDiario.filter(function (registro) {
             return !(
-              registro.registrante === perfilAtivo.nomeUsuario &&
+              registro.registrante === usuarioLogado.nomeUsuario &&
               registro.livro === livroRemovido.titulo
             );
           });
@@ -551,7 +639,7 @@
 
           registrosDiario = registrosDiario.filter(function (registro) {
             return !(
-              registro.registrante === perfilAtivo.nomeUsuario &&
+              registro.registrante === usuarioLogado.nomeUsuario &&
               Number(registro.id) === comentarioSelecionado
             );
           });
@@ -652,30 +740,67 @@
           card.addEventListener("click", function () {
             abrirDetalhesLivro(livro);
           });
-          const deletarEAlterar = sameUser
+          const controlesDoProprietario = podeEditarPilha()
             ? `
-              <label class="pile-status-label" for="statusLivro${indexOriginal}">
-                Alterar status
-              </label>
+              <div class="pile-owner-actions" onclick="event.stopPropagation()">
+                <button
+                  id="botaoEditarStatus${indexOriginal}"
+                  class="pile-edit"
+                  type="button"
+                  onclick="abrirEdicaoStatus(${indexOriginal})"
+                >
+                  Editar status
+                </button>
 
-              <select
-                id="statusLivro${indexOriginal}"
-                class="pile-status-select"
-                onclick="event.stopPropagation()"
-                onchange="event.stopPropagation(); alterarStatusLivro(${indexOriginal}, this.value)"
-              >
-                <option value="Quero ler" ${livro.status === "Quero ler" ? "selected" : ""}>Quero ler</option>
-                <option value="Lendo" ${livro.status === "Lendo" ? "selected" : ""}>Lendo</option>
-                <option value="Lido" ${livro.status === "Lido" ? "selected" : ""}>Lido</option>
-              </select>
+                <div
+                  id="areaEdicaoStatus${indexOriginal}"
+                  class="pile-status-editor"
+                  hidden
+                >
+                  <label
+                    class="pile-status-label"
+                    for="statusLivro${indexOriginal}"
+                  >
+                    Novo status
+                  </label>
 
-              <button
-                class="pile-delete"
-                type="button"
-                onclick="event.stopPropagation(); abrirModalExclusaoPilha(${indexOriginal})"
-              >
-                Excluir
-              </button>`
+                  <select
+                    id="statusLivro${indexOriginal}"
+                    class="pile-status-select"
+                  >
+                    <option value="Quero ler" ${livro.status === "Quero ler" ? "selected" : ""}>Quero ler</option>
+                    <option value="Lendo" ${livro.status === "Lendo" ? "selected" : ""}>Lendo</option>
+                    <option value="Lido" ${livro.status === "Lido" ? "selected" : ""}>Lido</option>
+                  </select>
+
+                  <div class="pile-status-actions">
+                    <button
+                      class="pile-status-cancel"
+                      type="button"
+                      onclick="cancelarEdicaoStatus(${indexOriginal})"
+                    >
+                      Cancelar
+                    </button>
+
+                    <button
+                      class="pile-status-save"
+                      type="button"
+                      onclick="salvarEdicaoStatus(${indexOriginal})"
+                    >
+                      Salvar
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  class="pile-delete"
+                  type="button"
+                  onclick="abrirModalExclusaoPilha(${indexOriginal})"
+                >
+                  Excluir
+                </button>
+              </div>
+            `
             : "";
 
           card.innerHTML = `
@@ -695,6 +820,7 @@
                 ${limparTexto(livro.status)}
               </span>
 
+              ${controlesDoProprietario}
             </div>
           `;
           gradeLivros.appendChild(card);

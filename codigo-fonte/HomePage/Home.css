@@ -134,6 +134,12 @@
   color: var(--color-text-light);
   text-align: center;
   font-size: var(--text-sm);
+  cursor: help;
+}
+
+.donoRegistro strong {
+  margin-left: 4px;
+  color: var(--color-primary);
 }
 
 .nomeLivro {

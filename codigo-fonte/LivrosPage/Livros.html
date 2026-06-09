@@ -24,7 +24,10 @@
         <div class="topbar-profile">
           <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
           <details class="topbar-profile-dropdown">
-            <summary class="topbar-profile-trigger" aria-label="Abrir menu do perfil"></summary>
+            <summary
+              class="topbar-profile-trigger"
+              aria-label="Abrir menu do perfil"
+            ></summary>
             <div class="topbar-profile-menu">
               <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
               <a href="../DiaryPage/Diary.html">Diario</a>
@@ -33,7 +36,9 @@
           </details>
         </div>
         <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-        <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link"
+          >Coleções</a
+        >
 
         <a
           href="../PesquisaPage/Pesquisa.html"
@@ -194,7 +199,7 @@
           </div>
         </div>
 
-        <div class="secaoLivros"data-categoria="classicos">
+        <div class="secaoLivros" data-categoria="classicos">
           <h2>RECÉM AVALIADOS</h2>
           <div class="controleCarrossel">
             <button
@@ -462,9 +467,9 @@
           </div>
         </div>
 
-        <div class="secaoLivros"data-categoria="amigos">
+        <div class="secaoLivros" data-categoria="amigos">
           <h2>LIDOS POR SEUS AMIGOS</h2>
-          <div class="controleCarrossel">
+          <div class="controleCarrossel" id="controleLidosAmigos">
             <button
               class="botaoCarrossel"
               onclick="moverCarrossel('lidosAmigos', -1)"
@@ -615,13 +620,145 @@
         secoes.forEach(function (secao) {
           var categoria = secao.getAttribute("data-categoria");
 
-          if (filtroSelecionado === "todos" || categoria === filtroSelecionado) {
+          if (
+            filtroSelecionado === "todos" ||
+            categoria === filtroSelecionado
+          ) {
             secao.style.display = "block";
           } else {
             secao.style.display = "none";
           }
         });
       }
+
+      function obterIsbnLivroAmigos(livro) {
+        if (livro.isbn) {
+          return livro.isbn;
+        }
+
+        const resultado = (livro.capa || "").match(/\/isbn\/([0-9Xx]+)-/);
+        return resultado ? resultado[1] : "";
+      }
+
+      function limparTextoLivros(texto) {
+        return String(texto || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function mostrarMensagemLidosAmigos(mensagem) {
+        const carrossel = document.getElementById("lidosAmigos");
+        const controle = document.getElementById("controleLidosAmigos");
+
+        carrossel.innerHTML = `
+          <p class="mensagemLidosAmigos">${mensagem}</p>
+        `;
+        controle.classList.add("carrossel-vazio");
+      }
+
+      function renderizarLidosAmigos() {
+        const carrossel = document.getElementById("lidosAmigos");
+        const controle = document.getElementById("controleLidosAmigos");
+        const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+        const seguidas = JSON.parse(localStorage.getItem("seguidas")) || [];
+        const pilha =
+          JSON.parse(localStorage.getItem("litlog_pilha_livros")) || [];
+
+        carrossel.innerHTML = "";
+
+        if (!usuarioLogado) {
+          mostrarMensagemLidosAmigos("Entre na sua conta para ver esta seção");
+          return;
+        }
+
+        const nomesSeguidos = seguidas
+          .filter(
+            (relacao) =>
+              relacao.seguidor === usuarioLogado.nomeUsuario &&
+              relacao.seguido !== usuarioLogado.nomeUsuario,
+          )
+          .map((relacao) => relacao.seguido);
+
+        if (nomesSeguidos.length === 0) {
+          mostrarMensagemLidosAmigos(
+            "Você ainda não segue ninguém, siga para ver os livros lidos",
+          );
+          return;
+        }
+
+        const livrosLidos = pilha.filter(
+          (livro) =>
+            nomesSeguidos.includes(livro.dono) && livro.status === "Lido",
+        );
+
+        if (livrosLidos.length === 0) {
+          mostrarMensagemLidosAmigos(
+            "As pessoas que você segue ainda não possuem livros marcados como lidos",
+          );
+          return;
+        }
+
+        const livrosAgrupados = [];
+
+        livrosLidos.forEach((livro) => {
+          const isbn = obterIsbnLivroAmigos(livro);
+          const chaveLivro = isbn || livro.titulo.trim().toLowerCase();
+          const grupoExistente = livrosAgrupados.find(
+            (grupo) => grupo.chave === chaveLivro,
+          );
+
+          if (grupoExistente) {
+            if (!grupoExistente.usuarios.includes(livro.dono)) {
+              grupoExistente.usuarios.push(livro.dono);
+            }
+            return;
+          }
+
+          livrosAgrupados.push({
+            chave: chaveLivro,
+            livro,
+            usuarios: [livro.dono],
+          });
+        });
+
+        controle.classList.remove("carrossel-vazio");
+
+        livrosAgrupados.forEach(({ livro, usuarios }) => {
+          const isbn = obterIsbnLivroAmigos(livro);
+          const destinoLivro = isbn
+            ? `../DetalhesLivroPage/DetalhesLivro.html?isbn=${encodeURIComponent(isbn)}`
+            : `../ThePilePage/ThePile.html?username=${encodeURIComponent(livro.dono)}`;
+          const quantidadeOutros = usuarios.length - 1;
+          const textoUsuarios = usuarios
+            .map((usuario) => `@${usuario}`)
+            .join(", ");
+
+          carrossel.innerHTML += `
+            <a href="${destinoLivro}">
+              <div class="livro">
+                <img
+                  class="capaLivro"
+                  src="${limparTextoLivros(livro.capa)}"
+                  alt="Capa de ${limparTextoLivros(livro.titulo)}"
+                />
+                <h4>${limparTextoLivros(livro.titulo)}</h4>
+                <span
+                  class="donoLivroAmigo"
+                  title="Lido por: ${limparTextoLivros(textoUsuarios)}"
+                >
+                  @${limparTextoLivros(usuarios[0])}
+                  ${quantidadeOutros > 0 ? `<strong>+${quantidadeOutros}</strong>` : ""}
+                </span>
+              </div>
+            </a>
+          `;
+        });
+      }
+
+      renderizarLidosAmigos();
     </script>
     <script src="../compartilhado/livros.js"></script>
     <script src="../compartilhado/modal.js"></script>
