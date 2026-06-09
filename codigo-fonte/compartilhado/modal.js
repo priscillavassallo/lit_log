@@ -281,6 +281,7 @@ function salvarLog(event) {
       autor: livroEncontrado.autor,
       capa: livroEncontrado.capa,
       status: status,
+      dono: usuarioLogadoModal.nomeUsuario,
     });
   }
 

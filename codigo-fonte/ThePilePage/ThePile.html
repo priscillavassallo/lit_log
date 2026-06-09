@@ -26,7 +26,10 @@
         <div class="topbar-profile">
           <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
           <details class="topbar-profile-dropdown">
-            <summary class="topbar-profile-trigger" aria-label="Abrir menu do perfil"></summary>
+            <summary
+              class="topbar-profile-trigger"
+              aria-label="Abrir menu do perfil"
+            ></summary>
             <div class="topbar-profile-menu">
               <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
               <a href="../DiaryPage/Diary.html">Diario</a>
@@ -35,7 +38,9 @@
           </details>
         </div>
         <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-        <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link"
+          >Coleções</a
+        >
 
         <a
           href="../PesquisaPage/Pesquisa.html"
@@ -126,11 +131,16 @@
             onchange="alterarAcaoComentariosPilha()"
           >
             <option value="manter">Manter comentários no Diário</option>
-            <option value="todos">Apagar todos os comentários deste livro</option>
+            <option value="todos">
+              Apagar todos os comentários deste livro
+            </option>
             <option value="um">Apagar apenas um comentário específico</option>
           </select>
 
-          <div class="pile-comment-select-area" id="areaSelecionarComentarioPilha">
+          <div
+            class="pile-comment-select-area"
+            id="areaSelecionarComentarioPilha"
+          >
             <label for="comentarioSelecionadoPilha">
               Escolha o comentário
             </label>
@@ -162,7 +172,7 @@
     <script>
       const chavePilhaLivros = "litlog_pilha_livros";
       const chaveRegistrosDiario = "litlog_registros_diario";
-
+      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
       let filtroAtual = "Todos";
       let indiceLivroParaExcluir = null;
 
@@ -202,15 +212,16 @@
           .replaceAll("'", "&#039;");
       }
 
-      function buscarPilhaLivros() {
-        const pilhaSalva = localStorage.getItem(chavePilhaLivros);
-
+      function buscarPilhaLivrosThePile() {
+        const pilhaSalva = JSON.parse(localStorage.getItem(chavePilhaLivros));
         if (!pilhaSalva) {
           salvarPilhaLivros(livrosExemploPilha);
           return livrosExemploPilha;
         }
-
-        return JSON.parse(pilhaSalva);
+        const pilhaFiltrada = pilhaSalva.filter(
+          (livro) => livro.dono === usuarioLogado.nomeUsuario,
+        );
+        return pilhaFiltrada;
       }
 
       function salvarPilhaLivros(pilha) {
@@ -236,7 +247,7 @@
 
         localStorage.setItem(
           chaveRegistrosDiario,
-          JSON.stringify(registrosComId)
+          JSON.stringify(registrosComId),
         );
 
         return registrosComId;
@@ -247,7 +258,7 @@
       }
 
       function alterarStatusLivro(index, novoStatus) {
-        const pilha = buscarPilhaLivros();
+        const pilha = buscarPilhaLivrosThePile();
         const livroAlterado = pilha[index];
 
         pilha[index].status = novoStatus;
@@ -266,7 +277,7 @@
       }
 
       function abrirModalExclusaoPilha(index) {
-        const pilha = buscarPilhaLivros();
+        const pilha = buscarPilhaLivrosThePile();
         const livro = pilha[index];
         const comentarios = buscarComentariosDoLivro(livro.titulo);
 
@@ -300,19 +311,17 @@
 
       function renderizarComentariosExclusaoPilha(comentarios) {
         const resumoComentarios = document.getElementById(
-          "resumoComentariosPilha"
+          "resumoComentariosPilha",
         );
 
-        const acaoComentarios = document.getElementById(
-          "acaoComentariosPilha"
-        );
+        const acaoComentarios = document.getElementById("acaoComentariosPilha");
 
         const comentarioSelecionado = document.getElementById(
-          "comentarioSelecionadoPilha"
+          "comentarioSelecionadoPilha",
         );
 
         const areaSelecionarComentario = document.getElementById(
-          "areaSelecionarComentarioPilha"
+          "areaSelecionarComentarioPilha",
         );
 
         comentarioSelecionado.innerHTML = "";
@@ -354,11 +363,11 @@
 
       function alterarAcaoComentariosPilha() {
         const acaoComentarios = document.getElementById(
-          "acaoComentariosPilha"
+          "acaoComentariosPilha",
         ).value;
 
         const areaSelecionarComentario = document.getElementById(
-          "areaSelecionarComentarioPilha"
+          "areaSelecionarComentarioPilha",
         );
 
         if (acaoComentarios === "um") {
@@ -373,10 +382,10 @@
           return;
         }
 
-        const pilha = buscarPilhaLivros();
+        const pilha = buscarPilhaLivrosThePile();
         const livroRemovido = pilha[indiceLivroParaExcluir];
         const acaoComentarios = document.getElementById(
-          "acaoComentariosPilha"
+          "acaoComentariosPilha",
         ).value;
 
         pilha.splice(indiceLivroParaExcluir, 1);
@@ -392,7 +401,7 @@
 
         if (acaoComentarios === "um") {
           const comentarioSelecionado = Number(
-            document.getElementById("comentarioSelecionadoPilha").value
+            document.getElementById("comentarioSelecionadoPilha").value,
           );
 
           registrosDiario = registrosDiario.filter(function (registro) {
@@ -455,13 +464,13 @@
         }
 
         window.location.href =
-          "../DetalhesLivroPage/DetalhesLivro.html?isbn=" + encodeURIComponent(isbn);
+          "../DetalhesLivroPage/DetalhesLivro.html?isbn=" +
+          encodeURIComponent(isbn);
       }
 
       function renderizarPilhaLivros() {
         const gradeLivros = document.getElementById("gradeLivros");
-        const pilha = buscarPilhaLivros();
-
+        const pilha = buscarPilhaLivrosThePile();
         const livrosFiltrados = pilha
           .map(function (livro, index) {
             return {

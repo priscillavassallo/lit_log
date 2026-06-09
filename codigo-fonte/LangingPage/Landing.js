@@ -184,18 +184,21 @@ const pilhaDeLivros = [
     autor: "J.R.R. Tolkien",
     capa: "https://covers.openlibrary.org/b/isbn/9780547928197-L.jpg",
     status: "Lido",
+    dono: "nona_bacana_",
   },
   {
     titulo: "A Sociedade do Anel",
     autor: "J.R.R. Tolkien",
     capa: "https://covers.openlibrary.org/b/isbn/9780547928210-L.jpg",
     status: "Lido",
+    dono: "nona_bacana_",
   },
   {
     titulo: "As Duas Torres",
     autor: "J.R.R. Tolkien",
     capa: "https://covers.openlibrary.org/b/isbn/9780547928203-L.jpg",
     status: "Lido",
+    dono: "nona_bacana_",
   },
 ];
 const temp = {
