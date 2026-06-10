@@ -646,7 +646,9 @@
       function renderizarAvaliacoesRecentes(){
         registros.sort((a, b) => a.data.localeCompare(b.data)).reverse();
 
-        const isbnsRecentes = registros.map(registro=>registro.isbn)
+        const isbnsRecentes = [...new Set(
+          registros.map(registro => registro.isbn)
+        )];
         const mapaLivros = new Map(
           livros.map(livro => [livro.isbn, livro])
         );
