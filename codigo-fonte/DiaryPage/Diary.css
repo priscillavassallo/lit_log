@@ -275,3 +275,10 @@
     flex-direction: column;
   }
 }
+.diary-book-title {
+  cursor: pointer;
+}
+
+.diary-book-title:hover {
+  text-decoration: underline;
+}
