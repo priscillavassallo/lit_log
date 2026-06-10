@@ -216,8 +216,8 @@
                   livro: livro.titulo,
                   autor: livro.autor,
                   status: livro.status,
-                  pagina: "Não informado",
-                  avaliacao: "Sem avaliação",
+                  pagina: null,
+                  avaliacao: null,
                   data: "Importado da pilha",
                   anotacao: "Livro adicionado a partir da Pilha de Livros.",
                 };
@@ -375,12 +375,14 @@
 
             <p class="diary-date">
               Status: ${limparTexto(registro.status || "Não informado")} •
+              ${registro.pagina ? `
+              Página ${limparTexto(registro.pagina)} •`:""}
               ${limparTexto(new Date(registro.data).toLocaleString('pt-BR') || "")}
             </p>
-
-            <p class="diary-rating">
+            ${registro.avaliacao?
+            `<p class="diary-rating">
               ${limparTexto(montarEstrelas(registro.avaliacao))}
-            </p>
+            </p>`:""}
 
             <p>${limparTexto(registro.anotacao || "Sem anotação")}</p>
           `;

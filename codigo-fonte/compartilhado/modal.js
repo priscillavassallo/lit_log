@@ -226,7 +226,7 @@ function salvarPilhaLivros(pilha) {
 
 function criarDataLog() {
  const dataAtual = new Date();
-
+  
   const fusoHorarioOffset = dataAtual.getTimezoneOffset() * 60000;
   const dataLocal = new Date(dataAtual.getTime() - fusoHorarioOffset);
   
@@ -256,8 +256,8 @@ function salvarLog(event) {
     livro: livroEncontrado.titulo,
     autor: livroEncontrado.autor,
     status: status,
-    pagina: pagina || "Não informado",
-    avaliacao: avaliacao || "Sem avaliação",
+    pagina: pagina || null,
+    avaliacao: avaliacao || null,
     anotacao: anotacao || "Sem anotação",
     data: criarDataLog(),
     isbn: livroEncontrado.isbn,
