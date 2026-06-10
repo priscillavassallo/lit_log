@@ -375,8 +375,7 @@
 
             <p class="diary-date">
               Status: ${limparTexto(registro.status || "Não informado")} •
-              Página ${limparTexto(registro.pagina || "Não informado")} •
-              ${limparTexto(registro.data || "")}
+              ${limparTexto(new Date(registro.data).toLocaleString('pt-BR') || "")}
             </p>
 
             <p class="diary-rating">

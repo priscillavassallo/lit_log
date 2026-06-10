@@ -225,13 +225,12 @@ function salvarPilhaLivros(pilha) {
 }
 
 function criarDataLog() {
-  var dataAtual = new Date();
+ const dataAtual = new Date();
 
-  return dataAtual.toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
+  const fusoHorarioOffset = dataAtual.getTimezoneOffset() * 60000;
+  const dataLocal = new Date(dataAtual.getTime() - fusoHorarioOffset);
+  
+  return dataLocal.toISOString().slice(0, 19);
 }
 
 function salvarLog(event) {

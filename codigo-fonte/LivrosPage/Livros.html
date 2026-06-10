@@ -201,7 +201,7 @@
 
         <div class="secaoLivros" data-categoria="classicos">
           <h2>RECÉM AVALIADOS</h2>
-          <div class="controleCarrossel">
+          <div class="controleCarrossel" >
             <button
               class="botaoCarrossel"
               onclick="moverCarrossel('recemAvaliados', -1)"
@@ -209,125 +209,7 @@
               &#10094;
             </button>
             <div class="livrosCarrossel" id="recemAvaliados">
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780140448955"
-              >
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780140448955-M.jpg"
-                  />
-                  <h4>A Divina Comédia</h4>
-                </div>
-              </a>
-
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780805209990"
-              >
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780805209990-M.jpg"
-                  />
-                  <h4>O Processo</h4>
-                </div>
-              </a>
-
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781400079988"
-              >
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9781400079988-M.jpg"
-                  />
-                  <h4>Guerra e Paz</h4>
-                </div>
-              </a>
-
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780316769174"
-              >
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780316769174-M.jpg"
-                  />
-                  <h4>O Apanhador no Campo de Centeio</h4>
-                </div>
-              </a>
-
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781840226355"
-              >
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9781840226355-M.jpg"
-                  />
-                  <h4>Ulisses</h4>
-                </div>
-              </a>
-
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780743273565"
-              >
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780743273565-M.jpg"
-                  />
-                  <h4>O Grande Gatsby</h4>
-                </div>
-              </a>
-
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780142437247"
-              >
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780142437247-M.jpg"
-                  />
-                  <h4>Moby Dick</h4>
-                </div>
-              </a>
-
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780140268867"
-              >
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780140268867-M.jpg"
-                  />
-                  <h4>A Odisseia</h4>
-                </div>
-              </a>
-
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780143035008"
-              >
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780143035008-M.jpg"
-                  />
-                  <h4>Anna Karenina</h4>
-                </div>
-              </a>
-
-              <a
-                href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780141439556"
-              >
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780141439556-M.jpg"
-                  />
-                  <h4>O Morro dos Ventos Uivantes</h4>
-                </div>
-              </a>
+              
             </div>
             <button
               class="botaoCarrossel"
@@ -607,7 +489,11 @@
         </div>
       </section>
     </main>
+    <script src="../compartilhado/livros.js"></script>
+
     <script>
+      const recemAvaliadosCarrossel = document.getElementById("recemAvaliados")
+      const registros = JSON.parse(localStorage.getItem("litlog_registros_diario"))
       function moverCarrossel(idCarrossel, direcao) {
         var carrossel = document.getElementById(idCarrossel);
         carrossel.scrollLeft = carrossel.scrollLeft + direcao * 190;
@@ -757,10 +643,44 @@
           `;
         });
       }
+      function renderizarAvaliacoesRecentes(){
+        registros.sort((a, b) => a.data.localeCompare(b.data)).reverse();
 
+        const isbnsRecentes = registros.map(registro=>registro.isbn)
+        const mapaLivros = new Map(
+          livros.map(livro => [livro.isbn, livro])
+        );
+
+        const livrosRecentes = isbnsRecentes
+          .map(isbn => mapaLivros.get(isbn))
+          .filter(Boolean);
+
+        if(livrosRecentes.length==0)
+        recemAvaliadosCarrossel.innerHTML = `
+          <p class="mensagemLidosAmigos">${mensagem}</p>
+        `;
+        livrosRecentes.forEach(livro=>{
+          const destinoLivro = livro.isbn
+            ? `../DetalhesLivroPage/DetalhesLivro.html?isbn=${encodeURIComponent(livro.isbn)}`
+            : `../ThePilePage/ThePile.html?username=${encodeURIComponent(livro.dono)}`;
+          recemAvaliadosCarrossel.innerHTML += `
+            <a href="${destinoLivro}">
+              <div class="livro">
+                <img
+                  class="capaLivro"
+                  src="${limparTextoLivros(livro.capa)}"
+                  alt="Capa de ${limparTextoLivros(livro.titulo)}"
+                />
+                <h4>${limparTextoLivros(livro.titulo)}</h4>
+
+              </div>
+            </a>
+          `;
+        })
+      }
+      renderizarAvaliacoesRecentes();
       renderizarLidosAmigos();
     </script>
-    <script src="../compartilhado/livros.js"></script>
     <script src="../compartilhado/modal.js"></script>
   </body>
 </html>

@@ -152,7 +152,7 @@ const registroDiario = [
     pagina: "Não informado",
     avaliacao: "5",
     anotacao: "Quero ler de novo! Muito bom",
-    data: "04/06/2026",
+    data: "2026-06-06T21:15:19",
     isbn: "9780547928197",
   },
   {
@@ -163,7 +163,7 @@ const registroDiario = [
     pagina: "Não informado",
     avaliacao: "5",
     anotacao: "Excelente",
-    data: "04/06/2026",
+    data: "2026-06-04T14:22:05",
     isbn: "9780547928210",
   },
   {
@@ -174,7 +174,7 @@ const registroDiario = [
     pagina: "Não informado",
     avaliacao: "5",
     anotacao: "Bom demais!! Releio de tempos em tempos!",
-    data: "04/06/2026",
+    data: "2026-06-05T09:47:42",
     isbn: "9780547928203",
   },
 ];
