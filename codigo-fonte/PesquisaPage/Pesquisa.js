@@ -9,6 +9,11 @@ const btnSalvarModal = document.getElementById("salvar");
 const selectListas = document.getElementById("listasUsuario");
 let livroClicado = null;
 const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+const litlogListas = JSON.parse(localStorage.getItem("litlog_listas")) || []
+const listasUsuarioLogado = litlogListas.filter(lista => lista.dono === usuarioLogado.nomeUsuario) || []
+
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -43,25 +48,22 @@ function buscarLivros() {
         .filter((autor) => autor.toLowerCase().includes(consulta)),
     ),
   ];
-  const listasFiltradas = usuarios.flatMap((usuario) =>
-    (usuario.listas || [])
-      .filter(
-        (lista) =>
-          lista.nome.toLowerCase().includes(consulta) ||
-          usuario.nomeUsuario.toLowerCase().includes(consulta) ||
-          usuario.nome.toLowerCase().includes(consulta) ||
-          (lista.livros || []).some(
-            (livro) =>
-              livro.titulo.toLowerCase().includes(consulta) ||
-              livro.autor.toLowerCase().includes(consulta),
-          ),
-      )
-      .map((lista) => ({
-        lista,
-        proprietario: usuario,
-      })),
-  );
+  const listasFiltradas = (litlogListas || []).filter((lista) => {
+    const proprietario = usuarios.find(
+      (usuario) => usuario.nomeUsuario === lista.dono
+    );
 
+    return (
+      lista.nome.toLowerCase().includes(consulta) ||
+      lista.dono.toLowerCase().includes(consulta) ||
+      proprietario?.nome?.toLowerCase().includes(consulta) ||
+      (lista.livros || []).some(
+        (livro) =>
+          livro.titulo.toLowerCase().includes(consulta) ||
+          livro.autor.toLowerCase().includes(consulta)
+      )
+    );
+  });
   if (
     livrosFiltrados.length === 0 &&
     usuariosFiltrados.length === 0 &&
@@ -80,7 +82,7 @@ function buscarLivros() {
 
   livrosFiltrados.forEach(
     (livroFiltrado) =>
-      (secaoLivros.innerHTML += `
+    (secaoLivros.innerHTML += `
            
             <div class="cartao-livro">
 
@@ -145,18 +147,16 @@ function buscarLivros() {
           <span class="tipo-resultado">Autor</span>
           <h2>${autor}</h2>
           <p>
-            ${
-              livrosDoAutor.length === 1
-                ? "1 livro no LitLog"
-                : `${livrosDoAutor.length} livros no LitLog`
-            }
+            ${livrosDoAutor.length === 1
+        ? "1 livro no LitLog"
+        : `${livrosDoAutor.length} livros no LitLog`
+      }
           </p>
         </div>
       </a>
     `;
   });
-
-  listasFiltradas.forEach(({ lista, proprietario }) => {
+  listasFiltradas.forEach((lista, proprietario) => {
     const nomeLista = encodeURIComponent(lista.nome);
     const nomeUsuario = encodeURIComponent(proprietario.nomeUsuario);
     const quantidadeLivros = (lista.livros || []).length;
@@ -222,7 +222,7 @@ function adicionarSecaoSeTiverResultados(secao, quantidade) {
 botaoBusca.addEventListener("click", buscarLivros);
 containerResultados.addEventListener("click", (e) => {
   if (e.target.classList.contains("addLista")) {
-    if (usuarioLogado.listas.length === 0) {
+    if (listasUsuarioLogado.length === 0) {
       const redireciona = confirm(
         `Nenhuma lista criada pressione OK para criar `,
       );
@@ -253,11 +253,10 @@ overlay.addEventListener("click", (e) => {
   }
 });
 
-const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
 function renderListas() {
   selectListas.innerHTML = "";
-  usuarioLogado.listas.forEach((lista) => {
+  listasUsuarioLogado.forEach((lista) => {
     const optionLista = document.createElement("option");
     optionLista.setAttribute("data-list", lista.nome);
     optionLista.value = lista.nome;
@@ -269,7 +268,7 @@ function renderListas() {
 function salvarLivro() {
   const nomeLista = selectListas.value;
 
-  const lista = usuarioLogado.listas.find((lista) => lista.nome === nomeLista);
+  const lista = listasUsuarioLogado.find((lista) => lista.nome === nomeLista);
 
   const livroDuplicado = lista.livros.some(
     (livro) => livro.isbn === livroClicado.isbn,
@@ -282,18 +281,23 @@ function salvarLivro() {
 
   lista.livros.push(livroClicado);
 
-  localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
-  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  const dataAtual = new Date();
 
-  const index = usuarios.findIndex(
-    (u) => u.nomeUsuario === usuarioLogado.nomeUsuario,
+  const fusoHorarioOffset = dataAtual.getTimezoneOffset() * 60000;
+  const dataLocal = new Date(dataAtual.getTime() - fusoHorarioOffset);
+
+  const dataLista = dataLocal.toISOString().slice(0, 19);
+  lista.data = dataLista
+
+  const index = litlogListas.findIndex(
+    (u) => u.dono === usuarioLogado.nomeUsuario && u.nome === nomeLista,
   );
 
   if (index !== -1) {
-    usuarios[index] = usuarioLogado;
+    usuarios[index] = lista;
   }
 
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  localStorage.setItem("litlog_listas", JSON.stringify(litlogListas));
 
   alert("Livro salvo com sucesso!");
 }

@@ -1,259 +1,202 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="stylesheet" href="../CSS/variavel.css" />
-    <link rel="stylesheet" href="../CSS/global.css" />
-    <link rel="stylesheet" href="../CSS/componentes.css" />
-    <link rel="stylesheet" href="../compartilhado/modal.css" />
-    <link rel="stylesheet" href="teladelista.css" />
-    <title>LitLog</title>
-  </head>
 
-  <body>
-    <header class="topbar">
-      <a href="../HomePage/Home.html" class="topbar-logo">
-        <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
-        <span>LitLog</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="../CSS/variavel.css" />
+  <link rel="stylesheet" href="../CSS/global.css" />
+  <link rel="stylesheet" href="../CSS/componentes.css" />
+  <link rel="stylesheet" href="../compartilhado/modal.css" />
+  <link rel="stylesheet" href="teladelista.css" />
+  <title>LitLog</title>
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="../HomePage/Home.html" class="topbar-logo">
+      <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
+      <span>LitLog</span>
+    </a>
+
+    <nav class="topbar-nav">
+      <div class="topbar-profile">
+        <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
+        <details class="topbar-profile-dropdown">
+          <summary class="topbar-profile-trigger" aria-label="Abrir menu do perfil"></summary>
+          <div class="topbar-profile-menu">
+            <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
+            <a href="../DiaryPage/Diary.html">Diario</a>
+            <a href="../List/list.html">Listas</a>
+          </div>
+        </details>
+      </div>
+      <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
+      <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+
+      <a href="../PesquisaPage/Pesquisa.html" class="topbar-search" aria-label="Pesquisar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+          <path
+            d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z">
+          </path>
+        </svg>
       </a>
 
-      <nav class="topbar-nav">
-        <div class="topbar-profile">
-          <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
-          <details class="topbar-profile-dropdown">
-            <summary class="topbar-profile-trigger" aria-label="Abrir menu do perfil"></summary>
-            <div class="topbar-profile-menu">
-              <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
-              <a href="../DiaryPage/Diary.html">Diario</a>
-              <a href="../List/list.html">Listas</a>
-            </div>
-          </details>
-        </div>
-        <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-        <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+      <button class="btn-primary" type="button" onclick="abrirModalLog()">
+        + Log
+      </button>
+    </nav>
+  </header>
 
-        <a
-          href="../PesquisaPage/Pesquisa.html"
-          class="topbar-search"
-          aria-label="Pesquisar"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-            <path
-              d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
-            ></path>
-          </svg>
-        </a>
+  <main class="paginaLivros">
+    <section class="areaLivros areaPrincipal">
+      <div class="subtituloCarrossel">
+        <p>
+          Aqui você encontrará coleções de leituras criadas por outros
+          usuários da plataforma.
+        </p>
+        <p>
+          Aproveite esta aba para interagir com esses outros leitores, podendo
+          adicioná-los como amigos ou favoritar.
+        </p>
+      </div>
 
-        <button class="btn-primary" type="button" onclick="abrirModalLog()">
-          + Log
-        </button>
-      </nav>
-    </header>
+      <div class="linhaFiltro">
+        <label for="filtroGenero">Filtrar por gênero:</label>
 
-    <main class="paginaLivros">
-      <section class="areaLivros areaPrincipal">
-        <div class="subtituloCarrossel">
-          <p>
-            Aqui você encontrará coleções de leituras criadas por outros
-            usuários da plataforma.
-          </p>
-          <p>
-            Aproveite esta aba para interagir com esses outros leitores, podendo
-            adicioná-los como amigos ou favoritar.
-          </p>
-        </div>
-
-        <div class="linhaFiltro">
-          <label for="filtroGenero">Filtrar por gênero:</label>
-
-          <select id="filtroGenero" onchange="filtrarColecoes()">
-            <option value="todos">Todos</option>
-            <option value="premiados">Premiados</option>
-            <option value="terror">Terror</option>
-            <option value="classicos">Clássicos</option>
-            <option value="contemporaneos">Contemporâneos</option>
-          </select>
-        </div>
-
+        <select id="filtroGenero" onchange="filtrarColecoes()">
+          <option value="todos">Todos</option>
+          <option value="premiados">Premiados</option>
+          <option value="terror">Terror</option>
+          <option value="classicos">Clássicos</option>
+          <option value="contemporaneos">Contemporâneos</option>
+        </select>
+      </div>
+      <div id="controleGeral">
         <div class="secaoLivros" data-genero="premiados">
           <h2>VENCEDORES DO PRÊMIO PULITZER 2016-2026 POR @LAISMAZER</h2>
 
           <div class="controleCarrossel">
-            <button
-              class="botaoCarrossel"
-              onclick="moverCarrossel('popularesSemana', -1)"
-            >
+            <button class="botaoCarrossel" onclick="moverCarrossel('popularesSemana', -1)">
               &#10094;
             </button>
 
             <div class="livrosCarrossel" id="popularesSemana">
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780393356687">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780393356687-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780393356687-M.jpg" />
                   <h4>A Árvore do Mundo</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781631491665">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9781631491665-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9781631491665-M.jpg" />
                   <h4>Malcolm X</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780802124944">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780802124944-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780802124944-M.jpg" />
                   <h4>O Simpatizante</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307387899">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780307387899-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780307387899-M.jpg" />
                   <h4>A Estrada</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062671189">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780062671189-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780062671189-M.jpg" />
                   <h4>Os Guardiões</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780063251922">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780063251922-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780063251922-M.jpg" />
                   <h4>Demon Copperhead</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385550369">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780385550369-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780385550369-M.jpg" />
                   <h4>James</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780812982626">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780812982626-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780812982626-M.jpg" />
                   <h4>O Filho do Mestre de Orfãos</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385537070">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780385537070-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780385537070-M.jpg" />
                   <h4>O Sobrevivente (The Nickel Boys)</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593420317">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780593420317-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780593420317-M.jpg" />
                   <h4>As Leis da Invisibilidade (Trust)</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307593313">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780307593313-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780307593313-M.jpg" />
                   <h4>A Visita Cruel do Tempo</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780316055444">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780316055444-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780316055444-M.jpg" />
                   <h4>O Pintassilgo</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062896391">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780062896391-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780062896391-M.jpg" />
                   <h4>Sontag</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385542364">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780385542364-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780385542364-M.jpg" />
                   <h4>O Trilho Subterrâneo</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593490617">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780593490617-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780593490617-M.jpg" />
                   <h4>George Floyd</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781501173219">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9781501173219-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9781501173219-M.jpg" />
                   <h4>Toda Luz que Não Podemos Ver</h4>
                 </div>
               </a>
             </div>
 
-            <button
-              class="botaoCarrossel"
-              onclick="moverCarrossel('popularesSemana', 1)"
-            >
+            <button class="botaoCarrossel" onclick="moverCarrossel('popularesSemana', 1)">
               &#10095;
             </button>
           </div>
@@ -263,119 +206,83 @@
           <h2>TOP 10 LIVROS DE TERROR POR @GABBYVIANNA</h2>
 
           <div class="controleCarrossel">
-            <button
-              class="botaoCarrossel"
-              onclick="moverCarrossel('lancamentos', -1)"
-            >
+            <button class="botaoCarrossel" onclick="moverCarrossel('lancamentos', -1)">
               &#10094;
             </button>
 
             <div class="livrosCarrossel" id="lancamentos">
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781501142970">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9781501142970-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9781501142970-M.jpg" />
                   <h4>It: A Coisa</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307743657">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780307743657-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780307743657-M.jpg" />
                   <h4>O Iluminado</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780141439846">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780141439846-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780141439846-M.jpg" />
                   <h4>Drácula</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780486282114">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780486282114-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780486282114-M.jpg" />
                   <h4>Frankenstein</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780061007224">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780061007224-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780061007224-M.jpg" />
                   <h4>O Exorcista</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780143039983">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780143039983-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780143039983-M.jpg" />
                   <h4>A Assombração da Casa da Colina</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780380807345">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780380807345-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780380807345-M.jpg" />
                   <h4>Coraline</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781501156700">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9781501156700-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9781501156700-M.jpg" />
                   <h4>O Cemitério</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062259653">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780062259653-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780062259653-M.jpg" />
                   <h4>Bird Box</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9781594748622">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9781594748622-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9781594748622-M.jpg" />
                   <h4>Deixada Para Trás</h4>
                 </div>
               </a>
             </div>
 
-            <button
-              class="botaoCarrossel"
-              onclick="moverCarrossel('lancamentos', 1)"
-            >
+            <button class="botaoCarrossel" onclick="moverCarrossel('lancamentos', 1)">
               &#10095;
             </button>
           </div>
@@ -385,253 +292,242 @@
           <h2>LIVROS PARA LER PELO MENOS UMA VEZ NA VIDA POR @DUDAMELLOGS</h2>
 
           <div class="controleCarrossel">
-            <button
-              class="botaoCarrossel"
-              onclick="moverCarrossel('recemAvaliados', -1)"
-            >
+            <button class="botaoCarrossel" onclick="moverCarrossel('recemAvaliados', -1)">
               &#10094;
             </button>
 
             <div class="livrosCarrossel" id="recemAvaliados">
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307588371">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780307588371-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780307588371-M.jpg" />
                   <h4>Garota Exemplar</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780062671189">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780062671189-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780062671189-M.jpg" />
                   <h4>Os Guardiões</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780307593313">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780307593313-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780307593313-M.jpg" />
                   <h4>A Visita Cruel do Tempo</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780141439556">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780141439556-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780141439556-M.jpg" />
                   <h4>O Morro dos Ventos Uivantes</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780553213690">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780553213690-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780553213690-M.jpg" />
                   <h4>A Metamorfose</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780142437247">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780142437247-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780142437247-M.jpg" />
                   <h4>Moby Dick</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780451526342">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780451526342-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780451526342-M.jpg" />
                   <h4>A Revolução dos Bichos</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780385490818">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780385490818-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780385490818-M.jpg" />
                   <h4>O Conto da Aia</h4>
                 </div>
               </a>
 
               <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780393356687">
                 <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780393356687-M.jpg"
-                  />
+                  <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780393356687-M.jpg" />
                   <h4>A Árvore do Mundo</h4>
                 </div>
               </a>
             </div>
 
-            <button
-              class="botaoCarrossel"
-              onclick="moverCarrossel('recemAvaliados', 1)"
-            >
+            <button class="botaoCarrossel" onclick="moverCarrossel('recemAvaliados', 1)">
               &#10095;
             </button>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="areaLivros areaRecomendacoes">
-        <div class="secaoLivros" data-genero="contemporaneos">
-          <h2>.° PARA LER ENQUANTO CHOVE BY @AP.AOLA</h2>
+    <section class="areaLivros areaRecomendacoes">
+      <div class="secaoLivros" data-genero="contemporaneos">
+        <h2>.° PARA LER ENQUANTO CHOVE BY @AP.AOLA</h2>
+
+        <div class="controleCarrossel">
+          <button class="botaoCarrossel" onclick="moverCarrossel('lidosAmigos', -1)">
+            &#10094;
+          </button>
+
+          <div class="livrosCarrossel" id="lidosAmigos">
+            <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780525559474">
+              <div class="livro">
+                <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780525559474-M.jpg" />
+                <h4>A Biblioteca da Meia-Noite</h4>
+              </div>
+            </a>
+
+            <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780525536291">
+              <div class="livro">
+                <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780525536291-M.jpg" />
+                <h4>A Metade Perdida</h4>
+              </div>
+            </a>
+
+            <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593318171">
+              <div class="livro">
+                <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780593318171-M.jpg" />
+                <h4>Klara e o Sol</h4>
+              </div>
+            </a>
+
+            <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593321201">
+              <div class="livro">
+                <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780593321201-M.jpg" />
+                <h4>Amanhã, Amanhã, E Ainda Outro Amanhã</h4>
+              </div>
+            </a>
+
+            <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780063072640">
+              <div class="livro">
+                <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780063072640-M.jpg" />
+                <h4>Quão Alto Subimos na Escuridão</h4>
+              </div>
+            </a>
+
+            <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780802162175">
+              <div class="livro">
+                <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780802162175-M.jpg" />
+                <h4>O Pacto da Água</h4>
+              </div>
+            </a>
+
+            <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780060883287">
+              <div class="livro">
+                <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780060883287-M.jpg" />
+                <h4>Cem Anos de Solidão</h4>
+              </div>
+            </a>
+
+            <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780316769174">
+              <div class="livro">
+                <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780316769174-M.jpg" />
+                <h4>O Apanhador no Campo de Centeio</h4>
+              </div>
+            </a>
+
+            <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780441569595">
+              <div class="livro">
+                <img class="capaLivro" src="https://covers.openlibrary.org/b/isbn/9780441569595-M.jpg" />
+                <h4>Neuromancer</h4>
+              </div>
+            </a>
+          </div>
+
+          <button class="botaoCarrossel" onclick="moverCarrossel('lidosAmigos', 1)">
+            &#10095;
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const controleGeral = document.getElementById("controleGeral")
+    const litlogListas = JSON.parse(localStorage.getItem("litlog_listas"))
+    const listasValidas = litlogListas.filter(lista => lista.livros.length > 0);
+    const listasRecentes = listasValidas.slice(0, 4);
+    listasRecentes.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+    console.log(listasRecentes)
+    function renderLivro(livro) {
+      return `
+  <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}">
+    <div class="livro">
+      <img
+       class="capaLivro"
+       src="${livro.capa}"
+      />
+    <h4>${livro.titulo}</h4>
+    </div>
+  </a>
+  `
+
+    }
+
+    function renderCarrossels(lista) {
+
+      controleGeral.innerHTML += `
+        <div class="secaoLivros" data-genero="premiados">
+          <h2>${lista.nome} POR @${lista.dono}</h2>
 
           <div class="controleCarrossel">
             <button
               class="botaoCarrossel"
-              onclick="moverCarrossel('lidosAmigos', -1)"
+              onclick="moverCarrossel('${lista.nome}', -1)"
             >
               &#10094;
             </button>
 
-            <div class="livrosCarrossel" id="lidosAmigos">
-              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780525559474">
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780525559474-M.jpg"
-                  />
-                  <h4>A Biblioteca da Meia-Noite</h4>
-                </div>
-              </a>
-
-              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780525536291">
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780525536291-M.jpg"
-                  />
-                  <h4>A Metade Perdida</h4>
-                </div>
-              </a>
-
-              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593318171">
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780593318171-M.jpg"
-                  />
-                  <h4>Klara e o Sol</h4>
-                </div>
-              </a>
-
-              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780593321201">
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780593321201-M.jpg"
-                  />
-                  <h4>Amanhã, Amanhã, E Ainda Outro Amanhã</h4>
-                </div>
-              </a>
-
-              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780063072640">
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780063072640-M.jpg"
-                  />
-                  <h4>Quão Alto Subimos na Escuridão</h4>
-                </div>
-              </a>
-
-              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780802162175">
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780802162175-M.jpg"
-                  />
-                  <h4>O Pacto da Água</h4>
-                </div>
-              </a>
-
-              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780060883287">
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780060883287-M.jpg"
-                  />
-                  <h4>Cem Anos de Solidão</h4>
-                </div>
-              </a>
-
-              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780316769174">
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780316769174-M.jpg"
-                  />
-                  <h4>O Apanhador no Campo de Centeio</h4>
-                </div>
-              </a>
-
-              <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=9780441569595">
-                <div class="livro">
-                  <img
-                    class="capaLivro"
-                    src="https://covers.openlibrary.org/b/isbn/9780441569595-M.jpg"
-                  />
-                  <h4>Neuromancer</h4>
-                </div>
-              </a>
+            <div class="livrosCarrossel" id="${lista.nome}">
+              ${lista.livros.map(livro => renderLivro(livro))}
             </div>
-
             <button
               class="botaoCarrossel"
-              onclick="moverCarrossel('lidosAmigos', 1)"
+              onclick="moverCarrossel('${lista.nome}', 1)"
             >
               &#10095;
             </button>
           </div>
         </div>
-      </section>
-    </main>
+        `
+    }
 
-    <script>
-      function moverCarrossel(idCarrossel, direcao) {
-        var carrossel = document.getElementById(idCarrossel);
-        carrossel.scrollLeft = carrossel.scrollLeft + direcao * 190;
-      }
+    function moverCarrossel(idCarrossel, direcao) {
+      var carrossel = document.getElementById(idCarrossel);
+      carrossel.scrollLeft = carrossel.scrollLeft + direcao * 190;
+    }
 
-      function filtrarColecoes() {
-        var filtroSelecionado = document.getElementById("filtroGenero").value;
-        var secoes = document.querySelectorAll(".secaoLivros");
+    function filtrarColecoes() {
+      var filtroSelecionado = document.getElementById("filtroGenero").value;
+      var secoes = document.querySelectorAll(".secaoLivros");
 
-        secoes.forEach(function (secao) {
-          var genero = secao.getAttribute("data-genero");
+      secoes.forEach(function (secao) {
+        var genero = secao.getAttribute("data-genero");
 
-          if (filtroSelecionado === "todos" || genero === filtroSelecionado) {
-            secao.style.display = "block";
-          } else {
-            secao.style.display = "none";
-          }
-        });
-      }
-    </script>
+        if (filtroSelecionado === "todos" || genero === filtroSelecionado) {
+          secao.style.display = "block";
+        } else {
+          secao.style.display = "none";
+        }
+      });
+    }
+    controleGeral.innerHTML = ""
+    listasRecentes.forEach(lista => renderCarrossels(lista))
 
-    <script src="../compartilhado/livros.js"></script>
-    <script src="../compartilhado/modal.js"></script>
-  </body>
+  </script>
+
+  <script src="../compartilhado/livros.js"></script>
+  <script src="../compartilhado/modal.js"></script>
+</body>
+
 </html>

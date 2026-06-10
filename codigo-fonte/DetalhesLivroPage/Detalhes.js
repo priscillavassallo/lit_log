@@ -260,9 +260,12 @@ const registrosDoLivro = registros.filter((registro) => registro.isbn === isbn);
 
 let usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 let livroClicado = null;
+const litlogListas = JSON.parse(localStorage.getItem("litlog_listas"))
+const listasUsuarioLogado = litlogListas.filter(lista => lista.dono === usuarioLogado.nomeUsuario) || []
+
 
 btnAdd.addEventListener("click", () => {
-  if (usuarioLogado.listas.length === 0) {
+  if (listasUsuarioLogado.length === 0) {
     const redireciona = confirm(`Nenhuma lista criada pressione OK para criar`);
     if (redireciona) {
       window.location.href = "../List/list.html";
@@ -276,7 +279,7 @@ btnAdd.addEventListener("click", () => {
 function renderListas() {
   selectListas.innerHTML = "";
 
-  usuarioLogado.listas.forEach((lista) => {
+  listasUsuarioLogado.forEach((lista) => {
     const option = document.createElement("option");
     option.value = lista.nome;
     option.textContent = lista.nome;
@@ -286,7 +289,7 @@ function renderListas() {
 
 function salvarLivro() {
   const nomeLista = selectListas.value;
-  const lista = usuarioLogado.listas.find((lista) => lista.nome === nomeLista);
+  const lista = listasUsuarioLogado.find((lista) => lista.nome === nomeLista);
 
   const livro = livros.find((l) => l.isbn === isbnUrl);
 
@@ -299,19 +302,24 @@ function salvarLivro() {
   }
 
   lista.livros.push(livro);
+  const dataAtual = new Date();
 
-  localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
-  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  const fusoHorarioOffset = dataAtual.getTimezoneOffset() * 60000;
+  const dataLocal = new Date(dataAtual.getTime() - fusoHorarioOffset);
 
-  const index = usuarios.findIndex(
-    (u) => u.nomeUsuario === usuarioLogado.nomeUsuario,
+  const dataLista = dataLocal.toISOString().slice(0, 19);
+  lista.data = dataLista
+
+
+  const index = litlogListas.findIndex(
+    (u) => u.dono === usuarioLogado.nomeUsuario && u.nome === nomeLista,
   );
 
   if (index !== -1) {
-    usuarios[index] = usuarioLogado;
+    litlogListas[index] = lista;
   }
 
-  localStorage.setItem("usuarios", JSON.stringify(usuarios));
+  localStorage.setItem("litlog_listas", JSON.stringify(litlogListas));
 
   alert("Livro salvo com sucesso!");
 
