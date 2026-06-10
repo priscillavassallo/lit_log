@@ -55,12 +55,20 @@
   min-width: 150px;
   width: 150px;
   margin: 0 18px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .capaLivro {
   width: 100%;
   height: 210px;
-  background-color: #883a3a;
+  background-color: var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
 }
 
 .botaoCarrossel {
@@ -80,6 +88,32 @@
   color: #191522;
 }
 
+.controleCarrossel.carrossel-vazio {
+  min-height: 210px;
+}
+
+.controleCarrossel.carrossel-vazio .botaoCarrossel {
+  display: none;
+}
+
+.mensagemLidosAmigos {
+  width: 100%;
+  margin: 0;
+  color: var(--color-text-light);
+  text-align: center;
+  font-size: var(--text-base);
+}
+
+.donoLivroAmigo {
+  color: var(--color-text-light);
+  font-size: var(--text-sm);
+  cursor: help;
+}
+
+.donoLivroAmigo strong {
+  margin-left: 4px;
+  color: var(--color-primary);
+}
 
 .linhaFiltro {
   display: flex;

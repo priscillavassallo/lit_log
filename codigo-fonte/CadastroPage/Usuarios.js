@@ -17,7 +17,6 @@ form.addEventListener("submit", (e) => {
     nomeUsuario: inputNomeUsuario.value,
     email: inputEmail.value,
     senha: senha,
-    listas: [],
   };
 
   function validarCadastro(novoUsuario) {

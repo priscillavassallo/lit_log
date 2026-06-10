@@ -18,7 +18,9 @@
   font-size: var(--text-lg);
   color: var(--color-text-muted);
 }
-
+.oculta {
+  display: none;
+}
 .pile-card {
   max-width: 900px;
   margin: 0 auto var(--space-xl);
@@ -162,8 +164,48 @@
   background-color: #c7d6bd;
 }
 
-.pile-status-label {
+.pile-owner-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
   margin-top: var(--space-sm);
+}
+
+.pile-edit,
+.pile-status-save,
+.pile-status-cancel {
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.pile-edit,
+.pile-status-save {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.pile-edit:hover,
+.pile-status-save:hover {
+  filter: brightness(0.92);
+}
+
+.pile-status-editor {
+  padding: var(--space-sm);
+  background-color: var(--color-background);
+  border-radius: var(--radius-sm);
+}
+
+.pile-status-editor[hidden] {
+  display: none;
+}
+
+.pile-status-label {
+  display: block;
+  margin-bottom: var(--space-xs);
   color: var(--color-text);
   font-size: var(--text-sm);
   font-weight: 600;
@@ -178,8 +220,24 @@
   color: var(--color-text);
 }
 
-.pile-delete {
+.pile-status-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xs);
   margin-top: var(--space-sm);
+}
+
+.pile-status-cancel {
+  background-color: transparent;
+  color: var(--color-text-muted);
+}
+
+.pile-status-cancel:hover {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.pile-delete {
   padding: 10px 12px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);

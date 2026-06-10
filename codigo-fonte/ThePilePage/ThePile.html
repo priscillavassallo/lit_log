@@ -26,7 +26,10 @@
         <div class="topbar-profile">
           <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
           <details class="topbar-profile-dropdown">
-            <summary class="topbar-profile-trigger" aria-label="Abrir menu do perfil"></summary>
+            <summary
+              class="topbar-profile-trigger"
+              aria-label="Abrir menu do perfil"
+            ></summary>
             <div class="topbar-profile-menu">
               <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
               <a href="../DiaryPage/Diary.html">Diario</a>
@@ -35,7 +38,9 @@
           </details>
         </div>
         <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-        <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link"
+          >Coleções</a
+        >
 
         <a
           href="../PesquisaPage/Pesquisa.html"
@@ -126,11 +131,16 @@
             onchange="alterarAcaoComentariosPilha()"
           >
             <option value="manter">Manter comentários no Diário</option>
-            <option value="todos">Apagar todos os comentários deste livro</option>
+            <option value="todos">
+              Apagar todos os comentários deste livro
+            </option>
             <option value="um">Apagar apenas um comentário específico</option>
           </select>
 
-          <div class="pile-comment-select-area" id="areaSelecionarComentarioPilha">
+          <div
+            class="pile-comment-select-area"
+            id="areaSelecionarComentarioPilha"
+          >
             <label for="comentarioSelecionadoPilha">
               Escolha o comentário
             </label>
@@ -162,6 +172,25 @@
     <script>
       const chavePilhaLivros = "litlog_pilha_livros";
       const chaveRegistrosDiario = "litlog_registros_diario";
+      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+      if (!usuarioLogado) {
+        window.location.href = "../LoginPage/LoginPage.html";
+        throw new Error("Usuário não autenticado.");
+      }
+
+      const parametros = new URLSearchParams(window.location.search);
+      const pageName = parametros.get("username");
+      const ownerName = pageName || usuarioLogado.nomeUsuario;
+      const sameUser = usuarioLogado.nomeUsuario === ownerName;
+      const perfilAtivo = sameUser
+        ? usuarioLogado
+        : usuarios.find((user) => user.nomeUsuario === ownerName);
+
+      if (!perfilAtivo) {
+        throw new Error("Proprietário da pilha não encontrado.");
+      }
 
       let filtroAtual = "Todos";
       let indiceLivroParaExcluir = null;
@@ -202,15 +231,116 @@
           .replaceAll("'", "&#039;");
       }
 
-      function buscarPilhaLivros() {
-        const pilhaSalva = localStorage.getItem(chavePilhaLivros);
+      function buscarPilhaCompleta() {
+        const pilhaSalva =
+          JSON.parse(localStorage.getItem(chavePilhaLivros)) || [];
+        let pilhaAlterada = false;
 
-        if (!pilhaSalva) {
-          salvarPilhaLivros(livrosExemploPilha);
-          return livrosExemploPilha;
+        const registros =
+          JSON.parse(localStorage.getItem(chaveRegistrosDiario)) || [];
+
+        pilhaSalva.forEach(function (livro) {
+          const possiveisDonos = registros
+            .filter(function (registro) {
+              return (
+                registro.registrante &&
+                ((livro.isbn && registro.isbn === livro.isbn) ||
+                  registro.livro === livro.titulo)
+              );
+            })
+            .map(function (registro) {
+              return registro.registrante;
+            })
+            .filter(function (nomeUsuario, index, lista) {
+              return lista.indexOf(nomeUsuario) === index;
+            });
+
+          const donoTemRegistro = possiveisDonos.includes(livro.dono);
+
+          if (!donoTemRegistro && possiveisDonos.length === 1) {
+            livro.dono = possiveisDonos[0];
+            pilhaAlterada = true;
+          }
+        });
+
+        const livrosUnicos = [];
+
+        pilhaSalva.forEach(function (livro) {
+          if (!livro.dono) return;
+
+          const duplicado = livrosUnicos.some(function (item) {
+            return (
+              item.dono === livro.dono &&
+              ((livro.isbn && item.isbn === livro.isbn) ||
+                item.titulo === livro.titulo)
+            );
+          });
+
+          if (duplicado) {
+            pilhaAlterada = true;
+            return;
+          }
+
+          livrosUnicos.push(livro);
+        });
+
+        if (livrosUnicos.length !== pilhaSalva.length) {
+          pilhaSalva.splice(0, pilhaSalva.length, ...livrosUnicos);
         }
 
-        return JSON.parse(pilhaSalva);
+        const registrosDoPerfil = registros.filter(function (registro) {
+          return registro.registrante === perfilAtivo.nomeUsuario;
+        });
+        const chaveMigracao = "litlog_pilha_migrada_" + perfilAtivo.nomeUsuario;
+
+        if (!localStorage.getItem(chaveMigracao)) {
+          registrosDoPerfil.forEach(function (registro) {
+            const jaExiste = pilhaSalva.some(function (livro) {
+              return (
+                livro.dono === perfilAtivo.nomeUsuario &&
+                ((registro.isbn && livro.isbn === registro.isbn) ||
+                  livro.titulo === registro.livro)
+              );
+            });
+
+            if (jaExiste) return;
+
+            const livroCatalogo =
+              typeof livros !== "undefined"
+                ? livros.find(function (livro) {
+                    return (
+                      (registro.isbn && livro.isbn === registro.isbn) ||
+                      livro.titulo === registro.livro
+                    );
+                  })
+                : null;
+
+            pilhaSalva.push({
+              isbn: registro.isbn || livroCatalogo?.isbn || "",
+              titulo: registro.livro,
+              autor:
+                registro.autor || livroCatalogo?.autor || "Autor desconhecido",
+              capa: livroCatalogo?.capa || "../Img/sem-capa.png",
+              status: registro.status || "Quero ler",
+              dono: perfilAtivo.nomeUsuario,
+            });
+            pilhaAlterada = true;
+          });
+
+          localStorage.setItem(chaveMigracao, "true");
+        }
+
+        if (pilhaAlterada) {
+          salvarPilhaLivros(pilhaSalva);
+        }
+
+        return pilhaSalva;
+      }
+
+      function buscarPilhaLivrosThePile() {
+        return buscarPilhaCompleta().filter(function (livro) {
+          return livro.dono === perfilAtivo.nomeUsuario;
+        });
       }
 
       function salvarPilhaLivros(pilha) {
@@ -236,7 +366,7 @@
 
         localStorage.setItem(
           chaveRegistrosDiario,
-          JSON.stringify(registrosComId)
+          JSON.stringify(registrosComId),
         );
 
         return registrosComId;
@@ -246,17 +376,54 @@
         localStorage.setItem(chaveRegistrosDiario, JSON.stringify(registros));
       }
 
+      function podeEditarPilha() {
+        return (
+          sameUser && perfilAtivo.nomeUsuario === usuarioLogado.nomeUsuario
+        );
+      }
+
       function alterarStatusLivro(index, novoStatus) {
-        const pilha = buscarPilhaLivros();
+        if (!podeEditarPilha()) {
+          return;
+        }
+
+        const statusPermitidos = ["Quero ler", "Lendo", "Lido"];
+
+        if (!statusPermitidos.includes(novoStatus)) {
+          return;
+        }
+
+        const pilha = buscarPilhaLivrosThePile();
         const livroAlterado = pilha[index];
 
-        pilha[index].status = novoStatus;
-        salvarPilhaLivros(pilha);
+        if (
+          !livroAlterado ||
+          livroAlterado.dono !== usuarioLogado.nomeUsuario
+        ) {
+          return;
+        }
+
+        const pilhaCompleta = buscarPilhaCompleta();
+        const livroNaPilhaCompleta = pilhaCompleta.find(function (livro) {
+          return (
+            livro.dono === usuarioLogado.nomeUsuario &&
+            ((livroAlterado.isbn && livro.isbn === livroAlterado.isbn) ||
+              livro.titulo === livroAlterado.titulo)
+          );
+        });
+
+        if (!livroNaPilhaCompleta) return;
+
+        livroNaPilhaCompleta.status = novoStatus;
+        salvarPilhaLivros(pilhaCompleta);
 
         const registrosDiario = buscarRegistrosDiario();
 
         registrosDiario.forEach(function (registro) {
-          if (registro.livro === livroAlterado.titulo) {
+          if (
+            registro.registrante === usuarioLogado.nomeUsuario &&
+            registro.livro === livroAlterado.titulo
+          ) {
             registro.status = novoStatus;
           }
         });
@@ -265,9 +432,64 @@
         renderizarPilhaLivros();
       }
 
+      function abrirEdicaoStatus(index) {
+        if (!podeEditarPilha()) {
+          return;
+        }
+
+        const areaEdicao = document.getElementById("areaEdicaoStatus" + index);
+        const botaoEditar = document.getElementById(
+          "botaoEditarStatus" + index,
+        );
+
+        if (!areaEdicao || !botaoEditar) {
+          return;
+        }
+
+        areaEdicao.hidden = false;
+        botaoEditar.hidden = true;
+      }
+
+      function cancelarEdicaoStatus(index) {
+        const areaEdicao = document.getElementById("areaEdicaoStatus" + index);
+        const botaoEditar = document.getElementById(
+          "botaoEditarStatus" + index,
+        );
+
+        if (!areaEdicao || !botaoEditar) {
+          return;
+        }
+
+        areaEdicao.hidden = true;
+        botaoEditar.hidden = false;
+      }
+
+      function salvarEdicaoStatus(index) {
+        if (!podeEditarPilha()) {
+          return;
+        }
+
+        const seletorStatus = document.getElementById("statusLivro" + index);
+
+        if (!seletorStatus) {
+          return;
+        }
+
+        alterarStatusLivro(index, seletorStatus.value);
+      }
+
       function abrirModalExclusaoPilha(index) {
-        const pilha = buscarPilhaLivros();
+        if (!podeEditarPilha()) {
+          return;
+        }
+
+        const pilha = buscarPilhaLivrosThePile();
         const livro = pilha[index];
+
+        if (!livro || livro.dono !== usuarioLogado.nomeUsuario) {
+          return;
+        }
+
         const comentarios = buscarComentariosDoLivro(livro.titulo);
 
         indiceLivroParaExcluir = index;
@@ -294,25 +516,26 @@
         const registrosDiario = buscarRegistrosDiario();
 
         return registrosDiario.filter(function (registro) {
-          return registro.livro === tituloLivro;
+          return (
+            registro.registrante === perfilAtivo.nomeUsuario &&
+            registro.livro === tituloLivro
+          );
         });
       }
 
       function renderizarComentariosExclusaoPilha(comentarios) {
         const resumoComentarios = document.getElementById(
-          "resumoComentariosPilha"
+          "resumoComentariosPilha",
         );
 
-        const acaoComentarios = document.getElementById(
-          "acaoComentariosPilha"
-        );
+        const acaoComentarios = document.getElementById("acaoComentariosPilha");
 
         const comentarioSelecionado = document.getElementById(
-          "comentarioSelecionadoPilha"
+          "comentarioSelecionadoPilha",
         );
 
         const areaSelecionarComentario = document.getElementById(
-          "areaSelecionarComentarioPilha"
+          "areaSelecionarComentarioPilha",
         );
 
         comentarioSelecionado.innerHTML = "";
@@ -354,11 +577,11 @@
 
       function alterarAcaoComentariosPilha() {
         const acaoComentarios = document.getElementById(
-          "acaoComentariosPilha"
+          "acaoComentariosPilha",
         ).value;
 
         const areaSelecionarComentario = document.getElementById(
-          "areaSelecionarComentarioPilha"
+          "areaSelecionarComentarioPilha",
         );
 
         if (acaoComentarios === "um") {
@@ -369,34 +592,56 @@
       }
 
       function confirmarExclusaoPilha() {
-        if (indiceLivroParaExcluir === null) {
+        if (!podeEditarPilha() || indiceLivroParaExcluir === null) {
           return;
         }
 
-        const pilha = buscarPilhaLivros();
+        const pilha = buscarPilhaLivrosThePile();
         const livroRemovido = pilha[indiceLivroParaExcluir];
+
+        if (
+          !livroRemovido ||
+          livroRemovido.dono !== usuarioLogado.nomeUsuario
+        ) {
+          fecharModalExclusaoPilha();
+          return;
+        }
+
+        const pilhaCompleta = buscarPilhaCompleta();
         const acaoComentarios = document.getElementById(
-          "acaoComentariosPilha"
+          "acaoComentariosPilha",
         ).value;
 
-        pilha.splice(indiceLivroParaExcluir, 1);
-        salvarPilhaLivros(pilha);
+        const pilhaAtualizada = pilhaCompleta.filter(function (livro) {
+          const mesmoLivro =
+            (livroRemovido.isbn && livro.isbn === livroRemovido.isbn) ||
+            livro.titulo === livroRemovido.titulo;
+
+          return !(livro.dono === usuarioLogado.nomeUsuario && mesmoLivro);
+        });
+        salvarPilhaLivros(pilhaAtualizada);
 
         let registrosDiario = buscarRegistrosDiario();
 
         if (acaoComentarios === "todos") {
           registrosDiario = registrosDiario.filter(function (registro) {
-            return registro.livro !== livroRemovido.titulo;
+            return !(
+              registro.registrante === usuarioLogado.nomeUsuario &&
+              registro.livro === livroRemovido.titulo
+            );
           });
         }
 
         if (acaoComentarios === "um") {
           const comentarioSelecionado = Number(
-            document.getElementById("comentarioSelecionadoPilha").value
+            document.getElementById("comentarioSelecionadoPilha").value,
           );
 
           registrosDiario = registrosDiario.filter(function (registro) {
-            return Number(registro.id) !== comentarioSelecionado;
+            return !(
+              registro.registrante === usuarioLogado.nomeUsuario &&
+              Number(registro.id) === comentarioSelecionado
+            );
           });
         }
 
@@ -455,13 +700,13 @@
         }
 
         window.location.href =
-          "../DetalhesLivroPage/DetalhesLivro.html?isbn=" + encodeURIComponent(isbn);
+          "../DetalhesLivroPage/DetalhesLivro.html?isbn=" +
+          encodeURIComponent(isbn);
       }
 
       function renderizarPilhaLivros() {
         const gradeLivros = document.getElementById("gradeLivros");
-        const pilha = buscarPilhaLivros();
-
+        const pilha = buscarPilhaLivrosThePile();
         const livrosFiltrados = pilha
           .map(function (livro, index) {
             return {
@@ -495,6 +740,68 @@
           card.addEventListener("click", function () {
             abrirDetalhesLivro(livro);
           });
+          const controlesDoProprietario = podeEditarPilha()
+            ? `
+              <div class="pile-owner-actions" onclick="event.stopPropagation()">
+                <button
+                  id="botaoEditarStatus${indexOriginal}"
+                  class="pile-edit"
+                  type="button"
+                  onclick="abrirEdicaoStatus(${indexOriginal})"
+                >
+                  Editar status
+                </button>
+
+                <div
+                  id="areaEdicaoStatus${indexOriginal}"
+                  class="pile-status-editor"
+                  hidden
+                >
+                  <label
+                    class="pile-status-label"
+                    for="statusLivro${indexOriginal}"
+                  >
+                    Novo status
+                  </label>
+
+                  <select
+                    id="statusLivro${indexOriginal}"
+                    class="pile-status-select"
+                  >
+                    <option value="Quero ler" ${livro.status === "Quero ler" ? "selected" : ""}>Quero ler</option>
+                    <option value="Lendo" ${livro.status === "Lendo" ? "selected" : ""}>Lendo</option>
+                    <option value="Lido" ${livro.status === "Lido" ? "selected" : ""}>Lido</option>
+                  </select>
+
+                  <div class="pile-status-actions">
+                    <button
+                      class="pile-status-cancel"
+                      type="button"
+                      onclick="cancelarEdicaoStatus(${indexOriginal})"
+                    >
+                      Cancelar
+                    </button>
+
+                    <button
+                      class="pile-status-save"
+                      type="button"
+                      onclick="salvarEdicaoStatus(${indexOriginal})"
+                    >
+                      Salvar
+                    </button>
+                  </div>
+                </div>
+
+                <button
+                  class="pile-delete"
+                  type="button"
+                  onclick="abrirModalExclusaoPilha(${indexOriginal})"
+                >
+                  Excluir
+                </button>
+              </div>
+            `
+            : "";
 
           card.innerHTML = `
             <div class="pile-cover-wrapper">
@@ -513,31 +820,9 @@
                 ${limparTexto(livro.status)}
               </span>
 
-              <label class="pile-status-label" for="statusLivro${indexOriginal}">
-                Alterar status
-              </label>
-
-              <select
-                id="statusLivro${indexOriginal}"
-                class="pile-status-select"
-                onclick="event.stopPropagation()"
-                onchange="event.stopPropagation(); alterarStatusLivro(${indexOriginal}, this.value)"
-              >
-                <option value="Quero ler" ${livro.status === "Quero ler" ? "selected" : ""}>Quero ler</option>
-                <option value="Lendo" ${livro.status === "Lendo" ? "selected" : ""}>Lendo</option>
-                <option value="Lido" ${livro.status === "Lido" ? "selected" : ""}>Lido</option>
-              </select>
-
-              <button
-                class="pile-delete"
-                type="button"
-                onclick="event.stopPropagation(); abrirModalExclusaoPilha(${indexOriginal})"
-              >
-                Excluir
-              </button>
+              ${controlesDoProprietario}
             </div>
           `;
-
           gradeLivros.appendChild(card);
         });
       }

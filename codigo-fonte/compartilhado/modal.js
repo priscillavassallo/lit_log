@@ -1,3 +1,5 @@
+const usuarioLogadoModal = JSON.parse(localStorage.getItem("usuarioLogado"));
+
 function criarModalLog() {
   if (document.getElementById("modalLog")) {
     return;
@@ -116,7 +118,11 @@ function fecharModalPorFora(event) {
 function carregarLivrosNoLog() {
   var listaLivrosLog = document.getElementById("listaLivrosLog");
 
-  if (!listaLivrosLog || typeof livros === "undefined" || !Array.isArray(livros)) {
+  if (
+    !listaLivrosLog ||
+    typeof livros === "undefined" ||
+    !Array.isArray(livros)
+  ) {
     return;
   }
 
@@ -219,13 +225,12 @@ function salvarPilhaLivros(pilha) {
 }
 
 function criarDataLog() {
-  var dataAtual = new Date();
-
-  return dataAtual.toLocaleDateString("pt-BR", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-  });
+ const dataAtual = new Date();
+  
+  const fusoHorarioOffset = dataAtual.getTimezoneOffset() * 60000;
+  const dataLocal = new Date(dataAtual.getTime() - fusoHorarioOffset);
+  
+  return dataLocal.toISOString().slice(0, 19);
 }
 
 function salvarLog(event) {
@@ -247,13 +252,15 @@ function salvarLog(event) {
   var registros = buscarRegistrosDiario();
 
   var novoRegistro = {
+    registrante: usuarioLogadoModal.nomeUsuario,
     livro: livroEncontrado.titulo,
     autor: livroEncontrado.autor,
     status: status,
-    pagina: pagina || "Não informado",
-    avaliacao: avaliacao || "Sem avaliação",
+    pagina: pagina || null,
+    avaliacao: avaliacao || null,
     anotacao: anotacao || "Sem anotação",
     data: criarDataLog(),
+    isbn: livroEncontrado.isbn,
   };
 
   registros.unshift(novoRegistro);
@@ -262,7 +269,10 @@ function salvarLog(event) {
   var pilha = buscarPilhaLivros();
 
   var livroNaPilha = pilha.find(function (livro) {
-    return livro.titulo === livroEncontrado.titulo;
+    return (
+      livro.dono === usuarioLogadoModal.nomeUsuario &&
+      livro.titulo === livroEncontrado.titulo
+    );
   });
 
   if (livroNaPilha) {
@@ -273,6 +283,7 @@ function salvarLog(event) {
       autor: livroEncontrado.autor,
       capa: livroEncontrado.capa,
       status: status,
+      dono: usuarioLogadoModal.nomeUsuario,
     });
   }
 

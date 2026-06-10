@@ -12,12 +12,20 @@ const imgContainer = document.querySelector(".imgcontainer");
 const btnSelect = document.getElementById("selectFoto");
 const fotoPerfil = document.getElementById("fotoPerfil");
 const idLinkSair = document.getElementById("idLinkSair");
+const modalConfirmarSaida = document.getElementById("modalConfirmarSaida");
+const btnConfirmarSaida = document.getElementById("btnConfirmarSaida");
 const btnSeguir = document.getElementById("btnSeguir");
 const seguidas = JSON.parse(localStorage.getItem("seguidas")) || [];
 const btnSeguindo = document.getElementById("btnSeguindo");
 const btnSeguidores = document.getElementById("btnSeguidores");
+const quantidadeSeguindo = document.getElementById("quantidadeSeguindo");
+const quantidadeSeguidores = document.getElementById("quantidadeSeguidores");
 const iconSeguir = document.querySelector(".iconSeguir");
 const iconPararDeSeguir = document.querySelector(".iconPararDeSeguir");
+const textoBtnSeguir = document.querySelector(".textoBtnSeguir");
+const linkThePile = document.getElementById("linkThePile");
+const linkDiary = document.getElementById("linkDiary");
+const linkList = document.getElementById("linkList");
 
 let pageUser;
 let sameUser = false;
@@ -36,12 +44,22 @@ if (usuarioLogado.nomeUsuario == pageName || !pageName) {
   btnSelect.classList.add("oculta");
   idLinkSair.classList.add("oculta");
   btnSelectContainer.classList.add("oculta");
+  linkThePile.href =
+    "../ThePilePage/ThePile.html?username=" + pageUser.nomeUsuario;
+  linkDiary.href = "../DiaryPage/Diary.html?username=" + pageUser.nomeUsuario;
+  linkList.href = "../List/list.html?username=" + pageUser.nomeUsuario;
 }
 const perfilAtivo = pageUser;
 
 nomeUsuario.textContent = "@" + perfilAtivo.nomeUsuario;
 nomeExibição.textContent = perfilAtivo.nome;
 descricao.value = perfilAtivo.desc || [];
+quantidadeSeguindo.textContent = seguidas.filter(
+  (item) => item.seguidor === perfilAtivo.nomeUsuario,
+).length;
+quantidadeSeguidores.textContent = seguidas.filter(
+  (item) => item.seguido === perfilAtivo.nomeUsuario,
+).length;
 
 if (sameUser) {
   btnEdit.addEventListener("click", () => {
@@ -74,8 +92,40 @@ if (sameUser) {
   });
 }
 
-idLinkSair.addEventListener("click", (event) => {
+function abrirModalSaida() {
+  modalConfirmarSaida.classList.add("modalAberto");
+  modalConfirmarSaida.setAttribute("aria-hidden", "false");
+  btnConfirmarSaida.focus();
+}
+
+function fecharModalSaida() {
+  modalConfirmarSaida.classList.remove("modalAberto");
+  modalConfirmarSaida.setAttribute("aria-hidden", "true");
+  idLinkSair.focus();
+}
+
+function fecharModalSaidaPorFora(event) {
+  if (event.target === modalConfirmarSaida) {
+    fecharModalSaida();
+  }
+}
+
+idLinkSair.addEventListener("click", () => {
+  abrirModalSaida();
+});
+
+btnConfirmarSaida.addEventListener("click", () => {
   localStorage.removeItem("usuarioLogado");
+  window.location.href = "../LangingPage/Landing.html";
+});
+
+document.addEventListener("keydown", (event) => {
+  if (
+    event.key === "Escape" &&
+    modalConfirmarSaida.classList.contains("modalAberto")
+  ) {
+    fecharModalSaida();
+  }
 });
 
 if (perfilAtivo.foto) {
@@ -110,6 +160,8 @@ if (!sameUser) {
     btnSeguir.classList.remove("bgSeguir");
     iconSeguir.classList.add("oculta");
     btnSeguir.classList.add("bgPararDeSeguir");
+    textoBtnSeguir.textContent = "Deixar de seguir";
+    btnSeguir.setAttribute("aria-label", "Deixar de seguir");
     btnSeguir.addEventListener("click", () => {
       const index = seguidas.findIndex(
         (item) =>
@@ -123,6 +175,8 @@ if (!sameUser) {
       location.reload();
     });
   } else {
+    textoBtnSeguir.textContent = "Seguir";
+    btnSeguir.setAttribute("aria-label", "Seguir");
     btnSeguir.addEventListener("click", () => {
       seguidas.push(objSeguidorSeguido);
       localStorage.setItem("seguidas", JSON.stringify(seguidas));
@@ -137,7 +191,66 @@ function checkIfFollows(seguidor, seguido) {
   return resultado;
 }
 
-function criarModalSeguidas(versão) {
+function buscarUsuarioDaLista(nomeUsuarioBuscado) {
+  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  if (usuarioLogado.nomeUsuario === nomeUsuarioBuscado) {
+    return usuarioLogado;
+  }
+
+  return usuarios.find((usuario) => usuario.nomeUsuario === nomeUsuarioBuscado);
+}
+
+function criarItemUsuario(nomeUsuarioListado) {
+  const usuarioListado = buscarUsuarioDaLista(nomeUsuarioListado);
+  const linkPerfil = document.createElement("a");
+  const fotoUsuario = document.createElement("img");
+  const informacoesUsuario = document.createElement("span");
+  const nomeExibicaoUsuario = document.createElement("strong");
+  const identificadorUsuario = document.createElement("span");
+  const seta = document.createElement("span");
+
+  linkPerfil.className = "social-list-item";
+  linkPerfil.href =
+    "./Perfil.html?username=" + encodeURIComponent(nomeUsuarioListado);
+
+  fotoUsuario.className = "social-list-photo";
+  fotoUsuario.src = usuarioListado?.foto || "../Img/user.png";
+  fotoUsuario.alt = usuarioListado
+    ? "Foto de perfil de " + usuarioListado.nome
+    : "Foto de perfil";
+
+  informacoesUsuario.className = "social-list-info";
+  nomeExibicaoUsuario.textContent = usuarioListado?.nome || nomeUsuarioListado;
+  identificadorUsuario.textContent = "@" + nomeUsuarioListado;
+
+  seta.className = "social-list-arrow";
+  seta.setAttribute("aria-hidden", "true");
+  seta.textContent = "›";
+
+  informacoesUsuario.append(nomeExibicaoUsuario, identificadorUsuario);
+  linkPerfil.append(fotoUsuario, informacoesUsuario, seta);
+
+  return linkPerfil;
+}
+
+function renderizarListaUsuarios(listagem, nomesUsuarios) {
+  listagem.innerHTML = "";
+
+  if (nomesUsuarios.length === 0) {
+    const mensagemVazia = document.createElement("p");
+    mensagemVazia.className = "social-list-empty";
+    mensagemVazia.textContent = "Ninguém por enquanto";
+    listagem.appendChild(mensagemVazia);
+    return;
+  }
+
+  nomesUsuarios.forEach((nomeUsuarioListado) => {
+    listagem.appendChild(criarItemUsuario(nomeUsuarioListado));
+  });
+}
+
+function criarModalSeguidas() {
   if (document.getElementById("modalSeguidas")) {
     return;
   }
@@ -165,10 +278,7 @@ function criarModalSeguidas(versão) {
       </button>
 
       <h2 id="tituloModalSeguidas"></h2>
-      <div id="listagem">
-      <span>Ninguém por enquanto</span>
-      </div>
-      
+      <div class="social-list" id="listagem"></div>
     </div>
   `;
 
@@ -199,49 +309,28 @@ btnSeguidores.addEventListener("click", (event) => {
 });
 
 function abrirModalSeguidas(versão) {
-  criarModalSeguidas(versão);
+  criarModalSeguidas();
   const titulo = document.getElementById("tituloModalSeguidas");
   titulo.innerText = versão;
-  let listados;
   const listagem = document.getElementById("listagem");
-  console.log(listagem);
-  listagem.innerHTML = "";
+  let nomesUsuarios = [];
 
   if (versão == "Seguidores") {
-    listados = seguidas.filter((item) => item.seguido === pageUser.nomeUsuario);
-    console.log(listados);
-    if (listados.length > 0) {
-      listados.forEach((listado) => {
-        listagem.innerHTML += `
-      <a href="./Perfil.html?username=${listado.seguidor}">${listado.seguidor}</a>
-      `;
-      });
-    } else {
-      listagem.innerText = "Ninguém por enquanto";
-    }
+    nomesUsuarios = seguidas
+      .filter((item) => item.seguido === pageUser.nomeUsuario)
+      .map((item) => item.seguidor);
   }
-  if (versão == "Seguindo") {
-    listados = seguidas.filter(
-      (item) => item.seguidor === pageUser.nomeUsuario,
-    );
-    console.log(listados);
-    if (listados.length > 0) {
-      listados.forEach((listado) => {
-        console.log(listado.seguido);
 
-        listagem.innerHTML += `
-      <a href="./Perfil.html?username=${listado.seguido}"> ${listado.seguido}</a>
-      `;
-      });
-    } else {
-      listagem.innerText = "Ninguém por enquanto";
-    }
+  if (versão == "Seguindo") {
+    nomesUsuarios = seguidas
+      .filter((item) => item.seguidor === pageUser.nomeUsuario)
+      .map((item) => item.seguido);
   }
+
+  renderizarListaUsuarios(listagem, nomesUsuarios);
 
   var modal = document.getElementById("modalSeguidas");
 
   modal.classList.add("modalAberto");
   modal.setAttribute("aria-hidden", "false");
-
-  //document.getElementById("livroLog").focus();
 }

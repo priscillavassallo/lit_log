@@ -38,7 +38,9 @@
           </details>
         </div>
         <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-        <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+        <a href="../MembrosPage/teladelista.html" class="topbar-link"
+          >Coleções</a
+        >
 
         <a
           href="../PesquisaPage/Pesquisa.html"
@@ -136,7 +138,23 @@
     </div>
 
     <script>
+      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
       const chaveRegistrosDiario = "litlog_registros_diario";
+      const parametros = new URLSearchParams(window.location.search);
+      const pageName = parametros.get("username");
+      let pageUser;
+      let sameUser = false;
+      if (usuarioLogado.nomeUsuario == pageName || !pageName) {
+        console.log("sameuser");
+        sameUser = true;
+        pageUser = usuarioLogado;
+      } else {
+        const userList = JSON.parse(localStorage.getItem("usuarios"));
+        pageUser = userList.find((user) => {
+          return user.nomeUsuario == pageName;
+        });
+      }
+      const perfilAtivo = pageUser;
       let indiceRegistroParaExcluir = null;
       let filtroLivroAtual = "todos";
       let filtroStatusAtual = "todos";
@@ -180,7 +198,6 @@
 
               return registro;
             });
-
             salvarRegistrosDiario(registrosComId);
             return registrosComId;
           }
@@ -192,21 +209,21 @@
           const pilha = JSON.parse(pilhaSalva);
 
           if (pilha.length > 0) {
-            const registrosCriadosPelaPilha = pilha.map(function (livro, index) {
-              return {
-                id: Date.now() + index,
-                livro: livro.titulo,
-                autor: livro.autor,
-                status: livro.status,
-                pagina: "Não informado",
-                avaliacao: "Sem avaliação",
-                data: "Importado da pilha",
-                anotacao: "Livro adicionado a partir da Pilha de Livros.",
-                isbn: livro.isbn || "",
-                capa: livro.capa || "",
-              };
-            });
-
+          const registrosCriadosPelaPilha = pilha.map(function (livro, index) {
+            return {
+              id: Date.now() + index,
+              livro: livro.titulo,
+              autor: livro.autor,
+              status: livro.status,
+              pagina: null,
+              avaliacao: null,
+              data: "Importado da pilha",
+              anotacao: "Livro adicionado a partir da Pilha de Livros.",
+              isbn: livro.isbn || "",
+              capa: livro.capa || "",
+              registrante: livro.dono || perfilAtivo.nomeUsuario,
+            };
+          });
             salvarRegistrosDiario(registrosCriadosPelaPilha);
             return registrosCriadosPelaPilha;
           }
@@ -249,7 +266,8 @@
 
         const valorAtual = filtroLivro.value;
 
-        filtroLivro.innerHTML = '<option value="todos">Todos os livros</option>';
+        filtroLivro.innerHTML =
+          '<option value="todos">Todos os livros</option>';
 
         const livrosUnicos = [];
 
@@ -402,14 +420,18 @@
       function renderizarRegistrosDiario() {
         const listaRegistros = document.getElementById("listaRegistros");
         const registros = buscarRegistrosDiario();
-        const registrosFiltrados = filtrarRegistrosDiario(registros);
+        const registrosDoUsuario = registros.filter(
+          (registro) => registro.registrante === perfilAtivo.nomeUsuario,
+        );
+
+        const registrosFiltrados = filtrarRegistrosDiario(registrosDoUsuario);
 
         listaRegistros.innerHTML = "";
 
         if (registrosFiltrados.length === 0) {
           listaRegistros.innerHTML = `
             <p class="diary-empty">
-              Nenhum registro encontrado para este filtro.
+              Nenhum registro encontrado.
             </p>
           `;
           return;
@@ -422,6 +444,16 @@
 
           const novoRegistro = document.createElement("article");
           novoRegistro.classList.add("diary-record");
+          const botãoExcluir = sameUser
+            ? `
+              <button
+                class="diary-delete"
+                type="button"
+                onclick="abrirModalExclusaoDiario(${indexOriginal})"
+              >
+                Excluir
+              </button>`
+            : "";
 
           novoRegistro.innerHTML = `
             <div class="diary-record-header">
@@ -434,24 +466,19 @@
                 </p>
               </div>
 
-              <button
-                class="diary-delete"
-                type="button"
-                onclick="abrirModalExclusaoDiario(${indexOriginal})"
-              >
-                Excluir
-              </button>
+              ${botãoExcluir}
             </div>
 
             <p class="diary-date">
               Status: ${limparTexto(registro.status || "Não informado")} •
-              Página ${limparTexto(registro.pagina || "Não informado")} •
-              ${limparTexto(registro.data || "")}
+              ${registro.pagina ? `
+              Página ${limparTexto(registro.pagina)} •`:""}
+              ${limparTexto(new Date(registro.data).toLocaleString('pt-BR') || "")}
             </p>
-
-            <p class="diary-rating">
+            ${registro.avaliacao?
+            `<p class="diary-rating">
               ${limparTexto(montarEstrelas(registro.avaliacao))}
-            </p>
+            </p>`:""}
 
             <p>${limparTexto(registro.anotacao || "Sem anotação")}</p>
           `;
@@ -499,8 +526,9 @@
 
         const registros = buscarRegistrosDiario();
         const registroRemovido = registros[indiceRegistroParaExcluir];
-        const removerLivroDaPilha =
-          document.getElementById("removerLivroDaPilha").checked;
+        const removerLivroDaPilha = document.getElementById(
+          "removerLivroDaPilha",
+        ).checked;
 
         registros.splice(indiceRegistroParaExcluir, 1);
         salvarRegistrosDiario(registros);
@@ -510,12 +538,15 @@
             JSON.parse(localStorage.getItem("litlog_pilha_livros")) || [];
 
           const pilhaAtualizada = pilha.filter(function (livro) {
-            return livro.titulo !== registroRemovido.livro;
+            return !(
+              livro.dono === perfilAtivo.nomeUsuario &&
+              livro.titulo === registroRemovido.livro
+            );
           });
 
           localStorage.setItem(
             "litlog_pilha_livros",
-            JSON.stringify(pilhaAtualizada)
+            JSON.stringify(pilhaAtualizada),
           );
         }
 
