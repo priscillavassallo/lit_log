@@ -1,169 +1,161 @@
 <!doctype html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="../Img/Logo.png" type="image/png" />
 
-    <link rel="stylesheet" href="../CSS/variavel.css" />
-    <link rel="stylesheet" href="../CSS/global.css" />
-    <link rel="stylesheet" href="../CSS/componentes.css" />
-    <link rel="stylesheet" href="../compartilhado/modal.css" />
-    <link rel="stylesheet" href="list.css" />
-    <title>Listas</title>
-  </head>
-  <body>
-    <header class="topbar">
-      <a href="../HomePage/Home.html" class="topbar-logo">
-        <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
-        <span>LitLog</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../Img/Logo.png" type="image/png" />
+
+  <link rel="stylesheet" href="../CSS/variavel.css" />
+  <link rel="stylesheet" href="../CSS/global.css" />
+  <link rel="stylesheet" href="../CSS/componentes.css" />
+  <link rel="stylesheet" href="../compartilhado/modal.css" />
+  <link rel="stylesheet" href="list.css" />
+  <title>Listas</title>
+</head>
+
+<body>
+  <header class="topbar">
+    <a href="../HomePage/Home.html" class="topbar-logo">
+      <img src="../Img/Logo.png" alt="Logo LitLog" class="topbar-logo-img" />
+      <span>LitLog</span>
+    </a>
+
+    <nav class="topbar-nav">
+      <div class="topbar-profile">
+        <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
+        <details class="topbar-profile-dropdown">
+          <summary class="topbar-profile-trigger" aria-label="Abrir menu do perfil"></summary>
+          <div class="topbar-profile-menu">
+            <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
+            <a href="../DiaryPage/Diary.html">Diario</a>
+            <a href="../List/list.html">Listas</a>
+          </div>
+        </details>
+      </div>
+      <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
+      <a href="../MembrosPage/teladelista.html" class="topbar-link">Coleções</a>
+
+      <a href="../PesquisaPage/Pesquisa.html" class="topbar-search" aria-label="Pesquisar">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+          <path
+            d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z">
+          </path>
+        </svg>
       </a>
 
-      <nav class="topbar-nav">
-        <div class="topbar-profile">
-          <a href="../PerfilPage/Perfil.html" class="topbar-link">Meu Perfil</a>
-          <details class="topbar-profile-dropdown">
-            <summary
-              class="topbar-profile-trigger"
-              aria-label="Abrir menu do perfil"
-            ></summary>
-            <div class="topbar-profile-menu">
-              <a href="../ThePilePage/ThePile.html">Pilha de Livros</a>
-              <a href="../DiaryPage/Diary.html">Diario</a>
-              <a href="../List/list.html">Listas</a>
-            </div>
-          </details>
-        </div>
-        <a href="../LivrosPage/Livros.html" class="topbar-link">Livros</a>
-        <a href="../MembrosPage/teladelista.html" class="topbar-link"
-          >Coleções</a
-        >
+      <button class="btn-primary" type="button" onclick="abrirModalLog()">
+        + Log
+      </button>
+    </nav>
+  </header>
+  <section class="list-page">
+    <div class="list-container">
+      <div class="topo-listas">
+        <h1 id="titulo-listas">Minhas Listas</h1>
 
-        <a
-          href="../PesquisaPage/Pesquisa.html"
-          class="topbar-search"
-          aria-label="Pesquisar"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
-            <path
-              d="M 21 3 C 11.601563 3 4 10.601563 4 20 C 4 29.398438 11.601563 37 21 37 C 24.355469 37 27.460938 36.015625 30.09375 34.34375 L 42.375 46.625 L 46.625 42.375 L 34.5 30.28125 C 36.679688 27.421875 38 23.878906 38 20 C 38 10.601563 30.398438 3 21 3 Z M 21 7 C 28.199219 7 34 12.800781 34 20 C 34 27.199219 28.199219 33 21 33 C 13.800781 33 8 27.199219 8 20 C 8 12.800781 13.800781 7 21 7 Z"
-            ></path>
-          </svg>
-        </a>
-
-        <button class="btn-primary" type="button" onclick="abrirModalLog()">
-          + Log
-        </button>
-      </nav>
-    </header>
-    <section class="list-page">
-      <div class="list-container">
-        <div class="topo-listas">
-          <h1 id="titulo-listas">Minhas Listas</h1>
-
-          <button id="abrir-popup" class="criar-lista">+ Nova Lista</button>
-        </div>
-
-        <div class="list-grid" id="list-grid"></div>
+        <button id="abrir-popup" class="criar-lista">+ Nova Lista</button>
       </div>
-    </section>
 
-    <div class="overlay hidden"></div>
-    <div class="popup hidden">
-      <h2>Nova Lista</h2>
-      <input
-        type="text"
-        id="nome-lista"
-        maxlength="30"
-        placeholder="Nome da lista"
-      />
-      <button id="criar-lista-popup">Criar</button>
+      <div class="list-grid" id="list-grid"></div>
     </div>
+  </section>
 
-    <script>
-      const botao = document.getElementById("abrir-popup");
-      const popup = document.querySelector(".popup");
-      const overlay = document.querySelector(".overlay");
-      const input = document.getElementById("nome-lista");
-      const btnCriar = document.getElementById("criar-lista-popup");
-      const grid = document.getElementById("list-grid");
-      const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
-      const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  <div class="overlay hidden"></div>
+  <div class="popup hidden">
+    <h2>Nova Lista</h2>
+    <input type="text" id="nome-lista" maxlength="30" placeholder="Nome da lista" />
+    <button id="criar-lista-popup">Criar</button>
+  </div>
 
-      if (!usuarioLogado) {
-        window.location.href = "../LoginPage/LoginPage.html";
-        throw new Error("Usuário não autenticado.");
+  <script>
+    const botao = document.getElementById("abrir-popup");
+    const popup = document.querySelector(".popup");
+    const overlay = document.querySelector(".overlay");
+    const input = document.getElementById("nome-lista");
+    const btnCriar = document.getElementById("criar-lista-popup");
+    const grid = document.getElementById("list-grid");
+    const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const litlogListas = JSON.parse(localStorage.getItem("litlog_listas")) || [];
+
+    if (!usuarioLogado) {
+      window.location.href = "../LoginPage/LoginPage.html";
+      throw new Error("Usuário não autenticado.");
+    }
+
+    const parametros = new URLSearchParams(window.location.search);
+    const pageName = parametros.get("username");
+    const ownerName = pageName || usuarioLogado.nomeUsuario;
+    const sameUser = usuarioLogado.nomeUsuario === ownerName;
+    const perfilAtivo = sameUser
+      ? usuarioLogado
+      : usuarios.find((user) => user.nomeUsuario === ownerName);
+
+
+    if (!perfilAtivo) {
+      document.getElementById("titulo-listas").textContent =
+        "Perfil não encontrado";
+      botao.classList.add("oculta");
+      grid.innerHTML =
+        '<p class="empty-state">Não foi possível carregar as listas deste perfil.</p>';
+      throw new Error("Proprietário das listas não encontrado.");
+    }
+    const listasPerfilAtivo = litlogListas.filter(lista => lista.dono === perfilAtivo.nomeUsuario)
+    if (sameUser) {
+      botao.addEventListener("click", () => {
+        popup.classList.remove("hidden");
+        overlay.classList.remove("hidden");
+      });
+    } else {
+      document.getElementById("titulo-listas").textContent =
+        `Listas de @${perfilAtivo.nomeUsuario}`;
+      botao.classList.add("oculta");
+    }
+
+    function criarLista() {
+      if (!sameUser) return;
+
+      const nomeLista = input.value.trim();
+      const donoLista = usuarioLogado.nomeUsuario;
+      const dataAtual = new Date();
+
+      const fusoHorarioOffset = dataAtual.getTimezoneOffset() * 60000;
+      const dataLocal = new Date(dataAtual.getTime() - fusoHorarioOffset);
+
+      const dataLista = dataLocal.toISOString().slice(0, 19);
+
+      if (nomeLista.length > 30) {
+        alert("O nome da lista deve ter no máximo 30 caracteres.");
+        return;
       }
 
-      const parametros = new URLSearchParams(window.location.search);
-      const pageName = parametros.get("username");
-      const ownerName = pageName || usuarioLogado.nomeUsuario;
-      const sameUser = usuarioLogado.nomeUsuario === ownerName;
-      const perfilAtivo = sameUser
-        ? usuarioLogado
-        : usuarios.find((user) => user.nomeUsuario === ownerName);
-
-      if (!perfilAtivo) {
-        document.getElementById("titulo-listas").textContent =
-          "Perfil não encontrado";
-        botao.classList.add("oculta");
-        grid.innerHTML =
-          '<p class="empty-state">Não foi possível carregar as listas deste perfil.</p>';
-        throw new Error("Proprietário das listas não encontrado.");
+      const listaDuplicada = litlogListas.some(
+        (lista) => lista.nome === nomeLista,
+      );
+      if (listaDuplicada) {
+        alert("Esse nome de lista já está em uso. Use outro nome");
+        return;
       }
+      if (!nomeLista) return;
 
-      perfilAtivo.listas = Array.isArray(perfilAtivo.listas)
-        ? perfilAtivo.listas
-        : [];
+      litlogListas.push({ nome: nomeLista, dono: donoLista, data: dataLista, livros: [] });
+      listasPerfilAtivo.push({ nome: nomeLista, dono: donoLista, data: dataLista, livros: [] });
 
-      if (sameUser) {
-        botao.addEventListener("click", () => {
-          popup.classList.remove("hidden");
-          overlay.classList.remove("hidden");
-        });
-      } else {
-        document.getElementById("titulo-listas").textContent =
-          `Listas de @${perfilAtivo.nomeUsuario}`;
-        botao.classList.add("oculta");
+      localStorage.setItem("litlog_listas", JSON.stringify(litlogListas));
+
+      renderizarListas(listasPerfilAtivo);
+      location.reload();
+    }
+
+    function renderizarListas(listas) {
+      if (listas.length === 0) {
+        grid.innerHTML = `<p class="empty-state">${sameUser
+            ? "Você ainda não criou nenhuma lista."
+            : `@${perfilAtivo.nomeUsuario} ainda não criou nenhuma lista.`
+          }</p>`;
       }
-
-      function criarLista() {
-        if (!sameUser) return;
-
-        const nomeLista = input.value.trim();
-
-        if (nomeLista.length > 30) {
-          alert("O nome da lista deve ter no máximo 30 caracteres.");
-          return;
-        }
-
-        const listaDuplicada = usuarioLogado.listas.some(
-          (lista) => lista.nome === nomeLista,
-        );
-        if (listaDuplicada) {
-          alert("Esse nome de lista já está em uso. Use outro nome");
-          return;
-        }
-        if (!nomeLista) return;
-
-        usuarioLogado.listas.push({ nome: nomeLista, livros: [] });
-
-        localStorage.setItem("usuarioLogado", JSON.stringify(usuarioLogado));
-        const index = usuarios.findIndex(
-          (u) => u.nomeUsuario === usuarioLogado.nomeUsuario,
-        );
-
-        if (index !== -1) {
-          usuarios[index] = usuarioLogado;
-        }
-
-        localStorage.setItem("usuarios", JSON.stringify(usuarios));
-        const ultimaLista = usuarioLogado.listas.at(-1);
-        renderizarLista(ultimaLista);
-        location.reload();
-      }
-
-      function renderizarLista(lista) {
+      listas.forEach(lista => {
         const novoCard = document.createElement("div");
 
         novoCard.classList.add("list-card");
@@ -206,31 +198,31 @@
             e.stopPropagation();
 
             const btnClicado = e.target.dataset.lista;
-            const cardSelecionado = perfilAtivo.listas.findIndex(
+            const cardSelecionado = listasPerfilAtivo.findIndex(
               (lista) => lista.nome === btnClicado,
             );
             const respExcluir = confirm(
               "Sua lista será excluída permanentemente. Pressione OK para continuar.",
             );
-            if (respExcluir && cardSelecionado !== -1) {
-              perfilAtivo.listas.splice(cardSelecionado, 1);
+            const indexLista = litlogListas.findIndex(
+              lista =>
+                lista.nome === btnClicado &&
+                lista.dono === perfilAtivo.nomeUsuario
+            );
+
+            if (respExcluir && indexLista !== -1) {
+              litlogListas.splice(indexLista, 1);
+
               localStorage.setItem(
-                "usuarioLogado",
-                JSON.stringify(perfilAtivo),
-              );
-              const index = usuarios.findIndex(
-                (u) => u.nomeUsuario === perfilAtivo.nomeUsuario,
+                "litlog_listas",
+                JSON.stringify(litlogListas)
               );
 
-              if (index !== -1) {
-                usuarios[index] = perfilAtivo;
-              }
-
-              localStorage.setItem("usuarios", JSON.stringify(usuarios));
               location.reload();
             }
           });
         }
+
 
         novoCard.addEventListener("click", () => {
           const nomeLista = encodeURIComponent(lista.nome);
@@ -239,35 +231,34 @@
         });
 
         grid.appendChild(novoCard);
+      })
+      input.value = "";
 
-        input.value = "";
-        popup.classList.add("hidden");
-        overlay.classList.add("hidden");
-      }
+      popup.classList.add("hidden");
+      overlay.classList.add("hidden");
+    }
 
-      if (sameUser) {
-        btnCriar.addEventListener("click", criarLista);
-      }
+    if (sameUser) {
+      btnCriar.addEventListener("click", criarLista);
+    }
 
-      perfilAtivo.listas.forEach((lista) => {
-        renderizarLista(lista);
-      });
+    renderizarListas(listasPerfilAtivo);
 
-      if (perfilAtivo.listas.length === 0) {
-        grid.innerHTML = `<p class="empty-state">${
-          sameUser
-            ? "Você ainda não criou nenhuma lista."
-            : `@${perfilAtivo.nomeUsuario} ainda não criou nenhuma lista.`
+    if (listasPerfilAtivo.length === 0) {
+      grid.innerHTML = `<p class="empty-state">${sameUser
+          ? "Você ainda não criou nenhuma lista."
+          : `@${perfilAtivo.nomeUsuario} ainda não criou nenhuma lista.`
         }</p>`;
-      }
+    }
 
-      overlay.addEventListener("click", () => {
-        popup.classList.add("hidden");
-        overlay.classList.add("hidden");
-      });
-    </script>
+    overlay.addEventListener("click", () => {
+      popup.classList.add("hidden");
+      overlay.classList.add("hidden");
+    });
+  </script>
 
-    <script src="../compartilhado/livros.js"></script>
-    <script src="../compartilhado/modal.js"></script>
-  </body>
+  <script src="../compartilhado/livros.js"></script>
+  <script src="../compartilhado/modal.js"></script>
+</body>
+
 </html>
