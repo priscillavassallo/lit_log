@@ -476,7 +476,7 @@
 
       controleGeral.innerHTML += `
         <div class="secaoLivros" data-genero="premiados">
-          <h2>${lista.nome} POR @${lista.dono}</h2>
+          <h2>${lista.nome}</h2><h3> POR <a href="../PerfilPage/Perfil.html?=username${lista.dono}" > @${lista.dono} </a></h3>
 
           <div class="controleCarrossel">
             <button
@@ -487,7 +487,7 @@
             </button>
 
             <div class="livrosCarrossel" id="${lista.nome}">
-              ${lista.livros.map(livro => renderLivro(livro))}
+              ${lista.livros.map(livro => renderLivro(livro)).join("")}
             </div>
             <button
               class="botaoCarrossel"

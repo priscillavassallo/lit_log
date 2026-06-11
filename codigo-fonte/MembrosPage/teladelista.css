@@ -33,12 +33,17 @@
 }
 
 .secaoLivros h2 {
-  margin: 0 0 var(--space-lg) 0;
   color: var(--color-primary);
   font-size: var(--text-xl);
   font-family: var(--font-title);
   font-weight: 600;
   letter-spacing: 0.5px;
+}
+.secaoLivros h3{
+  margin: 0 0 var(--space-lg) 0;
+  font-family: var(--font-title);
+
+
 }
 
 .controleCarrossel {
