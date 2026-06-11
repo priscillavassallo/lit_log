@@ -323,6 +323,8 @@
     const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
     const recemAvaliadosCarrossel = document.getElementById("recemAvaliados")
+    const lancamentos = document.getElementById("lancamentos")
+
     const carrosselSimilares = document.getElementById("parecidosLeituras")
 
     const registros = JSON.parse(localStorage.getItem("litlog_registros_diario"))
@@ -535,7 +537,6 @@
 
         return acc;
       }, {});
-      console.log(frequenciaGeneros);
 
       const total = Object.values(frequenciaGeneros)
         .reduce((soma, qtd) => soma + qtd, 0);
@@ -546,7 +547,6 @@
           quantidade: Math.round((quantidade / total) * 10)
         }));
 
-      console.log(generosProporcionais);
       const titulosLidos = new Set(
         livrosLidos.map(livro => livro.titulo)
       );
@@ -569,8 +569,7 @@
         }
       );
 
-      console.log(recomendacoes);
-      
+
       if (recomendacoes.length === 0)
         carrosselSimilares.innerHTML = `
           <p class="mensagemLidosAmigos">Registre alguns livros para podermos fazer recomendações!</p>
@@ -597,6 +596,38 @@
           `;
       })
     }
+    function renderizarLancamentos() {
+
+      if (livros.length == 0)
+        lancamentos.innerHTML = `
+          <p class="mensagemLidosAmigos">Algo deu errado! Estamos trabalhado para consertar!</p>
+        `;
+      else
+        lancamentos.innerHTML = "";
+      const maisRecentes = [...livros]
+        .filter(livro => livro.data && livro.data !== "0000-00-00")
+        .sort((a, b) => b.data.localeCompare(a.data))
+        .slice(0, 10);
+      maisRecentes.forEach(livro => {
+        const destinoLivro = livro.isbn
+          ? `../DetalhesLivroPage/DetalhesLivro.html?isbn=${encodeURIComponent(livro.isbn)}`
+          : `../ThePilePage/ThePile.html?username=${encodeURIComponent(livro.dono)}`;
+        lancamentos.innerHTML += `
+            <a href="${destinoLivro}">
+              <div class="livro">
+                <img
+                  class="capaLivro"
+                  src="${limparTextoLivros(livro.capa)}"
+                  alt="Capa de ${limparTextoLivros(livro.titulo)}"
+                />
+                <h4>${limparTextoLivros(livro.titulo)}</h4>
+
+              </div>
+            </a>
+          `;
+      })
+    }
+    renderizarLancamentos();
     renderizarSimilares();
     renderizarAvaliacoesRecentes();
     renderizarLidosAmigos();
