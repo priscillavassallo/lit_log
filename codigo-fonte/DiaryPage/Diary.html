@@ -209,21 +209,21 @@
           const pilha = JSON.parse(pilhaSalva);
 
           if (pilha.length > 0) {
-            const registrosCriadosPelaPilha = pilha.map(
-              function (livro, index) {
-                return {
-                  id: Date.now() + index,
-                  livro: livro.titulo,
-                  autor: livro.autor,
-                  status: livro.status,
-                  pagina: null,
-                  avaliacao: null,
-                  data: "Importado da pilha",
-                  anotacao: "Livro adicionado a partir da Pilha de Livros.",
-                };
-              },
-            );
-
+          const registrosCriadosPelaPilha = pilha.map(function (livro, index) {
+            return {
+              id: Date.now() + index,
+              livro: livro.titulo,
+              autor: livro.autor,
+              status: livro.status,
+              pagina: null,
+              avaliacao: null,
+              data: "Importado da pilha",
+              anotacao: "Livro adicionado a partir da Pilha de Livros.",
+              isbn: livro.isbn || "",
+              capa: livro.capa || "",
+              registrante: livro.dono || perfilAtivo.nomeUsuario,
+            };
+          });
             salvarRegistrosDiario(registrosCriadosPelaPilha);
             return registrosCriadosPelaPilha;
           }
@@ -323,6 +323,100 @@
         });
       }
 
+      function obterIsbnDoTexto(texto) {
+        const valor = String(texto || "");
+        const resultado = valor.match(/\/isbn\/([0-9Xx]+)-/);
+
+        if (resultado) {
+          return resultado[1];
+        }
+
+        return null;
+      }
+
+      function obterIsbnRegistroDiario(registro) {
+        if (registro.isbn) {
+          return registro.isbn;
+        }
+
+        if (registro.capa) {
+          const isbnDaCapaRegistro = obterIsbnDoTexto(registro.capa);
+
+          if (isbnDaCapaRegistro) {
+            return isbnDaCapaRegistro;
+          }
+        }
+
+        const pilha = JSON.parse(localStorage.getItem("litlog_pilha_livros")) || [];
+
+        const livroEncontradoNaPilha = pilha.find(function (livro) {
+          return livro.titulo === registro.livro;
+        });
+
+        if (livroEncontradoNaPilha) {
+          if (livroEncontradoNaPilha.isbn) {
+            return livroEncontradoNaPilha.isbn;
+          }
+
+          if (livroEncontradoNaPilha.capa) {
+            const isbnDaCapaPilha = obterIsbnDoTexto(livroEncontradoNaPilha.capa);
+
+            if (isbnDaCapaPilha) {
+              return isbnDaCapaPilha;
+            }
+          }
+        }
+
+        if (typeof livros !== "undefined") {
+          const livroEncontradoNaBase = livros.find(function (livro) {
+            return (
+              livro.titulo === registro.livro ||
+              livro.title === registro.livro ||
+              livro.nome === registro.livro
+            );
+          });
+
+          if (livroEncontradoNaBase) {
+            if (livroEncontradoNaBase.isbn) {
+              return livroEncontradoNaBase.isbn;
+            }
+
+            if (livroEncontradoNaBase.capa) {
+              const isbnDaCapaBase = obterIsbnDoTexto(livroEncontradoNaBase.capa);
+
+              if (isbnDaCapaBase) {
+                return isbnDaCapaBase;
+              }
+            }
+
+            if (livroEncontradoNaBase.imagem) {
+              const isbnDaImagemBase = obterIsbnDoTexto(livroEncontradoNaBase.imagem);
+
+              if (isbnDaImagemBase) {
+                return isbnDaImagemBase;
+              }
+            }
+          }
+        }
+
+        return null;
+      }
+
+      function abrirDetalhesRegistroDiario(registro) {
+        const isbn = obterIsbnRegistroDiario(registro);
+
+        if (isbn) {
+          window.location.href =
+            "../DetalhesLivroPage/DetalhesLivro.html?isbn=" +
+            encodeURIComponent(isbn);
+          return;
+        }
+
+        window.location.href =
+          "../DetalhesLivroPage/DetalhesLivro.html?titulo=" +
+          encodeURIComponent(registro.livro);
+      }
+
       function renderizarRegistrosDiario() {
         const listaRegistros = document.getElementById("listaRegistros");
         const registros = buscarRegistrosDiario();
@@ -364,7 +458,9 @@
           novoRegistro.innerHTML = `
             <div class="diary-record-header">
               <div>
-                <h3>${limparTexto(registro.livro)}</h3>
+                <h3 class="diary-book-title">
+                  ${limparTexto(registro.livro)}
+                </h3>
                 <p class="diary-date">
                   ${limparTexto(registro.autor || "Autor não informado")}
                 </p>
@@ -386,6 +482,12 @@
 
             <p>${limparTexto(registro.anotacao || "Sem anotação")}</p>
           `;
+
+          const tituloRegistro = novoRegistro.querySelector(".diary-book-title");
+
+          tituloRegistro.addEventListener("click", function () {
+            abrirDetalhesRegistroDiario(registro);
+          });
 
           listaRegistros.appendChild(novoRegistro);
         });
