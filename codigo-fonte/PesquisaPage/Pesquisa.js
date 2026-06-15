@@ -8,64 +8,99 @@ const btnCancelarModal = document.getElementById("cancelar");
 const btnSalvarModal = document.getElementById("salvar");
 const selectListas = document.getElementById("listasUsuario");
 let livroClicado = null;
-const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+let livrosDaUltimaBusca = [];
 const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
+const litlogListas = JSON.parse(localStorage.getItem("litlog_listas")) || [];
+const listasUsuarioLogado = usuarioLogado
+  ? litlogListas.filter((lista) => lista.dono === usuarioLogado.nomeUsuario)
+  : [];
 
-const litlogListas = JSON.parse(localStorage.getItem("litlog_listas")) || []
-const listasUsuarioLogado = litlogListas.filter(lista => lista.dono === usuarioLogado.nomeUsuario) || []
-
+garantirBotsNoLocalStorage();
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
+  buscarLivros();
 });
 
 function buscarLivros() {
-  if (entradaBusca.value.trim() === "") {
+  const consultaOriginal = entradaBusca.value.trim();
+
+  if (consultaOriginal === "") {
     alert("Por favor, insira um termo de busca.");
     return;
   }
 
-  tituloPrincipal.innerHTML = `Resultados para "${entradaBusca.value}"`;
+  const consulta = consultaOriginal.toLocaleLowerCase("pt-BR");
 
-  const consulta = entradaBusca.value.toLowerCase();
-
-  const livrosFiltrados = livros.filter(
+  const livrosLocais = Array.isArray(livros) ? livros : [];
+  const livrosFiltrados = livrosLocais.filter(
     (livro) =>
-      livro.titulo.toLowerCase().includes(consulta) ||
-      livro.genero.toLowerCase().includes(consulta) ||
-      livro.autor.toLowerCase().includes(consulta) ||
-      livro.isbn.includes(consulta),
+      livro.titulo?.toLocaleLowerCase("pt-BR").includes(consulta) ||
+      livro.genero?.toLocaleLowerCase("pt-BR").includes(consulta) ||
+      livro.autor?.toLocaleLowerCase("pt-BR").includes(consulta) ||
+      String(livro.isbn || "").includes(consulta),
   );
+  livrosDaUltimaBusca = livrosFiltrados;
+  const livrosComTituloExato = livrosDaUltimaBusca.filter(
+    (livro) =>
+      normalizarTitulo(livro.titulo) === normalizarTitulo(consultaOriginal),
+  );
+
+  if (livrosComTituloExato.length > 0) {
+    livrosDaUltimaBusca = livrosComTituloExato;
+  }
+
+  tituloPrincipal.textContent = `Resultados para "${consultaOriginal}"`;
+
+  const usuarios = buscarUsuariosDoLocalStorage();
   const usuariosFiltrados = usuarios.filter(
     (usuario) =>
-      usuario.nomeUsuario.toLowerCase().includes(consulta) ||
-      usuario.nome.toLowerCase().includes(consulta),
+      usuario.nomeUsuario?.toLocaleLowerCase("pt-BR").includes(consulta) ||
+      usuario.nome?.toLocaleLowerCase("pt-BR").includes(consulta),
   );
   const autoresFiltrados = [
     ...new Set(
-      livros
+      livrosLocais
         .map((livro) => livro.autor)
-        .filter((autor) => autor.toLowerCase().includes(consulta)),
+        .filter(
+          (autor) =>
+            autor && autor.toLocaleLowerCase("pt-BR").includes(consulta),
+        ),
     ),
   ];
-  const listasFiltradas = (litlogListas || []).filter((lista) => {
-    const proprietario = usuarios.find(
-      (usuario) => usuario.nomeUsuario === lista.dono
-    );
+  const listasFiltradas = litlogListas
+    .map((lista) => {
+      const proprietario = usuarios.find(
+        (usuario) => usuario.nomeUsuario === lista.dono,
+      ) || {
+        nomeUsuario: lista.dono,
+        nome: lista.dono,
+      };
 
-    return (
-      lista.nome.toLowerCase().includes(consulta) ||
-      lista.dono.toLowerCase().includes(consulta) ||
-      proprietario?.nome?.toLowerCase().includes(consulta) ||
-      (lista.livros || []).some(
-        (livro) =>
-          livro.titulo.toLowerCase().includes(consulta) ||
-          livro.autor.toLowerCase().includes(consulta)
-      )
-    );
-  });
+      return { lista, proprietario };
+    })
+    .filter(({ lista, proprietario }) => {
+      const livrosDaLista = Array.isArray(lista.livros) ? lista.livros : [];
+
+      return (
+        lista.nome?.toLocaleLowerCase("pt-BR").includes(consulta) ||
+        lista.dono?.toLocaleLowerCase("pt-BR").includes(consulta) ||
+        proprietario.nome?.toLocaleLowerCase("pt-BR").includes(consulta) ||
+        livrosDaLista.some(
+          (livro) =>
+            livro.titulo?.toLocaleLowerCase("pt-BR").includes(consulta) ||
+            livro.autor?.toLocaleLowerCase("pt-BR").includes(consulta),
+        )
+      );
+    });
+
+  if (livrosComTituloExato.length > 0) {
+    renderizarSomenteLivros(livrosDaUltimaBusca);
+    return;
+  }
+
   if (
-    livrosFiltrados.length === 0 &&
+    livrosDaUltimaBusca.length === 0 &&
     usuariosFiltrados.length === 0 &&
     autoresFiltrados.length === 0 &&
     listasFiltradas.length === 0
@@ -80,7 +115,7 @@ function buscarLivros() {
   const secaoLivros = criarSecaoResultados("Livros");
   const secaoListas = criarSecaoResultados("Listas");
 
-  livrosFiltrados.forEach(
+  livrosDaUltimaBusca.forEach(
     (livroFiltrado) =>
     (secaoLivros.innerHTML += `
            
@@ -134,7 +169,7 @@ function buscarLivros() {
   });
 
   autoresFiltrados.forEach((autor) => {
-    const livrosDoAutor = livros.filter((livro) => livro.autor === autor);
+    const livrosDoAutor = livrosLocais.filter((livro) => livro.autor === autor);
     const primeiroLivro = livrosDoAutor[0];
 
     secaoPessoas.innerHTML += `
@@ -156,7 +191,7 @@ function buscarLivros() {
       </a>
     `;
   });
-  listasFiltradas.forEach((lista, proprietario) => {
+  listasFiltradas.forEach(({ lista, proprietario }) => {
     const nomeLista = encodeURIComponent(lista.nome);
     const nomeUsuario = encodeURIComponent(proprietario.nomeUsuario);
     const quantidadeLivros = (lista.livros || []).length;
@@ -190,8 +225,135 @@ function buscarLivros() {
     secaoPessoas,
     usuariosFiltrados.length + autoresFiltrados.length,
   );
-  adicionarSecaoSeTiverResultados(secaoLivros, livrosFiltrados.length);
+  adicionarSecaoSeTiverResultados(secaoLivros, livrosDaUltimaBusca.length);
   adicionarSecaoSeTiverResultados(secaoListas, listasFiltradas.length);
+}
+
+function buscarUsuariosDoLocalStorage() {
+  const usuariosSalvos = lerListaDoLocalStorage("usuarios");
+  const perfisFicticios = lerListaDoLocalStorage("perfisFicticios");
+  const donosDeListas = lerListaDoLocalStorage("litlog_listas").map(
+    (lista) => ({
+      nomeUsuario: lista.dono,
+      nome: lista.dono,
+      desc: "Usuário do LitLog",
+      foto: "../Img/Logo.png",
+    }),
+  );
+  const usuariosUnicos = new Map();
+
+  [...donosDeListas, ...perfisFicticios, ...usuariosSalvos].forEach(
+    (usuario) => {
+    if (!usuario?.nomeUsuario) return;
+
+    const chave = usuario.nomeUsuario.toLocaleLowerCase("pt-BR");
+    usuariosUnicos.set(chave, usuario);
+    },
+  );
+
+  return [...usuariosUnicos.values()];
+}
+
+function garantirBotsNoLocalStorage() {
+  const botsPadrao = [
+    {
+      nomeUsuario: "mapemorii",
+      nome: "Mapê",
+      desc: "Gosto de livros que me fazem pensar, e mais ainda de livros que me fazem parar de pensar.",
+      foto: "../Img/pic01.jpg",
+    },
+    {
+      nomeUsuario: "nona_bacana_",
+      nome: "Nona",
+      desc: "Qualquer livro do Senhor dos Anéis, cervejinha trincando e Botafogo de Futebol e Regatas.",
+      foto: "../Img/pic02.png",
+    },
+    {
+      nomeUsuario: "iuri.m.mello",
+      nome: "Iuri",
+      desc: "Pai de 2, cristão e pedagogo. Leio livros para os meus filhos.",
+      foto: "../Img/pic03.jpg",
+    },
+  ];
+  const usuariosSalvos = lerListaDoLocalStorage("usuarios");
+  let houveAlteracao = false;
+
+  botsPadrao.forEach((bot) => {
+    const botJaExiste = usuariosSalvos.some(
+      (usuario) =>
+        usuario.nomeUsuario?.toLocaleLowerCase("pt-BR") ===
+        bot.nomeUsuario.toLocaleLowerCase("pt-BR"),
+    );
+
+    if (!botJaExiste) {
+      usuariosSalvos.push(bot);
+      houveAlteracao = true;
+    }
+  });
+
+  if (houveAlteracao) {
+    localStorage.setItem("usuarios", JSON.stringify(usuariosSalvos));
+  }
+}
+
+function lerListaDoLocalStorage(chave) {
+  try {
+    const dados = JSON.parse(localStorage.getItem(chave));
+    return Array.isArray(dados) ? dados : [];
+  } catch (erro) {
+    console.warn(`Não foi possível ler "${chave}" do localStorage.`, erro);
+    return [];
+  }
+}
+
+function normalizarTitulo(texto) {
+  return String(texto || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("pt-BR")
+    .replace(/^(o|a|os|as|um|uma)\s+/, "")
+    .replace(/[^\p{L}\p{N}\s]/gu, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function renderizarSomenteLivros(livrosEncontrados) {
+  containerResultados.innerHTML = "";
+  const secaoLivros = criarSecaoResultados("Livros");
+
+  livrosEncontrados.forEach((livro) => {
+    secaoLivros.innerHTML += criarCartaoLivro(livro);
+  });
+
+  adicionarSecaoSeTiverResultados(secaoLivros, livrosEncontrados.length);
+}
+
+function criarCartaoLivro(livro) {
+  return `
+    <div class="cartao-livro">
+      <div class="container-capa">
+        <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}">
+          <img src="${livro.capa}" alt="Capa de ${livro.titulo}">
+        </a>
+        <h2>
+          <a href="../PerfilPage/PerfilAutor/PerfilAutor.html?author=${encodeURIComponent(livro.autor)}">
+            por ${livro.autor}
+          </a>
+        </h2>
+      </div>
+
+      <div class="titulo-sinopse">
+        <a href="../DetalhesLivroPage/DetalhesLivro.html?isbn=${livro.isbn}">
+          <h1>${livro.titulo}</h1>
+        </a>
+        <p>${livro.sinopse}</p>
+        <p id="genero">${livro.genero}</p>
+        <button class="addLista" data-isbn="${livro.isbn}">
+          Adicionar a lista
+        </button>
+      </div>
+    </div>
+  `;
 }
 
 function criarSecaoResultados(titulo) {
@@ -219,9 +381,14 @@ function adicionarSecaoSeTiverResultados(secao, quantidade) {
   secao.appendChild(grade);
   containerResultados.appendChild(secao);
 }
-botaoBusca.addEventListener("click", buscarLivros);
+
 containerResultados.addEventListener("click", (e) => {
   if (e.target.classList.contains("addLista")) {
+    if (!usuarioLogado) {
+      alert("Entre na sua conta para adicionar livros a uma lista.");
+      return;
+    }
+
     if (listasUsuarioLogado.length === 0) {
       const redireciona = confirm(
         `Nenhuma lista criada pressione OK para criar `,
@@ -232,7 +399,7 @@ containerResultados.addEventListener("click", (e) => {
       return;
     }
     const isbn = e.target.dataset.isbn;
-    livroClicado = livros.find((livro) => livro.isbn === isbn);
+    livroClicado = livrosDaUltimaBusca.find((livro) => livro.isbn === isbn);
 
     overlay.style.display = "flex";
     renderListas();
@@ -269,7 +436,9 @@ function salvarLivro() {
   const nomeLista = selectListas.value;
 
   const lista = listasUsuarioLogado.find((lista) => lista.nome === nomeLista);
+  if (!lista || !livroClicado) return;
 
+  lista.livros = Array.isArray(lista.livros) ? lista.livros : [];
   const livroDuplicado = lista.livros.some(
     (livro) => livro.isbn === livroClicado.isbn,
   );
@@ -287,14 +456,14 @@ function salvarLivro() {
   const dataLocal = new Date(dataAtual.getTime() - fusoHorarioOffset);
 
   const dataLista = dataLocal.toISOString().slice(0, 19);
-  lista.data = dataLista
+  lista.data = dataLista;
 
   const index = litlogListas.findIndex(
     (u) => u.dono === usuarioLogado.nomeUsuario && u.nome === nomeLista,
   );
 
   if (index !== -1) {
-    usuarios[index] = lista;
+    litlogListas[index] = lista;
   }
 
   localStorage.setItem("litlog_listas", JSON.stringify(litlogListas));

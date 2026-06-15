@@ -1,4 +1,4 @@
-if (localStorage.length === 0) {
+{
   const imagePaths = [
     "../Img/pic01.jpg",
     "../Img/pic02.png",
@@ -54,14 +54,39 @@ if (localStorage.length === 0) {
         foto: pics[2],
       },
     ];
-    localStorage.setItem("usuarios", JSON.stringify(listadeusuarios));
-    localStorage.setItem("litlog_pilha_livros", JSON.stringify(pilhaDeLivros));
-    localStorage.setItem(
-      "litlog_registros_diario",
-      JSON.stringify(registroDiario),
-    );
-    localStorage.setItem("litlog_listas",JSON.stringify(listas))
-    localStorage.setItem("seguidas",JSON.stringify(seguidas))
+
+    const usuariosSalvos =
+      JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    listadeusuarios.forEach((bot) => {
+      const botJaExiste = usuariosSalvos.some(
+        (usuario) => usuario.nomeUsuario === bot.nomeUsuario,
+      );
+
+      if (!botJaExiste) {
+        usuariosSalvos.push(bot);
+      }
+    });
+
+    localStorage.setItem("usuarios", JSON.stringify(usuariosSalvos));
+
+    if (!localStorage.getItem("litlog_pilha_livros")) {
+      localStorage.setItem("litlog_pilha_livros", JSON.stringify(pilhaDeLivros));
+    }
+
+    if (!localStorage.getItem("litlog_registros_diario")) {
+      localStorage.setItem(
+        "litlog_registros_diario",
+        JSON.stringify(registroDiario),
+      );
+    }
+
+    if (!localStorage.getItem("litlog_listas")) {
+      localStorage.setItem("litlog_listas", JSON.stringify(listas));
+    }
+      if (!localStorage.getItem("seguidas")) {
+      localStorage.setItem("seguidas", JSON.stringify(seguidas));
+    }
   }
   saveUsers();
 }
