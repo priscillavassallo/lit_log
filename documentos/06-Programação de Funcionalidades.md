@@ -1,44 +1,34 @@
 # Programação de Funcionalidades
 
-Implementação da aplicação descritas por meio dos requisitos codificados. 
+## Tela de Cadastro (RF-01)
 
-[Utilize a estrutura abaixo para cada funcionalidade entregue na etapa]
+**Responsável:** Gabriel Clemente Ribeiro
 
-### Título da funcionalidade
+O acesso à tela de cadastro pode ser feito pelo botão **"Cadastre-se"** na Landing Page ou na tela de login. O usuário preenche nome, nome de usuário, e-mail e senha para criar sua conta no LitLog.
 
-[Adicione imagem da funcionalidade/tela]
+Exemplo da tela de cadastro:
 
+<img width="900" alt="2 - cadastro" src="https://github.com/user-attachments/assets/48cbfe89-4f66-4fcb-8ccd-31dfd6c7c7c1" />
 
-#### Requisito atendido
+### Requisito atendido
 
-[RF-X: adicione a descrição do requisito atendido]
+**RF-01:** O sistema deve permitir cadastro e autenticação de usuários.
 
+### Artefatos da funcionalidade
 
-#### Artefatos da funcionalidade
+- `Cadastrar.html`
+- `Cadastrar.css`
+- `Usuarios.js`
 
-[Adicione os nomes dos arquivos relacionados ao desenvolvimento da funcionalidade]
+### Estrutura de dados
 
+Os dados do usuário (nome, nome de usuário, e-mail e senha) são armazenados via **LocalStorage** no navegador, manipulados pelo arquivo `Usuarios.js`.
 
-#### Estrutura de Dados
+### Instruções de acesso
 
-[Caso exista estrutura de dados, adicione aqui]
+1. Abra um navegador e acesse a URL do projeto: https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/codigo-fonte/CadastroPage/Cadastrar.html
+2. Preencha os campos: nome, nome de usuário, e-mail e senha (mínimo 8 caracteres).
+3. Clique em **"Cadastrar"** para criar a conta e ser redirecionado para a **Home**.
+4. Caso já possua uma conta, clique em **"Entrar"** para ir à tela de login.
 
-
-#### Instruções de acesso
-
-[Adicione as orientações de acesso à funcionalidade]
-
-
-#### Responsável
-
-[Adicione nome do responsável pelo desenvolvimento da funcionalidade]
-
-
-
-
-> **Links Úteis**:
-> - [Trabalhando com HTML5 Local Storage e JSON](https://www.devmedia.com.br/trabalhando-com-html5-local-storage-e-json/29045)
-> - [JSON Tutorial](https://www.w3resource.com/JSON)
-> - [JSON - Introduction (W3Schools)](https://www.w3schools.com/js/js_json_intro.asp)
-> - [JSON Tutorial (TutorialsPoint)](https://www.tutorialspoint.com/json/index.htm)
-
+---
