@@ -214,7 +214,7 @@ Exemplo da tela:
 
 ---
 
-## Diário — Modal + Log (RF-06, RF-07, RF-09, RF-10)
+## Diário — Modal + Log (RF-06, RF-07, RF-08, RF-09)
 
 **Responsável:** Marcus Felipe Fernandes Cruz
 
@@ -230,9 +230,9 @@ Exemplo da tela:
 
 **RF-07:** O sistema deve permitir que o usuário visualize e gerencie seu histórico de leitura.
 
-**RF-09:** O sistema deve permitir que usuários avaliem os livros.
+**RF-08:** O sistema deve permitir que usuários avaliem os livros.
 
-**RF-10:** O sistema deve permitir que usuários escrevam reviews sobre livros.
+**RF-09:** O sistema deve permitir que usuários escrevam reviews sobre livros.
 
 ### Artefatos da funcionalidade
 
@@ -253,7 +253,7 @@ Exemplo da tela:
 
 ---
 
-## Pilha de Livros (RF-08)
+## Pilha de Livros (RF-10)
 
 **Responsável:** Marcus Felipe Fernandes Cruz
 
@@ -265,7 +265,7 @@ Exemplo da tela:
 
 ### Requisito atendido
 
-**RF-08:** O sistema deve permitir que o usuário adicione livros à lista de desejos para leitura futura.
+**RF-10:** O sistema deve permitir que o usuário adicione livros à lista de desejos para leitura futura.
 
 ### Artefatos da funcionalidade
 
@@ -284,7 +284,7 @@ Exemplo da tela:
 
 ---
 
-## Perfil do Usuário (RF-11)
+## Perfil do Usuário (RF-11, RF-12)
 
 **Responsável:** Carlos Eduardo Ribeiro da Silva
 
@@ -296,7 +296,8 @@ Exemplo da tela:
 
 ### Requisito atendido
 
-**RF-11:** O sistema deve permitir que usuários sigam outros usuários.
+**RF-11:** O sistema deve permitir que os usuários criem e gerenciem seus perfis pessoais, incluindo a alteração da foto de perfil e da descrição.
+**RF-12:** O sistema deve permitir que usuários sigam outros usuários.
 
 ### Artefatos da funcionalidade
 
@@ -317,7 +318,7 @@ Exemplo da tela:
 
 ---
 
-## Home, Livros e Coleções (RF-12)
+## Home, Livros e Coleções (RF-13)
 
 **Responsáveis:** Gustavo Lima Soares, Iago Oliveira Garcia
 
@@ -341,7 +342,7 @@ COLEÇÕES
 
 ### Requisito atendido
 
-**RF-12:** O sistema deve exibir conteúdos recentes e populares com base nas atividades dos usuários.
+**RF-13:** O sistema deve exibir conteúdos recentes e populares com base nas atividades dos usuários.
 
 ### Artefatos da funcionalidade
 
