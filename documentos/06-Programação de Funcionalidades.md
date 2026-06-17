@@ -10,7 +10,7 @@ A Landing Page é a porta de entrada do LitLog. Ela apresenta o propósito da pl
 
 Exemplo da tela:
 
-![Landing Page](../Img/tela-landing.png)
+<img width="900" alt="1-landing" src="https://github.com/user-attachments/assets/dfaaa1c3-3942-46f8-83d2-86b1ab8c8801" />
 
 ### Requisito atendido
 
@@ -38,7 +38,7 @@ O acesso à tela de cadastro pode ser feito pelo botão **"Cadastre-se"** na Lan
 
 Exemplo da tela:
 
-![Cadastro](../Img/tela-cadastro.png)
+<img width="900" alt="2 - cadastro" src="https://github.com/user-attachments/assets/8f7888bf-484a-4d8a-a300-a31a3286ed55" />
 
 ### Requisito atendido
 
@@ -67,7 +67,7 @@ O acesso à tela de login pode ser feito pelo botão **"Entrar"** na Landing Pag
 
 Exemplo da tela:
 
-![Login](../Img/tela-login.png)
+<img width="900" alt="3 - login" src="https://github.com/user-attachments/assets/803d0fde-c318-40b7-894b-4524760f8460" />
 
 ### Requisito atendido
 
@@ -92,11 +92,11 @@ Exemplo da tela:
 
 **Responsável:** Gabriel Clemente Ribeiro
 
-A tela de pesquisa permite ao usuário buscar livros, autores, listas  e perfis digitando um termo no campo de busca localizado na barra de navegação superior. Os resultados são exibidos dinamicamente na página.
+A tela de pesquisa permite ao usuário buscar livros, autores, listas e perfis digitando um termo no campo de busca localizado na barra de navegação superior. Os resultados são exibidos dinamicamente na página.
 
 Exemplo da tela:
 
-![Pesquisa](../Img/tela-pesquisa.png)
+<img width="900" alt="8 - pesquisa" src="https://github.com/user-attachments/assets/f8c73697-d517-4b2b-8a85-8ef2e57d5b29" />
 
 ### Requisito atendido
 
@@ -126,7 +126,7 @@ A tela de detalhes exibe informações completas sobre um livro: capa, título, 
 
 Exemplo da tela:
 
-![Detalhes do Livro](../Img/tela-detalhes.png)
+<img width="900" alt="detalhes" src="https://github.com/user-attachments/assets/eddc95bb-5170-4c3a-a0c6-f77fe5a028b4" />
 
 ### Requisito atendido
 
@@ -157,7 +157,7 @@ A tela de Perfil do Autor exibe informações sobre um autor: foto, nome, biogra
 
 Exemplo da tela:
 
-![Perfil do Autor](../Img/tela-perfil-autor.png)
+<img width="900" alt="author" src="https://github.com/user-attachments/assets/68ea2d63-84d1-49fe-b596-d5090532e6da" />
 
 ### Requisito atendido
 
@@ -187,7 +187,8 @@ A tela de Listas permite ao usuário criar, visualizar e gerenciar listas temát
 
 Exemplo da tela:
 
-![Listas](../Img/tela-listas.png)
+<img width="900" alt="listas11" src="https://github.com/user-attachments/assets/5e82afac-079e-4621-b03e-658b99f1fe7c" />
+<img width="900" alt="listas2" src="https://github.com/user-attachments/assets/1737f95d-5d6f-4328-84bf-7038dd87756e" />
 
 ### Requisito atendido
 
@@ -201,7 +202,6 @@ Exemplo da tela:
 - `lista.css`
 - `livros.js` (compartilhado)
 - `modal.js` (compartilhado)
-
 
 ### Instruções de acesso
 
@@ -222,7 +222,7 @@ O Diário registra o histórico de leituras do usuário. Novos registros são ad
 
 Exemplo da tela:
 
-![Diário](../Img/tela-diario.png)
+<img width="900" alt="10 - Diario e maislog" src="https://github.com/user-attachments/assets/777b5832-ce9c-47bb-bd0d-0fd1f14280a6" />
 
 ### Requisitos atendidos
 
@@ -233,7 +233,6 @@ Exemplo da tela:
 **RF-09:** O sistema deve permitir que usuários avaliem os livros.
 
 **RF-10:** O sistema deve permitir que usuários escrevam reviews sobre livros.
-
 
 ### Artefatos da funcionalidade
 
@@ -262,7 +261,7 @@ A Pilha de Livros é a lista de desejos do usuário. Livros podem ser adicionado
 
 Exemplo da tela:
 
-![Pilha de Livros](../Img/tela-pilha.png)
+<img width="900" alt="9 - Pilha" src="https://github.com/user-attachments/assets/3e424484-a7ad-46b3-bf7c-e5c4df5f9020" />
 
 ### Requisito atendido
 
@@ -293,7 +292,7 @@ A tela de Perfil exibe as informações do usuário: foto, nome de exibição, n
 
 Exemplo da tela:
 
-![Perfil](../Img/tela-perfil.png)
+<img width="900" alt="5 - meu perfil" src="https://github.com/user-attachments/assets/2e34ab38-eb59-4da2-a8c0-1cee08b0fe2e" />
 
 ### Requisito atendido
 
@@ -306,7 +305,6 @@ Exemplo da tela:
 - `Perfil.js`
 - `livros.js` (compartilhado)
 - `modal.js` (compartilhado)
-
 
 ### Instruções de acesso
 
@@ -327,11 +325,19 @@ Três telas compõem a exibição de conteúdos em destaque na plataforma. A **H
 
 Exemplo das telas:
 
-![Home](../Img/tela-home.png)
+**HOME**
 
-![Livros](../Img/tela-livros.png)
+<img width="900" alt="4 - home" src="https://github.com/user-attachments/assets/7cfab23a-9828-489c-88a8-6ef2e6851362" />
+<br></br>
 
-![Coleções](../Img/tela-colecoes.png)
+LIVROS
+
+<img width="900" alt="6 - livros" src="https://github.com/user-attachments/assets/9f1be26b-061b-4970-91da-1226baedef5d" />
+<br></br>
+
+COLEÇÕES
+
+<img width="900" alt="7- coleçoes" src="https://github.com/user-attachments/assets/432e601e-fcf9-4e39-817d-0f6de1ec0ba8" />
 
 ### Requisito atendido
 
