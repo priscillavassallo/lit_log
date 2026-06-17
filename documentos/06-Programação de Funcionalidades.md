@@ -294,7 +294,7 @@ Exemplo da tela:
 
 <img width="900" alt="5 - meu perfil" src="https://github.com/user-attachments/assets/2e34ab38-eb59-4da2-a8c0-1cee08b0fe2e" />
 
-### Requisito atendido
+### Requisitos atendidos
 
 **RF-11:** O sistema deve permitir que os usuários criem e gerenciem seus perfis pessoais, incluindo a alteração da foto de perfil e da descrição.
 **RF-12:** O sistema deve permitir que usuários sigam outros usuários.
