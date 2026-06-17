@@ -1,5 +1,48 @@
 # Programação de Funcionalidades
 
+## Landing Page
+
+**Responsável:** Priscilla
+
+A Landing Page é a página inicial do LitLog e tem como objetivo apresentar a proposta da plataforma aos visitantes. A tela destaca a experiência social de descoberta e compartilhamento de leituras, incentivando novos usuários a criarem uma conta ou acessarem uma conta já existente.
+
+Por meio dos botões de navegação disponíveis, o usuário pode acessar diretamente as funcionalidades de cadastro e autenticação do sistema.
+
+### Exemplo da tela
+
+<img width="900"  alt="1-landing" src="https://github.com/user-attachments/assets/07e3d3db-571e-4f8d-967a-4e28cc68ff7b" />
+
+
+### Requisito Atendido
+
+**RF-01:** O sistema deve permitir cadastro e autenticação de usuários.
+
+### Artefatos da Funcionalidade
+
+- `Landing.html`
+- `Landing.css`
+- `Landing.js`
+- `variavel.css`
+- `global.css`
+- `componentes.css`
+
+### Estrutura de Dados
+
+A Landing Page não realiza operações de persistência ou manipulação de dados. Sua função é exclusivamente apresentar informações institucionais da plataforma e disponibilizar os acessos para as telas de cadastro e login.
+
+Os botões de navegação realizam o redirecionamento para as páginas responsáveis pelo cadastro e autenticação dos usuários.
+
+### Instruções de Acesso
+
+1. Abra um navegador web e acesse a URL da Landing Page:
+
+   https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/codigo-fonte/LangingPage/Landing.html
+
+2. Visualize a apresentação da plataforma LitLog e sua proposta de valor.
+3. Clique em **"Entrar"** para acessar a tela de login.
+4. Clique em **"Cadastrar"** para acessar a tela de criação de conta.
+5. Após o cadastro ou autenticação, o usuário poderá acessar as demais funcionalidades do sistema.
+
 ## Tela de Cadastro (RF-01)
 
 **Responsável:** Gabriel Clemente Ribeiro
