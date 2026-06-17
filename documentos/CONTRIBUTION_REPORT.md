@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 17/06/2026 21:36
+**Última atualização:** 17/06/2026 21:43
 
 ---
 
@@ -10,10 +10,10 @@
 |---------------------------------|-----------|-----------|-----------|------------|----------------|-----------------|
 | Carlos                          |         9 |        45 |        35 |          3 |              6 |               1 |
 | Carlos Eduardo Ribeiro da Silva |        30 |     12307 |      1325 |         82 |              3 |               9 |
-| Gabriel Clemente Ribeiro        |        98 |      3986 |      1654 |         46 |             35 |               3 |
+| Gabriel Clemente Ribeiro        |        99 |      3996 |      1663 |         46 |             36 |               3 |
 | Gustavo Lima                    |        16 |       260 |       124 |          6 |             15 |               2 |
 | Priscilla Vassallo              |        25 |       266 |       199 |          2 |             25 |               1 |
-| github-actions[bot]             |       182 |      1224 |      1136 |          3 |            182 |               1 |
+| github-actions[bot]             |       183 |      1228 |      1140 |          3 |            183 |               1 |
 | github-classroom[bot]           |         2 |      1548 |         0 |         19 |              2 |               3 |
 | iago oliveira garcia            |         3 |       368 |       174 |         17 |              0 |               0 |
 | iagofalquer                     |         9 |        98 |       119 |          1 |              9 |               1 |
@@ -24,7 +24,7 @@
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-06-10**: Carlos Eduardo Ribeiro da Silva: 3, Gabriel Clemente Ribeiro: 7, github-actions[bot]: 10, marcusfcruz: 3, priscillavassallo: 8
+**2026-06-10**: Carlos Eduardo Ribeiro da Silva: 3, Gabriel Clemente Ribeiro: 8, github-actions[bot]: 11, marcusfcruz: 3, priscillavassallo: 8
 
 **2026-06-03**: Carlos Eduardo Ribeiro da Silva: 4, Gabriel Clemente Ribeiro: 9, Gustavo Lima: 1, github-actions[bot]: 24, lima280: 2, marcusfcruz: 5, priscillavassallo: 33
 
