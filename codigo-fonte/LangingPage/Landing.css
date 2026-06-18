@@ -64,29 +64,44 @@ a {
 }
 
 .landing-login {
-  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  color: var(--color-white);
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-full);
   font-weight: 600;
+  box-shadow: var(--shadow-sm);
   transition: var(--transition-fast);
 }
 
 .landing-login:hover {
-  opacity: 0.7;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
+  transform: translateY(-1px);
 }
 
 .landing-register {
   background: var(--color-primary);
   color: var(--color-white);
-  border: none;
+  border: 1px solid var(--color-primary);
   padding: 12px 22px;
   border-radius: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition-fast);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-sm);
 }
 
 .landing-register:hover {
   background: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
+  transform: translateY(-1px);
 }
 .fat-register {
   width: 25dvh;
