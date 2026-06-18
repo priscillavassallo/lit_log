@@ -68,11 +68,12 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 | RF-05 | O sistema deve permitir criação, visualização e organização de listas personalizadas de livros pelos usuários, como favoritos e listas temáticas | Alta |
 | RF-06 | O sistema deve permitir que o usuário registre livros como lidos ou em leitura | Alta |
 | RF-07 | O sistema deve permitir que o usuário visualize e gerencie seu histórico de leitura | Alta |
-| RF-08 | O sistema deve permitir que o usuário adicione livros à lista de desejos para leitura futura | Alta |
-| RF-09 | O sistema deve permitir que usuários avaliem os livros | Média |
-| RF-10 | O sistema deve permitir que usuários escrevam reviews sobre livros | Média |
-| RF-11 | O sistema deve permitir que usuários sigam outros usuários | Média |
-| RF-12 | O sistema deve exibir conteúdos recentes e populares com base nas atividades dos usuários | Média |
+| RF-08 | O sistema deve permitir que usuários avaliem os livros | Média |
+| RF-09 | O sistema deve permitir que usuários escrevam reviews sobre livros | Média |
+| RF-10 | O sistema deve permitir que o usuário adicione livros à lista de desejos para leitura futura | Alta |
+| RF-11 | O sistema deve permitir que os usuários criem e gerenciem seus perfis pessoais, incluindo a alteração da foto de perfil e da descrição.| Média |
+| RF-12 | O sistema deve permitir que usuários sigam outros usuários | Média |
+| RF-13 | O sistema deve exibir conteúdos recentes e populares com base nas atividades dos usuários | Média |
 
 **Prioridade: Alta / Média / Baixa. 
 

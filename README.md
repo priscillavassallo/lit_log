@@ -35,7 +35,11 @@ O Litlog é um projeto acadêmico sobre uma plataforma web para leitores onde as
 
 # Hospedagem
 
-* Insira o endereço eletrônico público de acesso ao conteúdo publicado. 
+ A aplicação foi publicada e está disponível para acesso online.
+
+👉 [Acesso ao website](https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/)
+
+O sistema foi desenvolvido em HTML, CSS e JavaScript e pode ser executado diretamente no navegador.
 
 # Código-Fonte
 
