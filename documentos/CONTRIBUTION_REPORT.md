@@ -1,6 +1,6 @@
 # 📊 Relatório de Contribuições do Projeto
 
-**Última atualização:** 21/06/2026 22:00
+**Última atualização:** 21/06/2026 22:01
 
 ---
 
@@ -12,8 +12,8 @@
 | Carlos Eduardo Ribeiro da Silva |        32 |     12327 |      1334 |         82 |              3 |               9 |
 | Gabriel Clemente Ribeiro        |       101 |      3998 |      1666 |         46 |             38 |               3 |
 | Gustavo Lima                    |        16 |       260 |       124 |          6 |             15 |               2 |
-| Priscilla Vassallo              |        29 |       275 |       243 |          4 |             26 |               1 |
-| github-actions[bot]             |       186 |      1252 |      1164 |          3 |            186 |               1 |
+| Priscilla Vassallo              |        30 |       276 |       244 |          4 |             27 |               1 |
+| github-actions[bot]             |       187 |      1268 |      1180 |          3 |            187 |               1 |
 | github-classroom[bot]           |         2 |      1548 |         0 |         19 |              2 |               3 |
 | iago oliveira garcia            |         3 |       368 |       174 |         17 |              0 |               0 |
 | iagofalquer                     |        10 |       101 |       122 |          2 |              9 |               1 |
@@ -24,7 +24,7 @@
 
 ## 📅 Contribuições Semanais (Todo o Semestre)
 
-**2026-06-14**: Carlos Eduardo Ribeiro da Silva: 5, Gabriel Clemente Ribeiro: 10, Priscilla Vassallo: 4, github-actions[bot]: 11, iagofalquer: 1, priscillavassallo: 3
+**2026-06-14**: Carlos Eduardo Ribeiro da Silva: 5, Gabriel Clemente Ribeiro: 10, Priscilla Vassallo: 5, github-actions[bot]: 12, iagofalquer: 1, priscillavassallo: 3
 
 **2026-06-07**: Carlos Eduardo Ribeiro da Silva: 4, Gabriel Clemente Ribeiro: 6, Gustavo Lima: 1, github-actions[bot]: 22, lima280: 2, marcusfcruz: 8, priscillavassallo: 29
 
