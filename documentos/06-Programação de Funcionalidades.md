@@ -12,7 +12,7 @@ Exemplo da tela:
 
 <img width="900" alt="1-landing" src="https://github.com/user-attachments/assets/dfaaa1c3-3942-46f8-83d2-86b1ab8c8801" />
 
-<img width="900" height="1018" alt="image" src="https://github.com/user-attachments/assets/7a31805c-08b2-48b0-9e7f-211cefd84718" />
+<img width="900" alt="image" src="https://github.com/user-attachments/assets/7a31805c-08b2-48b0-9e7f-211cefd84718" />
 
 
 ### Requisito atendido
