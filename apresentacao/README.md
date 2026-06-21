@@ -44,8 +44,8 @@ Etapa 5:
 > - resolução HD (720p) ou Full HD (1080p)
 > - formato mp4]
 
-[Adicione vídeo de apresentação.]
+https://drive.google.com/file/d/1Zkdo6wV3OI9ObCoeMwzHLNafPQOLDzi6/view?usp=drivesdk
 
-## Hospedagem
+Hospedagem
 
-[Adicione o endereço eletrônico público onde o site encontra-se hospedado.]
+[https://icei-puc-minas-pmv-ads.github.io/pmv-ads-2026-1-e1-proj-web-t1-pmv-ads-2026-1-e1-projlitlog/codigo-fonte/LangingPage/Landing.html]
